@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from 'src/app/shared/shared.module';
+
 import { BannerComponent } from './components/banner/banner.component';
 import { ShortcutNewsComponent } from './components/shortcut-news/shortcut-news.component';
 import { ShortcutStoreComponent } from './components/shortcut-store/shortcut-store.component';
+import { HomeComponent } from './pages/home.component';
 
 
 
@@ -10,10 +12,11 @@ import { ShortcutStoreComponent } from './components/shortcut-store/shortcut-sto
   declarations: [
     BannerComponent,
     ShortcutNewsComponent,
-    ShortcutStoreComponent
+    ShortcutStoreComponent,
+    HomeComponent
   ],
   imports: [
-    CommonModule
+    SharedModule
   ]
 })
 export class HomeModule { }
