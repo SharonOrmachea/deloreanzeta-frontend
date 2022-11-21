@@ -1,1 +1,13 @@
-/*# sourceMappingURL=shortcut-news.component.css.map */
+.nav {
+  justify-content: space-between;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-weight: bold;
+}
+
+#news {
+  width: 800px;
+  width-grid: 2fr 2fr 2fr;
+}/*# sourceMappingURL=shortcut-news.component.css.map */

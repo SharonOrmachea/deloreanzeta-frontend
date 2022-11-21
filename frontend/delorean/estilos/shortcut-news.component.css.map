@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"shortcut-news.component.css"}
+{"version":3,"sourceRoot":"","sources":["../src/app/public/home/components/shortcut-news/shortcut-news.component.sass"],"names":[],"mappings":"AAGA;EACC;EACA;;;AAED;EACC;;;AAED;EACE;EACC","file":"shortcut-news.component.css"}
