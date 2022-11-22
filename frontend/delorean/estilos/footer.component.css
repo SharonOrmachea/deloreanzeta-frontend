@@ -9,8 +9,7 @@ form {
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  margin-left: 440px;
-  margin-bottom: 80px;
+  margin-left: 350px;
 }
 
 h1 {
@@ -53,6 +52,7 @@ button {
 img {
   width: 287px;
   height: 105px;
+  margin-top: 240px;
 }
 
 svg {
@@ -63,9 +63,20 @@ svg {
   margin-left: 5px;
 }
 
-div {
+.icons {
   display: flex;
   flex-flow: row nowrap;
+}
+
+section {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+}
+
+div {
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 li {
@@ -77,9 +88,4 @@ a {
   color: #FFFFFF;
   font-size: 13px;
   margin-top: 30px;
-}
-
-.list {
-  display: flex;
-  flex-flow: row nowrap;
 }/*# sourceMappingURL=footer.component.css.map */
