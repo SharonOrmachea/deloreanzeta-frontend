@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
