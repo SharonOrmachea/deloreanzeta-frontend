@@ -37,7 +37,7 @@ export const createProducto = async (req, res) => {
 
     const {nombre, precio, categoria,imagen, descripcion} = req.body;
     try{
-        const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
+        const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria,imagen,descripcion) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
         //tengo que ver que la categoria este creada
         
 
