@@ -35,9 +35,9 @@ export const getProductos = async (req, res) => {
 
 export const createProducto = async (req, res) => {
 
-    const {nombre, precio, categoria} = req.body;
+    const {nombre, precio, categoria,imagen, descripcion} = req.body;
     try{
-        const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria) VALUES (?, ?, ?)",[nombre, precio, categoria]);
+        const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
         //tengo que ver que la categoria este creada
         
 
@@ -46,7 +46,9 @@ export const createProducto = async (req, res) => {
             id: row.insertId,
             nombre,
             precio,
-            categoria
+            categoria,
+            imagen,
+            descripcion
         });
     }catch(error){
         return res.status(500).json({
@@ -57,9 +59,9 @@ export const createProducto = async (req, res) => {
 
 export const updateProducto = async (req, res) => {
     const {id} = req.params;
-    const {nombre, precio, categoria} = req.body;
+    const {nombre, precio, categoria, imagen, descripcion} = req.body;
     try {
-        const [result] = await pool.query("UPDATE producto SET nombre = IFNULL(?, nombre), precio = IFNULL(?, precio), categoria = IFNULL(?, categoria) WHERE id = ?", [nombre, precio, categoria, id]);
+        const [result] = await pool.query("UPDATE producto SET nombre = IFNULL(?, nombre), precio = IFNULL(?, precio), categoria = IFNULL(?, categoria), imagen = IFNULL(?, imagen), descripcion = IFNULL(?, descripcion) WHERE id = ?", [nombre, precio, categoria, imagen, descripcion, id]);
         if(result.affectedRows == 0){
             return res.status(404).json({
                 message: "Producto no actualizado"
