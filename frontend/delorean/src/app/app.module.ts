@@ -5,6 +5,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -14,6 +15,7 @@ import { PublicComponent } from './public/public.component';
     PublicComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule
