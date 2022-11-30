@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { HomeComponent } from './public/home/pages/home.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
 
@@ -7,7 +8,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 const routes: Routes = [
   { path: '', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
   { path: '**', component: NotFoundComponent },
-  {path: 'Home',component: HomeComponent},
+  { path: 'home',component: HomeComponent }
 ];
 
 @NgModule({

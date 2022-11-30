@@ -1,19 +1,56 @@
 @import 'variables'
 
+// Clase para la fuente general de toda la pagina
+.font-general
+  font-family: $font-general
+  font-style: $font-style
+
+// Clase para el background general de todas las paginas
 .background
   background: $background-url
-  background-repeat: $background-no-repeat
-  background-size: $background-size
+  background-repeat: no-repeat
+  background-size: 100% 100%
 
+// Clase para el logo DLZ
 .logo
-  width: $shot-logo-width
-  height: $short-logo-height
+  width: 160px
+  height: 90px
 
-.button
+// Clase para los botones generales
+.general-button
+  color: $white
   border: $button-border-none
-  color: $button-font-color
-  border-radius: $button-border-radius
-  width: $button-width
-  height: $button-height
+
+// Clase para los botones cortos
+.short-button
+  width: 128px
+  height: 37px
+  border-radius: 28px
+
+// Clase para los botones largos
+.large-button
+  width: 381px
+  height: 41px
+  border-radius: 32px
+  font-size: 20px
+
+// Clase para alinear items al centro en columnas con espaciado a los costados
+.display-center-around-column
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+
+// Clase para alinear items al centro en columnas sin espaciado a los costados
+.display-center-column
+  display: flex
+  flex-direction: column
+  align-items: center
+
+// Clase para alinear al items al centro con espaciado a los costados
+.display-center-around
+  display: flex
+  justify-content: space-around
+  align-items: center
 
 
