@@ -1,0 +1,22 @@
+@import 'extends-class'
+@import 'variables'
+
+header
+  display: flex
+  align-items: center
+  justify-content: space-around
+
+
+img
+  @extend .logo
+
+
+.login
+  @extend .button
+
+  background-color: $button-pink-background
+
+.sign-in
+  @extend .button
+
+  background: $button-background-none
