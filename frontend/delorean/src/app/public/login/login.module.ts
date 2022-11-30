@@ -9,7 +9,6 @@ import { LoginComponent } from './pages/login.component';
   declarations: [
     LoginComponent,
     FormComponent
-
   ],
   imports: [
     SharedModule
