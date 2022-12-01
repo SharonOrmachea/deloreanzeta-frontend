@@ -37,19 +37,38 @@ export const createProducto = async (req, res) => {
 
     const {nombre, precio, categoria,imagen, descripcion} = req.body;
     try{
-        const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria,imagen,descripcion) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
-        //tengo que ver que la categoria este creada
-        
+        console.log("id: ", categoria)
+        if(categoria !== "" && categoria !== undefined){
+            const [categoriaIngresada] =  await pool.query("SELECT * from categoria WHERE id = ?", [categoria]);
 
-
-        res.send({
-            id: row.insertId,
-            nombre,
-            precio,
-            categoria,
-            imagen,
-            descripcion
-        });
+            console.log("entro al categoria distinto de vacio")
+            console.log("La cantidad de categorias encontradas con ese id es: ", categoriaIngresada.length)
+            console.log(categoriaIngresada[0]);
+           
+            if(categoriaIngresada[0] !== undefined) {
+                const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria,imagen,descripcion) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
+                res.send({
+                    id: row.insertId,
+                    nombre,
+                    precio,
+                    categoria,
+                    imagen,
+                    descripcion
+                });
+            }else{
+                res.send({message: "Error al crear el producto, la categoria no existe"}); 
+            }
+        }else{
+            console.log("entro a sin categoria")
+            const [row] = await pool.query("INSERT INTO producto(nombre,precio,imagen,descripcion) VALUES (?, ?, ?, ?)",[nombre, precio, imagen, descripcion]);
+            res.send({
+                id: row.insertId,
+                nombre,
+                precio,
+                imagen,
+                descripcion
+            });
+        }
     }catch(error){
         return res.status(500).json({
             message: "Error al crear el producto"
