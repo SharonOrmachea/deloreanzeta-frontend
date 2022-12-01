@@ -7,13 +7,18 @@
 
 // Clase para el background general de todas las paginas
 .background
-  background: $background-url
+  background: $background-DLZ-url
   background-repeat: no-repeat
   background-size: 100% 100%
 
 // Clase para el logo DLZ
-.logo
+.logoDLZ
   width: 160px
+  height: 90px
+
+// Clase para el logo DLZ-Autito
+.logoDLZ-Autito
+  // width: 160px
   height: 90px
 
 // Clase para los botones generales
@@ -41,6 +46,12 @@
   justify-content: space-around
   align-items: center
 
+// Clase para alinear items en columnas con espaciado a los costados
+.display-around-column
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+
 // Clase para alinear items al centro en columnas sin espaciado a los costados
 .display-center-column
   display: flex
@@ -53,4 +64,30 @@
   justify-content: space-around
   align-items: center
 
+// Clase para alinear items al centro en filas con espaciado a los costados y punto de corte con porcentaje
+.display-center-around-row
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
 
+// Clase para alinear items al centro en filas con espaciado a los costados y punto de corte con porcentaje
+.display-center-around-row-wrap
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+  flex-wrap: wrap
+
+// Clase para alinear items en filas con espaciado a los costados y punto de corte con porcentaje
+.display-around-row-wrap
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  flex-wrap: wrap
+
+// Clase para alinear items al centro en filas sin espaciado a los costados
+.display-center-row
+  display: flex
+  flex-direction: row
+  align-items: center

@@ -12,14 +12,17 @@
 .box1
   @extend .display-center-column
   background-color: $white
-  width: 457px
-  height: 490px
+  width: auto
+  height: auto
   border-radius: 16px
   padding: 40px
   gap: 30px
   //------------------------------
   .titulo
+    @extend .display-center-around-column
     color: $black
+    img
+      @extend .logoDLZ-Autito
 
   .form
     @extend .display-center-column
@@ -37,6 +40,7 @@
       input
         width: 379px
         height: 41px
+        padding: 1px 5px
         border-radius: 12px
         border-width: 1px
         border-color: $grey
@@ -44,7 +48,7 @@
   .login
     @extend .display-center-around-column
     gap: 20px
-    button
+    input
       @extend .general-button
       @extend .large-button
       background-color: $pink

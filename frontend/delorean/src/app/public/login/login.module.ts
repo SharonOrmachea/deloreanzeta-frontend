@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-import { FormComponent } from './components/form/form.component';
+import { FormLoginComponent } from './components/form/form-login.component';
 import { LoginComponent } from './pages/login.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    FormComponent
+    FormLoginComponent
   ],
   imports: [
     SharedModule
