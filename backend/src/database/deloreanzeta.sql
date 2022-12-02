@@ -80,7 +80,7 @@ CREATE TABLE `producto` (
   KEY `categoriaProducto_idCategoria_idx` (`categoria`),
   KEY `categoria_idx` (`categoria`),
   CONSTRAINT `categoria` FOREIGN KEY (`categoria`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +89,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (1,'remera','100',1,NULL,NULL),(2,'remera estampada','150',1,NULL,NULL),(3,'Producto1','500',6,NULL,NULL),(4,'conCategoria','423',1,'ruta imagen','descprip'),(5,'conCategoria','2634',NULL,'ruta','descp'),(6,'sin campo categoria','15000',NULL,'ru','descr'),(7,'con negativo','1000',1,'dest','asdasdasdsad12312z dsa 123$'),(8,'essasd','1000',1,'dest','asdasdasdsad12312z dsa 123$');
+INSERT INTO `producto` VALUES (1,'remera','100',1,NULL,NULL),(2,'remera estampada','150',1,NULL,NULL),(3,'Producto1','500',6,NULL,NULL),(8,'Producto3','10000',6,NULL,NULL),(11,'Nombre producto','1500',1,'ruta...','soy una descripcion'),(12,'Nombre producto','15000',NULL,'ruta...','soy una descripcion'),(13,'Nombre producto','14500',1,'ruta...','soy una descripcion editada');
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,4 +158,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-01 11:56:33
+-- Dump completed on 2022-11-28 11:11:44
