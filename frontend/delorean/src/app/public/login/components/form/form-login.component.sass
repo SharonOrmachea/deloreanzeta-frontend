@@ -1,0 +1,72 @@
+@import 'extends-class'
+
+.formulario
+  @extend .font-general
+  @extend .display-center-around-column
+  heigth: auto
+  gap: 20px
+  a
+    text-decoration: none
+    color: $black
+
+.box1
+  @extend .display-center-column
+  background-color: $white
+  width: auto
+  height: auto
+  border-radius: 16px
+  padding: 40px
+  gap: 30px
+  //------------------------------
+  .titulo
+    @extend .display-center-around-column
+    color: $black
+    img
+      @extend .logoDLZ-Autito
+
+  .form
+    @extend .display-center-column
+    gap: 60px
+
+    .inputs
+      @extend .display-center-column
+      gap: 50px
+      label
+        display: flex
+        align-items: flex-end
+        vertical-align: bottom
+        color: $grey
+
+      input
+        width: 379px
+        height: 41px
+        padding: 1px 5px
+        border-radius: 12px
+        border-width: 1px
+        border-color: $grey
+
+  .login
+    @extend .display-center-around-column
+    gap: 20px
+    input
+      @extend .general-button
+      @extend .large-button
+      background-color: $pink
+
+
+.box2
+  background-color: $white
+  width: 460px
+  height: 64px
+  border-radius: 24px
+  display: flex
+  align-items: center
+  justify-content: center
+
+  .sign-in
+    display: flex
+    flex-direction: row
+    font-size: 18px
+    gap: 10px
+    margin-top: 15px
+
