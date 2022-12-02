@@ -1,37 +1,79 @@
+@import 'extends-class'
+@import 'variables'
+
+header
+  @extend .font-general
+  // @extend .display-center-around-row-wrap
+  display: flex
+  justify-content: space-evenly
+  align-items: center
+
+  border: 0.5em solid $pink
+  width: 100%
+  height: 20%
+
 img
-  width: 122px
-  height: 88px
-  margin-left: 20px
+  @extend .logoDLZ
+
+.nav-bar
+
+  border: 0.2em solid $white
+  width: 45%
+  height: 100%
+
+  ul
+    display: grid
+    grid-template-rows: repeat(6, 10px)
+    align-content: center
+    gap: 2em
+    border: 0.2em solid $pink
+
+    li
+      display: flex
+      align-items: center
+      list-style: none
+      border: 0.2em solid
+
+
+  a
+    color: $white
+    font-size: 1.3em
+
+
+    a:link
+      text-decoration: none
+      color: $white
+
+    a:visited
+      text-decoration: none
+      color: $white
+
 
 nav
-  display: flex
-  flex-flow: row nowrap
-  justify-content: space-evenly
-  margin-left: -15.75px
+  // display: flex
+  // flex-flow: row nowrap
+  // justify-content: space-evenly
+  // margin-left: -15.75px
 
 ul
-  text-align: center
-  margin-top: 30px
+  // text-align: center
+  // margin-top: 30px
 
 
 li
-  list-style: none
-  display: inline
-  margin: 10px 10px 10px 10px
+  // list-style: none
+  // display: inline
+  // margin: 10px 10px 10px 10px
 a
-  color: white
-  text-decoration: none
-  font-family: 'Poppins', sans-serif
-  font-size: 14px
-  line-height: 21px
-  opacity: 70%
+  // color: white
+  // text-decoration: none
+  // font-family: 'Poppins', sans-serif
+  // font-size: 14px
+  // line-height: 21px
+  // opacity: 70%
 
 
 .login
-  font-family: 'Poppins', sans-serif
-  border-radius: 20px
-  border: none
-  font-size: 15px
-  color: white
-  background-color: #d63384
-  margin-top: 30px
+  @extend .general-button
+  @extend .short-button
+  background-color: $pink
