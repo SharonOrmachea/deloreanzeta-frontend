@@ -40,13 +40,30 @@ export const validateProducto = [
                     value[i] != 5 && value[i] != 6 && value[i] != 7 && value[i] != 8 && value[i] != 9){
                         console.log(value[i])
                         throw new Error("El precio debe componerse unicamente de numeros");
-                        
                 }
             }
             return true;
         })
     ,
+    body("imagen")
+        .isString()
+        .withMessage("El campo imagen debe ser una cadena de caracteres")
+        .custom((value, {req}) => {
+            if(value.trim() == 0)
+                throw new Error("El campo imagen no puede componerse unicamente de espacios");
+            return true;
+        })
+    ,
+    body("descripcion")
+        .isString()
+        .withMessage("El campo descripcion debe ser una cadena de caracteres")
+        .custom((value, {req}) => {
+            if(value.trim() == 0)
+                throw new Error("El campo descripcion no puede componerse unicamente de espacios");
+            return true;
+        })
+    ,
     (req, res, next) => {
-        validateResult(req, res, next)
+        validateResult(req, res, next);
     }
 ]

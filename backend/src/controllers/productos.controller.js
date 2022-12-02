@@ -34,17 +34,10 @@ export const getProductos = async (req, res) => {
 }
 
 export const createProducto = async (req, res) => {
-
     const {nombre, precio, categoria,imagen, descripcion} = req.body;
     try{
-        console.log("id: ", categoria)
         if(categoria !== "" && categoria !== undefined){
             const [categoriaIngresada] =  await pool.query("SELECT * from categoria WHERE id = ?", [categoria]);
-
-            console.log("entro al categoria distinto de vacio")
-            console.log("La cantidad de categorias encontradas con ese id es: ", categoriaIngresada.length)
-            console.log(categoriaIngresada[0]);
-           
             if(categoriaIngresada[0] !== undefined) {
                 const [row] = await pool.query("INSERT INTO producto(nombre,precio,categoria,imagen,descripcion) VALUES (?, ?, ?, ?, ?)",[nombre, precio, categoria, imagen, descripcion]);
                 res.send({
@@ -59,7 +52,6 @@ export const createProducto = async (req, res) => {
                 res.send({message: "Error al crear el producto, la categoria no existe"}); 
             }
         }else{
-            console.log("entro a sin categoria")
             const [row] = await pool.query("INSERT INTO producto(nombre,precio,imagen,descripcion) VALUES (?, ?, ?, ?)",[nombre, precio, imagen, descripcion]);
             res.send({
                 id: row.insertId,
