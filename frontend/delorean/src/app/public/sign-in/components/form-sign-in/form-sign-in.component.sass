@@ -2,7 +2,7 @@
 
 .formulario
   @extend .font-general
-  @extend .display-center-around-column
+  @extend .flex-column-around-center
   heigth: auto
   gap: 20px
   a
@@ -10,7 +10,7 @@
     color: $black
 
 .box1
-  @extend .display-center-column
+  @extend .flex-column-center
   background-color: $white
   width: auto
   height: auto
@@ -19,17 +19,17 @@
   gap: 30px
   //------------------------------
   .titulo
-    @extend .display-center-around-column
+    @extend .flex-column-around-center
     color: $black
     img
       @extend .logoDLZ-Autito
 
   .form
-    @extend .display-center-around-column
+    @extend .flex-column-around-center
     gap: 30px
 
     .inputs
-      @extend .display-center-column
+      @extend .flex-column-center
       gap: 30px
       label
         display: flex
@@ -62,7 +62,7 @@
         input
           width: 20px
           margin-left: 10px
-          
+
         input[type="checkbox"]:checked
           accent-color: $black
 
@@ -70,7 +70,7 @@
           width: 450px
 
     .sign-in
-      @extend .display-center-around-column
+      @extend .flex-column-around-center
       gap: 20px
       input
         @extend .general-button

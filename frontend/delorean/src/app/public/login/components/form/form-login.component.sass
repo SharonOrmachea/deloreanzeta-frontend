@@ -2,15 +2,16 @@
 
 .formulario
   @extend .font-general
-  @extend .display-center-around-column
+  @extend .flex-column-around-center
   heigth: auto
   gap: 20px
+  //------------------------------
   a
     text-decoration: none
     color: $black
 
 .box1
-  @extend .display-center-column
+  @extend .flex-column-center
   background-color: $white
   width: auto
   height: auto
@@ -19,17 +20,17 @@
   gap: 30px
   //------------------------------
   .titulo
-    @extend .display-center-around-column
+    @extend .flex-column-around-center
     color: $black
     img
       @extend .logoDLZ-Autito
-
+  //------------------------------
   .form
-    @extend .display-center-column
+    @extend .flex-column-center
     gap: 60px
 
     .inputs
-      @extend .display-center-column
+      @extend .flex-column-center
       gap: 50px
       label
         display: flex
@@ -38,15 +39,15 @@
         color: $grey
 
       input
-        width: 379px
+        width: 487px
         height: 41px
         padding: 1px 5px
         border-radius: 12px
         border-width: 1px
         border-color: $grey
-
+  //------------------------------
   .login
-    @extend .display-center-around-column
+    @extend .flex-column-around-center
     gap: 20px
     input
       @extend .general-button
@@ -56,13 +57,13 @@
 
 .box2
   background-color: $white
-  width: 460px
+  width: 570px
   height: 64px
   border-radius: 24px
   display: flex
   align-items: center
   justify-content: center
-
+  //------------------------------
   .sign-in
     display: flex
     flex-direction: row

@@ -1,34 +1,33 @@
 <header>
-  <a class="logo" href="#" tabindex=”0” routerLink='/home'>
+  <a class="logo" routerLink='/home' tabindex=”0”>
     <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
   </a>
 
   <nav class="nav-bar" id="nav-bar">
     <ul>
       <li>
-        <a href="#"><strong>Inicio</strong></a>
+        <a routerLink='/home' tabindex=”0”><strong>Inicio</strong></a>
       </li>
       <li>
-        <a href="#"><strong>Galeria</strong></a>
+        <a href="#" tabindex=”0”><strong>Galeria</strong></a>
       </li>
       <li>
-        <a href="#"><strong>Tienda</strong></a>
+        <a href="#" tabindex=”0”><strong>Tienda</strong></a>
       </li>
       <li>
-        <a href="#"><strong>La Banda</strong></a>
+        <a href="#" tabindex=”0”><strong>La Banda</strong></a>
       </li>
       <li>
-        <a href="#"><strong>Calendario</strong></a>
+        <a href="#" tabindex=”0”><strong>Calendario</strong></a>
       </li>
       <li>
-        <a href="#"><strong>Contrataciones</strong></a>
+        <a href="#" tabindex=”0”><strong>Contrataciones</strong></a>
       </li>
     </ul>
 
   </nav>
 
   <div class="buttons">
-    <button class="login"  tabindex=”0”><strong>Iniciar Sesión</strong></button>
-    <!-- (click)="paginaLogin()" -->
+    <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
   </div>
 </header>

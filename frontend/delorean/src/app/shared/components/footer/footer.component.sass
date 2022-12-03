@@ -10,7 +10,7 @@ footer
 
 
 .contenedor
-  @extend .display-center-around-column
+  @extend .flex-column-around-center
 
   img
     width: 287px
@@ -22,12 +22,21 @@ footer
     @extend .flex-row-evenly-center
     width: 287px
 
-    .bi
+    a
       color: $pink
       font-size: 1.5em
+      text-decoration: none
+
+      a:link
+        text-decoration: none
+        color: $pink
+
+      a:visited
+        text-decoration: none
+        color: $pink
 
 section
-  @extend .display-around-row-wrap
+  @extend .flex-row-around-wrap
   width: 50%
 
   li
