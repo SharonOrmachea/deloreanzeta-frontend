@@ -7,8 +7,6 @@ import { PrivateRoutingModule } from '../private/private-routing.module';
 
 
 
-
-
 @NgModule({
   declarations: [
 
