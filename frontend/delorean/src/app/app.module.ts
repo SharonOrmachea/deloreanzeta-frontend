@@ -6,6 +6,8 @@ import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
+import { PrivateComponent } from './private/private.component';
+
 
 
 
@@ -13,7 +15,8 @@ import { PublicComponent } from './public/public.component';
 @NgModule({
   declarations: [
     AppComponent,
-    PublicComponent
+    PublicComponent,
+    PrivateComponent
   ],
   imports: [
     CommonModule,
