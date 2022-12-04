@@ -10,7 +10,6 @@ const routes: Routes = [
   { path: '', component: PrivateComponent, children:
     [
       { path: '', redirectTo: 'home', pathMatch: 'full'},
-      // { path: 'recover/code', component: CodeComponent},
       { path: 'recover/password', component: ResetPassComponent}
     ]
 }
