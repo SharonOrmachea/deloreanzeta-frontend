@@ -1,7 +1,16 @@
+@import 'extends-class'
 
-section
- background: url(https://s3-alpha-sig.figma.com/img/9425/83a2/f37f1937d6745167f0955e16a1db3ad8?Expires=1670198400&Signature=c32gOEeBCPgQMOy2TfP59XJ0DEGxzjIqeYQI1-4tikxYBMYrCyneAHLP6p9AuoCxNMTCZ4Oy1sqB271FjhLs0QDJ5E41ADOV4Dmz4i2ZqXLKMEi3Y5qN~Sqj-IrrEHXh5GI85GvPdMBkeGnu-JswopAvJAgDEDXOIWAf0KNXYIkpmGWQyOLhmIX5eiGBHKObO1tFHhRyEuIblJQbPy5uEdBbjlBjtbscXGfnNMlYO0ERs0lsnpTR5Fjy~0SdSSnJ3vRVtxg5YAR03OxcEebYpds4H8Du827JK7jhn2xUJDa8H4Bbgwv-4piNwzJsH9euPMBk~7VOgN6lB51dtvcGVg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA)
- background-size: 100%
- border-bottom-right-radius: 50px
- border-bottom-left-radius: 50px
- height: 750px
+body
+  @extend .background
+  @extend .font-general
+  display: flex
+  flex-direction: column
+  gap: 5em
+
+  main
+    display: flex
+    flex-direction: column
+    gap: 5em
+
+
+

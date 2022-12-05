@@ -12,4 +12,7 @@ export class FormSignInComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  hide = true;
+  hide2 = true;
+
 }

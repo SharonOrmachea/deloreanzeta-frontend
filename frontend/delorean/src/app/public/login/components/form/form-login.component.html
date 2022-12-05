@@ -1,7 +1,7 @@
 <section class="formulario">
   <div class="box1">
 
-    <div class="titulo"><strong></strong>
+    <div class="titulo">
       <img src="../../../../assets/DLZ-Autito2.png" alt="">
       <h2><strong>Iniciar Sesión</strong></h2>
     </div>
@@ -15,15 +15,18 @@
         </div>
 
         <div class="box-pass">
-          <label for="">Contraseña</label>
-          <input type="password" id="pass" name="pass" tabindex=”0”>
+          <div class="pass-hide">
+            <label for="">Contraseña</label>
+            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
+          </div>
+          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”>
         </div>
 
       </div>
 
       <div class="login">
         <input type="submit" tabindex=”0” value="Iniciar Sesión">
-        <a href="#" tabindex=”0”><strong>¿Olvidaste tu contraseña?</strong></a>
+        <a routerLink='/recover/password' tabindex=”0”><strong>¿Olvidaste tu contraseña?</strong></a>
       </div>
 
     </form>
@@ -32,7 +35,7 @@
   <div class="box2">
     <div class="sign-in">
       <p><strong>¿No tienes una cuenta?</strong></p>
-      <a href="#" tabindex=”0”><strong>Regístrate.</strong></a>
+      <a routerLink='/sign-in' tabindex=”0”><strong>Regístrate.</strong></a>
     </div>
   </div>
 </section>
