@@ -1,0 +1,77 @@
+<section class="formulario">
+  <div class="box1">
+
+    <div class="titulo">
+      <img src="../../../../assets/DLZ-Autito2.png" alt="">
+      <h2><strong>Crear una Cuenta</strong></h2>
+    </div>
+
+    <form class="form" action="" method="" name="register">
+
+      <div class="inputs">
+        <div class="box">
+          <label for="fname">Nombre</label>
+          <input type="text" id="fname" name="fname" tabindex=”0”>
+        </div>
+
+        <div class="box">
+          <label for="lname">Apellido</label>
+          <input type="text" id="lname" name="lname" tabindex=”0”>
+        </div>
+
+        <div class="box">
+          <label for="">Teléfono</label>
+          <input type="text" id="celphone" name="celphone" tabindex=”0”>
+        </div>
+
+        <div class="box">
+          <label for="">Email</label>
+          <input type="email" id="email" name="email" tabindex=”0”>
+        </div>
+
+        <div class="box-pass">
+          <div class="pass-hide">
+            <label for="">Contraseña</label>
+            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
+          </div>
+          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”>
+        </div>
+
+        <div class="box-pass">
+          <div class="pass-hide">
+            <label for="">Repetir contraseña</label>
+            <i [className]="hide2 ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide2 = !hide2">{{hide2 ? ' Show' : ' Hide'}}</i>
+          </div>
+          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”>
+        </div>
+
+      </div>
+
+      <div class="validacion">
+        <ul>
+          <li type="disc">Usa al menos 1 símbolo</li>
+          <li type="disc">Usa al menos 1 número</li>
+          <li type="disc">Usa 8 o más caracteres</li>
+          <li type="disc">Usa mayúsculas y minúsculas</li>
+        </ul>
+        <div class="terminos">
+          <input type="checkbox" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad">
+          <label for="politica-privacidad"><strong>Al crear una cuenta aceptas los Términos de Uso y la Política de Privacidad.</strong></label>
+        </div>
+
+      </div>
+
+      <div class="sign-in">
+        <input type="submit" tabindex=”0” value="Crear Cuenta">
+      </div>
+
+    </form>
+  </div>
+
+  <div class="box2">
+    <div class="login">
+      <p>¿Tienes una cuenta?</p>
+      <a routerLink='/login' tabindex=”0”><strong>Iniciar Sesión</strong></a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+@import 'extends-class'
+
+header
+  @extend .font-general
+  @extend .flex-evenly-center
+
+  img
+    @extend .logoDLZ
+
+  .nav-bar
+    display: flex
+
+    ul
+      display: flex
+      justify-content: space-around
+      margin: 0
+      padding: 1em
+      gap: 2em
+
+      li
+        list-style: none
+
+    a
+      color: $white
+      font-size: 1.2em
+      text-decoration: none
+
+      a:link
+        text-decoration: none
+        color: $white
+
+      a:visited
+        text-decoration: none
+        color: $white
+
+  .login
+    @extend .general-button
+    @extend .short-button
+    background-color: $pink

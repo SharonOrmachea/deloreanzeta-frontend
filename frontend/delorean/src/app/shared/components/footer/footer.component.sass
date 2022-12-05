@@ -1,0 +1,47 @@
+@import 'extends-class'
+
+footer
+  @extend .font-general
+  @extend .flex-evenly-center
+  width: 100%
+  height: 20em
+  color: #FFFFFF
+
+
+
+.contenedor
+  @extend .flex-column-around-center
+
+  img
+    width: 287px
+
+  p
+    font-size: 14px
+
+  .redes
+    @extend .flex-row-evenly-center
+    width: 287px
+
+    a
+      color: $pink
+      font-size: 1.5em
+      text-decoration: none
+
+      a:link
+        text-decoration: none
+        color: $pink
+
+      a:visited
+        text-decoration: none
+        color: $pink
+
+section
+  @extend .flex-row-around-wrap
+  width: 50%
+
+  li
+    list-style: none
+    a
+      text-decoration: none
+      color: #FFFFFF
+      font-size: 13px
