@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SignInComponent } from './pages/sign-in.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+
+import { SignInComponent } from './pages/sign-in.component';
 import { FormSignInComponent } from './components/form-sign-in/form-sign-in.component';
 
 
