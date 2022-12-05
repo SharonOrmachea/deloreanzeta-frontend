@@ -3,6 +3,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { FormLoginComponent } from './components/form/form-login.component';
 import { LoginComponent } from './pages/login.component';
+import { PublicRoutingModule } from '../public-routing.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { LoginComponent } from './pages/login.component';
     FormLoginComponent
   ],
   imports: [
+    PublicRoutingModule,
     SharedModule
   ]
 })
