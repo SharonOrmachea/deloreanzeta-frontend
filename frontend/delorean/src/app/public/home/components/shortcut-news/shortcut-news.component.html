@@ -1,78 +1,126 @@
-<section class="nav">
-<div>
-  <h1>Noticias</h1>
-</div>
-<ul>
-  <select name="dog-names" id="dog-names">
-    <option value="rigatoni">Fechas</option>
-  <option value="dave">Dave</option>
-  <option value="pumpernickel">Pumpernickel</option>
-  <option value="reeses">Reeses</option>
-</select>
+<section class="contenedor">
+  <div class="contenedor-titulo">
+    <div class="titulo">
+      <h1><strong>Noticias</strong></h1>
+    </div>
+    <button>
+      <strong>Ver más <i class="bi bi-arrow-right"></i></strong>
+    </button>
+  </div>
 
-<select name="dog-names" id="dog-names">
-  <option value="rigatoni">Tipo de Evento</option>
-<option value="dave">Dave</option>
-<option value="pumpernickel">Pumpernickel</option>
-<option value="reeses">Reeses</option>
-</select>
-<select name="dog-names" id="dog-names">
-  <option value="categoria">Categoría</option>
-<option value="dave">Dave</option>
-<option value="pumpernickel">Pumpernickel</option>
-<option value="reeses">Reeses</option>
-</select>
-</ul>
+  <div class="contenedor-noticias">
+    <ul>
+      <li *ngFor="let noticia of news">
+        <a routerLink="/news/notice{{ noticia.id }}">
+          <img [src]="noticia.imageUrl" [alt]="noticia.name">
+
+          <div class="contenedor">
+
+            <div class="date">
+              <a><strong>05/12/2022</strong></a>
+            </div>
+            <div class="name">
+              <strong>{{ noticia.name }}</strong>
+            </div>
+
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
 </section>
 
+<!-- <section class="nav">
+  <div>
+    <h1>Noticias</h1>
+  </div>
+  <ul>
+    <select name="dog-names" id="dog-names">
+      <option value="rigatoni">Fechas</option>
+      <option value="dave">Dave</option>
+      <option value="pumpernickel">Pumpernickel</option>
+      <option value="reeses">Reeses</option>
+    </select>
+
+    <select name="dog-names" id="dog-names">
+      <option value="rigatoni">Tipo de Evento</option>
+      <option value="dave">Dave</option>
+      <option value="pumpernickel">Pumpernickel</option>
+      <option value="reeses">Reeses</option>
+    </select>
+    <select name="dog-names" id="dog-names">
+      <option value="categoria">Categoría</option>
+      <option value="dave">Dave</option>
+      <option value="pumpernickel">Pumpernickel</option>
+      <option value="reeses">Reeses</option>
+    </select>
+  </ul>
+</section>
 
 <section class="news">
   <div>
-  <img src="https://s3-alpha-sig.figma.com/img/c378/60e7/a7f77ae50d1e486d78289b75f106c6f2?Expires=1670803200&Signature=dJkhEBOs~iEvKq63vy6nZ1sJUJByZx2trzGjw2NU5zzUw4xaaBG5pDKsi-y~~sEi2qcltgcASu4u~w~rZZgIhxzbpejT3jvYwKjvSRwq9PiZ5zEteaR7NEA4OBcFELP64e1YexJ4SZRo9HSwW9kJtQGXFFiHLvJQQ703zDgQj~P9ciMEV1cED-xwGhGW~K9L4PqgK9bW0XdBrxVkIwq-PHPDeFHCWPMBYaqUzJSiUO7jiQqq~Cbk2lvgaktVZidupUoLueZ77LMJY7regsItLiK8Vch9ATtjyDRKW-ctWWpsxysKb4edApsQouF~voaQjxzYsXE0RJeqEI7W9ctWIw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="">
-  <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3>
-  <P>Directly seated and inside for you to enjoy the show.</P>
-</div>
-  <div>
-   <img src="https://s3-alpha-sig.figma.com/img/d1e9/d4b5/ef573d1ec73e08723977d6b103fa7302?Expires=1670803200&Signature=bls~oW9gPLOJl0MqkY1HjoiayEbVrJfcaqy5ZTGSTOl~YKy8tGvZ2sAxeSP5GMj0v-qX9DgefQE3jLQO2FuaPPpnvj8~36P0THkiyNOzbR4YXsc3r1yqMvTQfDt1owo7GR6pV94BxOxrvxL6-959cKaA1tqopfdVcA7e63blAQTYVBKxBCZ48G6Gx9HpCWVHDzIIC69dYTC~onypRWxpIsoo4~P1Y5~7mr3uyBShhZsnpznUhzO8yvmLspcldkOjHfPPVW3JmflDOjGTxpNm0cVByl7X1p2KkMROvZkZFFquEeLsxSomxeM73ct-WPZZjflFJed2tFHSCoCDxJPMsA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt=""  >
-   <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3><P>Directly seated and inside for you to enjoy the show.</P>
-  </div>
-   <div>
-   <img src="https://s3-alpha-sig.figma.com/img/2214/e3a7/250ef9deee3a4b6f469d2e9e6eb0a839?Expires=1670803200&Signature=K-3iYND9kMb68e7TFRr0GemvfweU1lvClRSo2jxV9oZeLVRvgGuhY2cL6gnTNx5FynsaiHe207~nJsT8qeUj0Mr4GxB1qJz0OTlaI5tP6WqoLF45CCSmL8cIpsAAF1ZIDFsVC7VzLYsHnmVhE0jxH6tzzGzvWjQ6X4vgPWRX6OkfT6tVE9i2WwtXTAF0Pfn5k0A7iNIgWYfMOzAMJP2~GU1DGb8IBNu7R6JG-H5DlZRl7nYYIW0LEGYy4bJNrEqDv-pwQDyIm~21LcqDxS1WB8hEAdnrlTRKqj4khhLiO5rgwUXz90ghM1q4RForXGrxFmcVFHeWogMPFkkEHsNDxQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="" >
-   <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3><P>Directly seated and inside for you to enjoy the show.</P>
-  </div>
-
-</section>
-<section class="news">
-  <div>
-  <img src="https://s3-alpha-sig.figma.com/img/1255/1992/ae381ef2b76e31c9b694dac1c8652fdb?Expires=1670803200&Signature=JZvkD29uTuy0H2Rs~k0KaYY~Ssv8fMGPgdyNxKCwZ4gWjbf0J5dlJghlKEDGZdXmNhjZgIpWMzWDe5rmwceuUyUSv7ged9vI3BMRi2IX2dDRMKp8mo-7FCOUQKE0r1OCF1MAbe78EdaV6Saj0WxISPorrp46lGcrNbhFEpREtyT-u1U1sNTd-kAAsjW0aF6e0w7idvRJFgI~Zk6Et6SAkVbQBjQC5u~DOQQyG4H0DwwiEvyRiEWgM8EkWiq5pnzZ7l4ndexVCSigNL1MAjLhqTrK40xI55P-fXugtSBXHl3cymPk1yKyDlo8Yq7pQhFutT27fqgFS9yYT-FNrWKHIQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="" class="imgdos" >
-  <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3>
- <P>Directly seated and inside for you to enjoy the show.</P>
-</div>
-  <div>
-    <img src="https://s3-alpha-sig.figma.com/img/8bed/b6ce/4774b8ff8c1ba621ed348f1f282ff9ae?Expires=1670803200&Signature=M3lec6l1c7g8EF81VQdbAXgElJGfG7Kp3AfdKig1TM7DUrPOsqnqIufrmC5bZH-gDt-EE9vOvZL5F1fAzITi2EpeLb-m8n2C9TdCmt1D~VuwP8xWSIA346oIbaEFDjB~CTQZ2veY52rXtMx3LOybQdHE29EpYsJbf8ZvfIs8-iAGve8bGSDQQc2BDrBxL8UyCr0Qfy929QHccmFnMiMgwLbtasuXT90XEKQ1mQE0cu6kOaFRg6sYZxHT6yUeU-g1qob-6bJlnFDce6vK5-X5bifHLIGO0Sk9IASvzEXRuWASeZrHl3kxxfkIscNuLQq-OToyLQ3GaNe2vEe3DVhjSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="" class="imgdos">
+    <img
+      src="https://s3-alpha-sig.figma.com/img/c378/60e7/a7f77ae50d1e486d78289b75f106c6f2?Expires=1670803200&Signature=dJkhEBOs~iEvKq63vy6nZ1sJUJByZx2trzGjw2NU5zzUw4xaaBG5pDKsi-y~~sEi2qcltgcASu4u~w~rZZgIhxzbpejT3jvYwKjvSRwq9PiZ5zEteaR7NEA4OBcFELP64e1YexJ4SZRo9HSwW9kJtQGXFFiHLvJQQ703zDgQj~P9ciMEV1cED-xwGhGW~K9L4PqgK9bW0XdBrxVkIwq-PHPDeFHCWPMBYaqUzJSiUO7jiQqq~Cbk2lvgaktVZidupUoLueZ77LMJY7regsItLiK8Vch9ATtjyDRKW-ctWWpsxysKb4edApsQouF~voaQjxzYsXE0RJeqEI7W9ctWIw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+    />
     <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3> <P>Directly seated and inside for you to enjoy the show.</P>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3>
+    <P>Directly seated and inside for you to enjoy the show.</P>
   </div>
-   <div>
-   <img src="https://s3-alpha-sig.figma.com/img/3f2e/856d/f8f263edbb810e718e31fc44d7bc1cc7?Expires=1670803200&Signature=GrLYYeLq5G8osxKfypNMV7fBdUxJpaAPNmS4Nndykz-IdGJZ7-bgRGF2I1-Kxw886Fkp87DvjH6q0ienAhpoNFhs~tdwu6KHN63OAvUSB91BWeJKqylxlyXJ43hzkqHoRwYI~62-FPV2EooN~mqXxl8WV0KWWHbs8sof6RLlwL1H3uVVimVVlLUDd5tMeCG-ntJqXZVOzD3QGfw6FBXxBgPo5-EAUw7kWCz8ScgF01bpSY-GjIwpjzxEW~4Ga3wlhHq08Oddig-IfklgveJg7KHDBhk8RprWXq5-IUfXpCdLvEv0wxHzWMhyEDoPGFgBQN3t7R51AFRNtH7GtvqqzA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA" alt="" class="imgdos">
-   <h1 class="mes">APR</h1>
-  <h2>14</h2>
-  <H3>Worldwide Concert Barcelona
-    XXXXXXXXXXXXXXXXXXXXXX</H3><P>Directly seated and inside for you to enjoy the show.</P>
-   </div>
-
+  <div>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/d1e9/d4b5/ef573d1ec73e08723977d6b103fa7302?Expires=1670803200&Signature=bls~oW9gPLOJl0MqkY1HjoiayEbVrJfcaqy5ZTGSTOl~YKy8tGvZ2sAxeSP5GMj0v-qX9DgefQE3jLQO2FuaPPpnvj8~36P0THkiyNOzbR4YXsc3r1yqMvTQfDt1owo7GR6pV94BxOxrvxL6-959cKaA1tqopfdVcA7e63blAQTYVBKxBCZ48G6Gx9HpCWVHDzIIC69dYTC~onypRWxpIsoo4~P1Y5~7mr3uyBShhZsnpznUhzO8yvmLspcldkOjHfPPVW3JmflDOjGTxpNm0cVByl7X1p2KkMROvZkZFFquEeLsxSomxeM73ct-WPZZjflFJed2tFHSCoCDxJPMsA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+    />
+    <h1 class="mes">APR</h1>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3
+    ><P>Directly seated and inside for you to enjoy the show.</P>
+  </div>
+  <div>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/2214/e3a7/250ef9deee3a4b6f469d2e9e6eb0a839?Expires=1670803200&Signature=K-3iYND9kMb68e7TFRr0GemvfweU1lvClRSo2jxV9oZeLVRvgGuhY2cL6gnTNx5FynsaiHe207~nJsT8qeUj0Mr4GxB1qJz0OTlaI5tP6WqoLF45CCSmL8cIpsAAF1ZIDFsVC7VzLYsHnmVhE0jxH6tzzGzvWjQ6X4vgPWRX6OkfT6tVE9i2WwtXTAF0Pfn5k0A7iNIgWYfMOzAMJP2~GU1DGb8IBNu7R6JG-H5DlZRl7nYYIW0LEGYy4bJNrEqDv-pwQDyIm~21LcqDxS1WB8hEAdnrlTRKqj4khhLiO5rgwUXz90ghM1q4RForXGrxFmcVFHeWogMPFkkEHsNDxQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+    />
+    <h1 class="mes">APR</h1>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3
+    ><P>Directly seated and inside for you to enjoy the show.</P>
+  </div>
 </section>
+<section class="news">
+  <div>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/1255/1992/ae381ef2b76e31c9b694dac1c8652fdb?Expires=1670803200&Signature=JZvkD29uTuy0H2Rs~k0KaYY~Ssv8fMGPgdyNxKCwZ4gWjbf0J5dlJghlKEDGZdXmNhjZgIpWMzWDe5rmwceuUyUSv7ged9vI3BMRi2IX2dDRMKp8mo-7FCOUQKE0r1OCF1MAbe78EdaV6Saj0WxISPorrp46lGcrNbhFEpREtyT-u1U1sNTd-kAAsjW0aF6e0w7idvRJFgI~Zk6Et6SAkVbQBjQC5u~DOQQyG4H0DwwiEvyRiEWgM8EkWiq5pnzZ7l4ndexVCSigNL1MAjLhqTrK40xI55P-fXugtSBXHl3cymPk1yKyDlo8Yq7pQhFutT27fqgFS9yYT-FNrWKHIQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+      class="imgdos"
+    />
+    <h1 class="mes">APR</h1>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3>
+    <P>Directly seated and inside for you to enjoy the show.</P>
+  </div>
+  <div>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/8bed/b6ce/4774b8ff8c1ba621ed348f1f282ff9ae?Expires=1670803200&Signature=M3lec6l1c7g8EF81VQdbAXgElJGfG7Kp3AfdKig1TM7DUrPOsqnqIufrmC5bZH-gDt-EE9vOvZL5F1fAzITi2EpeLb-m8n2C9TdCmt1D~VuwP8xWSIA346oIbaEFDjB~CTQZ2veY52rXtMx3LOybQdHE29EpYsJbf8ZvfIs8-iAGve8bGSDQQc2BDrBxL8UyCr0Qfy929QHccmFnMiMgwLbtasuXT90XEKQ1mQE0cu6kOaFRg6sYZxHT6yUeU-g1qob-6bJlnFDce6vK5-X5bifHLIGO0Sk9IASvzEXRuWASeZrHl3kxxfkIscNuLQq-OToyLQ3GaNe2vEe3DVhjSQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+      class="imgdos"
+    />
+    <h1 class="mes">APR</h1>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3>
+    <P>Directly seated and inside for you to enjoy the show.</P>
+  </div>
+  <div>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/3f2e/856d/f8f263edbb810e718e31fc44d7bc1cc7?Expires=1670803200&Signature=GrLYYeLq5G8osxKfypNMV7fBdUxJpaAPNmS4Nndykz-IdGJZ7-bgRGF2I1-Kxw886Fkp87DvjH6q0ienAhpoNFhs~tdwu6KHN63OAvUSB91BWeJKqylxlyXJ43hzkqHoRwYI~62-FPV2EooN~mqXxl8WV0KWWHbs8sof6RLlwL1H3uVVimVVlLUDd5tMeCG-ntJqXZVOzD3QGfw6FBXxBgPo5-EAUw7kWCz8ScgF01bpSY-GjIwpjzxEW~4Ga3wlhHq08Oddig-IfklgveJg7KHDBhk8RprWXq5-IUfXpCdLvEv0wxHzWMhyEDoPGFgBQN3t7R51AFRNtH7GtvqqzA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+      alt=""
+      class="imgdos"
+    />
+    <h1 class="mes">APR</h1>
+    <h2>14</h2>
+    <H3>Worldwide Concert Barcelona XXXXXXXXXXXXXXXXXXXXXX</H3
+    ><P>Directly seated and inside for you to enjoy the show.</P>
+  </div>
+</section> -->

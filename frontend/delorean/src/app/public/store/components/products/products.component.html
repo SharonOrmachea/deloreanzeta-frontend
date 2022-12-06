@@ -1,0 +1,51 @@
+<section class="contenedor">
+  <div class="contenedor-titulo">
+    <div class="titulo">
+      <h1><strong>Todos los productos</strong></h1>
+    </div>
+    <div class="selectores">
+      <ul>
+        <select name="order" id="order">
+          <option value="rigatoni"><strong>Ordenar Por</strong></option>
+          <option value="rigatoni"><strong>Defecto</strong></option>
+          <option value="dave"><strong>Nombre</strong></option>
+          <option value="pumpernickel"><strong>Precio</strong></option>
+          <option value="reeses"><strong>Fecha</strong></option>
+        </select>
+
+        <select name="categoria" id="categoria">
+          <option value="categoria"><strong>Categoría</strong></option>
+          <option value="dave"><strong>Remeras</strong></option>
+          <option value="pumpernickel"><strong>Tazas</strong></option>
+          <option value="reeses"><strong>Funkos</strong></option>
+        </select>
+      </ul>
+    </div>
+    
+  </div>
+
+  <div class="contenedor-productos">
+    <ul>
+      <li *ngFor="let product of products">
+        <a routerLink="/store/product/{{ product.id }}">
+          <img [src]="product.imageUrl" [alt]="product.name">
+          <div class="content">
+            <div class="name">
+              <strong>{{ product.name }}</strong>
+            </div>
+            <div class="contenedor-precio">
+              <div class="cart">
+                <a><strong><i class="bi bi-cart3"></i></strong></a>
+              </div>
+              <div class="price">
+                <span><strong>{{ product.price | currency }}</strong></span>
+              </div>
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+

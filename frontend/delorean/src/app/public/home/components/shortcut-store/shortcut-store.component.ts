@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/shared/services/store/product.service';
+import { Product } from '../../../../shared/models/store/products/product';
 
 @Component({
   selector: 'app-shortcut-store',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShortcutStoreComponent implements OnInit {
 
-  constructor() { }
+  products:Product[] = [];
+
+  constructor(private productoService:ProductService) {
+    this.products = this.productoService.getAll();
+  }
 
   ngOnInit(): void {
   }

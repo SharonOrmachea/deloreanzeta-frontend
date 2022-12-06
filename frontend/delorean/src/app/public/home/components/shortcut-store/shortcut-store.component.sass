@@ -1,75 +1,66 @@
-img
- width: 320px
- height: 380px
- border-radius: 12px
-
-h1
- font-family:'Poppins'
- font-style: normal
- font-weight: bold
- font-size: 32px
- line-height: 48px
- color: #161414
-
-h2
- font-size: 16px
- line-height: 24px
- text-align: left
- color: #161414
- font-style: medium
-
-.titulo
-  display: flex
-  flex-flow: row nowrap
-  justify-content: space-between
-  width: 1200px
-  margin-left: 150px
-  margin-right: 20px
-  margin-top: -180px
-  font-family: 'Poppins', sans-serif
-
-button
- width: 128px
- border: none
- border-radius: 12px
- padding: 10px
- font-family: 'Poppins'
- font-style: normal
- font-size: 16px
- line-height: 24px
- color: #5243C2
- margin-right: 90px
+@import 'extends-class'
 
 section
- display: flex
- flex-flow: row nowrap
- justify-content: space-around
- margin-top: 30px
- margin-right: 50px
- margin-left: 100px
- margin-bottom: 30px
-h3
-  color: #979797
-  font-size: 14px
-  margin-left: -80px
-  margin-right: 20px
+  @extend .font-general
+  @extend .flex-column-around
+  width: 100%
+  height: 40em
+  color: $white
 
-h2
-  font-size: 16px
+  .contenedor-titulo
+    @extend .flex-row-around
+    width: 100%
 
-.carrito
-  color: black
-  margin-left: -40px
-  margin-top: 1.1px
-svg
-  color: #FFA800
-  margin-top: -20px
+    .titulo
+      width: 70%
 
-.precio
-  display: flex
-  flex-flow: row nowrap
-  justify-content: space-around
+    button
+      @extend .general-button
+      background-color: $pink
+      width: 128px
+      border-radius: 12px
 
-#flecha
-  color: #5243C2
-  margin-top: 5px
+  .contenedor-productos
+
+    ul
+      @extend .flex-row-around
+      list-style: none
+
+      li
+        background-color: $white
+        border-radius: 12px
+
+      a
+        color: $white
+        font-size: 1.2em
+        text-decoration: none
+
+        a:link
+          text-decoration: none
+          color: $white
+
+        a:visited
+          text-decoration: none
+          color: $white
+
+      img
+        width: 320px
+        height: 380px
+        border-top-left-radius: 12px
+        border-top-right-radius: 12px
+
+      .name
+        padding: 2% 4%
+        color: $black
+
+      .contenedor-precio
+        @extend .flex-between-center
+        padding: 2% 4%
+
+        .cart
+          align-items: center
+          a
+            color: $pink
+
+        .price
+          color: $violet
