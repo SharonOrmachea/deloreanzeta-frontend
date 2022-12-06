@@ -1,0 +1,79 @@
+@import 'extends-class'
+
+section
+  @extend .font-general
+  @extend .flex-column-around
+  width: 100%
+  height: 40em
+  color: $white
+
+  .contenedor-titulo
+    @extend .flex-row-around
+    width: 100%
+
+    .titulo
+      width: 50%
+
+    button
+      @extend .general-button
+      background-color: $pink
+      width: 128px
+      border-radius: 12px
+
+    .selectores
+      ul
+        display: flex
+        gap: 4em
+        select
+          width: 200px
+          height: 51px
+          border-radius: 50px
+          padding: 10px
+          border: none
+          background-color: $white
+          color: $black
+
+  .contenedor-productos
+
+    ul
+      @extend .flex-row-around
+      list-style: none
+
+      li
+        background-color: $white
+        border-radius: 12px
+
+      a
+        color: $white
+        font-size: 1.2em
+        text-decoration: none
+
+        a:link
+          text-decoration: none
+          color: $white
+
+        a:visited
+          text-decoration: none
+          color: $white
+
+      img
+        width: 320px
+        height: 380px
+        border-top-left-radius: 12px
+        border-top-right-radius: 12px
+
+      .name
+        padding: 2% 4%
+        color: $black
+
+      .contenedor-precio
+        @extend .flex-between-center
+        padding: 2% 4%
+
+        .cart
+          align-items: center
+          a
+            color: $pink
+
+        .price
+          color: $violet

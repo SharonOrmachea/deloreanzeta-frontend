@@ -8,6 +8,8 @@ import { SignInComponent } from "./sign-in/pages/sign-in.component";
 import { FormIdentifyComponent } from './login/components/form-identify-user/form-identify.component';
 import { FormCodeUserComponent } from './login/components/form-code-user/form-code-user.component';
 import { FormLoginComponent } from './login/components/form/form-login.component';
+import { StoreComponent } from './store/page/store.component';
+// import { ProductsComponent } from './store/components/products/products.component';
 
 
 
@@ -21,7 +23,11 @@ const routes: Routes = [
         { path: '', component: FormLoginComponent},
         { path: 'identify', component: FormIdentifyComponent},
         { path: 'code', component: FormCodeUserComponent}
-      ]}
+      ]},
+      { path: 'store', component: StoreComponent, children: [
+        { path: '', component: StoreComponent},
+        // { path: ':id', component: ProductsComponent},
+      ]},
 
 
     ]

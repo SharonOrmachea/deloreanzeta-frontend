@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PrivateRoutingModule } from './private-routing.module';
 import { ResetPassModule } from './reset-pass/reset-pass.module';
 import { PublicRoutingModule } from '../public/public-routing.module';
+
 
 
 
@@ -14,6 +16,7 @@ import { PublicRoutingModule } from '../public/public-routing.module';
 
   ],
   imports: [
+    CommonModule,
     PrivateRoutingModule,
     PublicRoutingModule,
     ResetPassModule

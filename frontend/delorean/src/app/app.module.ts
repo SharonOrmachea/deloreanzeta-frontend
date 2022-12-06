@@ -12,6 +12,7 @@ import { PrivateComponent } from './private/private.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,9 @@ import { PrivateComponent } from './private/private.component';
     AppRoutingModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
