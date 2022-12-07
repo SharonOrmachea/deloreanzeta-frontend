@@ -8,7 +8,7 @@ import { ShortcutNewsComponent } from './components/shortcut-news/shortcut-news.
 import { ShortcutStoreComponent } from './components/shortcut-store/shortcut-store.component';
 import { HomeComponent } from './pages/home.component';
 
-import { ProductService } from '../../shared/services/store/product.service';
+import { ProductService } from '../../shared/services/store/productos/product.service';
 
 
 

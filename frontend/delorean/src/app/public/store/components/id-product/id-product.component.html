@@ -1,0 +1,35 @@
+<section class="contenedor">
+  
+  <div class="details">
+    
+    <div class="imagen">
+      <img [src]="product.imageUrl" [alt]="product.name">
+    </div>
+
+    <div class="header">
+      <span class="name">
+        {{product.name}}
+      </span>
+      <div class="category">
+        <a *ngFor="let category of product.category" routerLink="/category/{{category}}">
+          {{category}}
+        </a>
+      </div>
+      <div class="description">
+        {{product.description}}
+      </div>
+      <div class="price">
+        <span>
+          {{ product.price | currency }}
+        </span>
+      </div>
+      <button>Agregar al Carrito</button>
+    </div>
+  </div>
+
+  <div class="information">
+    <h3>Informacion del Producto</h3>
+    <span>{{ product.informacionProduct }}</span>
+  </div>
+
+</section>

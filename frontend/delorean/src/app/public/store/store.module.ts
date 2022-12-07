@@ -5,7 +5,9 @@ import { PublicRoutingModule } from '../public-routing.module';
 
 import { StoreComponent } from './page/store.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
-import { ProductsComponent } from './components/products/products.component';
+import { ProductsComponent } from './components/all products/products.component';
+import { IdProductComponent } from './components/id-product/id-product.component';
+
 
 
 
@@ -13,12 +15,14 @@ import { ProductsComponent } from './components/products/products.component';
   declarations: [
     StoreComponent,
     CarruselComponent,
-    ProductsComponent
+    ProductsComponent,
+    IdProductComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
-    SharedModule
+    SharedModule,
+
   ],
   providers: []
 })

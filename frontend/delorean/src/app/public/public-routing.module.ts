@@ -3,13 +3,19 @@ import { RouterModule, Routes } from "@angular/router";
 
 import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/pages/home.component";
-import { LoginComponent } from "./login/pages/login.component";
+
 import { SignInComponent } from "./sign-in/pages/sign-in.component";
+
+import { LoginComponent } from "./login/pages/login.component";
+import { FormLoginComponent } from './login/components/form/form-login.component';
 import { FormIdentifyComponent } from './login/components/form-identify-user/form-identify.component';
 import { FormCodeUserComponent } from './login/components/form-code-user/form-code-user.component';
-import { FormLoginComponent } from './login/components/form/form-login.component';
+
 import { StoreComponent } from './store/page/store.component';
-// import { ProductsComponent } from './store/components/products/products.component';
+import { ProductsComponent } from "./store/components/all products/products.component";
+import { IdProductComponent } from "./store/components/id-product/id-product.component";
+
+
 
 
 
@@ -25,13 +31,13 @@ const routes: Routes = [
         { path: 'code', component: FormCodeUserComponent}
       ]},
       { path: 'store', component: StoreComponent, children: [
-        { path: '', component: StoreComponent},
-        // { path: ':id', component: ProductsComponent},
+        { path: '', component: ProductsComponent},
+        { path: 'product/:id', component: IdProductComponent},
       ]},
 
 
     ]
-}
+  }
 ];
 
 @NgModule({

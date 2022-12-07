@@ -1,41 +1,44 @@
 import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
+import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 
 export const sample_products: Product[] = [
   {
     id: '1',
     name: 'Soy un producto',
     price: 1500,
-    category: 'categoria-1',
+    category: ['categoria-1', 'categoria-2', 'categoria-3'],
     imageUrl: './assets/store/products/delorean-(1).png',
     description: 'Soy la descripcion del producto',
+    informacionProduct: 'Soy la informacion del producto'
   },
   {
     id: '2',
     name: 'Soy un producto',
     price: 1500,
-    category: 'categoria-1',
+    category: ['categoria-1'],
     imageUrl: './assets/store/products/delorean(2).png',
     description: 'Soy la descripcion del producto',
+    informacionProduct: 'Soy la informacion del producto'
   },
   {
     id: '3',
     name: 'Soy un producto',
     price: 1500,
-    category: 'categoria-1',
+    category: ['categoria-1'],
     imageUrl: './assets/store/products/delorean(3).png',
     description: 'Soy la descripcion del producto',
+    informacionProduct: 'Soy la informacion del producto'
   },
   {
     id: '4',
     name: 'Soy un producto',
     price: 1500,
-    category: 'categoria-1',
+    category: ['categoria-1'],
     imageUrl: './assets/store/products/delorean(4).png',
     description: 'Soy la descripcion del producto',
+    informacionProduct: 'Soy la informacion del producto'
   }
-
-
 ]
 
 export const sample_news: News[] = [
@@ -66,5 +69,23 @@ export const sample_news: News[] = [
     date: '05/12/2022',
     description: 'Soy una descripcion breve de la noticia',
     imageUrl: './assets/news/news4.jpg'
+  }
+]
+
+export const sample_carousel: Carousel[] = [
+  {
+    id: 1,
+    imageUrl: './assets/store/carrusel/slider1.gif',
+    marginLeft: 2,
+  },
+  {
+    id: 2,
+    imageUrl: './assets/store/carrusel/slider2.gif',
+    marginLeft: 2,
+  },
+  {
+    id: 3,
+    imageUrl: './assets/store/carrusel/slider3.gif',
+    marginLeft: 2,
   }
 ]
