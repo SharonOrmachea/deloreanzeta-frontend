@@ -23,6 +23,7 @@ import { StoreModule } from './store/store.module';
     LoginModule,
     SignInModule,
     StoreModule
+
   ],
   providers: [
 
