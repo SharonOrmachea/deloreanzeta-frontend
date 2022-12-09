@@ -1,6 +1,8 @@
 import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
+import { Login } from "./app/shared/models/sign-in/sign-in";
+import { Register } from './app/shared/models/sign-up/sign-up';
 
 export const sample_products: Product[] = [
   {
@@ -87,5 +89,59 @@ export const sample_carousel: Carousel[] = [
     id: 3,
     imageUrl: './assets/store/carrusel/slider3.gif',
     marginLeft: 2,
+  }
+]
+
+export const sample_register: Register[] = [
+  {
+    name: 'Jotaro',
+    lastname: 'Joestar',
+    telephone: 1125641208,
+    email: 'delorean.01@test.com',
+    password: 'contraPrueba123',
+    repeatPassword: 'contraPrueba123'
+  },
+  {
+    name: 'Dio',
+    lastname: 'Brando',
+    telephone: 1125641208,
+    email: 'delorean.01@test.com',
+    password: 'contraPrueba123',
+    repeatPassword: 'contraPrueba123'
+  },
+  {
+    name: 'Sanji',
+    lastname: 'Vinsmoke',
+    telephone: 1125641208,
+    email: 'delorean.01@test.com',
+    password: 'contraPrueba123',
+    repeatPassword: 'contraPrueba123'
+  },
+  {
+    name: 'Zoro',
+    lastname: 'Roronoa',
+    telephone: 1125641208,
+    email: 'delorean.01@test.com',
+    password: 'contraPrueba123',
+    repeatPassword: 'contraPrueba123'
+  }
+]
+
+export const sample_login: Login[] = [
+  {
+    email: 'delorean.01@test.com',
+    password: 'contraPrueba123'
+  },
+  {
+    email: 'delorean.02@test.com',
+    password: 'contraPrueba123'
+  },
+  {
+    email: 'delorean.03@test.com',
+    password: 'contraPrueba123'
+  },
+  {
+    email: 'delorean.04@test.com',
+    password: 'contraPrueba123'
   }
 ]
