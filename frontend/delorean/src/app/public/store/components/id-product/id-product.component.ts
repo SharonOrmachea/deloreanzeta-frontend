@@ -35,7 +35,6 @@ export class IdProductComponent implements OnInit {
     }else if(this.productQuantity == 1 && value ==='remove'){
       active.classList.add('error-active')
     }
-
   }
 
 }

@@ -3,7 +3,7 @@
 .contenedor
   @extend .font-general
   @extend .flex-column-around-wrap
-  // background-color: $grey
+
   width: 100%
   height: auto
   gap: 5em
@@ -13,11 +13,8 @@
     width: 50%
     height: auto
 
-
   .product
-    display: flex
-    flex-direction: row
-    align-items: center
+    @extend .flex-row-center
 
     .imagenes
       display: flex
@@ -32,10 +29,9 @@
           object-fit: cover
 
       .image-preview
+        @extend .flex-column-around
+
         width: 30%
-        display: flex
-        flex-direction: column
-        justify-content: space-around
 
         .imageSlide
           cursor: pointer
@@ -57,21 +53,19 @@
             opacity: 1
 
     .header
+      @extend .flex-column-between
+
       background-color: $white
       color: $black
       width: 30%
       height: 40em
-      display: flex
-      flex-direction: column
-      justify-content: space-between
       border: 3rem
       padding: 2rem
       border-radius: 16px
 
       .name-category
-        display: flex
-        flex-direction: column
-        justify-content: space-between
+        @extend .flex-column-between
+
         gap: 1em
 
         .name
@@ -109,29 +103,23 @@
             color: $gray
 
         .discount
-          animation: parpadear 1.5s infinite backwards steps(2)
-          color: $dark-gray
+          @extend .class-parpadear
+
           font-size: 25px
-          font-weight: bold
           letter-spacing: 2px
           text-shadow: 0 0 1px #02f6ff, 0 0 2px #02f6ff, 0 0 20px #02f6ff
-
-        @keyframes parpadear
-            to
-              color: $white
-              text-shadow: none
+          font-weight: bold
+          color: $dark-gray
 
       .contenedor-cant-color
-        display: flex
-        flex-direction: row
-        justify-content: flex-start
+        @extend .flex-row-start
+
         width: 100%
         gap: 2em
 
         .cant-group
-          display: flex
-          flex-direction: column
-          align-items: center
+          @extend .flex-column-center
+
           gap: 0.5em
 
           .botones
@@ -151,9 +139,8 @@
               border: none
 
         .colors
-          display: flex
-          flex-direction: column
-          align-items: center
+          @extend .flex-column-center
+
           gap: 0.5em
 
       .error
@@ -175,9 +162,8 @@
 
 
       .add-cart
-        display: flex
-        flex-direction: column
-        align-items: center
+        @extend .flex-column-center
+
         gap: 1em
 
         .cart
@@ -190,9 +176,8 @@
         width: 100%
 
         button
-          display: flex
-          justify-content: space-between
-          align-items: center
+          @extend .flex-between-center
+
           width: 100%
           height: 53px
           padding: 0 10px !important
@@ -201,9 +186,6 @@
           background-color: none
 
         .card
-          display: flex
-          flex-direction: row
-          justify-content: space-evenly
-          align-items: center
+          @extend .flex-row-evenly-center
 
 
