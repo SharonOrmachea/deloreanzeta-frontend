@@ -3,57 +3,181 @@
 .contenedor
   @extend .font-general
   @extend .flex-column-around-wrap
-  background-color: $grey
+  // background-color: $grey
   width: 100%
   height: auto
+  gap: 20px
   color: $white
-  // gap: 2rem
-  // margin: 0 0
 
-.details 
-  width: 100%
-  display: flex
-  flex-direction: row
-  justify-content: space-around
-  align-items: center
-  gap: 10px
+  .information
+    width: 50%
+    height: auto
 
-  .imagen
 
-    img
-      min-width: 25rem
-      max-width: 40rem
-      border-radius: 8px
-      flex: 1 0
-      object-fit: cover
-      // width: 500px
-      // height: 500px
-      height: 30rem
-  
-  .header
-    background-color: $white
-    color: $black
-    width: 30%
-    height: 540px
+  .product
     display: flex
-    flex-direction: column
-    border: 3rem
-    padding: 2rem
-    // flex: 1 0
-    border-radius: 16px
+    flex-direction: row
+    align-items: center
 
-    .category
+    .imagenes
       display: flex
-      // flex-direction: row
-      flex-wrap: wrap
-      gap: 1rem
+      flex-direction: row
+      width: 55%
 
-      a
-        background-color: $pink
-        padding: 0.3rem 1rem
-        border-radius: 10rem
-        font-weight: 600
-        color: $white
-        text-decoration: none
+      .imagenGrande
+        img
+          width: 100%
+          border-radius: 8px
+          flex: 1 0
+          object-fit: cover
+
+      .image-preview
+        width: 30%
+        display: flex
+        flex-direction: column
+        justify-content: space-around
+
+        .imageSlide
+          cursor: pointer
+          width: 24%
+          margin: 0 1px
+
+          img
+            height: 6rem
+            border-radius: 8px
+            flex: 1 0
+            object-fit: cover
+            opacity: 0.6
+
+        .active
+          img
+            border: 2px solid $white
+            box-shadow: 0 0 15px #02f6ff, 0 0 25px #02f6ff, 0 0 5px #02f6ff
+            border-radius: 8px
+            opacity: 1
+
+    .header
+      background-color: $white
+      color: $black
+      width: 30%
+      height: 40em
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      border: 3rem
+      padding: 2rem
+      border-radius: 16px
+
+      .name-category
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        gap: 1em
+
+        .name
+          color: $dark-gray
+
+        .category
+          display: flex
+          flex-wrap: wrap
+          gap: 0.5rem
+
+          a
+            font-size: 12px
+            padding: 0.3rem 0.5rem
+            border-radius: 10rem
+            font-weight: 600
+            background-color: #ff80008c
+            color: $black
+            text-decoration: none
+
+      .contenedor-price
+        display: flex
+        flex-direction: column
+        gap: 0.5em
+
+        .price
+          display: flex
+          align-items: center
+          gap: 1em
+
+          .current-price
+            font-size: 25px
+            color: $pink
+
+          .before-price
+            color: $gray
+
+        .discount
+          animation: parpadear 1.5s infinite backwards steps(2)
+          color: $dark-gray
+          font-size: 25px
+          font-weight: bold
+          letter-spacing: 2px
+          text-shadow: 0 0 5px #02f6ff, 0 0 5px #02f6ff, 0 0 20px #02f6ff
+
+        @keyframes parpadear
+            to
+              color: $white
+              text-shadow: none
+
+      .contenedor-cont-color
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+
+        .cant-group
+          display: flex
+          flex-direction: column
+          gap: 0.5em
+
+          .botones
+            display: flex
+            gap: 0.5em
+
+            input
+              width: 2em
+              border-radius: 4px
+
+            button
+              background-color: $white
+              border: none
+
+        .colors
+          display: flex
+          flex-direction: column
+
+
+      .add-cart
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 1em
+
+        .cart
+          @extend .general-button
+          @extend .large-button
+          width: 100%
+          background-color: #fc4646
+
+      .payment-method
+        width: 100%
+
+        button
+          display: flex
+          justify-content: space-between
+          align-items: center
+          width: 100%
+          height: 53px
+          padding: 0 10px !important
+          border: 1px solid $gray
+          border-radius: 6px
+          background-color: none
+
+        .card
+          display: flex
+          flex-direction: row
+          justify-content: space-evenly
+          align-items: center
 
 

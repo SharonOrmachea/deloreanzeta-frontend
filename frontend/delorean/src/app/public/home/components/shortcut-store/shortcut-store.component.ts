@@ -10,9 +10,11 @@ import { Product } from '../../../../shared/models/store/products/product';
 export class ShortcutStoreComponent implements OnInit {
 
   products:Product[] = [];
+  
 
   constructor(private productoService:ProductService) {
     this.products = this.productoService.getAll();
+
   }
 
   ngOnInit(): void {

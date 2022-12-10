@@ -24,4 +24,7 @@ export class IdProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+
+
+
 }

@@ -9,13 +9,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.component';
 
 
-
-
-
-
-
-
-
 @NgModule({
   declarations: [
     NavBarComponent,

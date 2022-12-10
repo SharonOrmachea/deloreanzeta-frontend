@@ -12,7 +12,7 @@
     <ul>
       <li *ngFor="let product of products">
         <a routerLink="/store/product/{{ product.id }}">
-          <img [src]="product.imageUrl" [alt]="product.name">
+          <img [src]="product.image1" [alt]="product.name">
           <div class="content">
             <div class="name">
               <strong>{{ product.name }}</strong>

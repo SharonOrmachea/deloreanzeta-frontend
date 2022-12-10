@@ -8,6 +8,8 @@ import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { ProductsComponent } from './components/all products/products.component';
 import { IdProductComponent } from './components/id-product/id-product.component';
 
+import { IdProductDirective } from './directive/id-product.directive';
+
 
 
 
@@ -16,7 +18,8 @@ import { IdProductComponent } from './components/id-product/id-product.component
     StoreComponent,
     CarruselComponent,
     ProductsComponent,
-    IdProductComponent
+    IdProductComponent,
+    IdProductDirective
   ],
   imports: [
     CommonModule,
