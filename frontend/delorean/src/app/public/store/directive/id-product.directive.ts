@@ -8,6 +8,7 @@ export class IdProductDirective {
   constructor(private el:ElementRef) { }
 
   @HostListener('click')
+  
   changeImage(){
     let source:any = this.el.nativeElement.src;
     let prev:any = document.getElementById("preview");

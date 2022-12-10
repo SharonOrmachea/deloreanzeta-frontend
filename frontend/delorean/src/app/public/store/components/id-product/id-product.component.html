@@ -55,20 +55,24 @@
         {{product.description}}
       </div>
 
-      <div class="contenedor-cont-color">
+      <div class="contenedor-cant-color">
         <div class="cant-group">
-          <span><strong>Cantidad</strong></span>
+          <span class="word-cant"><strong>Cantidad</strong></span>
           <div class="botones">
-            <button ><strong>-</strong> </button>
-            <input type="text"  />
-            <button ><strong>+</strong></button>
+            <button (click)="handleProduct('remove')"><strong>-</strong> </button>
+            <input type="text" [value]="productQuantity">
+            <button (click)="handleProduct('add')"><strong>+</strong></button>
           </div>
         </div>
 
-        <div class="colors">
-          <span><strong>Colores</strong></span>
+        <!-- <div class="colors">
+          <span><strong>Color</strong></span>
           <span  class="product-color">lila</span>
-        </div>
+        </div> -->
+      </div>
+
+      <div class="error container" id="error">
+        <p class="removeError"><strong>No se puede descontar más productos</strong></p>
       </div>
 
 

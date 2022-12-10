@@ -87,7 +87,7 @@
             padding: 0.3rem 0.5rem
             border-radius: 10rem
             font-weight: 600
-            background-color: #ff80008c
+            background-color: #02f7ff56
             color: $black
             text-decoration: none
 
@@ -114,38 +114,64 @@
           font-size: 25px
           font-weight: bold
           letter-spacing: 2px
-          text-shadow: 0 0 5px #02f6ff, 0 0 5px #02f6ff, 0 0 20px #02f6ff
+          text-shadow: 0 0 1px #02f6ff, 0 0 2px #02f6ff, 0 0 20px #02f6ff
 
         @keyframes parpadear
             to
               color: $white
               text-shadow: none
 
-      .contenedor-cont-color
+      .contenedor-cant-color
         display: flex
         flex-direction: row
-        justify-content: space-around
+        justify-content: flex-start
+        width: 100%
+        gap: 2em
 
         .cant-group
           display: flex
           flex-direction: column
+          align-items: center
           gap: 0.5em
 
           .botones
             display: flex
+            align-items: center
             gap: 0.5em
 
             input
-              width: 2em
-              border-radius: 4px
+              width: 1.8em
+              border: 1px solid $black
+              border-radius: 8px
+              text-align: center
 
             button
               background-color: $white
+              padding: 0
               border: none
 
         .colors
           display: flex
           flex-direction: column
+          align-items: center
+          gap: 0.5em
+
+      .error
+        padding: 0
+        display: none
+
+        .removeError
+          color: $red
+          margin: 0
+
+      .error-active
+        padding: 0
+        display: block
+
+        .removeError
+          color: $red
+          margin: 0
+
 
 
       .add-cart
@@ -158,7 +184,7 @@
           @extend .general-button
           @extend .large-button
           width: 100%
-          background-color: #fc4646
+          background-color: $pink
 
       .payment-method
         width: 100%

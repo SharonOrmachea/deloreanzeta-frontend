@@ -13,6 +13,7 @@ import { ProductService } from '../../../../shared/services/store/productos/prod
 export class IdProductComponent implements OnInit {
 
   product!:Product;
+  productQuantity:number = 1;
 
   constructor(activatedRoute:ActivatedRoute, productService:ProductService) {
     activatedRoute.params.subscribe((params) => {
@@ -24,7 +25,17 @@ export class IdProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  handleProduct(value:string){
+    let active:any = document.getElementById('error')
+    if(this.productQuantity < 20 && value === 'add'){
+      this.productQuantity += 1
+      active.classList.remove('error-active');
+    }else if( this.productQuantity>1 && value ==='remove'){
+      this.productQuantity -= 1
+    }else if(this.productQuantity == 1 && value ==='remove'){
+      active.classList.add('error-active')
+    }
 
-
+  }
 
 }
