@@ -13,6 +13,7 @@ import { ProductService } from '../../../../shared/services/store/productos/prod
 export class IdProductComponent implements OnInit {
 
   product!:Product;
+
   productQuantity:number = 1;
 
   constructor(activatedRoute:ActivatedRoute, productService:ProductService) {

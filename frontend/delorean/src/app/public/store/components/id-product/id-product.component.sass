@@ -1,5 +1,10 @@
 @import 'extends-class'
 
+main
+  display: flex
+  flex-direction: column
+  gap: 5em
+
 .contenedor
   @extend .font-general
   @extend .flex-column-around-wrap
@@ -70,6 +75,7 @@
 
         .name
           color: $dark-gray
+          
 
         .category
           display: flex

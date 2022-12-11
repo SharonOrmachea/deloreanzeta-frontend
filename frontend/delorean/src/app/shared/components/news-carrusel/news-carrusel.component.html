@@ -1,0 +1,43 @@
+<section class="news-carrusel">
+  <div class="contenedor-titulo">
+    <div class="titulo">
+      <h1><strong>Noticias</strong></h1>
+    </div>
+    <button>
+      <strong>Ver más <i class="bi bi-arrow-right"></i></strong>
+    </button>
+  </div>
+
+  <div class="contenedorCarrusel">
+    <swiper
+    [slidesPerView]="4"
+    [spaceBetween]="-10"
+    [navigation]="true"
+    >
+      <ng-template swiperSlide *ngFor="let noticia of news">
+        <div class="contenedor-news">
+          <a routerLink="/news/notice/{{ noticia.id }}">
+            <div class="">
+              <img
+                [src]="noticia.imageUrl"
+                [alt]="noticia.name"
+                class="card-img-top"
+              />
+
+              <div class="contenedor">
+                <div class="date container">
+                  <p><strong>{{ noticia.date }}</strong></p>
+                </div>
+                <div class="name">
+                  <strong>{{ noticia.name }}</strong>
+                </div>
+              </div>
+
+            </div>
+          </a>
+        </div>
+      </ng-template>
+    </swiper>
+  </div>
+
+</section>
