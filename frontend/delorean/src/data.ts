@@ -8,7 +8,7 @@ import { Register } from './app/shared/models/sign-up/sign-up';
 export const sample_products: Product[] = [
   {
     id: '1',
-    name: 'Soy un producto',
+    name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
     previousPrice: 2000,
     discount: 30,
@@ -26,7 +26,7 @@ export const sample_products: Product[] = [
   },
   {
     id: '2',
-    name: 'Soy un producto',
+    name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
     previousPrice: 2000,
     discount: 30,

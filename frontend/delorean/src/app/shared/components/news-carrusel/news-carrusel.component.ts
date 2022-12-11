@@ -1,4 +1,5 @@
-import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -13,20 +14,20 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   encapsulation: ViewEncapsulation.None,
 
 })
-export class NewsCarruselComponent implements OnInit, AfterViewInit {
+export class NewsCarruselComponent implements OnInit {
 
   news:News[] = [];
 
-  constructor(private noticiaService:NewsService) {
+  constructor(private noticiaService:NewsService, private router: Router) {
     this.news = this.noticiaService.getAll();
-  }
-
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
   }
 
 
   ngOnInit(): void {
+  }
+
+  paginaNoticias(){
+    this.router.navigate(['/news'])
   }
 
 }

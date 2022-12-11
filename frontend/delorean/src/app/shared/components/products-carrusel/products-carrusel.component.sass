@@ -15,7 +15,7 @@
     color: $white
 
     .titulo
-      width: 35%
+      width: 50%
 
     button
       @extend .general-button
@@ -24,7 +24,7 @@
       border-radius: 12px
 
   .swiper
-    width: 80%
+    width: 90%
     height: auto
 
 
@@ -61,7 +61,7 @@
     width: 60px
     height: 60px
     border-radius: 100%
-    margin: 0 -0.5em
+    // margin: 0 -0.5em
 
   .contenedor-productos
     border-radius: 12px
@@ -88,20 +88,31 @@
         border-top-right-radius: 12px
 
       .name
+        @extend .flex-column-between
+
+        height: 4em
+        text-align: start
+        width: 14em
         padding: 2% 4%
         color: $dark-gray
 
+  .contenedor-precio
+    @extend .flex-between-center
 
-      .contenedor-precio
-        @extend .flex-between-center
-        padding: 2% 4%
-        border-radius: 12px
+    padding: 2% 4%
+    border-radius: 12px
 
-        .cart
-          align-items: center
-          a
-            color: $pink
+    .cart
+      align-items: center
 
-        .price
-          color: $violet
+      button
+        @extend .general-button
+        color: $pink
+        background-color: $white
+        i
+          font-size: 1.5em
+
+    .price
+      color: $violet
+      font-size: 1.4em
 
