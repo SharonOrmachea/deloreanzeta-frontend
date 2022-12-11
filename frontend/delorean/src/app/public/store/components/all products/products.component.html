@@ -46,21 +46,35 @@
     <ul>
       <li *ngFor="let product of products">
         <a routerLink="/store/product/{{ product.id }}">
-          <img [src]="product.image1" [alt]="product.name">
-          <div class="content">
-            <div class="name">
-              <strong>{{ product.name }}</strong>
-            </div>
-            <div class="contenedor-precio">
-              <div class="cart">
-                <a><strong><i class="bi bi-cart3"></i></strong></a>
-              </div>
-              <div class="price">
-                <span><strong>{{ product.price | currency }}</strong></span>
+          <div class="col">
+            <div class="image-name">
+              <img
+                [src]="product.image1"
+                [alt]="product.name"
+                class="card-img-top"
+              >
+              <div class="name">
+                <strong>{{ product.name }}</strong>
               </div>
             </div>
+
           </div>
+
         </a>
+
+        <div class="contenedor-precio">
+          <div class="cart">
+            <button>
+              <strong><i class="bi bi-cart3"></i></strong>
+            </button>
+          </div>
+
+          <div class="price">
+            <span>
+              <strong>{{ product.price | currency }}</strong>
+            </span>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

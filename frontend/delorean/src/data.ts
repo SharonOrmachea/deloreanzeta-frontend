@@ -185,7 +185,7 @@ export const sample_products: Product[] = [
 export const sample_news: News[] = [
   {
     id: '1',
-    name: 'Soy una noticia con un maximo de 44 caracteres',
+    name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'Soy una descripcion breve de la noticia',
     imageUrl: './assets/news/news1.jpg'
