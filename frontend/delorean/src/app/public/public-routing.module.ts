@@ -33,6 +33,7 @@ const routes: Routes = [
       { path: 'store', component: StoreComponent, children: [
         { path: '', component: ProductsComponent},
         { path: 'product/:id', component: IdProductComponent},
+        { path: 'category/:category', component: ProductsComponent},
       ]},
 
 

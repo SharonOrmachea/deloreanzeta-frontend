@@ -1,6 +1,6 @@
 import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
-import { ProductCategories } from "./app/shared/models/categories/product/product-tag";
+import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 import { Login } from "./app/shared/models/sign-in/sign-in";
 import { Register } from './app/shared/models/sign-up/sign-up';
@@ -13,9 +13,8 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Tazas',
+      'Cuadros'
     ],
     image1: './assets/store/products/delorean(1).png',
     image2: './assets/store/products/delorean(2).png',
@@ -31,12 +30,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1'
+      'Cuadros'
     ],
-    image1: './assets/store/products/delorean(2).png',
-    image2: './assets/store/products/delorean(3).png',
-    image3: './assets/store/products/delorean(4).png',
-    image4: './assets/store/products/delorean(5).png',
+    image1: './assets/store/products/delorean(5).png',
+    image2: './assets/store/products/delorean(6).png',
+    image3: './assets/store/products/delorean(7).png',
+    image4: './assets/store/products/delorean(8).png',
     description: 'Soy la descripcion del producto',
     informacionProduct: 'Soy la informacion del producto'
   },
@@ -47,12 +46,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1'
+      'Remeras'
     ],
-    image1: './assets/store/products/delorean(3).png',
-    image2: './assets/store/products/delorean(4).png',
-    image3: './assets/store/products/delorean(5).png',
-    image4: './assets/store/products/delorean(6).png',
+    image1: './assets/store/products/delorean(9).png',
+    image2: './assets/store/products/delorean(10).png',
+    image3: './assets/store/products/delorean(11).jpg',
+    image4: './assets/store/products/delorean(12).png',
     description: 'Soy la descripcion del producto',
     informacionProduct: 'Soy la informacion del producto'
   },
@@ -63,12 +62,13 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1'
+      'Tazas',
+      'Remeras'
     ],
-    image1: './assets/store/products/delorean(4).png',
-    image2: './assets/store/products/delorean(5).png',
-    image3: './assets/store/products/delorean(6).png',
-    image4: './assets/store/products/delorean(7).png',
+    image1: './assets/store/products/delorean(1).png',
+    image2: './assets/store/products/delorean(2).png',
+    image3: './assets/store/products/delorean(3).png',
+    image4: './assets/store/products/delorean(4).png',
     description: 'Soy la descripcion del producto',
     informacionProduct: 'Soy la informacion del producto'
   },
@@ -79,14 +79,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Cuadros'
     ],
-    image1: './assets/store/products/delorean(1).png',
-    image2: './assets/store/products/delorean(2).png',
-    image3: './assets/store/products/delorean(3).png',
-    image4: './assets/store/products/delorean(4).png',
+    image1: './assets/store/products/delorean(5).png',
+    image2: './assets/store/products/delorean(6).png',
+    image3: './assets/store/products/delorean(7).png',
+    image4: './assets/store/products/delorean(8).png',
     description: 'Soy la descripcion del producto, esto es una prueba para ver si se estira mi cajita o si anda igual de bien que la info de producto. Aparentemente anda excelente.',
     informacionProduct: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
   },
@@ -97,14 +95,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Remeras'
     ],
-    image1: './assets/store/products/delorean(1).png',
-    image2: './assets/store/products/delorean(2).png',
-    image3: './assets/store/products/delorean(3).png',
-    image4: './assets/store/products/delorean(4).png',
+    image1: './assets/store/products/delorean(9).png',
+    image2: './assets/store/products/delorean(10).png',
+    image3: './assets/store/products/delorean(11).jpg',
+    image4: './assets/store/products/delorean(12).png',
     description: 'Soy la descripcion del producto, esto es una prueba para ver si se estira mi cajita o si anda igual de bien que la info de producto. Aparentemente anda excelente.',
     informacionProduct: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
   },
@@ -115,9 +111,7 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Tazas'
     ],
     image1: './assets/store/products/delorean(1).png',
     image2: './assets/store/products/delorean(2).png',
@@ -133,14 +127,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Cuadros'
     ],
-    image1: './assets/store/products/delorean(1).png',
-    image2: './assets/store/products/delorean(2).png',
-    image3: './assets/store/products/delorean(3).png',
-    image4: './assets/store/products/delorean(4).png',
+    image1: './assets/store/products/delorean(5).png',
+    image2: './assets/store/products/delorean(6).png',
+    image3: './assets/store/products/delorean(7).png',
+    image4: './assets/store/products/delorean(8).png',
     description: 'Soy la descripcion del producto, esto es una prueba para ver si se estira mi cajita o si anda igual de bien que la info de producto. Aparentemente anda excelente.',
     informacionProduct: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
   },
@@ -151,14 +143,12 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Remeras'
     ],
-    image1: './assets/store/products/delorean(1).png',
-    image2: './assets/store/products/delorean(2).png',
-    image3: './assets/store/products/delorean(3).png',
-    image4: './assets/store/products/delorean(4).png',
+    image1: './assets/store/products/delorean(9).png',
+    image2: './assets/store/products/delorean(10).png',
+    image3: './assets/store/products/delorean(11).jpg',
+    image4: './assets/store/products/delorean(12).png',
     description: 'Soy la descripcion del producto, esto es una prueba para ver si se estira mi cajita o si anda igual de bien que la info de producto. Aparentemente anda excelente.',
     informacionProduct: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
   },
@@ -169,9 +159,7 @@ export const sample_products: Product[] = [
     previousPrice: 2000,
     discount: 30,
     category: [
-      'categoria-1',
-      'categoria-2',
-      'categoria-3'
+      'Tazas'
     ],
     image1: './assets/store/products/delorean(1).png',
     image2: './assets/store/products/delorean(2).png',
@@ -180,6 +168,13 @@ export const sample_products: Product[] = [
     description: 'Soy la descripcion del producto, esto es una prueba para ver si se estira mi cajita o si anda igual de bien que la info de producto. Aparentemente anda excelente.',
     informacionProduct: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
   },
+]
+
+export const sample_productTags: ProductCategories[] = [
+  { id: 1, name: 'Tazas' },
+  { id: 2, name: 'Cuadros' },
+  { id: 3, name: 'Remeras' },
+  { id: 4, name: 'Funkos' },
 ]
 
 export const sample_news: News[] = [
@@ -225,12 +220,6 @@ export const sample_news: News[] = [
     description: 'Soy una descripcion breve de la noticia',
     imageUrl: './assets/news/news4.jpg'
   }
-]
-
-export const sample_productTags: ProductCategories[] = [
-  { name: 'Remeras', count: 2 },
-  { name: 'Tazas', count: 2 },
-  { name: 'Funkos', count: 2 },
 ]
 
 export const sample_carousel: Carousel[] = [

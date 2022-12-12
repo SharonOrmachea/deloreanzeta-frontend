@@ -19,7 +19,7 @@ export class ProductsCarruselComponent implements OnInit {
   products:Product[] = [];
 
   constructor(private productoService:ProductService, private router: Router) {
-    this.products = this.productoService.getAll();
+    this.products = this.productoService.getAllProducts();
   }
 
 

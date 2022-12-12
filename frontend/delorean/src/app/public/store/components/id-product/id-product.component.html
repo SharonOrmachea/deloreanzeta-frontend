@@ -31,7 +31,7 @@
             <strong>{{product.name}}</strong>
           </h3>
           <div class="category">
-            <a *ngFor="let category of product.category" routerLink="/category/{{category}}">
+            <a *ngFor="let category of product.category" routerLink="/store/category/{{category}}">
               {{category}}
             </a>
           </div>
@@ -85,7 +85,7 @@
               <button class="payment btn" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
                 <i class="bi bi-credit-card-fill"></i>
                 Metodos de Pago
-                <i class="bi bi-arrow-down-short"></i>
+                <i class="bi bi-chevron-down"></i>
               </button>
             </p>
 
