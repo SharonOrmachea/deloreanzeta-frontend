@@ -4,40 +4,67 @@ section
   @extend .font-general
   @extend .flex-column-around
   width: 100%
-  height: 40em
+  height: auto
   color: $white
+  gap: 3em
 
   .contenedor-titulo
-    @extend .flex-row-around
+    @extend .flex-column-around
     width: 100%
+    gap: 2em
 
     .titulo
-      width: 50%
+      display: flex
+      justify-content: space-around
+      width: 30%
 
-    button
-      @extend .general-button
-      background-color: $pink
-      width: 128px
-      border-radius: 12px
+    .categorias
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      align-items: center
 
-    .selectores
-      ul
+      .name-categoria
         display: flex
-        gap: 4em
-        select
-          width: 200px
-          height: 51px
-          border-radius: 50px
-          padding: 10px
-          border: none
-          background-color: $white
-          color: $black
+        justify-content: space-around
+        align-items: center
+        width: 15%
+
+        p
+          font-size: 25px
+          margin: 0
+
+      .category
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        flex-wrap: wrap
+        width: 80%
+        gap: 0.5rem
+
+        a
+          font-size: 17px
+          padding: 0.4rem 0.9rem
+          border-radius: 10rem
+          font-weight: 600
+          border: 2px solid $white
+          background-color: #02f7ff98
+          color: $white
+          text-decoration: none
+
+          .tag:active
+            box-shadow: 0 0 20px #02f6ff, 0 0 5px #02f6ff, 0 0 1px #02f6ff
+            background-color: none
 
   .contenedor-productos
 
     ul
       @extend .flex-row-around
+      flex-wrap: wrap
       list-style: none
+      margin: 0 16px
+      padding: 0 32px
+      gap: 5em
 
       li
         background-color: $white
@@ -57,23 +84,36 @@ section
           color: $white
 
       img
-        width: 320px
-        height: 380px
+        width: 232px
+        height: 250px
         border-top-left-radius: 12px
         border-top-right-radius: 12px
 
       .name
+        @extend .flex-column-between
+
+        height: 5em
+        text-align: start
+        width: 12em
         padding: 2% 4%
-        color: $black
+        color: $dark-gray
 
       .contenedor-precio
         @extend .flex-between-center
+
         padding: 2% 4%
+        border-radius: 12px
 
         .cart
           align-items: center
-          a
+
+          button
+            @extend .general-button
             color: $pink
+            background-color: $white
+            i
+              font-size: 1.5em
 
         .price
           color: $violet
+          font-size: 1.4em

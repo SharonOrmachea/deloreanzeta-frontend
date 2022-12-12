@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { sample_products } from '../../../../../data';
-import { Product } from '../../../models/store/products/product';
+
+import { sample_products, sample_productTags } from '../../../../../data';
+
+import { Product } from 'src/app/shared/models/store/products/product';
+import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 
 
 @Injectable({
@@ -11,11 +14,22 @@ export class ProductService {
 
   constructor() { }
 
-  getAll():Product[]{
+  getAllProducts():Product[]{
     return sample_products;
   }
 
   getProductById(productId:string){
-    return this.getAll().find(product => product.id == productId) ?? new Product();
+    return this.getAllProducts().find(product => product.id == productId) ?? new Product();
   }
+
+  getAllProductCategories():ProductCategories[]{
+    return sample_productTags;
+  }
+
+  getProductsByCategories(tag:string):Product[]{
+    return tag === "All"?
+    this.getAllProducts():
+    this.getAllProducts().filter(product => product.category?.includes(tag));
+  }
+
 }

@@ -41,6 +41,13 @@
   border-radius: 32px
   font-size: 20px
 
+.class-parpadear
+  animation: parpadear 1.5s infinite backwards steps(2)
+  @keyframes parpadear
+    to
+      color: $white
+      text-shadow: none
+
 //--------------------------Flex-Space-------------------------------
 
 .flex-around-center
@@ -77,7 +84,7 @@
   display: flex
   flex-direction: column
   justify-content: space-around
-  
+
 .flex-column-around-wrap
   display: flex
   flex-direction: column
@@ -89,10 +96,15 @@
   flex-direction: column
   align-items: center
 
-.flex-column-between
+.flex-column-around
   display: flex
   flex-direction: column
   justify-content: space-around
+
+.flex-column-between
+  display: flex
+  flex-direction: column
+  justify-content: space-between
 
 
 //--------------------------Row-------------------------------
@@ -132,5 +144,9 @@
   justify-content: space-evenly
   align-items: center
 
+.flex-row-start
+  display: flex
+  flex-direction: row
+  justify-content: flex-start
 
 
