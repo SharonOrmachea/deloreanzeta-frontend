@@ -7,16 +7,16 @@
 
         <div class="image-preview container">
           <div class="imageSlide container active" >
-            <img [src]="product.image1" [alt]="product.name" appIdProduct>
+            <img [src]="product.image1"  appIdProduct>
           </div>
           <div class="imageSlide container" >
-            <img [src]="product.image2" [alt]="product.name" appIdProduct>
+            <img [src]="product.image2"  appIdProduct>
           </div>
           <div class="imageSlide container" >
-            <img [src]="product.image3" [alt]="product.name" appIdProduct>
+            <img [src]="product.image3" appIdProduct>
           </div>
           <div class="imageSlide container" >
-            <img [src]="product.image4" [alt]="product.name" appIdProduct>
+            <img [src]="product.image4"  appIdProduct>
           </div>
         </div>
 
@@ -79,7 +79,7 @@
 
         <div class="add-cart">
 
-          <button class="cart">Agregar al Carrito</button>
+          <button class="cart" (click)="addToCart()">Agregar al Carrito</button>
           <div class="payment-method">
             <p>
               <button class="payment btn" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">

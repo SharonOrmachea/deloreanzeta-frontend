@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { Product } from '../../../../shared/models/store/products/product';
 
 import { ProductService } from '../../../../shared/services/store/productos/product.service';
+import { CartService } from '../../../../shared/services/store/cart/cart.service';
 
 @Component({
   selector: 'app-id-product',
@@ -16,7 +17,10 @@ export class IdProductComponent implements OnInit {
 
   productQuantity:number = 1;
 
-  constructor(activatedRoute:ActivatedRoute, productService:ProductService) {
+  constructor(activatedRoute:ActivatedRoute,
+              private router:Router,
+              productService:ProductService,
+              private cartService:CartService) {
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
       this.product = productService.getProductById(params['id']);
@@ -36,6 +40,11 @@ export class IdProductComponent implements OnInit {
     }else if(this.productQuantity == 1 && value ==='remove'){
       active.classList.add('error-active')
     }
+  }
+
+  addToCart(){
+    this.cartService.addToCart(this.product);
+    this.router.navigateByUrl('/cart');
   }
 
 }
