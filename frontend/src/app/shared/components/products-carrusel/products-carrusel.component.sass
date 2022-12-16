@@ -1,0 +1,118 @@
+@import 'extends-class'
+
+@import "~swiper/css"
+@import "~swiper/css/navigation"
+
+.product-carrusel
+  @extend .font-general
+  display: flex
+  flex-direction: column
+  gap: 2em
+
+  .contenedor-titulo
+    @extend .flex-row-around
+    width: 100%
+    color: $white
+
+    .titulo
+      width: 50%
+
+    button
+      @extend .general-button
+      background-color: $pink
+      width: 128px
+      border-radius: 12px
+
+  .swiper
+    width: 90%
+    height: auto
+
+
+  .swiper-slide
+    text-align: center
+    font-size: 18px
+
+    /* Center slide text vertically */
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    -webkit-box-pack: center
+    -ms-flex-pack: center
+    -webkit-justify-content: center
+    justify-content: center
+    -webkit-box-align: center
+    -ms-flex-align: center
+    -webkit-align-items: center
+    align-items: center
+
+
+  .swiper-slide img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover
+
+  .swiper-button-prev,
+  .swiper-button-next
+    display: flex
+    color: $dark-gray
+    background-color: $white
+    width: 60px
+    height: 60px
+    border-radius: 100%
+    // margin: 0 -0.5em
+
+  .contenedor-productos
+    border-radius: 12px
+    background-color: $white
+
+    a
+      color: $white
+      font-size: 1.2em
+      text-decoration: none
+      border-radius: 12px
+
+      a:link
+        text-decoration: none
+        color: $white
+
+      a:visited
+        text-decoration: none
+        color: $white
+
+      img
+        width: 320px
+        height: 370px
+        border-top-left-radius: 12px
+        border-top-right-radius: 12px
+
+      .name
+        @extend .flex-column-between
+
+        height: 5em
+        text-align: start
+        width: 12em
+        padding: 2% 4%
+        color: $dark-gray
+
+  .contenedor-precio
+    @extend .flex-between-center
+
+    padding: 2% 4%
+    border-radius: 12px
+
+    .cart
+      align-items: center
+
+      button
+        @extend .general-button
+        color: $pink
+        background-color: $white
+        i
+          font-size: 1.5em
+
+    .price
+      color: $violet
+      font-size: 1.4em
+
