@@ -1,85 +1,52 @@
 @import 'extends-class'
 
-footer
+.contenedor
   @extend .font-general
-  @extend .flex-evenly-center
+  @extend .flex-column-evenly-center
   width: 100%
-  height: 20em
+  height: auto
+  margin: 0px
+  gap: 1em
   color: #FFFFFF
 
-.contenedor
-  @extend .flex-column-around-center
+  .contenedor1
+    @extend .flex-column-around-center
 
-  img
-    width: 287px
+    img
+      width: 20em
 
-  p
-    font-size: 14px
+    .redes
+      @extend .flex-row-evenly-center
+      width: 287px
 
-  .redes
-    @extend .flex-row-evenly-center
-    width: 287px
-
-    a
-      color: $pink
-      font-size: 1.5em
-      text-decoration: none
-
-      a:link
-        text-decoration: none
+      a
         color: $pink
-
-      a:visited
+        font-size: 2em
         text-decoration: none
-        color: $pink
 
-section
-  @extend .flex-row-around-wrap
-  width: 50%
+        a:link
+          text-decoration: none
+          color: $pink
 
-  li
-    list-style: none
-    a
-      text-decoration: none
-      color: #FFFFFF
-      font-size: 13px
+        a:visited
+          text-decoration: none
+          color: $pink
+
+  .contenedor2
+    p
+      font-size: 20px
+      text-align: center
+
+    ul
+      @extend .flex-row-around-wrap
+      width: 100%
+      gap: 2em
+
+      li
+        list-style: none
+        a
+          text-decoration: none
+          color: #FFFFFF
+          font-size: 20px
 
 
-@media screen and (max-width:480px)
-   footer
-    height: auto
-    display: flex
-    flex-direction: column
-
-    .nosotros
-      margin-top: 20px
-      margin-left: -5px
-    .faq
-      margin-left: 35px
-
-
-@media (min-width:720px)
-  footer
-   height: auto
-   display: flex
-   flex-direction: row
-   width: auto
-
-  .contenedor
-    margin-left: -60px
-
-  img
-   width: 100px
-
-  .nosotros
-    flex-direction: row
-    margin-top: 60px
-    margin-left: -60px
-
-  .faq
-    margin-top: 60px
-    margin-left: -30px
-
-  .soporte
-    margin-top: 60px
-    margin-left: -30px
