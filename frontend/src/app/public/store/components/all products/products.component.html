@@ -4,17 +4,10 @@
       <h1><strong>Todos los productos</strong></h1>
     </div>
 
-    <div class="categorias">
-      <div class="name-categoria">
-        <p><strong>Categorías:</strong></p>
-      </div>
-
-      <div class="category">
-        <a *ngFor="let tag of categories" routerLink="/store/category/{{tag.name}}" class="tag">
-          <strong>{{tag.name}}</strong>
-        </a>
-      </div>
-
+    <div class="category">
+      <a *ngFor="let tag of categories" routerLink="/store/category/{{tag.name}}" class="tag">
+        <strong>{{tag.name}}</strong>
+      </a>
     </div>
 
   </div>

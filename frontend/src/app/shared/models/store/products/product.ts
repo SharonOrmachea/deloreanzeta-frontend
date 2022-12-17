@@ -10,5 +10,4 @@ export class Product{
   image3?:string;
   image4?:string;
   description?:string;
-  informacionProduct?:string;
 }
