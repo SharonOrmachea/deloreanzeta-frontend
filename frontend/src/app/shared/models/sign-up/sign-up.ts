@@ -1,8 +1,8 @@
 export class Register{
-  name!:string;
-  lastname!:string;
-  telephone?:number;
-  email!:string;
-  password!:string;
-  repeatPassword!:string;
+  public name!:string;
+  public lastname!:string;
+  public telephone?:number;
+  public email!:string;
+  public password!:string;
+  public repeatPassword!:string;
 }
