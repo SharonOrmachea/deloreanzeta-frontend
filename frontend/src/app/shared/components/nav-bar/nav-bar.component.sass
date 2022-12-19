@@ -31,7 +31,28 @@ header
         text-decoration: none
         color: $white
 
-  .login
-    @extend .general-button
-    @extend .short-button
-    background-color: $pink
+  .buttons
+    display: flex
+    flex-direction: row
+    justify-content: space-around
+    width: 15%
+
+    .login
+      @extend .general-button
+      @extend .short-button
+      background-color: $pink
+
+    .cart
+      display: flex
+      flex-direction: row
+      color: $white
+      font-size: 1.6em
+      width: 30%
+
+      a
+        text-decoration: none
+        color: $white
+
+      .notificacion
+        font-size: 20px !important
+        color: $pink

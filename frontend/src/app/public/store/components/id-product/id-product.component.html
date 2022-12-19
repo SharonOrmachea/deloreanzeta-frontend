@@ -5,25 +5,18 @@
 
       <div class="imagenes container">
 
-        <div class="image-preview container">
-          <div class="imageSlide container active" >
-            <img [src]="product.image1" [alt]="product.name" appIdProduct>
+        <div class="image-preview container" >
+          <div class="imageSlide container" *ngFor="let image of product.imageUrl">
+            <img [src]="image"  appIdProduct>
           </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image2" [alt]="product.name" appIdProduct>
-          </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image3" [alt]="product.name" appIdProduct>
-          </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image4" [alt]="product.name" appIdProduct>
-          </div>
+
         </div>
 
-        <div class="imagenGrande" >
-          <img  [src]="product.image1" [alt]="product.name" id="preview">
+        <div class="imagenGrande">
+          <img  [src]="product.imageUrl[0]" [alt]="product.name" id="preview">
         </div>
       </div>
+
 
       <div class="header container">
         <div class="name-category">
@@ -52,11 +45,7 @@
           </span>
         </div>
 
-        <div class="description">
-          {{product.description}}
-        </div>
-
-        <div class="contenedor-cant-color">
+        <div class="contenedor-cant-error">
           <div class="cant-group">
             <span class="word-cant"><strong>Cantidad</strong></span>
             <div class="botones">
@@ -66,20 +55,16 @@
             </div>
           </div>
 
-          <!-- <div class="colors">
-            <span><strong>Color</strong></span>
-            <span  class="product-color">lila</span>
-          </div> -->
-        </div>
 
-        <div class="error container" id="error">
-          <p class="removeError"><strong>No se puede descontar más productos</strong></p>
-        </div>
+          <div class="error container" id="error">
+            <p class="removeError"><strong>No se puede descontar más productos</strong></p>
+          </div>
 
+        </div>
 
         <div class="add-cart">
 
-          <button class="cart">Agregar al Carrito</button>
+          <button class="cart" (click)="addToCart()">Agregar al Carrito</button>
           <div class="payment-method">
             <p>
               <button class="payment btn" type="button" data-bs-toggle="collapse" data-bs-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">
@@ -105,9 +90,9 @@
     </div>
 
     <div class="information container">
-      <h3>Información del Producto</h3>
+      <h3>Descripción del Producto</h3>
       <hr>
-      <span>{{ product.informacionProduct }}</span>
+      <span>{{ product.description }}</span>
     </div>
 
   </section>

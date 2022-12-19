@@ -1,5 +1,5 @@
 import {body} from "express-validator";
-import {validateResult} from "../helpers/validate.helper.js";
+import {validateResult} from "../middlewares/validate.helper.js";
 
 export const validateCategoria = [
     body("nombre")

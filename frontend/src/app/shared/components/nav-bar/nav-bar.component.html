@@ -32,5 +32,12 @@
 
   <div class="buttons">
     <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
+    <div class="cart">
+      <a routerLink="/store/cart">
+        <i class="bi bi-cart3"></i>
+        <span *ngIf="cartQuantity"><i class="notificacion bi bi-{{ cartQuantity }}-circle-fill"></i></span>
+      </a>
+    </div>
   </div>
+
 </header>

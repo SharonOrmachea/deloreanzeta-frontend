@@ -1,5 +1,5 @@
 import {body} from "express-validator";
-import {validateResult} from "../helpers/validate.helper.js";
+import {validateResult} from "../middlewares/validate.helper.js";
 
 export const validateProducto = [
     body("nombre")
@@ -38,7 +38,6 @@ export const validateProducto = [
             for(let i = 0; i < value.length; i++){
                 if(value[i] != 0 && value[i] != 1 && value[i] != 2 && value[i] != 3 && value[i] != 4 && 
                     value[i] != 5 && value[i] != 6 && value[i] != 7 && value[i] != 8 && value[i] != 9){
-                        console.log(value[i])
                         throw new Error("El precio debe componerse unicamente de numeros");
                 }
             }
@@ -46,21 +45,33 @@ export const validateProducto = [
         })
     ,
     body("imagen")
-        .isString()
-        .withMessage("El campo imagen debe ser una cadena de caracteres")
         .custom((value, {req}) => {
-            if(value.trim() == 0)
-                throw new Error("El campo imagen no puede componerse unicamente de espacios");
-            return true;
+             if(!(value === undefined)){
+                if(typeof(value) === typeof(1)){
+                    throw new Error("El campo imagen debe ser una cadena de caracteres");
+                }
+                else if(typeof(value) === typeof("cadena")){
+                    if(value.trim() == 0)
+                        throw new Error("El campo imagen no puede componerse unicamente de espacios");
+                }
+                return true;
+            }
+            return true
         })
     ,
     body("descripcion")
-        .isString()
-        .withMessage("El campo descripcion debe ser una cadena de caracteres")
         .custom((value, {req}) => {
-            if(value.trim() == 0)
-                throw new Error("El campo descripcion no puede componerse unicamente de espacios");
-            return true;
+            if(!(value === undefined)){
+                if(typeof(value) === typeof(1)){
+                    throw new Error("El campo descripcion debe ser una cadena de caracteres");
+                }
+                else if(typeof(value) === typeof("cadena")){
+                    if(value.trim() == 0)
+                        throw new Error("El campo descripcion no puede componerse unicamente de espacios");
+                }
+                return true;
+            }
+        return true
         })
     ,
     (req, res, next) => {
