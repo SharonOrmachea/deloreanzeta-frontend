@@ -22,21 +22,20 @@ import { IdProductComponent } from "./store/components/id-product/id-product.com
 const routes: Routes = [
   { path: '', component: PublicComponent, children:
     [
-      { path: '', redirectTo: 'home', pathMatch: 'full'},
-      { path: 'home', component: HomeComponent},
-      { path: 'sign-in', component: SignInComponent},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'sign-in', component: SignInComponent },
       { path: 'login', component: LoginComponent, children: [
-        { path: '', component: FormLoginComponent},
-        { path: 'identify', component: FormIdentifyComponent},
-        { path: 'code', component: FormCodeUserComponent}
+        { path: '', component: FormLoginComponent },
+        { path: 'identify', component: FormIdentifyComponent },
+        { path: 'code', component: FormCodeUserComponent }
       ]},
       { path: 'store', component: StoreComponent, children: [
-        { path: '', component: ProductsComponent},
-        { path: 'product/:id', component: IdProductComponent},
-        { path: 'category/:category', component: ProductsComponent},
+        { path: '', component: ProductsComponent },
+        { path: 'product/:id', component: IdProductComponent },
+        { path: 'category/:category', component: ProductsComponent },
+        
       ]},
-
-
     ]
   }
 ];

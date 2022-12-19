@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from 'src/app/shared/models/store/cart/cart';
-import { ItemsCart } from 'src/app/shared/models/store/cart/itemsCart';
+import { CartItem } from 'src/app/shared/models/store/cart/cartItem';
 import { Product } from '../../../models/store/products/product';
 
 
@@ -20,7 +20,7 @@ export class CartService {
     if (cartItem){
       return;
     }
-    this.cart.items.push(new ItemsCart(product));
+    this.cart.items.push(new CartItem(product));
     this.setCartToLocalStorage();
   }
 

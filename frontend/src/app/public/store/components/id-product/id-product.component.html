@@ -5,25 +5,18 @@
 
       <div class="imagenes container">
 
-        <div class="image-preview container">
-          <div class="imageSlide container active" >
-            <img [src]="product.image1"  appIdProduct>
+        <div class="image-preview container" >
+          <div class="imageSlide container" *ngFor="let image of product.imageUrl">
+            <img [src]="image"  appIdProduct>
           </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image2"  appIdProduct>
-          </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image3" appIdProduct>
-          </div>
-          <div class="imageSlide container" >
-            <img [src]="product.image4"  appIdProduct>
-          </div>
+
         </div>
 
-        <div class="imagenGrande" >
-          <img  [src]="product.image1" [alt]="product.name" id="preview">
+        <div class="imagenGrande">
+          <img  [src]="product.imageUrl[0]" [alt]="product.name" id="preview">
         </div>
       </div>
+
 
       <div class="header container">
         <div class="name-category">
@@ -52,7 +45,7 @@
           </span>
         </div>
 
-        <div class="contenedor-cant-color">
+        <div class="contenedor-cant-error">
           <div class="cant-group">
             <span class="word-cant"><strong>Cantidad</strong></span>
             <div class="botones">
@@ -62,16 +55,16 @@
             </div>
           </div>
 
-          <!-- <div class="colors">
-            <span><strong>Color</strong></span>
-            <span  class="product-color">lila</span>
-          </div> -->
-        </div>
 
         <div class="error container" id="error">
           <p class="removeError"><strong>No se puede descontar más productos</strong></p>
         </div>
 
+          <!-- <div class="colors">
+            <span><strong>Color</strong></span>
+            <span  class="product-color">lila</span>
+          </div> -->
+        </div>
 
         <div class="add-cart">
 

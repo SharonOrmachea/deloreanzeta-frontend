@@ -1,13 +1,10 @@
 export class Product{
-  id?:string;
+  id!:string;
   name!:string;
   price!:number;
   previousPrice?:number;
   discount?:number;
   category?:string[];
-  image1!:string;
-  image2?:string;
-  image3?:string;
-  image4?:string;
+  imageUrl!:string[];
   description?:string;
 }

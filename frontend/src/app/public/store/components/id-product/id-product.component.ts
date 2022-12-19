@@ -44,7 +44,7 @@ export class IdProductComponent implements OnInit {
 
   addToCart(){
     this.cartService.addToCart(this.product);
-    this.router.navigateByUrl('/cart');
+    this.router.navigateByUrl('/store/cart');
   }
 
 }

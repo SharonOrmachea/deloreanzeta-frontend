@@ -63,7 +63,7 @@ main
       background-color: $white
       color: $black
       width: 30%
-      height: 41.6em
+      height: 40em
       border: 3rem
       padding: 2rem
       border-radius: 16px
@@ -71,7 +71,7 @@ main
       .name-category
         @extend .flex-column-between
 
-        gap: 1em
+        gap: 2em
 
         .name
           color: $dark-gray
@@ -117,14 +117,14 @@ main
           font-weight: bold
           color: $dark-gray
 
-      .contenedor-cant-color
-        @extend .flex-row-start
+      .contenedor-cant-error
+        @extend .flex-column-start
 
         width: 100%
-        gap: 2em
+        gap: 0.5em
 
         .cant-group
-          @extend .flex-column-center
+          @extend .flex-column-start
 
           gap: 0.5em
 
@@ -144,26 +144,22 @@ main
               padding: 0
               border: none
 
-        .colors
+        .error
           @extend .flex-column-center
+          padding: 0
+          visibility: hidden
 
-          gap: 0.5em
+          .removeError
+            color: $red
+            margin: 0
 
-      .error
-        padding: 0
-        display: none
+        .error-active
+          padding: 0
+          visibility: visible
 
-        .removeError
-          color: $red
-          margin: 0
-
-      .error-active
-        padding: 0
-        display: block
-
-        .removeError
-          color: $red
-          margin: 0
+          .removeError
+            color: $red
+            margin: 0
 
 
 
