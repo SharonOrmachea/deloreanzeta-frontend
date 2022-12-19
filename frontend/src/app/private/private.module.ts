@@ -3,11 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PrivateRoutingModule } from './private-routing.module';
 import { ResetPassModule } from './reset-pass/reset-pass.module';
 import { PublicRoutingModule } from '../public/public-routing.module';
-import { CartComponent } from './cart/page/cart.component';
-
-
-
-
+import { CartModule } from './cart/cart.module';
 
 
 
@@ -15,14 +11,13 @@ import { CartComponent } from './cart/page/cart.component';
 @NgModule({
   declarations: [
 
-  
-    CartComponent
   ],
   imports: [
     CommonModule,
     PrivateRoutingModule,
     PublicRoutingModule,
-    ResetPassModule
+    ResetPassModule,
+    CartModule
   ]
 })
 export class PrivateModule { }

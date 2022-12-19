@@ -1,0 +1,50 @@
+<section>
+  <div class="productos-checkout ">
+    <ul>
+      <li *ngFor="let cartItem of cart.items">
+        <div class="product-image">
+          <img [src]="cartItem.product.imageUrl[0]" [alt]="cartItem.product.name">
+        </div>
+
+        <div class="product-name">
+          <a routerLink="/store/{{cartItem.product.id}}">
+            {{cartItem.product.name}}
+          </a>
+        </div>
+
+        <div class="contenedor-cant">
+          <div class="cant-group">
+            <span class="word-cant"><strong>Cantidad</strong></span>
+            <div class="botones">
+              <button (click)="handleProduct('remove')"><strong>-</strong> </button>
+              <input type="text" [value]="productQuantity">
+              <button (click)="handleProduct('add')"><strong>+</strong></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="price">
+          <span class="current-price">
+            <strong>{{ cartItem.product.price| currency }}</strong>
+          </span>
+        </div>
+
+        <div class="buttons">
+          <button class="remove-button" (click)="removeFromCart(cartItem)">
+            Eliminar Producto
+          </button>
+        </div>
+      </li>
+    </ul>
+
+    <div class="checkout">
+      <div class="count-price">
+        <div class="product-count">{{ cart.totalCount }}</div>
+        <div class="total-price">{{ cart.totalPrice | currency }}</div>
+      </div>
+
+      <a routerLink="/checkout">Procesar Pago</a>
+    </div>
+  </div>
+</section>
+
