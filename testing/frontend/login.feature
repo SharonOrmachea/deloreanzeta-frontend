@@ -6,20 +6,6 @@ COMO usuario registrado de  la página Delorean Zeta
 QUIERO loguearme  
 PARA poder comprar productos y revisar mi historial de compras
 
-#FUNCIONALIDADES DEL HEADER de la pagina de Login
-Scenario Outline: Comprobar las funcionalidades del los navbar del Header de la pagina de login
-
-Given estoy en la pagina de inicio de Delorean Zeta
-When hago click en "Iniciar Sesion"
-And hago click sobre el navbar <navbar>
-Then me redirecciona a la pagina <pagina>
-Examples:
-|navbar			|pagina|
-|Logo			|Inicio|
-|Registrate		|Formulario de Crear una Cuenta|
-|Iniciar Sesion	|Formulario de Iniciar Sesion|
-
-
 
 #FORMULARIO DE "INICIAR SESION"
 Scenario Outline: Iniciar Sesion Exitosamente

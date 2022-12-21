@@ -2,12 +2,21 @@
 Feature: Pagina de inicio
 
 COMO visitante del sitio Delorean Zeta
-QUIERO una página de inicio
-PARA visualizar cuales son las secciones y funcionalidades por las que voy a poder navegar
+QUIERO poder navegar dentro del sitio
+PARA visualizar cuales son las secciones y funcionalidades disponibles
 
-#FUNCIONALIDADES DEL HEADER
+Scenario Outline: Comprobar las funcionalidades del los navbar del Header de la pagina de login
+Given estoy en la pagina de inicio de Delorean Zeta
+When hago click en "Iniciar Sesion"
+And hago click sobre el navbar <navbar>
+Then me redirecciona a la pagina <pagina>
+Examples:
+|navbar			|pagina|
+|Logo			|Inicio|
+|Registrate		|Formulario de Crear una Cuenta|
+|Iniciar Sesion	|Formulario de Iniciar Sesion|
 
-Scenario Outline: Comprobar las funcionalidades del los navbar del Header.
+Scenario Outline: Comprobar las funcionalidades del los navbar del Header de la pagina de inicio.
 Given estoy en la pagina de inicio de Delorean Zeta
 When hago click sobre el nav <nav>
 Then me redirecciona a la pagina <pagina>
@@ -18,14 +27,13 @@ Examples:
 |Galeria            	|fotos y videos|
 |Tienda	                |Tienda|
 |La Banda			|Sobre nosotros|
-|Calendario		|Fechas y lugares de eventos|
+|Tours	|Fechas y lugares de eventos|
 |Contartataciones	|Formulario de Contrataciones|
 |Iniciar Sesión		|Formulariode Iniciar Sesión|
+|carrito| carrito|
 
-
-
-#FUNCIONALIDADES DEL CUERPO
-
+@Ignore 
+#falta desarrollar la seccion noticias
 Scenario Outline: Comprobar las funcionalidades de los filtros de la seccion noticias.
 Given estoy en la pagina de inicio de Delorean Zeta
 When hago scroll down hasta la seccion noticias
@@ -36,27 +44,27 @@ Then me muestra las noticias <noticias> primero
 Examples:
 |Boton			|navbar					|noticias|
 |Fechas			|mas receintes primero	|que se subieron ultimas |
-|Fechas  		        | mas antiguas			|mas antiguas |
-|Tipo de Evento	|
-|Categoria		| 
+|Fechas  		| mas antiguas			|mas antiguas |
+|Tipo de Evento	|||
+|Categoria		| ||
 
 
-
+@Ignore 
+#falta desarrollar la seccion noticias
 Scenario: Comprobar funcionalidad de las cards de Noticias
 Given estoy en la pagina de inicio de Delorean Zeta
 When hago scroll down hasta la seccion "Noticias"
 And hago click sobre la imagen o el titulo de la noticia
 Then me amplia la informacion dela noticia.
 
-
+@Ignore 
+#falta desarrollar la seccion noticias
 
 Scenario: Comprobar funcionalidad del Botón "Ver más" de la seccion "Noticias"
 Given estoy en la pagina de inicio de Delorean Zeta
 When hago scroll down hasta la seccion noticias
 And hago click sobre el botón "Ver mas"
 Then me muestra mas noticias
-
-
 
 Scenario: Comprobar funcionalidad de las cards de Tienda
 Given estoy en la pagina de incio de Delorean Zeta
@@ -70,9 +78,6 @@ When hago scroll down hasta la seccion "Tienda"
 And hago click sobre el botón "Ver mas"
 Then me muestra mas productos disponibles en la tienda.
 
-
-
-#FUNCIONALIDADES DEL FOOTER
 
 Scenario Outline: Comprobar redireccionamiento a redes sociales
 Given estoy en la pagina de inicio de Delorean Zeta
