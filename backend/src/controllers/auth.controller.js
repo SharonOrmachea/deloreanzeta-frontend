@@ -1,6 +1,7 @@
 import {pool} from "../db.js";
 import jwt from "jsonwebtoken";
 //import {TOKEN_KEY} from "../config.js"
+import bcrypt from "bcryptjs"
 const TOKEN_KEY = "x4TvnErxRETbVcqaL15dqMI115eN14wD"
 
 export const registro = async (req, res) => {
@@ -13,7 +14,13 @@ export const registro = async (req, res) => {
                 messege: "El usuario ya existe"
             });
         }else{
-            const [usuario] = await pool.query("INSERT INTO usuario(email, password, permisos, nombre, apellido, telefono) VALUES (?, ?, ?, ?, ?, ?)",[email, password, permisos, nombre, apellido, telefono]);
+            let contraseñaEncriptada = await encriptarPassword(password);
+            /*try {
+                contraseñaEncriptada = await bcrypt.hash(password, 10);
+            }catch (error) {
+                throw error;
+            }*/
+            const [usuario] = await pool.query("INSERT INTO usuario(email, password, permisos, nombre, apellido, telefono) VALUES (?, ?, ?, ?, ?, ?)",[email, contraseñaEncriptada, permisos, nombre, apellido, telefono]);
             const token = jwt.sign(
                 {email:email},
                 TOKEN_KEY,
@@ -21,7 +28,7 @@ export const registro = async (req, res) => {
             );
             res.status(200).json({
                 email,
-                password,
+                contraseñaEncriptada,
                 permisos,
                 nombre,
                 apellido,
@@ -59,7 +66,6 @@ const createToken = (req, res) => {
 
 }
 
-
 export const login = async (req, res) => { 
 
     const {email, password} = req.body;
@@ -71,18 +77,18 @@ export const login = async (req, res) => {
                 messege: "El usuario no existe"
             });
         }else{
-            if(password !== usuarioExist[0].password){
+            let claveValida = await desencriptarPassword(password,usuarioExist[0].password);
+
+            if(!claveValida){
                 return res.status(401).json({
                     message: "Clave incorrecta"
                 });
             }else{
-
                 const token = jwt.sign(
                     {email:email},
                     TOKEN_KEY,
                     {expiresIn: "7d"}
                 );
-
                 res.status(200).json({
                     email: usuarioExist[0].email,
                     password: usuarioExist[0].password,
@@ -91,7 +97,7 @@ export const login = async (req, res) => {
                     apellido: usuarioExist[0].apellido,
                     telefono: usuarioExist[0].telefono,
                     token: token
-                })
+                });
             }
         }
     }catch(error){
@@ -101,6 +107,25 @@ export const login = async (req, res) => {
     }
 
 
+}
+
+const encriptarPassword = async (clave) => {
+    try {
+        let contraseñaEncriptada = await bcrypt.hash(clave, 10);
+        return contraseñaEncriptada;
+    }catch (error) {
+        throw error;
+    }
+}
+
+const desencriptarPassword = async (clave, datoEncriptado) => {
+    try {
+        let iguales = await bcrypt.compare(clave, datoEncriptado);
+        console.log(iguales);
+        return iguales;
+    }catch (error) {
+        throw error;
+    }
 }
 
 /*
