@@ -3,10 +3,7 @@ import { CommonModule } from '@angular/common';
 import { PrivateRoutingModule } from './private-routing.module';
 import { ResetPassModule } from './reset-pass/reset-pass.module';
 import { PublicRoutingModule } from '../public/public-routing.module';
-
-
-
-
+import { CartModule } from './cart/cart.module';
 
 
 
@@ -19,7 +16,8 @@ import { PublicRoutingModule } from '../public/public-routing.module';
     CommonModule,
     PrivateRoutingModule,
     PublicRoutingModule,
-    ResetPassModule
+    ResetPassModule,
+    CartModule
   ]
 })
 export class PrivateModule { }
