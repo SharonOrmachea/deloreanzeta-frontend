@@ -1,14 +1,69 @@
 @import 'extends-class'
 
-section
+@import "~swiper/css"
+@import "~swiper/css/navigation"
+
+.contenedorSwiper
   // @extend .flex-column-around-center
   background-repeat: no-repeat
   background-size: 100% 100%
   width: 100%
-  // height: 367px
+  height: 500px
+  color: $white
 
-  img
+  .contenedorImagen
+    // width: 100%
+    // height: 100%
+    object-fit: cover
+    width: 100vw
+    max-width: 3400px
+    min-width: 320px
+    margin: 0
+  //   border-rigth-radius: 54px
+  //   border-left-radius: 54px
+    img
+      width: 100%
+      border-radius: 15px
+      box-shadow: 0px 3px 5px rgba(15, 15, 15, .5)
+
+
+  .swiper
     width: 100%
-    // height: 367px
-    border-rigth-radius: 54px
-    border-left-radius: 54px
+    height: 100%
+
+
+  .swiper-slide
+    text-align: center
+    font-size: 18px
+
+    /* Center slide text vertically */
+    display: -webkit-box
+    display: -ms-flexbox
+    display: -webkit-flex
+    display: flex
+    -webkit-box-pack: center
+    -ms-flex-pack: center
+    -webkit-justify-content: center
+    justify-content: center
+    -webkit-box-align: center
+    -ms-flex-align: center
+    -webkit-align-items: center
+    align-items: center
+
+
+  .swiper-slide img
+    display: block
+    width: 100%
+    // height: 100%
+    object-fit: cover
+
+  .swiper-button-prev,
+  .swiper-button-next
+    display: flex
+    color: $dark-gray
+    background-color: $white
+    width: 60px
+    height: 60px
+    border-radius: 100%
+    // margin: 0 -0.5em
+
