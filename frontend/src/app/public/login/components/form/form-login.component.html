@@ -6,13 +6,12 @@
       <h2><strong>Iniciar Sesión</strong></h2>
     </div>
 
-    <form formControl="login" (ngSubmit)="Submit()" class="form"  name="log-in">
+    <form class="form" action="" method="" name="log-in">
 
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
-          <input type="email" formControlName="mail" id="email" name="email" tabindex=”0” required>
-
+          <input type="email" id="email" name="email" tabindex=”0”>
         </div>
 
         <div class="box-pass">
@@ -20,7 +19,7 @@
             <label for="">Contraseña</label>
             <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
           </div>
-          <input formControlPassword="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0” required>
+          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”>
         </div>
 
       </div>
