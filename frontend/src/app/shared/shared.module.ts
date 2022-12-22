@@ -10,6 +10,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
+import { TitleComponent } from './components/title/title.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.
     NotFoundComponent,
     NavBarLoginComponent,
     ProductsCarruselComponent,
-    NewsCarruselComponent
+    NewsCarruselComponent,
+    TitleComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,8 @@ import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.
     FooterComponent,
     NavBarLoginComponent,
     ProductsCarruselComponent,
-    NewsCarruselComponent
+    NewsCarruselComponent,
+    TitleComponent
   ],
   providers: []
 })

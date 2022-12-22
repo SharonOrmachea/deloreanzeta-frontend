@@ -1,44 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Carousel } from '../../../../shared/models/store/carrusel/carousel';
 import { CarouselService } from '../../../../shared/services/store/carrusel/carousel.service';
+
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
 
 @Component({
   selector: 'app-carrusel',
   templateUrl: './carrusel.component.html',
-  styleUrls: ['./carrusel.component.sass']
+  styleUrls: ['./carrusel.component.sass'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class CarruselComponent implements OnInit {
 
-  // sliders:Carousel[] = [];
+  banners!:Carousel[];
 
-  // @Input() height = 500;
-  // @Input() isFullScreen = false;
-
-  // private finalHeight: string | number = 0;
-  // private currentPosition = 0;
-
-  // constructor(private sliderService:CarouselService) {
-  //   this.sliders = this.sliderService.getAll();
-  //   this.finalHeight = this.isFullScreen ? '100vh' : `${this.height}px`
-  // }
-
-  constructor(){}
-
-  ngOnInit(): void {
-      
+  constructor(private carouselService:CarouselService){
+    this.banners = this.carouselService.getAll()
   }
 
-  // ngOnInit(): void {
-  //   this.sliders.map(( i, index ) => {
-  //     i.id = index;
-  //   })
-  // }
+  ngOnInit(): void {
 
-  // setCurrentPosition(position:number){
-  //   this.currentPosition = position;
-  //   this.sliders.find(i => i.id === 0).
-  // }
+  }
+
+
 
 }

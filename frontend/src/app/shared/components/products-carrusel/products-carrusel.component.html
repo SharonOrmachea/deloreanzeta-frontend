@@ -1,18 +1,17 @@
 <section class="product-carrusel">
-  <div class="contenedor-titulo">
-    <div class="titulo">
-      <h1><strong>Tienda</strong></h1>
-    </div>
-    <button (click)="paginaTienda()">
-      <strong>Ver más <i class="bi bi-arrow-right"></i></strong>
-    </button>
-  </div>
+
+  <app-title
+    [visible]="true"
+    title="Tienda"
+    resetLinkRoute="/store"
+  ></app-title>
 
   <div class="contenedorCarrusel">
     <swiper
     [slidesPerView]="4"
     [spaceBetween]="-990"
     [navigation]="true"
+    [loop]="true"
     [breakpoints]="{
       '300': {
         slidesPerView: 1,
@@ -60,7 +59,7 @@
             <div class="col">
               <div class="image-name">
                 <img
-                  [src]="product.image1"
+                  [src]="product.imageUrl[0]"
                   [alt]="product.name"
                   class="card-img-top"
                 >

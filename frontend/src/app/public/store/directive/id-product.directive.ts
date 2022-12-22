@@ -1,4 +1,4 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Directive, HostListener, ElementRef, HostBinding } from '@angular/core';
 
 @Directive({
   selector: '[appIdProduct]'
@@ -7,8 +7,19 @@ export class IdProductDirective {
 
   constructor(private el:ElementRef) { }
 
+  imagen = true;
+
+  @HostBinding('class.active') get active() {
+    let imageSlide = document.getElementsByClassName("imageSlide");
+    if (this.imagen === true){
+      this.imagen = false
+      return imageSlide[0].classList.add("active");
+    }
+
+  }
+
   @HostListener('click')
-  
+
   changeImage(){
     let source:any = this.el.nativeElement.src;
     let prev:any = document.getElementById("preview");
