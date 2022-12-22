@@ -1,10 +1,12 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 .formulario
   @extend .font-general
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
+
   //------------------------------
   a
     color: $black
@@ -12,11 +14,17 @@
 .box1
   @extend .flex-column-center
   background-color: $white
-  width: auto
+  width: 570px
   height: auto
   border-radius: 16px
   padding: 40px
   gap: 30px
+  @include screen (480px)
+   max-width: 80%
+  @include screen (320px)
+   max-width: 80%
+
+
   //------------------------------
   .titulo
     @extend .flex-column-around-center
@@ -37,14 +45,29 @@
         align-items: flex-end
         vertical-align: bottom
         color: $gray
+        @include screen (480px)
+        margin-left: 80px
+        @include  screen (320px)
+        margin-left: 130px
 
       input
-        width: 487px
-        height: 41px
-        padding: 1px 5px
-        border-radius: 12px
-        border-width: 1px
-        border-color: $gray
+          width: 467px
+          height: 41px
+          padding: 1px 5px
+          border-radius: 12px
+          border-width: 1px
+          border-color: $gray
+    
+          @include screen (480px)
+           max-width: 70%
+           margin-left: 15%
+          @include screen (390px)
+           max-width: 60%
+           margin-left: 20%
+          @include screen (320px)
+           max-width: 50%
+           margin-left: 25%
+
   //------------------------------
   .continue
 
@@ -54,6 +77,14 @@
       background-color: $pink
 
 
+      @include screen (480px)
+        max-width: 60%
+        margin-left: 20%
+      @include screen (320px)
+        max-width: 50%
+        justify-content: center
+        margin-left: 25%
+
 .box2
   background-color: $white
   width: 570px
@@ -62,21 +93,21 @@
   display: flex
   align-items: center
   justify-content: center
+  @include screen (480px)
+  max-width: 80%
+  @include screen (320px)
+   max-width: 80%
   //------------------------------
-  .sign-in
-    display: flex
-    flex-direction: row
-    font-size: 18px
-    gap: 10px
-    margin-top: 15px
+.sign-in
 
-@media (max-width:480px)
-   .box1
-    width: 400px
+  display: flex
+  flex-direction: row
+  font-size: 18px
+  gap: 10px
+  margin-top: 15px
 
-   .box-mail
-     input
-      max-width: 350px
+  @include screen (480px)
+   font-size: 15px
+  @include screen (320px)
+   font-size: 13px
 
-   .box2
-      width: 400px
