@@ -1,18 +1,16 @@
 <section class="news-carrusel">
-  <div class="contenedor-titulo">
-    <div class="titulo">
-      <h1><strong>Noticias</strong></h1>
-    </div>
-    <button (click)="paginaNoticias()">
-      <strong>Ver más <i class="bi bi-arrow-right"></i></strong>
-    </button>
-  </div>
+  <app-title
+    [visible]="true"
+    title="Noticias"
+    resetLinkRoute="/news"
+  ></app-title>
 
   <div class="contenedorCarrusel">
     <swiper
     [slidesPerView]="4"
     [spaceBetween]="-10"
     [navigation]="true"
+    [loop]="true"
     [breakpoints]="{
       '300': {
         slidesPerView: 1,

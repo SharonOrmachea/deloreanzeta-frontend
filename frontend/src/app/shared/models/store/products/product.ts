@@ -4,7 +4,7 @@ export class Product{
   price!:number;
   previousPrice?:number;
   discount?:number;
-  category?:string[];
+  category!:string[];
   imageUrl!:string[];
   description?:string;
 }

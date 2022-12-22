@@ -15,16 +15,21 @@ import { ProductService } from 'src/app/shared/services/store/productos/product.
 
 export class ProductsComponent implements OnInit {
 
-
   products:Product[] = [];
-  categories?:ProductCategories[];
 
-  constructor(private productService:ProductService, activatedRoute:ActivatedRoute) {
+  product!:Product[];
+
+  categories!:ProductCategories[];
+
+  constructor(private productService:ProductService,
+              activatedRoute:ActivatedRoute) {
+
     this.products = this.productService.getAllProducts();
     this.categories = this.productService.getAllProductCategories();
+
     activatedRoute.params.subscribe((params) => {
       if(params['category'])
-      this.products = productService.getProductsByCategories(params['category']);
+      this.products = this.productService.getProductsByCategories(params['category']);
     })
   }
 
