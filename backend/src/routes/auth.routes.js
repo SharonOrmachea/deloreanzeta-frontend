@@ -1,12 +1,13 @@
 import {Router} from "express";
 import {registro, login, getCompras} from "../controllers/auth.controller.js";
-import {verifyToken} from "../middlewares/usuario.helper.js"
+import {verifyToken} from "../middlewares/usuario.helper.js";
+import {validateRegistro, validateLogin} from "../validators/usuario.validator.js";
 
 const router = Router();
 
-router.post("/registro", registro);
+router.post("/registro", validateRegistro, registro);
 
-router.post('/login', login);
+router.post('/login', validateLogin, login);
 
 router.get("/:user/compras",verifyToken, getCompras);
 

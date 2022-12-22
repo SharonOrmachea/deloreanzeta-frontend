@@ -78,7 +78,6 @@ export const login = async (req, res) => {
             });
         }else{
             let claveValida = await desencriptarPassword(password,usuarioExist[0].password);
-
             if(!claveValida){
                 return res.status(401).json({
                     message: "Clave incorrecta"
@@ -121,7 +120,6 @@ const encriptarPassword = async (clave) => {
 const desencriptarPassword = async (clave, datoEncriptado) => {
     try {
         let iguales = await bcrypt.compare(clave, datoEncriptado);
-        console.log(iguales);
         return iguales;
     }catch (error) {
         throw error;
