@@ -35,7 +35,7 @@ export const sample_products: Product[] = [
     ],
     imageUrl: [
       './assets/store/products/delorean(5).png',
-     './assets/store/products/delorean(6).png',
+      './assets/store/products/delorean(6).png',
       './assets/store/products/delorean(7).png',
       './assets/store/products/delorean(8).png'
   ],
@@ -181,10 +181,10 @@ export const sample_products: Product[] = [
 ]
 
 export const sample_productTags: ProductCategories[] = [
-  { id: 1, name: 'Tazas' },
-  { id: 2, name: 'Cuadros' },
-  { id: 3, name: 'Remeras' },
-  { id: 4, name: 'Funkos' },
+  { id: 1, name: 'Tazas', count: 0 },
+  { id: 2, name: 'Cuadros', count: 0 },
+  { id: 3, name: 'Remeras', count: 0 },
+  { id: 4, name: 'Funkos', count: 0 },
 ]
 
 export const sample_news: News[] = [
@@ -235,19 +235,8 @@ export const sample_news: News[] = [
 export const sample_carousel: Carousel[] = [
   {
     id: 1,
-    imageUrl: './assets/store/carrusel/slider1.gif',
-    marginLeft: 2,
+    imageUrl: './assets/store/carrusel/slider1.gif'
   },
-  {
-    id: 2,
-    imageUrl: './assets/store/carrusel/slider2.gif',
-    marginLeft: 2,
-  },
-  {
-    id: 3,
-    imageUrl: './assets/store/carrusel/slider3.gif',
-    marginLeft: 2,
-  }
 ]
 
 export const sample_register: Register[] = [
