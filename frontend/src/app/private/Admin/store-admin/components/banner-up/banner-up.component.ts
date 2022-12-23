@@ -5,6 +5,10 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './banner-up.component.html',
   styleUrls: ['./banner-up.component.sass']
 })
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 export class BannerUpComponent implements OnInit {
 
   public archivos:any = [];
@@ -17,7 +21,11 @@ export class BannerUpComponent implements OnInit {
   captureFile(event:any):any {
     const archivoSubido = event.target.files[0];
     this.archivos.push(archivoSubido);
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
   }
 
 }
