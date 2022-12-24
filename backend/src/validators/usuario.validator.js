@@ -63,8 +63,8 @@ export const validateRegistro = [
         .withMessage("El nombre del usuario no puede estar vacio")
         .isString()
         .withMessage('El nombre del usuario debe ser una cadena de caracteres')
-        .isLength({ min: 4 })
-        .withMessage('El nombre del usuario debe componerse de al menos 4 caracteres')
+        .isLength({ min: 3 })
+        .withMessage('El nombre del usuario debe componerse de al menos 3 caracteres')
         .custom((value, {req}) => {
             if(value.trim() == 0)
                 throw new Error("El nombre no puede componerse unicamente de espacios");
@@ -78,8 +78,8 @@ export const validateRegistro = [
         .withMessage("El apellido del usuario no puede estar vacio")
         .isString()
         .withMessage('El apellido del usuario debe ser una cadena de caracteres')
-        .isLength({ min: 4 })
-        .withMessage('El apellido del usuario debe componerse de al menos 4 caracteres')
+        .isLength({ min: 3 })
+        .withMessage('El apellido del usuario debe componerse de al menos 3 caracteres')
         .custom((value, {req}) => {
             if(value.trim() == 0)
                 throw new Error("El apellido no puede componerse unicamente de espacios");
@@ -93,8 +93,8 @@ export const validateRegistro = [
         .withMessage("El telefono del usuario no puede estar vacio")
         .isString()
         .withMessage('El telefono del usuario debe ser una cadena de caracteres')
-        .isLength({ min: 8 })
-        .withMessage('El telefono del usuario debe componerse de al menos 8 caracteres')
+        .isLength({ min: 10 })
+        .withMessage('El telefono del usuario debe componerse de al menos 10 caracteres')
         .custom((value, {req}) => {
             if(value.trim() == 0)
                 throw new Error("El telefono no puede componerse por espacios");
