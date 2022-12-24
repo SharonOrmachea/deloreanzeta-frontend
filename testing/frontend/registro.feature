@@ -5,25 +5,6 @@ COMO visitante de la página Delorean Zeta
 QUIERO poder registrarme
 PARA poder loguearme y comprar productos.
 
-#FUNCIONALIDADES DE "REGISTRATE"
-
-Scenario: Comprobar la funcionalidad de "Registrate" desde el header de la pagina de login
-
-Given estoy en la pagina de login de Delorean Zeta
-
-When hago click en "Registrate" del header
-Then me redirecciona a la pagina de "Formulario de Crear una Cuenta"
-
-Scenario: Comprobar la funcionalidad de "Registrate" desde la pagina de login
-
-Given estoy en la pagina de login de Delorean Zeta
-
-When hago click en scroll down  hasta "¿No tienes una cuenta? Regístrate."
-And hago click sobre "Regístrate"
-Then me redirecciona a la pagina de "Formulario de Crear una Cuenta"
-
-#FORMULARIO: CREAR UNA Cuenta
-
 Scenario Outline: Registro exitoso completando formulario
 Given estoy en la pagina de Login de  Delorean Zeta
 When hago click en "Registrate"
@@ -50,7 +31,7 @@ Examples:
 
 
 Scenario Outline: Registro fallido por no aceptar términos de uso y políticas de privacidad
-Given estoy en la pagin de Login Delorean Zeta
+Given estoy en la pagina de Login Delorean Zeta
 When hago click en "Registrate"
 And  completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <contraseña>, repetir  contraseña <repetir contraseña>
 And no acepto "Términos de Uso y Politicas de Privacidad"

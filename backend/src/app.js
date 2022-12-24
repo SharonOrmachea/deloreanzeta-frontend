@@ -4,12 +4,12 @@ import productosRoutes from "./routes/productos.routes.js";
 import indexRoutes from "./routes/index.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 
-import cors from "cors";
+//import cors from "cors";
 
 const app = express(); 
 
 app.use(express.json());
-app.use(cors());
+//app.use(cors());
 app.use("/api",indexRoutes);
 app.use("/api",categoriaRoutes);
 app.use("/api",productosRoutes);
