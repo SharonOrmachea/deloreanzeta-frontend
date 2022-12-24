@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
   templateUrl: './form-code-user.component.html',
   styleUrls: ['./form-code-user.component.sass']
 })
+
 export class FormCodeUserComponent implements OnInit {
 
   constructor(private router: Router) { }

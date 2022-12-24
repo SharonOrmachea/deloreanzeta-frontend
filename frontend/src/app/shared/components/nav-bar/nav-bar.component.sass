@@ -1,58 +1,110 @@
 @import 'extends-class'
+@import 'mixins-responsive'
+
+*
+  color: $white
 
 header
   @extend .font-general
-  @extend .flex-evenly-center
+  // @extend .flex-evenly-center
+  display: flex
+  justify-content: space-around
+  // background-color: $pink
+  width: 100%
 
-  img
-    @extend .logoDLZ
+  .logo
+    width: 5%
+    // background-color: $red
+    @include screen(320px)
+      width: 0
+    img
+      @extend .logoDLZ
 
-  .nav-bar
-    display: flex
+  .navbar
+    width: 70%
+    align-items: center
+    // background-color: $violet
+    color: $white
+    @include screen(320px)
+      justify-content: flex-end
+      width: 100%
+      padding: 0 5%
+      margin: 4% 0
+      gap: 1.5em
+
+    .navbar-toggler
+      border: none
+      i
+        color: $white
+        font-size: 2em
+
+    .container-fluid
+      @include screen(320px)
+        width: 100vh
 
     ul
-      display: flex
-      justify-content: space-around
       list-style: none
-      margin: 0
-      padding: 1em
       gap: 2em
 
-    a
-      color: $white
-      font-size: 1.2em
-      text-decoration: none
-
-      a:link
-        text-decoration: none
-        color: $white
-
-      a:visited
-        text-decoration: none
-        color: $white
-
-  .buttons
-    display: flex
-    flex-direction: row
-    justify-content: space-around
-    width: 15%
-
-    .login
-      @extend .general-button
-      @extend .short-button
-      background-color: $pink
-
-    .cart
-      display: flex
-      flex-direction: row
-      color: $white
-      font-size: 1.6em
-      width: 30%
+      @include screen(320px)
+        gap: 1em
+        align-items: center
 
       a
-        text-decoration: none
         color: $white
+        font-size: 1.2em
+        text-decoration: none
 
-      .notificacion
-        font-size: 20px !important
-        color: $pink
+        @include screen(320px)
+          font-size: 1em
+
+        a:link
+          text-decoration: none
+          color: $white
+
+        a:visited
+          text-decoration: none
+          color: $white
+
+    .buttons
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+      width: 30%
+
+      @include screen(320px)
+        flex-direction: column
+        justify-content: space-around
+        align-items: center
+        width: 100%
+        border-top: 1px solid $white
+        padding: 1em 0
+        gap: 1em
+
+      .login
+        @extend .general-button
+        @extend .short-button
+        background-color: $pink
+
+        @include screen(320px)
+          width: 90%
+
+      .cart
+        display: flex
+        flex-direction: row
+        font-size: 1.6em
+        width: 10%
+        
+        @include screen(320px)
+          width: 10%
+
+        a
+          text-decoration: none
+          position: relative
+
+          .notificacion
+            font-size: 20px !important
+            color: #00aae4
+            position: absolute
+            top: -25%
+            left: 60%
