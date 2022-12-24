@@ -1,9 +1,14 @@
 
 $breakpoints: (1920px, 1440px, 1220px, 1064px, 720px , 560px , 480px , 390px , 320px)
 
-
+// Cambios aplicados hasta tal resolucion
 @mixin screen ($breakpoints)
   @media screen and (max-width:$breakpoints)
+      @content
+
+// Cambios aplicados a partir de tal resolucion
+@mixin min-screen ($breakpoints)
+  @media screen and (min-width:$breakpoints)
       @content
 
 
