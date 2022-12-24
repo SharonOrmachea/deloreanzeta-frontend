@@ -14,7 +14,7 @@ export class FormLoginComponent implements OnInit {
   constructor( public fb: FormBuilder) {
  this.Login = this.fb.group(
   { email: new FormGroup('',[Validators.required, Validators.email]),
-    password: new FormGroup('',[Validators.required, Validators.minLength(6)])
+    password: new FormGroup('',[Validators.required, Validators.minLength(8)])
 
   })
    console.log(this.Login)
