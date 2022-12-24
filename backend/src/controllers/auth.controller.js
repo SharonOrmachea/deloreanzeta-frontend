@@ -44,8 +44,6 @@ export const registro = async (req, res) => {
     
 }
 
-
-
 export const getCompras = async (req, res) => {
     try{
         const [rows] = await pool.query("SELECT * from venta WHERE comprador = ?", [req.params.user]);
@@ -60,10 +58,6 @@ export const getCompras = async (req, res) => {
              message: "Error al traer el historial de compras realizadas"
          });
      }
-}
-
-const createToken = (req, res) => {
-
 }
 
 export const login = async (req, res) => { 
@@ -108,6 +102,17 @@ export const login = async (req, res) => {
 
 }
 
+export const logout = async (req, res) => {
+    const authHeader = req.headers["authorization"];
+    jwt.sign(authHeader, "", { expiresIn: 1 } , (logout, err) => {
+       if (logout) {
+          res.send({msg : 'Has sido desconectado' });
+       } else {
+          res.send({msg:'Error'});
+       }
+    });
+}
+
 const encriptarPassword = async (clave) => {
     try {
         let contraseñaEncriptada = await bcrypt.hash(clave, 10);
@@ -125,29 +130,3 @@ const desencriptarPassword = async (clave, datoEncriptado) => {
         throw error;
     }
 }
-
-/*
-    const emailParam = req.body.email;
-    const passwordParam = req.body.password;
-    const [usuario] = await pool.query("SELECT * from usuario WHERE email = ?", [emailParam]);
-    
-    if(passwordParam !== usuario[0].password){
-        return res.status(404).json({
-            message: "Credenciales incorrectas"
-        });
-    }
-    const datos = {
-        email: usuario[0].email,
-        password: usuario[0].password,
-        permisos: usuario[0].permisos,
-        nombre: usuario[0].nombre,
-        apellido: usuario[0].apellido,
-        telefono: usuario[0].telefono
-    };
-    const token = jwt.sign(
-        {email:datos.email},
-        TOKEN_KEY,
-        {expiresIn: "2h"}
-    );
-    let nDatos = {...datos, token};
-    res.json(nDatos);*/
