@@ -1,9 +1,6 @@
 @import 'extends-class'
 @import 'mixins-responsive'
 
-*
-  color: $white
-
 header
   @extend .font-general
   display: flex
@@ -162,6 +159,7 @@ header
           font-size: 1.6em
           width: 10%
 
+
           @include screen(720px)
             width: 50%
 
@@ -174,6 +172,7 @@ header
           a
             text-decoration: none
             position: relative
+            color: $white
 
             .notificacion
               font-size: 20px !important
@@ -219,6 +218,7 @@ header
         a
           text-decoration: none
           position: relative
+          color: $white
 
           .notif-outside
             font-size: 20px !important
