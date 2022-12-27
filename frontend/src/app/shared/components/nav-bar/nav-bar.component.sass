@@ -83,6 +83,13 @@ header
       @include screen(720px)
         width: 40vh
 
+      @include screen(390px)
+        max-width: 90vw
+
+      .collapse
+        @include screen(390px)
+          max-width: 90vw
+
       ul
         list-style: none
         gap: 2em
@@ -99,7 +106,8 @@ header
         @include screen(720px)
           gap: 0.5em
 
-        @include screen(320px)
+        @include screen(390px)
+          max-width: 90vw
           gap: 1em
 
         .navbar-nav
@@ -142,6 +150,9 @@ header
           border-top: 1px solid $white
           padding: 1em 0
           gap: 1em
+
+        @include screen(390px)
+          max-width: 90vh
 
         .login
           @extend .general-button
