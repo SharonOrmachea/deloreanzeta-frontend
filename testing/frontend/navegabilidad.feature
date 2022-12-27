@@ -162,3 +162,10 @@ Examples:
 |Instagram 	|delorean_zeta_oficial|
 |Twitter	||
 |YouTube	|@deloreanzeta8770|
+
+Scenario: Comprobar la funcionalidad de "Registrate" desde la pagina de login
+Given estoy en la pagina de login de Delorean Zeta
+When hago click en scroll down hasta "¿No tienes una cuenta? Registrate."
+And hago click sobre "Registrate"
+Then me redirecciona a la pagina de "Formulario de Crear una Cuenta"
+

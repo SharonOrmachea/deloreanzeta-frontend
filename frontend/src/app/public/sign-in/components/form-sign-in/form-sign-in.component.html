@@ -6,21 +6,21 @@
       <h2><strong>Crear una Cuenta</strong></h2>
     </div>
 
-    <form FormGroup="Register" class="form">
+    <form formGroup="register" id="Formulario" (ngSubmit)="Submit" class="form"  >
      <div class="inputs">
         <div class="box">
           <label for="fname">Nombre</label>
-          <input  type="text" id="fname" name="fname" tabindex=”0” required>
+          <input formControllname ="name" type="text" id="name" name="name" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
         </div>
 
         <div class="box">
           <label for="lname">Apellido</label>
-          <input formControllname ="lname" type="text" id="lname" name="lname" tabindex=”0” required>
+          <input formControllname ="lastname" type="text" id="lname" name="lname" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
         </div>
 
         <div class="box">
           <label for="">Teléfono</label>
-          <input formControlTelephone="Telephone" type="text" id="celphone" name="celphone" tabindex=”0” required>
+          <input formControlTelephone="Telephone" type="text" id="celphone" name="celphone" tabindex=”0” required minlength="10" required pattern="[[0-9]{9}]" required>
         </div>
 
         <div class="box">
@@ -33,7 +33,7 @@
             <label for="">Contraseña</label>
             <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
           </div>
-          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0” required>
+          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”  pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña debe empezar con una letra y contener al menor un dígito" required>
         </div>
 
         <div class="box-pass">
@@ -41,7 +41,7 @@
             <label for="">Repetir contraseña</label>
             <i [className]="hide2 ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide2 = !hide2">{{hide2 ? ' Show' : ' Hide'}}</i>
           </div>
-          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0” required>
+          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”  pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*" title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña debe empezar con un letra y contener al menor un dígito" required>
         </div>
 
       </div>
@@ -54,7 +54,7 @@
           <li type="disc">Usa mayúsculas y minúsculas</li>
         </ul>
         <div class="terminos">
-          <input type="checkbox" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad">
+          <input type="checkbox" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" required>
           <label for="politica-privacidad"><strong>Al crear una cuenta aceptas los Términos de Uso y la Política de Privacidad.</strong></label>
         </div>
 
