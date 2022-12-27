@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder, Validator } from '@angular/forms';
 import { Login } from '../../../../shared/models/sign-in/sign-in';
@@ -12,10 +11,11 @@ import { Login } from '../../../../shared/models/sign-in/sign-in';
 
 export class FormLoginComponent implements OnInit {
 
+  hide = true;
 
-login = FormGroup;
+  login = FormGroup;
 
-constructor() {}
+  constructor() {}
 
  Login = new FormGroup({
     email: new FormControl ('', [Validators.required, Validators.email ,Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
@@ -23,20 +23,10 @@ constructor() {}
     Validators.minLength(8)] )
   });
 
+ Onsubmit(){}
 
 
-
-
- Onsubmit(){
-
- }
-
-  ngOnInit(): void {
-  }
-
-  hide = true;
-
-
+  ngOnInit(): void {}
 
 }
 

@@ -17,7 +17,6 @@ export class BannerUpComponent implements OnInit {
   captureFile(event:any):any {
     const archivoSubido = event.target.files[0];
     this.archivos.push(archivoSubido);
-    
   }
 
 }

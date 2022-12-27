@@ -7,6 +7,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   templateUrl: './form-code-user.component.html',
   styleUrls: ['./form-code-user.component.sass']
 })
+
 export class FormCodeUserComponent implements OnInit {
 
  

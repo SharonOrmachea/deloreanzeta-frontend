@@ -1,43 +1,63 @@
 <header>
-  <a class="logo" routerLink='/home' tabindex=”0”>
-    <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
-  </a>
 
-  <nav class="nav-bar" id="nav-bar">
-    <ul>
-      <li>
-        <a routerLink='/home' routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Inicio</strong></a>
-      </li>
-      <li>
-        <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Galería</strong></a>
-      </li>
-      <li>
-        <a routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tienda</strong></a>
-      </li>
-      <li>
-        <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Noticias</strong></a>
-      </li>
-      <li>
-        <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tours</strong></a>
-      </li>
-      <li>
-        <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>La Banda</strong></a>
-      </li>
-      <li>
-        <a routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Contrataciones</strong></a>
-      </li>
-    </ul>
+  <nav class="navbar navbar-expand-lg">
+    <a class="logo" routerLink='/home' tabindex=”0”>
+      <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="contenedor">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink='/home' routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Inicio</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Galería</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tienda</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Noticias</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tours</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>La Banda</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Contrataciones</strong></a>
+          </li>
+        </ul>
+
+        <div class="buttons">
+          <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
+          <div class="cart">
+            <a routerLink="/store/cart">
+              <i class="bi bi-cart3"></i>
+              <span *ngIf="cartQuantity"><i class="notificacion bi bi-{{ cartQuantity }}-circle-fill"></i></span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="buttons-outside">
+      <button class="login-outside" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
+      <div class="cart-outside">
+        <a routerLink="/store/cart">
+          <i class="bi bi-cart3"></i>
+          <span *ngIf="cartQuantity"><i class="notif-outside bi bi-{{ cartQuantity }}-circle-fill"></i></span>
+        </a>
+      </div>
+    </div>
 
   </nav>
-
-  <div class="buttons">
-    <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
-    <div class="cart">
-      <a routerLink="/store/cart">
-        <i class="bi bi-cart3"></i>
-        <span *ngIf="cartQuantity"><i class="notificacion bi bi-{{ cartQuantity }}-circle-fill"></i></span>
-      </a>
-    </div>
-  </div>
 
 </header>

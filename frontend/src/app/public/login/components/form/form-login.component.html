@@ -13,13 +13,12 @@
           <label for="">Email</label>
           <input type="email" formControlName="email" rol="mail" id="email" name="email" tabindex=”0”  required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]')"title="Introduce un email válido" required>
 
-
         </div>
 
         <div class="box-pass">
           <div class="pass-hide">
             <label for="">Contraseña</label>
-            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
+            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{ hide ? ' Show' : ' Hide' }}</i>
           </div>
           <input  [type]="hide ? 'password' : 'text'" formControlName="password" id="pass" name="pass" tabindex=”0” required minlength="8" required pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*"title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña contener al menos un MAYÚSCULA y un número" required>
         </div>

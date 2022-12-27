@@ -1,6 +1,5 @@
-import { FormGroup, FormBuilder, Validator, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Register } from '../../../../shared/models/sign-up/sign-up';
+
 
 @Component({
   selector: 'app-form-sign-in',
@@ -9,6 +8,8 @@ import { Register } from '../../../../shared/models/sign-up/sign-up';
 })
 export class FormSignInComponent implements OnInit {
 
+  constructor() {}
+  
 Register = FormGroup;
 
 register = new FormGroup({
@@ -21,24 +22,15 @@ register = new FormGroup({
   repeatpassword: new FormControl ( '' , [Validators.required , Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*') ,
   Validators.minLength(8)]),
 
-})
-
-  constructor() {
-    (
-      {
-       }
-    )
-
- }
+});
 
 
-  ngOnInit(): void {
-  }
+
+  ngOnInit(): void {}
 
   hide = true;
   hide2 = true;
-Submit(){
-
-}
+  
+Submit(){}
 
 }
