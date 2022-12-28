@@ -11,13 +11,13 @@
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
-          <input formControlEmail="email" type="email" id="email" name="email" tabindex=”0” required>
+          <input formControlEmail="email" type="email" id="email" name="email" tabindex=”0” required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
         </div>
 
       </div>
 
       <div class="continue">
-        <input type="submit" (click)="continueToCode()" tabindex=”0” value="Continuar" required>
+        <input type="submit" (click)="continueToCode()" tabindex=”0” value="Continuar" >
       </div>
 
     </form>

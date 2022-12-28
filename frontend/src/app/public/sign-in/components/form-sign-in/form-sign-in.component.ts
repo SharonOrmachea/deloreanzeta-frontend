@@ -25,8 +25,7 @@ register = new FormGroup({
 
   constructor() {
     (
-      {
-       }
+      {}
     )
 
  }
