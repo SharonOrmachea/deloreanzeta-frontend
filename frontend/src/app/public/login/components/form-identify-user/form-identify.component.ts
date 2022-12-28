@@ -10,21 +10,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-identify.component.sass']
 })
 export class FormIdentifyComponent implements OnInit {
- Identify = FormGroup;
 
-  identify = new FormGroup ({
-    email: new FormControl ('', [Validators.required, Validators.email ,Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')])
-})
+  identify:FormGroup;
 
   constructor(private router: Router) {
+    this.identify = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')])
+    })
 
-
-}
+  }
 
   ngOnInit(): void {
   }
 
-  continueToCode(){
+  continueToCode() {
     this.router.navigate(['login/code'])
   }
 

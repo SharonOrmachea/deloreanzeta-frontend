@@ -1,4 +1,5 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 section
   color: $white
@@ -11,8 +12,18 @@ section
     align-items: center
     width: 92%
     padding: 1em 2em
-    margin-left: 5em
+    margin: auto
     border-bottom: 1px solid $white
+
+    @include screen(390px)
+      width: 75%
+      justify-content: space-around
+      margin: auto
+
+    h1
+      @include screen(390px)
+        font-size: 1.5em
+
 
     .verMas
       width: 10%

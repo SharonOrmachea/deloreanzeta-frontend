@@ -40,9 +40,9 @@ export class IdProductComponent implements OnInit {
     if(this.productQuantity < 20 && value === 'add'){
       this.productQuantity += 1
       active.classList.remove('error-active');
-    }else if( this.productQuantity>1 && value ==='remove'){
+    } else if( this.productQuantity>1 && value ==='remove'){
       this.productQuantity -= 1
-    }else if(this.productQuantity == 1 && value ==='remove'){
+    } else if(this.productQuantity == 1 && value ==='remove'){
       active.classList.add('error-active')
     }
   }

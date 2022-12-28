@@ -6,13 +6,12 @@
       <h2><strong>Iniciar Sesión</strong></h2>
     </div>
 
-    <form formGroup="login" class="form"  name="log-in">
+    <form [formGroup]="login" class="form"  name="log-in">
 
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
           <input type="email" formControlName="email" rol="mail" id="email" name="email" tabindex=”0”  required pattern="[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]')"title="Introduce un email válido" required>
-
         </div>
 
         <div class="box-pass">
@@ -22,7 +21,6 @@
           </div>
           <input  [type]="hide ? 'password' : 'text'" formControlName="password" id="pass" name="pass" tabindex=”0” required minlength="8" required pattern="[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*"title="Una contraseña válida es un conjuto de caracteres, donde cada uno consiste de una letra mayúscula o minúscula, o un dígito. La contraseña contener al menos un MAYÚSCULA y un número" required>
         </div>
-
       </div>
 
       <div class="login">
