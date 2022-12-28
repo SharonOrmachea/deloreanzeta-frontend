@@ -34,7 +34,7 @@ header
     @include screen(390px)
       margin: 0
       gap: 1.5em
-
+      padding: 0
 
     //--------LOGO DLZ---------------------------
     .logo
@@ -75,6 +75,7 @@ header
       display: flex
       justify-content: space-around
       align-items: center
+      width: 100%
       // background-color: $gray
 
       @include screen(991px)
@@ -86,8 +87,14 @@ header
       @include screen(390px)
         max-width: 90vw
 
+      @include screen(290px)
+        max-width: 90vw
+
       .collapse
         @include screen(390px)
+          max-width: 90vw
+
+        @include screen(290px)
           max-width: 90vw
 
       ul
