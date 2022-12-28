@@ -7,7 +7,6 @@ import { FormLoginComponent } from './components/form/form-login.component';
 import { LoginComponent } from './pages/login.component';
 import { FormCodeUserComponent } from './components/form-code-user/form-code-user.component';
 import { FormIdentifyComponent } from './components/form-identify-user/form-identify.component';
-import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,9 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     PublicRoutingModule,
-    SharedModule,
-    ReactiveFormsModule
-
+    SharedModule
   ]
 })
 export class LoginModule { }
