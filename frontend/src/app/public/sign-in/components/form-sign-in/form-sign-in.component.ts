@@ -14,11 +14,6 @@ export class FormSignInComponent implements OnInit {
   hide = true;
   hide2 = true;
 
-  constructor() { }
-
-  ngOnInit(): void { }
-
-  Register = FormGroup;
 
   register = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('a-z')]),
@@ -31,6 +26,14 @@ export class FormSignInComponent implements OnInit {
     Validators.minLength(8)]),
 
   });
+
+  constructor() { }
+
+  ngOnInit(): void { }
+
+ 
+
+ 
 
   Submit() { }
 
