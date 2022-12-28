@@ -4,8 +4,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { SignInComponent } from './pages/sign-in.component';
 import { FormSignInComponent } from './components/form-sign-in/form-sign-in.component';
-
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,7 +14,9 @@ import { FormSignInComponent } from './components/form-sign-in/form-sign-in.comp
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+   
+  
   ]
 })
 export class SignInModule { }

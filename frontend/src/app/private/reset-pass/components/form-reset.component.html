@@ -6,7 +6,7 @@
       <h2><strong>Cambiar Contraseña</strong></h2>
     </div>
 
-    <form class="form" action="" method="" name="reset-password">
+    <form formGroup="reset" (ngSubmit)="submit" class="form" action="" method="" name="reset-password">
 
       <div class="inputs">
 
@@ -15,7 +15,7 @@
             <label for="">Contraseña</label>
             <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
           </div>
-          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”>
+          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0” required minlength="8"  required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe contener una mayúscula y al menos un número" required>
         </div>
 
         <div class="box-pass">
@@ -23,7 +23,7 @@
             <label for="">Repetir contraseña</label>
             <i [className]="hide2 ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide2 = !hide2">{{hide2 ? ' Show' : ' Hide'}}</i>
           </div>
-          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”>
+          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”  required minlength="8"  required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe contener una mayúscula y al menos un número" required>
         </div>
 
       </div>
