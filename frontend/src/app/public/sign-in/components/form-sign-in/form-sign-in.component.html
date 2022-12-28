@@ -6,7 +6,7 @@
       <h2><strong>Crear una Cuenta</strong></h2>
     </div>
 
-    <form formGroup="register" id="Formulario" (ngSubmit)="Submit" class="form"  >
+    <form [formGroup]="register" id="Formulario" (ngSubmit)="Submit" class="form"  >
      <div class="inputs">
         <div class="box">
           <label for="fname">Nombre</label>
