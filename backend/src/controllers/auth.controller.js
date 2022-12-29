@@ -71,6 +71,8 @@ export const login = async (req, res) => {
                 messege: "El usuario no existe"
             });
         }else{
+            const tokenSesion = await tokenSing(email);
+            
             let claveValida = await desencriptarPassword(password,usuarioExist[0].password);
             if(!claveValida){
                 return res.status(401).json({

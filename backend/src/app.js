@@ -9,7 +9,10 @@ import cors from "cors";
 const app = express(); 
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    credentials:true,
+    origin:["http://localhost:4200"]
+}));
 app.use("/api",indexRoutes);
 app.use("/api",categoriaRoutes);
 app.use("/api",productosRoutes);
