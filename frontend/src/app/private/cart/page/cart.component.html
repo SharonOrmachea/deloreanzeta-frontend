@@ -1,7 +1,10 @@
-<!-- <section>
+<section>
 
   <app-title
     title="Carrito de Compras"
+    [visible]="true"
+    resetLinkRoute="/store"
+    titleButton="Volver a la tienda"
   ></app-title>
   <app-not-found
     [visible]="!cart || !cart.items.length"
@@ -13,5 +16,5 @@
     *ngIf="cart && cart.items.length"
   ></app-cart-products>
 
-</section> -->
+</section>
 

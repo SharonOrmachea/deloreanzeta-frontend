@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-
-import { sample_products, sample_productTags } from '../../../../../data';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 import { Product } from 'src/app/shared/models/store/products/product';
 import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
+import { PRODUCT_URL, PRODUCT_CATEGORIES_URL, PRODUCT_BY_CATEGORIES_URL, PRODUCT_BY_ID_URL } from '../../../constants/urls';
 
 
 @Injectable({
@@ -12,24 +13,28 @@ import { ProductCategories } from 'src/app/shared/models/store/category/product-
 
 export class ProductService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  getAllProducts():Product[]{
-    return sample_products;
+  // Traer todos los productos del back-end
+  getAllProducts():Observable<Product[]>{
+    return this.http.get<Product[]>(PRODUCT_URL);
   }
 
-  getProductById(productId:string){
-    return this.getAllProducts().find(product => product.id == productId) ?? new Product();
+  // Traer los productos por categoria del back-end
+  getProductById(productId:string):Observable<Product>{
+    return this.http.get<Product>(PRODUCT_BY_ID_URL + productId);
   }
 
-  getAllProductCategories():ProductCategories[]{
-    return sample_productTags;
+  // Traer todas las categorias de los productos del back-end
+  getAllProductCategories():Observable<ProductCategories[]>{
+    return this.http.get<ProductCategories[]>(PRODUCT_CATEGORIES_URL);
   }
 
-  getProductsByCategories(tag:string):Product[]{
+  // Traer productos por categoria del back-end
+  getProductsByCategories(tag:string):Observable<Product[]>{
     return tag === "All"?
     this.getAllProducts():
-    this.getAllProducts().filter(product => product.category?.includes(tag));
+    this.http.get<Product[]>(PRODUCT_BY_CATEGORIES_URL + tag);
   }
 
 }
