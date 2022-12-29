@@ -1,40 +1,50 @@
-@ceciliaBruno @regresion @tienda @paginaDeProducto
+@ceciliaBruno @regresion @tienda @paginaDeProducto @ceci
 Feature: Tienda de Productos
 
 COMO visitante del sitio Delorean Zeta
 QUIERO una página de producto
-PARA ver los detalles del productos
-
-Scenario: Abrir un producto desde la pagina de inicio
-Given estoy en la pagina de inicio de Delorean Zeta
-When hago scroll hacia abajo hasta la seccion "Tienda"
-And hago click sobre el primer producto
-Then se abre la pagina de producto
-Then me muestra imagenes, nombre, categoria, precio,descuento,cantidad, detalle, medios de pago
-Then puedo visualizar el boton "Agregar al carrito"
+PARA ver los detalles del producto
 
 Scenario: Abrir un producto desde la tienda
-Given estoy en la pagina de inicio de Delorean Zeta
-When hago scroll hacia abajo hasta la seccion "Tienda"
-And hago click sobre el botòn "Ver mas"
-And hago click sobre el primer producto
-Then se abre la pagina de producto
-Then me muestra imagenes, nombre, categoria, precio,descuento,cantidad, descripcion, medios de pago
-Then me muestra el boton "Agregar al carrito"
+Given estoy en store de Delorean Zeta
+When hago scroll down hasta "Todos los productos"
+When  hago click sobre el primer producto del catalogo
+Then se visualiza la informacion del producto 
+Then se visualiza el boton  "Agregar al Carrito"
 
-Scenario Outline: Verificar funcionalidades de los botones de la pagina de producto
-Given estoy  en la pagina de producto
-When hago click en <funcion>
-Then verifico que <verificacion>
+Scenario Outline: Visualizar foto ampliada
+Given estoy  en store de Delorean Zeta
+When hago click en el primer producto del catalogo
+When hago click en la <foto>
+Then se visualiza la <foto> ampliada
 Examples:
-|funcion|verificacion|
-|foto| la foto se abre y apraece ampliada|
-|Agregar al carrito| me redirecciona a la pagina para concretar compra|
-|cantidad +| aumenta la cantidad de producto seleccionado|
-|cantidad -| disminuye la cantidad de producto seleccionado|
-|medios de pago|me amplia la lista de medios de pago|
+|foto|
+|primer foto|
+|segunda foto|
+|tercer foto|
+|cuarta foto|
 
-Scenario: Visualizar la infromacion de un producto
+Scenario: Agregar un producto al carrito
+Given estoy en store de Delorean Zeta
+When hago click en el primer producto del catalogo
+When hago click en "Agregar al Carrito"
+Then se visualiza que el producto se agrego al carrito
+
+Scenario: Modificar la cantidad de un producto
+Given estoy en store de Delorean Zeta
+When hago click en el primer producto del catalogo
+When hago click en el signo "+"
+Then se verifica que la cantidad es igual a "2"
+When hago click en el "-"
+Then se verifica que la cantidad es igual a "1"
+
+Scenario: Mensaje de error por dismunir la cantidad  de un producto a "0"
+Given estoy en store de Delorean Zeta
+When hago click en el primer producto del catalogo
+When hago click en el signo "-"
+Then se visualiza el mensaje de error: "No se puede descontar más productos"
+
+Scenario: Visualizar la informacion de un producto
 Given estoy en la pagina de producto
 When selecciono un prodcuto
 And hago scroll down sobre la pagina
