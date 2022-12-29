@@ -1,6 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder, Validator } from '@angular/forms';
-import { Login } from '../../../../shared/models/sign-in/sign-in';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-form-login',
@@ -13,20 +13,22 @@ export class FormLoginComponent implements OnInit {
 
   hide = true;
 
-  login = FormGroup;
+  login:FormGroup
 
-  constructor() {}
-
- Login = new FormGroup({
-    email: new FormControl ('', [Validators.required, Validators.email ,Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
-    password: new FormControl ('' , [Validators.required , Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*') ,
-    Validators.minLength(8)] )
-  });
-
- Onsubmit(){}
+  constructor() {
+    this.login = new FormGroup({
+      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
+      password: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'),
+      Validators.minLength(8)])
+    });
+  }
 
 
-  ngOnInit(): void {}
+
+  Onsubmit() { }
+
+
+  ngOnInit(): void { }
 
 }
 

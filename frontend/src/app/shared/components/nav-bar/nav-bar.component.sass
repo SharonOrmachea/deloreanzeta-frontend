@@ -34,7 +34,7 @@ header
     @include screen(390px)
       margin: 0
       gap: 1.5em
-
+      padding: 0
 
     //--------LOGO DLZ---------------------------
     .logo
@@ -75,6 +75,7 @@ header
       display: flex
       justify-content: space-around
       align-items: center
+      width: 100%
       // background-color: $gray
 
       @include screen(991px)
@@ -82,6 +83,19 @@ header
 
       @include screen(720px)
         width: 40vh
+
+      @include screen(390px)
+        max-width: 90vw
+
+      @include screen(290px)
+        max-width: 90vw
+
+      .collapse
+        @include screen(390px)
+          max-width: 90vw
+
+        @include screen(290px)
+          max-width: 90vw
 
       ul
         list-style: none
@@ -99,11 +113,9 @@ header
         @include screen(720px)
           gap: 0.5em
 
-        @include screen(320px)
+        @include screen(390px)
+          max-width: 90vw
           gap: 1em
-
-        .navbar-nav
-          margin: 0
 
         a
           color: $white
@@ -142,6 +154,9 @@ header
           border-top: 1px solid $white
           padding: 1em 0
           gap: 1em
+
+        @include screen(390px)
+          max-width: 90vh
 
         .login
           @extend .general-button

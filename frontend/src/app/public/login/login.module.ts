@@ -20,8 +20,7 @@ import { FormIdentifyComponent } from './components/form-identify-user/form-iden
   imports: [
     CommonModule,
     PublicRoutingModule,
-    SharedModule,
- 
+    SharedModule
   ]
 })
 export class LoginModule { }
