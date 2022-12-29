@@ -102,3 +102,23 @@ export const deleteProducto = async (req, res) => {
         });
     }
 }
+
+export const getProductosNombreCategoria = async (req, res) => {
+
+    console.log("el params: ",req.params.nombre);
+    
+    try{
+        const [preBusqueda] = await pool.query("SELECT id from categoria WHERE nombre = ?", [req.params.nombre]);
+        const [rows] = await pool.query("SELECT * from producto WHERE categoria = ?", preBusqueda[0].id);
+        if(rows.length <= 0){
+            return res.status(404).json({
+             message: "Producto not found"
+             });  
+         }
+         res.json(rows);
+     }catch(error){
+         return res.status(500).json({
+             message: "Error al traer los productos por categoria"
+         });
+     }
+}
