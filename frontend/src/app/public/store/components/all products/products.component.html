@@ -1,53 +1,74 @@
-<section class="contenedor">
-  <div class="contenedor-titulo">
-    <div class="titulo">
-      <h1><strong>Todos los productos</strong></h1>
+<body>
+  <app-carrusel></app-carrusel>
+
+  <app-not-found
+    [visible]="!products || !products.length"
+    notFoundMessage="No hay productos cargados en la tienda"
+    resetLinkText="Volver a Inicio"
+    resetLinkRoute="/home"
+  ></app-not-found>
+
+  <section class="contenedor" *ngIf="products && products.length">
+
+    <app-title
+      title="Todos los productos"
+    ></app-title>
+
+    <div class="contenedor-categoria">
+      <div class="category">
+        <a *ngFor="let tag of categories" routerLink="/store/category/{{ tag.name }}" class="tag">
+          <strong>{{ tag.name }}</strong>
+        </a>
+      </div>
+
+      <div class="notFound">
+
+        <!-- <app-not-found
+          [visible]="categories.name"
+          notFoundMessage="Aún no hay productos asociados a esta categoría"
+          resetLinkText="Volver a la Tienda"
+          resetLinkRoute="/store"
+        ></app-not-found> -->
+
+      </div>
     </div>
 
-    <div class="category">
-      <a *ngFor="let tag of categories" routerLink="/store/category/{{tag.name}}" class="tag">
-        <strong>{{tag.name}}</strong>
-      </a>
-    </div>
-
-  </div>
-
-  <div class="contenedor-productos">
-    <ul>
-      <li *ngFor="let product of products">
-        <a routerLink="/store/product/{{ product.id }}">
-          <div class="col">
-            <div class="image-name">
-              <img
-                [src]="product.imageUrl[0]"
-                [alt]="product.name"
-                class="card-img-top"
-              >
-              <div class="name">
-                <strong>{{ product.name }}</strong>
+    <div class="contenedor-productos" *ngIf="categories.length">
+      <ul>
+        <li *ngFor="let product of products">
+          <a routerLink="/store/product/{{ product.id }}">
+            <div class="col">
+              <div class="image-name">
+                <img
+                  [src]="product.imageUrl[0]"
+                  [alt]="product.name"
+                  class="card-img-top"
+                >
+                <div class="name">
+                  <strong>{{ product.name }}</strong>
+                </div>
               </div>
             </div>
+          </a>
 
+          <div class="contenedor-precio">
+            <div class="cart">
+              <button>
+                <strong><i class="bi bi-cart3"></i></strong>
+              </button>
+            </div>
+
+            <div class="price">
+              <span>
+                <strong>{{ product.price | currency }}</strong>
+              </span>
+            </div>
           </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</body>
 
-        </a>
-
-        <div class="contenedor-precio">
-          <div class="cart">
-            <button>
-              <strong><i class="bi bi-cart3"></i></strong>
-            </button>
-          </div>
-
-          <div class="price">
-            <span>
-              <strong>{{ product.price | currency }}</strong>
-            </span>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
-</section>
 
 

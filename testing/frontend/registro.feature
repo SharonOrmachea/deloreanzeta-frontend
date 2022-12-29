@@ -1,116 +1,55 @@
-@ceciliaBruno @Registro @regresion
+@ceciliaBruno @Registro @regresion @ceci
 Feature: Registro
 
 COMO visitante de la página Delorean Zeta
 QUIERO poder registrarme
 PARA poder loguearme y comprar productos.
 
-#FUNCIONALIDADES DE "REGISTRATE"
-
-Scenario: Comprobar la funcionalidad de "Registrate" desde el header de la pagina de login
-
-Given estoy en la pagina de login de Delorean Zeta
-
-When hago click en "Registrate" del header
-Then me redirecciona a la pagina de "Formulario de Crear una Cuenta"
-
-Scenario: Comprobar la funcionalidad de "Registrate" desde la pagina de login
-
-Given estoy en la pagina de login de Delorean Zeta
-
-When hago click en scroll down  hasta "¿No tienes una cuenta? Regístrate."
-And hago click sobre "Regístrate"
-Then me redirecciona a la pagina de "Formulario de Crear una Cuenta"
-
-#FORMULARIO: CREAR UNA Cuenta
-
-Scenario Outline: Registro exitoso completando formulario
-Given estoy en la pagina de Login de  Delorean Zeta
-When hago click en "Registrate"
-And  completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <contraseña>, repetir  contraseña <repetir contraseña>
-And acepto "Términos de Uso y Politicas de Privacidad"
-And hago click en "Crear Cuenta"
-Then me re direcciona a la pagina de usuario logueado.
-
+Scenario Outline: Registro exitoso
+Given estoy en sign-in de Delorean Zeta
+When completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <pass>, repetir  contraseña <repite_pass>
+When acepto "Términos de Uso y Politicas de Privacidad"
+When hago click en "Crear Cuenta"
+#Then se visualiza un mensaje de "Registro exitoso"
 Examples:
-|nombre |apellido	|telefono  	| email	 |contraseña	|repetir contraseña|
-|cecilia    |bruno	|0261333333	|ceciprueba@gmail.com	|CeciPrueba1234$	|CeciPrueba1234$|
+|nombre     |apellido	|telefono  	| email	                 |pass      	    |repite_pass|
+|cecilia    |bruno	    |0261333333	|ceciprueba@gmail.com	 |CeciPrueba1234$	|CeciPrueba1234$|
 
-Scenario Outline: Registro fallido por <dato invalido>
-Given estoy en la pagina de Login de  Delorean Zeta
-When hago click en "Registrate"
-And  completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <contraseña>, repetir  contraseña <repetir contraseña>
-And acepto "Términos de Uso y Politicas de Privacidad"
-And hago click en "Crear Cuenta"
-Then me re direcciona a la pagina de usuario logueado.
-
+Scenario Outline: Registro fallido por <dato_invalido>
+Given estoy en sign-in de Delorean Zeta
+When completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <pass>, repetir  contraseña <repite_pass>
+When acepto "Términos de Uso y Politicas de Privacidad"
+When hago click en "Crear Cuenta"
+Then se visualiza un mensaje de error <error>
 Examples:
-|dato invalido|nombre|apellido	|telefono	| email|contraseña			|repetir contraseña|
-
-
+|dato_invalido           |nombre   |apellido |telefono  | email	              |pass      	    |repite_pass    |error|
+|usuario ya existente    |cecilia  |bruno	 |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|usuario ya existente |
+|email sin @             |cecilia  |bruno	 |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|email sin dominio       |cecilia  |bruno	 |0261333333|ceciprueba@gmail     |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|email con caracteres    |cecilia  |bruno    |0261333333|@%&%/?¡@gmail.com	  |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|emial sin usuario       |cecilia  |bruno    |0261333333|@gmail.com			  |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|email por punto inicial |cecilia  |bruno    |0261333333|.ceciprueba@gmail	  |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|email por punto final   |cecilia  |bruno    |0261333333|ceciprueba.@gmail	  |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|email vacio             |cecilia  |bruno    |0261333333|                     |CeciPrueba1234$	|CeciPrueba1234$|email incorrecto|
+|contraseña vacia        |cecilia  |bruno    |0261333333|ceciprueba@gmail.com |             	|CeciPrueba1234$|Debes ingresar una contraseña|
+|contraseña sin mayuscula|cecilia  |bruno    |0261333333|ceciprueba@gmail.com |ceciprueba1234$	|ceciprueba1234$|Contraseña incorrecta|
+|contraseña sin minuscula|cecilia  |bruno    |0261333333|ceciprueba@gmail.com |CECIPRUEBA1234$	|CECIPRUEBA1234$|Contraseña incorrecta|
+|contraseña sin numero   |cecilia  |bruno    |0261333333|ceciprueba@gmail.com |ceciprueba$	    |ceciprueba$	|Contraseña incorrecta|	
+|contraseña sin simbolo  |cecilia  |bruno    |0261333333|ceciprueba@gmail.com |ceciprueba1234 	|ceciprueba1234 |Contraseña incorrecta|
+|nombre vacio            |         |bruno    |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|Campo incompleto|
+|nombre invalido         |1234234  |bruno    |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|nombre invalido|
+|apellido vacio          |cecilia  |         |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|Campo incompleto|
+|apellido invalido       |cecilia  |!$#""    |0261333333|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|Apellido invalido|
+|telefono vacio          |cecilia  |bruno    |          |ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|Campo incompleto|
+|telefono invalido       |cecilia  |bruno    |WEF#$#"wwr|ceciprueba@gmail.com |CeciPrueba1234$	|CeciPrueba1234$|Telefono invalido|
+|repite_pass incorrecta  |cecilia  |bruno    |0261333333|ceciprueba@gmail.com|CeciPrueba1234$	|ceciprueba1234$|contraseña incorrecta|
 
 Scenario Outline: Registro fallido por no aceptar términos de uso y políticas de privacidad
-Given estoy en la pagin de Login Delorean Zeta
-When hago click en "Registrate"
-And  completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <contraseña>, repetir  contraseña <repetir contraseña>
-And no acepto "Términos de Uso y Politicas de Privacidad"
-And hago click en "Crear Cuenta"
+Given estoy en sign-in de Delorean Zetaan Zeta
+When completo el formulario con nombre <nombre>, apellido <apellido>, telefono <telefono>, email <email>, contraseña <pass>, repetir  contraseña <repite_pass>
+When no acepto "Términos de Uso y Politicas de Privacidad"
+When hago click en "Crear Cuenta"
 Then recibo un mensaje de <mensaje>
-
 Examples:
 |nombre		|apellido	|telefono	| email					|contraseña			|repetir contraseña	|mensaje|
 |cecilia	|bruno		|0261333333	|ceciprueba@gmail.com	|CeciPrueba1234$	|CeciPrueba1234$	|"Debe aceptar los Términos de Uso y Políticas de Privacidad"|
-
-Scenario Outline: Mostrar Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  completo la contraseña <contraseña> del formulario
-And hago click en el "ojo"
-Then cambia el icono del ojo
-And me muestra los caracteres ingresados en la contraseña
-Examples:
-|contraseña|
-|CeciPrueba1234$|
-
-Scenario Outline: Ocultar Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  completo la contraseña <contraseña> del formulario
-And hago click en el "ojo" dos veces
-Then cambia el icono del ojo y  me muestra y oculta los caracteres ingresados en la contraseña respectivamente
-Examples:
-|pass|
-|CeciPrueba1234$|
-
-Scenario Outline: Mostrar Repetir Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  completo Repetir contraseña <contraseña>
-And hago click en el "ojo"
-Then cambia el icono del ojo
-And me muestra los caracteres ingresados en Repetir contraseña
-Examples:
-|contraseña|
-|CeciPrueba1234$|
-
-Scenario Outline: Ocultar Repetir Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  completo Repetir contraseña <contraseña>
-And hago click en el "ojo" dos veces
-Then cambia el icono del ojo y  me muestra y oculta los caracteres ingresados en la  repetir contraseña respectivamente
-Examples:
-|pass|
-|CeciPrueba1234$|
-
-Scenario: Leer "Términos de Uso"
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  hago click sobre "Términos de Uso"
-Then me redireciona a una pagina con  los términos y condiciones de uso de la página.
-
-Scenario: Leer "Política de Privacidad"
-Given estoy en la pagina de login de Delorean Zeta
-When hago click en Registrate
-And  hago click sobre "Política de Privacidad"
-Then me redireciona a una pagina con la Poltica de Privacidad

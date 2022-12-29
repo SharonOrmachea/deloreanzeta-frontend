@@ -4,7 +4,7 @@ import productosRoutes from "./routes/productos.routes.js";
 import indexRoutes from "./routes/index.routes.js";
 import authRoutes from "./routes/auth.routes.js";
 
-import cors from "cors";
+//import cors from "cors";
 
 const app = express(); 
 

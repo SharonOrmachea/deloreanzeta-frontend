@@ -1,58 +1,246 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 header
   @extend .font-general
-  @extend .flex-evenly-center
+  display: flex
+  justify-content: space-around
+  width: 100%
 
-  img
-    @extend .logoDLZ
+  @include screen(720px)
+    align-items: flex-start
 
-  .nav-bar
+  .navbar
+    width: 100%
     display: flex
+    align-items: center
+    justify-content: space-around
+    color: $white
+    gap: 1em
 
-    ul
+    @include screen(1220px)
+      gap: 0.2em
+
+    @include min-screen (992px)
+      width: 100%
+      gap: 0
+
+    @include screen(720px)
+      width: 100%
+      padding: 0 5%
+      margin: 3% 0
+      gap: 1em
+
+    @include screen(390px)
+      margin: 0
+      gap: 1.5em
+      padding: 0
+
+    //--------LOGO DLZ---------------------------
+    .logo
+      width: 8%
       display: flex
       justify-content: space-around
-      list-style: none
-      margin: 0
-      padding: 1em
-      gap: 2em
+      // background-color: $red
 
-    a
-      color: $white
-      font-size: 1.2em
-      text-decoration: none
+      @include min-screen (992px)
+        width: 12%
 
-      a:link
-        text-decoration: none
+      @include screen(991px)
+        justify-content: flex-start
+        width: 75%
+
+      @include screen(720px)
+        width: 80%
+
+      @include screen(480px)
+        width: 75%
+
+      @include screen(390px)
+        width: 65%
+
+      img
+        @extend .logoDLZ
+
+    //-------BOTON MENU RESPONSIVE---------------
+    .navbar-toggler
+      border: none
+
+      i
         color: $white
+        font-size: 2em
 
-      a:visited
-        text-decoration: none
-        color: $white
-
-  .buttons
-    display: flex
-    flex-direction: row
-    justify-content: space-around
-    width: 15%
-
-    .login
-      @extend .general-button
-      @extend .short-button
-      background-color: $pink
-
-    .cart
+    //------ MENU ESCRITORIO + INICIAR SESION RESPONSIVE----------------
+    .contenedor
       display: flex
+      justify-content: space-around
+      align-items: center
+      width: 100%
+      // background-color: $gray
+
+      @include screen(991px)
+        min-width: 40vh
+
+      @include screen(720px)
+        width: 40vh
+
+      @include screen(390px)
+        max-width: 90vw
+
+      @include screen(290px)
+        max-width: 90vw
+
+      .collapse
+        @include screen(390px)
+          max-width: 90vw
+
+        @include screen(290px)
+          max-width: 90vw
+
+      ul
+        list-style: none
+        gap: 2em
+        min-width: 70%
+        // background-color: $pink
+
+        @include screen(1220px)
+          gap: 0.5em
+
+        @include screen(991px)
+          gap: 0.5em
+          align-items: center
+
+        @include screen(720px)
+          gap: 0.5em
+
+        @include screen(390px)
+          max-width: 90vw
+          gap: 1em
+
+        a
+          color: $white
+          font-size: 1.2em
+          text-decoration: none
+
+          @include screen(1220px)
+            font-size: 1.1em
+
+          @include screen(320px)
+            font-size: 1em
+
+          a:link
+            text-decoration: none
+            color: $white
+
+          a:visited
+            text-decoration: none
+            color: $white
+
+      //----BOTON INICIAR SESION RESPONSIVE------
+      .buttons
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+        width: 30%
+        gap: 1em
+
+        @include min-screen (992px)
+          display: none
+
+        @include screen(991px)
+          flex-direction: column
+          align-items: center
+          width: 100%
+          border-top: 1px solid $white
+          padding: 1em 0
+          gap: 1em
+
+        @include screen(390px)
+          max-width: 90vh
+
+        .login
+          @extend .general-button
+          @extend .short-button
+          background-color: $pink
+
+          @include screen(991px)
+            width: 50%
+
+        .cart
+          display: flex
+          flex-direction: row
+          justify-content: space-around
+          align-items: center
+          font-size: 1.6em
+          width: 10%
+
+
+          @include screen(720px)
+            width: 50%
+
+          @include screen(390px)
+            width: 70%
+
+          @include screen(320px)
+            width: 90%
+
+          a
+            text-decoration: none
+            position: relative
+            color: $white
+
+            .notificacion
+              font-size: 20px !important
+              color: #00aae4
+              position: absolute
+              top: -25%
+              left: 60%
+
+    //----BOTON INICIAR SESION ESCRITORIO----
+    .buttons-outside
+      display: none
       flex-direction: row
-      color: $white
-      font-size: 1.6em
-      width: 30%
+      justify-content: space-evenly
+      min-width: 15%
+      gap: 0.2em
+      // background-color: $violet
 
-      a
-        text-decoration: none
-        color: $white
+      @include min-screen (992px)
+        display: flex
 
-      .notificacion
-        font-size: 20px !important
-        color: $pink
+      @include screen(991px)
+        flex-direction: column
+        align-items: center
+        width: 100%
+        border-top: 1px solid $white
+        padding: 1em 0
+        gap: 1em
+
+      .login-outside
+        @extend .general-button
+        @extend .short-button
+        background-color: $pink
+        min-width: 30%
+
+      .cart-outside
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        align-items: center
+        font-size: 1.6em
+        width: 10%
+
+        a
+          text-decoration: none
+          position: relative
+          color: $white
+
+          .notif-outside
+            font-size: 20px !important
+            color: #00aae4
+            position: absolute
+            top: -25%
+            left: 60%
+
+
+

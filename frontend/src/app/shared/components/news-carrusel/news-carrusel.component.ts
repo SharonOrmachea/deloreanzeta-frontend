@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -18,7 +17,7 @@ export class NewsCarruselComponent implements OnInit {
 
   news:News[] = [];
 
-  constructor(private noticiaService:NewsService, private router: Router) {
+  constructor(private noticiaService:NewsService) {
     this.news = this.noticiaService.getAll();
   }
 
@@ -26,8 +25,6 @@ export class NewsCarruselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  paginaNoticias(){
-    this.router.navigate(['/news'])
-  }
+
 
 }

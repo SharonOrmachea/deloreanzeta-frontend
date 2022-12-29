@@ -1,4 +1,11 @@
-<main>
+<app-not-found
+  [visible]="!product.id"
+  notFoundMessage="Producto no disponible"
+  resetLinkText="Volver a la tienda"
+  resetLinkRoute="/store"
+></app-not-found>
+
+<main *ngIf="product.id">
   <section class="contenedor">
 
     <div class="product container">
@@ -55,11 +62,9 @@
             </div>
           </div>
 
-
           <div class="error container" id="error">
             <p class="removeError"><strong>No se puede descontar más productos</strong></p>
           </div>
-
         </div>
 
         <div class="add-cart">

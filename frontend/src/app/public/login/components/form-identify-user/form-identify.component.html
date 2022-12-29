@@ -6,12 +6,12 @@
       <h2><strong>Recupera tu Cuenta</strong></h2>
     </div>
 
-    <form class="form" action="" method="" name="recover">
+    <form formGroup="identify" class="form" action="" method="" name="recover" >
 
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
-          <input type="email" id="email" name="email" tabindex=”0” required>
+          <input formControlEmail="email" type="email" id="email" name="email" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
         </div>
 
       </div>
