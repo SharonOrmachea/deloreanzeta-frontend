@@ -1,4 +1,4 @@
-@ceciliaBruno @regresion @tienda @paginaDeProducto
+@ceciliaBruno @regresion @tienda @paginaDeProducto @ceci
 Feature: Tienda de Productos
 
 COMO visitante del sitio Delorean Zeta

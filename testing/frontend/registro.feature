@@ -1,4 +1,4 @@
-@ceciliaBruno @Registro @regresion
+@ceciliaBruno @Registro @regresion @ceci
 Feature: Registro
 
 COMO visitante de la página Delorean Zeta

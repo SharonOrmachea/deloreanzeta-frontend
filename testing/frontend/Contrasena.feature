@@ -1,4 +1,4 @@
-@ceciliaBruno @contraseña @regresion
+@ceciliaBruno @contraseña @regresion @ceci
 Feature: Password
 
 COMO usuario registrado de  la página Delorean Zeta

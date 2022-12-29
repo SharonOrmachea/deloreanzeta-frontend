@@ -1,4 +1,4 @@
-@ceciliaBruno @Login @regresion
+@ceciliaBruno @Login @regresion @ceci
 Feature: Login
 
 COMO usuario registrado de  la página Delorean Zeta

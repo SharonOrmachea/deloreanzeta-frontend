@@ -1,4 +1,4 @@
-@ceciliaBruno @PaginaDeInicio @regresion
+@ceciliaBruno @PaginaDeInicio @regresion @ceci
 Feature: navegabilidad
 
 COMO visitante de Delorean Zeta

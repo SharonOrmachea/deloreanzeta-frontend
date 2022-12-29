@@ -1,4 +1,4 @@
-@ceciliaBruno @Carrito_de_compras @regresion
+@ceciliaBruno @Carrito_de_compras @regresion @ceci
 Feature: Carrito_de_compras
 
 COMO usuario logueado
