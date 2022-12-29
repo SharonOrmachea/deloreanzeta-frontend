@@ -1,7 +1,6 @@
 @ceciliaBruno @contraseña @regresion
 Feature: Password
 
-Scenario Outline: Mostrar Contraseña
 COMO usuario registrado de  la página Delorean Zeta
 QUIERO restablecer mi cotraseña
 PARA poder poder loguearme 
