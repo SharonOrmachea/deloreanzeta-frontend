@@ -3,57 +3,30 @@ Feature: Login
 
 COMO usuario registrado de  la página Delorean Zeta
 QUIERO loguearme  
-PARA poder comprar productos y revisar mi historial de compras
+PARA poder comprar productos 
+#y revisar mi historial de compras
 
 Scenario Outline: Iniciar Sesion Exitosamente
 Given estoy en la pagina de login de Delorean Zeta
 And soy un usuario registrado
-When completo el formulario con Email <email> and contraseña <pass> validos
-And hago click en el boton "Iniciar Sesion"
-Then me re direcciona a la pagina de usuario logueado
+When completo el formulario con email <email> and contraseña <pass> validos
+When hago click en el boton "Iniciar Sesion"
+Then me redirecciona a la pagina de usuario logueado
 Examples:
 |email				    |pass|
 |ceciprueba@gmail.com	|CeciPrueba1234$|
 
-Scenario Outline: No Iniciar Sesion con <datos invalidos>
+Scenario Outline: No Iniciar Sesion con <datos_invalidos>
 Given estoy en la pagina de login de Delorean Zeta
 And soy un usuario registrado
-When completo el formulario con Email <email> and contraseña <pass>
+When completo el formulario con email <email> and contraseña <pass>
 And hago click en el boton "Iniciar Sesion"
 Then me envia mensaje de error <error> y no me permite loguearme
 
 Examples:
-|datos invalidos                                |email			          |pass				    | error|
-|email invalido sin @                           |cecipruebagmail.com	  |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|email invalido sin dominio                     |ceciprueba@gmail		  |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|email invalido por caracteres              	|@%&%/?¡@gmail.com	      |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|emial sin nombre de usuario	                 | @gmail.com			  |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|email invalido por punto inicial en la direccion|.ceciprueba@gmail	      |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|email invalido por punto final  en la direccion |ceciprueba.@gmail	      |CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|contraseña invalida por no tener mayuscula 	 |ceciprueba@gmail.com	  |ceciprueba1234$		|Dato invvalido, revisa tu email o contraseña|
-|contraseña invalida por no tener minuscula	     |ceciprueba@gmail.com    |CECIPRUEBA1234$		|Dato invvalido, revisa tu email o contraseña|
-|contraseña invalida por no tener numero         |ceciprueba@gmail.com	|ceciprueba$			|Dato invvalido, revisa tu email o contraseña|
-|contraseña invalida por no tener caracter       |ceciprueba@gmail.com	|ceciprueba1234 		|Dato invvalido, revisa tu email o contraseña|
-|usuario no registrado					         |ceciceci@gmail.com	|CeciPrueba1234$		|Dato invvalido, revisa tu email o contraseña|
-
-Scenario Outline: Mostrar Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-And soy un usuario registrado
-When completo el formulario con email <email> and contraseña <pass>
-And hago click en el "ojo"
-Then cambia el icono del ojo
-And me muestra los caracteres ingresados en la contraseña
-Examples:
-|email                  |pass|
-|ceciprueba@gmail.com	|CeciPrueba1234$|
-
-
-Scenario Outline: Ocultar Contraseña
-Given estoy en la pagina de login de Delorean Zeta
-And soy un usuario registrado
-When completo el formulario con email <email> and contraseña <pass>
-And hago click en el "ojo" dos veces
-Then cambia el icono del ojo y  me muestra y oculta los caracteres ingresados en la contraseña respectivamente
-Examples:
-|email				|pass|
-|ceciprueba@gmail.com	|CeciPrueba1234$|
+|datos_invalidos            |email			        |pass		    | error|
+|email por formato invalido |ceciliagmail.com       |ceciprueba1234$|Usuario y/o contraseña incorrecta|
+|email vacio                |                       |ceciprueba1234$|Usuario y/o contraseña incorrecta|
+|contraseña invalida        |ceciprueba@gmail.com   |ceciprueba1234$|Usuario y/o contraseña incorrecta|
+|contraseña vacia           |ceciprueba@gmail.com   |               |Usuario y/o contraseña incorrecta|
+|usuario no registrado		|ceciceci@gmail.com	    |CeciPrueba1234$|El usuario no existe|
