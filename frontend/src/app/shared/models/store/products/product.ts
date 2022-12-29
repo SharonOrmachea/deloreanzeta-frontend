@@ -7,4 +7,5 @@ export class Product{
   category!:string[];
   imageUrl!:string[];
   description?:string;
+  information?:string;
 }

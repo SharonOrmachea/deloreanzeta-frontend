@@ -6,12 +6,13 @@
       <h2><strong>Iniciar Sesión</strong></h2>
     </div>
 
-    <form formGroup="login"  class="form"  name="log-in">
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" class="form"  name="log-in">
 
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
           <input type="email" formControlName="email" rol="mail" id="email" name="email" tabindex=”0”   required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+          <div *ngIf="fc['email'].errors"></div>
         </div>
 
         <div class="box-pass">
