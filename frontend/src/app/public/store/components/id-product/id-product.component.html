@@ -1,11 +1,11 @@
 <app-not-found
-  [visible]="!product.id"
+  [visible]="!product"
   notFoundMessage="Producto no disponible"
   resetLinkText="Volver a la tienda"
   resetLinkRoute="/store"
 ></app-not-found>
 
-<main *ngIf="product.id">
+<main *ngIf="product">
   <section class="contenedor">
 
     <div class="product container">
@@ -50,6 +50,10 @@
           <span class="discount">
             <strong class="discount">{{ product.discount }}% de descuento</strong>
           </span>
+        </div>
+
+        <div class="description">
+          {{product.description}}
         </div>
 
         <div class="contenedor-cant-error">

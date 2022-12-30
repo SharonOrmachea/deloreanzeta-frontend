@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 import { Product } from 'src/app/shared/models/store/products/product';
 import { ProductService } from 'src/app/shared/services/store/productos/product.service';
@@ -17,11 +18,16 @@ export class StoreComponent implements OnInit {
   categories?:ProductCategories[];
 
   constructor(private productService:ProductService, activatedRoute:ActivatedRoute) {
-    this.categories = this.productService.getAllProductCategories();
+
+    let productsObservable:Observable<Product[]>;
+
+    productService.getAllProductCategories().subscribe(serverProductCategories => {
+      this.categories = serverProductCategories;
+    });
 
     activatedRoute.params.subscribe((params) => {
       if(params['category'])
-      this.products = productService.getProductsByCategories(params['category']);
+        productsObservable = this.productService.getProductsByCategories(params['category']);
     })
   }
 

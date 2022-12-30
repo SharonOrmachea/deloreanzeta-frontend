@@ -18,6 +18,7 @@ import { StoreModule } from './store/store.module';
     PublicRoutingModule,
     PrivateRoutingModule,
     HomeModule,
+    LoginModule,
     SignInModule,
     StoreModule
 

@@ -14,7 +14,6 @@ export class FormSignInComponent implements OnInit {
   hide = true;
   hide2 = true;
 
-
   register = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('a-z')]),
     lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('a-z')]),
@@ -31,9 +30,6 @@ export class FormSignInComponent implements OnInit {
 
   ngOnInit(): void { }
 
- 
-
- 
 
   Submit() { }
 

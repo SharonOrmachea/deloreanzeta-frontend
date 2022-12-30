@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
-
-
 
 
 
@@ -20,6 +19,7 @@ import { PrivateComponent } from './private/private.component';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     SharedModule

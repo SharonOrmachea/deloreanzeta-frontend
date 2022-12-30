@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 
 import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 import { Product } from 'src/app/shared/models/store/products/product';
@@ -24,12 +25,21 @@ export class ProductsComponent implements OnInit {
   constructor(private productService:ProductService,
               activatedRoute:ActivatedRoute) {
 
-    this.products = this.productService.getAllProducts();
-    this.categories = this.productService.getAllProductCategories();
+    let productsObservable:Observable<Product[]>;
+
+    productsObservable = this.productService.getAllProducts();
+
+    productService.getAllProductCategories().subscribe(serverProductCategories => {
+      this.categories = serverProductCategories;
+    });
 
     activatedRoute.params.subscribe((params) => {
       if(params['category'])
-      this.products = this.productService.getProductsByCategories(params['category']);
+        productsObservable = this.productService.getProductsByCategories(params['category']);
+      else
+        productsObservable.subscribe((serverProduct) => {
+          this.products = serverProduct;
+        })
     })
   }
 

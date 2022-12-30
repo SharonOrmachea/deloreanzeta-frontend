@@ -14,6 +14,9 @@ export class TitleComponent implements OnInit {
   visible = false;
 
   @Input()
+  titleButton = "";
+
+  @Input()
   resetLinkRoute = "";
 
   constructor() { }
