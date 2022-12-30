@@ -2,7 +2,6 @@ import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
-import { Login } from "./app/shared/models/sign-in/sign-in";
 import { Register } from './app/shared/models/sign-up/sign-up';
 
 export const sample_products: Product[] = [
@@ -22,7 +21,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(3).png',
       './assets/store/products/delorean(4).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.',
+    information: ''
   },
   {
     id: '2',
@@ -39,7 +39,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(7).png',
       './assets/store/products/delorean(8).png'
   ],
-    description: 'Soy la informacion del producto'
+    description: 'Soy la informacion del producto',
+    information: ''
   },
   {
     id: '3',
@@ -56,7 +57,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(11).jpg',
       './assets/store/products/delorean(12).png'
     ],
-    description: 'Soy la informacion del producto'
+    description: 'Soy la descripcion del producto',
+    information: ''
   },
   {
     id: '4',
@@ -74,7 +76,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(3).png',
       './assets/store/products/delorean(4).png'
     ],
-    description: 'Soy la informacion del producto'
+    description: 'Soy la descripcion del producto',
+    information: ''
   },
   {
     id: '5',
@@ -91,7 +94,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(7).png',
       './assets/store/products/delorean(8).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: '',
+    information: ''
   },
   {
     id: '6',
@@ -108,7 +112,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(11).png',
       './assets/store/products/delorean(12).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: '',
+    information: ''
   },
   {
     id: '7',
@@ -125,7 +130,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(3).png',
       './assets/store/products/delorean(4).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: '',
+    information: ''
   },
   {
     id: '8',
@@ -142,7 +148,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(7).png',
       './assets/store/products/delorean(8).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: '',
+    information: ''
   },
   {
     id: '9',
@@ -159,7 +166,8 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(11).png',
       './assets/store/products/delorean(12).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+    description: '',
+    information: ''
   },
   {
     id: '10',
@@ -176,15 +184,16 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(3).png',
       './assets/store/products/delorean(4).png'
     ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
+    description: '',
+    information: ''
+  }
 ]
 
 export const sample_productTags: ProductCategories[] = [
-  { id: 1, name: 'Tazas', count: 0 },
-  { id: 2, name: 'Cuadros', count: 0 },
-  { id: 3, name: 'Remeras', count: 0 },
-  { id: 4, name: 'Funkos', count: 0 },
+  { id: 1, name: 'Tazas' },
+  { id: 2, name: 'Cuadros'},
+  { id: 3, name: 'Remeras'},
+  { id: 4, name: 'Funkos'},
 ]
 
 export const sample_news: News[] = [
@@ -274,21 +283,3 @@ export const sample_register: Register[] = [
   }
 ]
 
-export const sample_login: Login[] = [
-  {
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.02@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.03@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.04@test.com',
-    password: 'contraPrueba123'
-  }
-]

@@ -1,4 +1,4 @@
-@import 'extends-class' 
+@import 'extends-class'
 @import 'mixins-responsive'
 
 .formulario
@@ -21,7 +21,7 @@
 
   @include screen (560px)
      max-width:80%
- 
+
   @include screen (480px)
       max-width:70%
 
@@ -54,7 +54,7 @@
          font-size:12px
         @include screen (320px)
          margin-left:150px
-     
+
 
       .box-pass
         display: flex
@@ -72,7 +72,7 @@
             cursor: pointer
             @include screen(320px)
               font-size:12px
-           
+
 
       input
         width: 487px
@@ -94,7 +94,7 @@
   .login
     @extend .flex-column-around-center
     gap: 20px
-    input
+    button
       @extend .general-button
       @extend .large-button
       background-color: $pink

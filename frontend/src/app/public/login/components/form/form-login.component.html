@@ -11,7 +11,7 @@
       <div class="inputs">
         <div class="box-mail">
           <label for="">Email</label>
-          <input type="email" formControlName="email" rol="mail" id="email" name="email" tabindex=”0”   required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+          <input type="email" formControlName="email" tabindex=”0” title="hola this a test" required>
           <div *ngIf="fc['email'].errors"></div>
         </div>
 
@@ -20,12 +20,12 @@
             <label for="">Contraseña</label>
             <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{ hide ? ' Show' : ' Hide' }}</i>
           </div>
-          <input  [type]="hide ? 'password' : 'text'" formControlName="password" id="pass" name="pass" tabindex=”0” required minlength="(8)" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe contener una mayúscula y al menos un número" required>
+          <input [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” title="hola this a test" required>
         </div>
       </div>
 
       <div class="login">
-        <input type="submit" tabindex=”0” value="Iniciar Sesión">
+        <button type="submit" tabindex=”0” >Iniciar Sesión</button>
         <a routerLink='/login/identify' routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>¿Olvidaste tu contraseña?</strong></a>
       </div>
 
