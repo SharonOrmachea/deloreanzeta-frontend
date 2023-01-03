@@ -14,6 +14,7 @@ import { FormCodeUserComponent } from './login/components/form-code-user/form-co
 import { StoreComponent } from './store/page/store.component';
 import { ProductsComponent } from "./store/components/all products/products.component";
 import { IdProductComponent } from "./store/components/id-product/id-product.component";
+import { HiringComponent } from "./hiring/page/hiring.component";
 
 
 
@@ -34,8 +35,9 @@ const routes: Routes = [
         { path: '', component: ProductsComponent },
         { path: 'product/:id', component: IdProductComponent },
         { path: 'category/:category', component: ProductsComponent },
-        
+
       ]},
+      { path: 'hiring', component: HiringComponent },
     ]
   }
 ];
