@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -13,6 +13,7 @@ import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.c
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -27,16 +28,10 @@ import { TitleComponent } from './components/title/title.component';
     TitleComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     CommonModule,
     RouterModule,
     SwiperModule,
-    ToastrModule.forRoot({
-      timeOut:5000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
-    })
+
   ],
   exports: [
     RouterModule,

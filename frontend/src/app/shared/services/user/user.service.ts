@@ -6,7 +6,9 @@ import { User } from '../../models/user/user';
 import { IUserLogin } from '../../interfaces/iuserlogin';
 import { HttpClient } from '@angular/common/http';
 import { USER_LOGIN_URL } from '../../constants/urls';
-import { ToastrService } from 'ngx-toastr/public_api';
+import { ToastrService } from 'ngx-toastr';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +22,7 @@ export class UserService {
 
   constructor(private http:HttpClient, private toastrService:ToastrService) {
     this.userObservable = this.userSubject.asObservable();
-   }
+  }
 
   login(userLogin:IUserLogin):Observable<User>{
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(

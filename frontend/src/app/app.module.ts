@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -21,8 +23,18 @@ import { PrivateComponent } from './private/private.component';
     CommonModule,
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    ToastrModule.forRoot({
+      timeOut:5000,
+      positionClass:'toast-bottom-right',
+      newestOnTop:false,
+      maxOpened: 1,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      preventDuplicates: true,
+    })
   ],
   providers: [
 
