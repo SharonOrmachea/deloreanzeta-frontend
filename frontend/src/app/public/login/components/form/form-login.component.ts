@@ -37,7 +37,7 @@ export class FormLoginComponent implements OnInit {
       password:['', Validators.required]
     });
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl']
+    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
   }
 
   get fc(){
@@ -55,8 +55,7 @@ export class FormLoginComponent implements OnInit {
     }).subscribe(() => {
       this.router.navigateByUrl(this.returnUrl);
     });
-   }
-
+  }
 
 
 

@@ -3,12 +3,14 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 
 import { User } from '../../models/user/user';
 
-import { IUserLogin } from '../../interfaces/iuserlogin';
+import { IUserLogin } from '../../interfaces/iUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL } from '../../constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../../constants/urls';
 import { ToastrService } from 'ngx-toastr';
+import { IUserRegister } from '../../interfaces/iUserRegister';
 
 
+const USER_KEY = 'User';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 
 export class UserService {
 
-  private userSubject = new BehaviorSubject<User>(new User());
+  private userSubject = new BehaviorSubject<User>(this.getUserFromLocalStorage());
 
   public userObservable:Observable<User>
 
@@ -28,6 +30,7 @@ export class UserService {
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(
       tap({
         next: (user) => {
+          this.setUserToLocalStorage(user);
           this.userSubject.next(user);
           this.toastrService.success(
           `Welcome to Foodmine ${user.name}!`,
@@ -39,5 +42,40 @@ export class UserService {
         }
       })
     );
+  }
+
+  register(userRegister:IUserRegister): Observable<User>{
+    return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(
+      tap({
+        next: (user) => {
+          this.setUserToLocalStorage(user);
+          this.userSubject.next(user);
+          this.toastrService.success(
+          `Welcome to Delorean Zeta Site ${user.name}`,
+          'Register Successful'
+          )
+        },
+        error: (errorResponse) => {
+          this.toastrService.error(errorResponse.error,
+            'Register Failed')
+        }
+      })
+    )
+  }
+
+  logout(){
+    this.userSubject.next(new User());
+    localStorage.removeItem(USER_KEY);
+    window.location.reload();
+  }
+
+  private setUserToLocalStorage(user:User) {
+    localStorage.setItem(USER_KEY, JSON.stringify(user));
+  }
+
+  private getUserFromLocalStorage():User{
+    const userJson = localStorage.getItem(USER_KEY);
+    if(userJson) return JSON.parse(userJson) as User;
+    return new User();
   }
 }

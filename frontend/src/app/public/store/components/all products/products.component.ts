@@ -22,8 +22,9 @@ export class ProductsComponent implements OnInit {
 
   categories!:ProductCategories[];
 
-  constructor(private productService:ProductService,
-              activatedRoute:ActivatedRoute) {
+  constructor(
+    private productService:ProductService,
+    activatedRoute:ActivatedRoute) {
 
     let productsObservable:Observable<Product[]>;
 
@@ -34,12 +35,13 @@ export class ProductsComponent implements OnInit {
     });
 
     activatedRoute.params.subscribe((params) => {
-      if(params['category'])
+      if(params['category']){
         productsObservable = this.productService.getProductsByCategories(params['category']);
-      else
+      } else{
         productsObservable.subscribe((serverProduct) => {
           this.products = serverProduct;
         })
+      }
     })
   }
 

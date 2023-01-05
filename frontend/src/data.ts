@@ -2,7 +2,6 @@ import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
-import { Register } from './app/shared/models/sign-up/sign-up';
 
 export const sample_products: Product[] = [
   {
@@ -248,38 +247,5 @@ export const sample_carousel: Carousel[] = [
   },
 ]
 
-export const sample_register: Register[] = [
-  {
-    name: 'Jotaro',
-    lastname: 'Joestar',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
-  },
-  {
-    name: 'Dio',
-    lastname: 'Brando',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
-  },
-  {
-    name: 'Sanji',
-    lastname: 'Vinsmoke',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
-  },
-  {
-    name: 'Zoro',
-    lastname: 'Roronoa',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
-  }
-]
+
 
