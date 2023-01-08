@@ -1,10 +1,18 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 .formulario
   @extend .font-general
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
+
+  @include screen (480px)
+    max-width: 100%
+  @include screen (390px)
+    max-width: 100%
+  @include screen (320px)
+    max-width: 100%
   //------------------------------
   a
     color: $black
@@ -17,6 +25,15 @@
   border-radius: 16px
   padding: 40px
   gap: 30px
+
+  @include screen (560px)
+     max-width:80%
+
+  @include screen (480px)
+      max-width:70%
+
+  @include screen (320px)
+   max-width: 80%
   //------------------------------
   .titulo
     @extend .flex-column-around-center
@@ -27,11 +44,26 @@
   .form
     @extend .flex-column-center
     gap: 60px
+    @include screen (480px)
+     max-width:80%
+    @include screen (290px)
+     max-width: 70%
 
     .inputs
       @extend .flex-column-center
       gap: 50px
-
+      @include screen (480px)
+        max-width: 100%
+    .box-code
+      @include screen (480px)
+          max-width: 100%
+          margin-right: 45%
+      @include screen (390px)
+          max-width: 90%
+      @include screen (320px)
+          max-width: 80%
+      @include screen (290px)
+          max-width: 105%
       label
         display: flex
         align-items: flex-end
@@ -45,13 +77,42 @@
         border-radius: 12px
         border-width: 1px
         border-color: $gray
+
+        @include screen (480px)
+          max-width: 150%
+          margin-rigth: 60%
+
   //------------------------------
   .continue
-
+    @include screen (480px)
+     max-width: 200%
+    @include screen (390px)
+     max-width: 200%
+    @include screen (320px)
+     max-width: 200%
+    @include screen (290px)
+     max-width: 200%
     input
       @extend .general-button
       @extend .large-button
       background-color: $pink
+
+      @include screen (480px)
+       max-width: 50%
+       margin-left: 25%
+      @include screen (390px)
+       max-width: 50%
+       margin-left: 25%
+      @include screen (320px)
+       max-width: 50%
+       margin-left: 25%
+      @include screen (290px)
+       max-width: 60%
+       margin-left: 20%
+    strong
+      @include screen (290px)
+      font-size: 12px
+
 
 
 .box2
@@ -62,6 +123,13 @@
   display: flex
   align-items: center
   justify-content: center
+
+
+  @include screen (480px)
+    max-width:70%
+
+  @include screen (320px)
+   max-width: 80%
   //------------------------------
   .sign-in
     display: flex
@@ -69,15 +137,10 @@
     font-size: 18px
     gap: 10px
     margin-top: 15px
+    @include screen (480px)
+     font-size: 15px
+    @include screen (390px)
+      font-size: 13px
+    @include screen (320px)
+      font-size: 13px
 
-@media (max-width: 480px)
-
-   .box1
-    width: 400px
-
-   .box-code
-     input
-      max-width: 350px
-
-   .box2
-      width: 400px
