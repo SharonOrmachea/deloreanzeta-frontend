@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div class="contenedor-productos" *ngIf="categories.length">
+    <div class="contenedor-productos">
       <ul>
         <li *ngFor="let product of products">
           <a routerLink="/store/product/{{ product.id }}">
