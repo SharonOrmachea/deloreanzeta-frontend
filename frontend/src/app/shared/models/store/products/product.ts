@@ -1,7 +1,7 @@
 export class Product{
   id!:string;
   name!:string;
-  price!:number;
+  price!:any|number;
   previousPrice?:number;
   discount?:number;
   category!:string[];

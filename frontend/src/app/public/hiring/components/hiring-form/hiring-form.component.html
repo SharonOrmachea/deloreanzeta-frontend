@@ -1,1 +1,48 @@
-<p>hiring-form works!</p>
+<section class="formulario">
+    <div class="box1">
+      <div class="titulo">
+        <img src="../../../../assets/DLZ-Autito2.png" alt="">
+        <h2><strong>Contrataciones</strong></h2>
+      </div>
+
+      <div class="div-form">
+        <form formGroup="register" id="Formulario" class="form"  >
+          <div class="inputs">
+            <div class="box">
+              <label for="fname">Nombre</label>
+              <input class="input-area" formControllname ="name" type="text" id="name" name="name" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
+            </div>
+  
+            <div class="box">
+              <label for="lname">Apellido</label>
+              <input class="input-area" formControllname ="lastname" type="text" id="lname" name="lname" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
+            </div>
+  
+            <div class="box">
+              <label for="">Teléfono</label>
+              <input class="input-area" formControlTelephone="Telephone" type="text" id="celphone" name="celphone" tabindex=”0” required minlength="10" required pattern="[0-9]{2}[0-9]{4}[0-9]{4}" required>
+            </div>
+  
+            <div class="box">
+              <label for="">Email</label>
+              <input class="input-area" formControlEmail="email" type="email" id="email" name="email" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+            </div>
+
+            <div class="box">
+              <label for="">Asunto</label>
+              <input class="input-area" type="textarea" id="business" name="business" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+            </div>
+
+            <div class="box">
+              <label for="">Mensaje</label>
+              <textarea name="textarea" id="" cols="30" rows="10" class="textarea"></textarea>
+            </div>
+
+          </div>
+        </form>
+        <div class="submit">
+          <input type="submit" id="submit" name="submit" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required class="input-submit">
+        </div>
+      </div>
+    </div>
+  </section>
