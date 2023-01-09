@@ -35,7 +35,7 @@
           </li>
         </ul>
 
-        <div class="buttons" *ngIf="!isAuth">
+        <div class="buttons" >
           <button class="sign-in" (click)="paginaSignIn()" tabindex=”0”><strong>Regístrate</strong></button>
           <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
         </div>
@@ -50,23 +50,23 @@
       </div>
     </div>
 
-    <div class="buttons-outside" *ngIf="!isAuth">
+    <div class="buttons-outside" >
       <button class="sign-in-outside" (click)="paginaSignIn()" tabindex=”0”><strong>Regístrate</strong></button>
       <button class="login-outside" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
     </div>
-    <div class="user-outside" *ngIf="isAuth">
+    <div class="user-outside" >
       <ul>
         <li class="menu-container" >
           <a routerLink="/dashboard"><strong>Sharon</strong></a>
           <div class="menu">
             <a routerLink="/profile"><strong>Perfil</strong></a>
             <a routerLink="/orders"><strong>Pedidos</strong></a>
-            <a (click)="logout()"><strong>Cerrar Sesión</strong></a>
+            <a (click)="onLogout()"><strong>Cerrar Sesión</strong></a>
           </div>
         </li>
       </ul>
     </div>
-    <div class="cart-outside" *ngIf="isAuth">
+    <div class="cart-outside" >
       <a routerLink="/store/cart">
         <i class="bi bi-cart3"></i>
         <span class="notif-outside" *ngIf="cartQuantity">

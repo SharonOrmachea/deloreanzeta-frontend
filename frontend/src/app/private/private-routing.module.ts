@@ -6,7 +6,8 @@ import { ResetPassComponent } from "./reset-pass/pages/reset-pass.component";
 import { CartComponent } from './cart/page/cart.component';
 import { ProductsComponent } from "../public/store/components/all products/products.component";
 import { StoreComponent } from "../public/store/page/store.component";
-import { StoreAdminComponent } from "./Admin/store-admin/pages/store-admin.component";
+import { UserComponent } from './user/page/user.component';
+import { AdminProfileComponent } from "./Admin/admin-profile/page/admin-profile.component";
 
 
 
@@ -19,7 +20,11 @@ const routes: Routes = [
         { path: '', component: ProductsComponent },
         { path: 'cart', component: CartComponent },
       ]},
-      { path: 'admin/store', component: StoreAdminComponent },
+      { path: 'admin/profile', component: AdminProfileComponent },
+      { path: 'user/profile', component: UserComponent, children: [
+        // { path: '', component: ProductsComponent },
+        // { path: '', component: ProductsComponent },
+      ] },
     ]
   }
 ];

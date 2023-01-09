@@ -85,12 +85,12 @@ export const login = async (req, res) => {
                     {expiresIn: "7d"}
                 );
                 res.status(200).json({
-                    email: usuarioExist[0].email,
-                    password: usuarioExist[0].password,
-                    permisos: usuarioExist[0].permisos,
-                    nombre: usuarioExist[0].nombre,
-                    apellido: usuarioExist[0].apellido,
-                    telefono: usuarioExist[0].telefono,
+                    // email: usuarioExist[0].email,
+                    // password: usuarioExist[0].password,
+                    // permisos: usuarioExist[0].permisos,
+                    // nombre: usuarioExist[0].nombre,
+                    // apellido: usuarioExist[0].apellido,
+                    // telefono: usuarioExist[0].telefono,
                     token: token
                 });
             }

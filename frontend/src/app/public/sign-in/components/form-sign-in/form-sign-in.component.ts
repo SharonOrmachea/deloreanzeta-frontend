@@ -51,12 +51,13 @@ export class FormSignInComponent implements OnInit {
     },{
       validators: PasswordsMatchValidator('password', 'repeatPassword')
     })
-   }
+  }
 
 
   Submit() { }
 
 }
+
 function PasswordsMatchValidator(arg0: string, arg1: string): any {
   throw new Error('Function not implemented.');
 }

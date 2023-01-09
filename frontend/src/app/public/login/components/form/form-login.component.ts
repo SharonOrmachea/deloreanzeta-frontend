@@ -16,8 +16,8 @@ export class FormLoginComponent implements OnInit {
   hide = true;
 
   loginForm!:FormGroup;
-  isSubmitted = false;
-  returnUrl = '';
+  // isSubmitted = false;
+  // returnUrl = '';
 
   constructor(
     private formBuilder:FormBuilder,
@@ -32,30 +32,46 @@ export class FormLoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const userData = {
+      email: 'probando@gmail.com',
+      password: 'Hola1234'
+    }
+
+    this.userService.login(userData).subscribe( res => console.log('Inicio de Sesion'));
+
     this.loginForm = this.formBuilder.group({
       email:['', [Validators.required, Validators.email]],
       password:['', Validators.required]
     });
 
-    this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
   }
 
-  get fc(){
-    return this.loginForm.controls;
+  onLogin():void{
+    const formValue = this.loginForm.value;
+    this.userService.login(formValue).subscribe( res => {
+      if (res){
+        this.router.navigate(['/home'])
+      }
+    })
   }
 
-  submit() {
-    this.isSubmitted = true;
+  // get fc(){
+  //   return this.loginForm.controls;
+  // }
 
-    if(this.loginForm.invalid) return;
+  // submit() {
+  //   this.isSubmitted = true;
 
-    this.userService.login({
-      email: this.fc['email'].value,
-      password: this.fc['password'].value
-    }).subscribe(() => {
-      this.router.navigateByUrl(this.returnUrl);
-    });
-  }
+  //   if(this.loginForm.invalid) return;
+
+  //   this.userService.login({
+  //     email: this.fc['email'].value,
+  //     password: this.fc['password'].value
+  //   }).subscribe(() => {
+  //     this.router.navigateByUrl(this.returnUrl);
+  //   });
+  // }
 
 
 

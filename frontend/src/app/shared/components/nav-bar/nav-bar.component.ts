@@ -1,14 +1,15 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../models/user/user';
 import { CartService } from '../../services/store/cart/cart.service';
 import { UserService } from '../../services/user/user.service';
+import { UserResponse } from '../../interfaces/iUserLogin';
 
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.sass']
 })
+
 export class NavBarComponent implements OnInit {
 
   @Input()
@@ -16,7 +17,7 @@ export class NavBarComponent implements OnInit {
 
   cartQuantity = 0;
 
-  user!:User;
+  user!:UserResponse;
 
   constructor(
     private router: Router,
@@ -27,9 +28,9 @@ export class NavBarComponent implements OnInit {
       this.cartQuantity = newCart.totalCount;
     })
 
-    userService.userObservable.subscribe((newUser) => {
-      this.user = newUser;
-    })
+    // userService.userObservable.subscribe((newUser) => {
+    //   this.user = newUser;
+    // })
   }
 
   ngOnInit(): void {
@@ -43,7 +44,7 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/sign-in'])
   }
 
-  logout(){
+  onLogout(){
     this.userService.logout();
   }
 

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { StoreAdminModule } from './store-admin/store-admin.module';
-import { SharedModule } from '../../shared/shared.module';
+import { AdminProfileModule } from './admin-profile/admin-profile.module';
 
 
 
@@ -11,8 +10,7 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule,
-    StoreAdminModule
+    AdminProfileModule,
   ]
 })
 export class AdminModule { }

@@ -1,0 +1,42 @@
+<body>
+  <app-nav-bar
+    [visibleNav]="false"
+  ></app-nav-bar>
+  <section>
+    <mat-tab-group
+      dynamicHeight = 'true'
+      mat-align-tabs = "center"
+      color='primary'
+      backgroundColor="accent"
+      >
+        <mat-tab label="Galeria"></mat-tab>
+        <mat-tab label="Tienda">
+          <mat-tab-group
+            dynamicHeight = 'true'
+            mat-align-tabs = "center"
+            color='primary'
+            backgroundColor="warn"
+          >
+            <mat-tab  label = "Cargar Producto" >
+              <app-product-up></app-product-up>
+            </mat-tab >
+            <mat-tab  label = "Editar/Eliminar Producto" >
+              <app-edit-product></app-edit-product>
+            </mat-tab >
+            <mat-tab  label = "Cargar Categoria" >
+              <app-categories-up></app-categories-up>
+            </mat-tab >
+            <mat-tab  label = "Cargar Banner" >
+              <app-banner-up></app-banner-up>
+            </mat-tab >
+          </mat-tab-group >
+        </mat-tab>
+        <mat-tab label="Noticias"></mat-tab>
+        <mat-tab label="Tours"></mat-tab>
+        <mat-tab label="La Banda"></mat-tab>
+    </mat-tab-group>
+
+
+  </section>
+  <app-footer></app-footer>
+</body>

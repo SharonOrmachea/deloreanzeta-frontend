@@ -9,6 +9,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -25,6 +26,7 @@ import { TitleComponent } from './components/title/title.component';
     CommonModule,
     RouterModule,
     SwiperModule,
+    HttpClientModule,
 
   ],
   exports: [
