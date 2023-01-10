@@ -6,6 +6,13 @@
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
+
+  @include screen (480px)
+   max-width: 100%
+  @include screen (390px)
+   max-width: 100%
+  @include screen (320px)
+   max-width: 100%
   //------------------------------
   a
     color: $black
@@ -37,11 +44,18 @@
   .form
     @extend .flex-column-center
     gap: 60px
+    @include screen (480px)
+    max-width:80%
 
     .inputs
       @extend .flex-column-center
       gap: 50px
-
+      @include screen (480px)
+         max-width:200%
+      @include screen (390px)
+         max-width:200%
+      @include screen (320px)
+         max-width:200%
       label
         display: flex
         align-items: flex-end
@@ -50,20 +64,33 @@
         @include screen (560px)
           margin-left: 40px
         @include screen (480px)
-         margin-left: 120px
-         font-size:12px
-        @include screen (320px)
-         margin-left:150px
+          font-size: 12px
 
+      .box-mail
+        @include screen (480px)
+         max-width:80%
+        @include screen (390px)
+         max-width:90%
+        @include screen (320px)
+         max-width:90%
 
       .box-pass
         display: flex
         flex-direction: column
+        @include screen (480px)
+         max-width: 80%
+        @include screen (390px)
+         max-width:90%
 
         .pass-hide
           color: $gray
           display: flex
           justify-content: space-between
+          @include screen (480px)
+          max-width: 80%
+          font-size: 12px
+          @include screen (390px)
+           max-width:80%
           @include screen (320px)
            max-width:80%
 
@@ -85,14 +112,22 @@
          max-width: 80%
          margin-left: 10%
         @include screen (480px)
-         max-width:60%
-         margin-left: 20%
+         max-width:80%
+         margin-right: 10%
+         margin-left: 10%
         @include screen (320px)
-         max-width:45%
-         margin-left: 28%
+         max-width:85%
+         margin-left: 10%
+         @include screen (290px)
+         max-width:85%
+         margin-left: 10%
   //------------------------------
   .login
     @extend .flex-column-around-center
+    @include screen (320px)
+      max-width: 90%
+    @include screen (290px)
+     max-width: 150%
     gap: 20px
     button
       @extend .general-button
@@ -100,10 +135,24 @@
       background-color: $pink
 
       @include screen (480px)
-      max-width:70%
+       max-width:70%
+      @include screen (390px)
+       max-width: 50%
       @include screen (320px)
-       max-width: 60%
-
+       max-width: 80%
+       font-size: 12px
+      @include screen (290px)
+       max-width: 90%
+    a
+      @include screen (320px)
+       max-width: 90%
+       margin-left: 30px
+      @include screen (320px)
+       max-width: 90%
+       margin-left: 20px
+    strong
+      @include screen (290px)
+      font-size: 12px
 .box2
   background-color: $white
   width: 570px
@@ -127,6 +176,8 @@
     font-size: 18px
     gap: 10px
     margin-top: 15px
+    @include screen (390px)
+     font-size: 13px
 
     @include screen (320px)
      font-size: 13px
