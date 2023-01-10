@@ -12,11 +12,13 @@
 .box1
   @extend .flex-column-center
   background-color: $white
-  width: 89%
+  width: auto
   height: auto
   border-radius: 16px
   padding: 40px
   gap: 30px
+  @include screen (480px)
+    width: 89%
   //------------------------------
   .titulo
     @extend .flex-column-around-center
