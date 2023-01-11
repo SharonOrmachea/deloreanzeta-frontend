@@ -17,6 +17,8 @@ export class IdProductComponent implements OnInit {
 
   product!:Product;
 
+  priceFinally:number = 0;
+
   productQuantity:number = 1;
 
   categories?:ProductCategories[];
@@ -25,6 +27,8 @@ export class IdProductComponent implements OnInit {
               private router:Router,
               private productService:ProductService,
               private cartService:CartService) {
+
+
     this.categories = this.productService.getAllProductCategories();
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
@@ -51,5 +55,4 @@ export class IdProductComponent implements OnInit {
     this.cartService.addToCart(this.product);
     this.router.navigateByUrl('/store/cart');
   }
-
 }
