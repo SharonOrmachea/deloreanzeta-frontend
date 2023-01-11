@@ -41,7 +41,7 @@ export class FormLoginComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       email:['', [Validators.required, Validators.email]],
-      password:['', Validators.required]
+      password:['', [Validators.required]]
     });
 
     // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];

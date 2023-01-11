@@ -9,14 +9,18 @@ import { AdminToursModule } from './components/admin-tours/admin-tours.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
-import { AdminProfileComponent } from './page/admin-profile.component';
+import { AdminProfileComponent } from './page/admin-profile/admin-profile.component';
+
+
 
 
 
 @NgModule({
   declarations: [
-    AdminProfileComponent
+    AdminProfileComponent,
   ],
   imports: [
     CommonModule,
@@ -28,7 +32,9 @@ import { AdminProfileComponent } from './page/admin-profile.component';
     AdminStoreModule,
     AdminToursModule,
     MatTabsModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    ReactiveFormsModule,
+    MatAutocompleteModule,
   ]
 })
 export class AdminProfileModule { }

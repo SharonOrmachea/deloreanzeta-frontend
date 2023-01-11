@@ -25,6 +25,14 @@ export class ProductService {
     return this.http.get<Product>(PRODUCT_BY_ID_URL + productId);
   }
 
+  deleteProduct(id:string):Observable<any>{
+    return this.http.delete(PRODUCT_BY_ID_URL + id);
+  }
+
+  setProduct(product:Product):Observable<Product>{
+    return this.http.post<Product>(PRODUCT_URL, product);
+  }
+
   // Traer todas las categorias de los productos del back-end
   getAllProductCategories():Observable<ProductCategories[]>{
     return this.http.get<ProductCategories[]>(PRODUCT_CATEGORIES_URL);

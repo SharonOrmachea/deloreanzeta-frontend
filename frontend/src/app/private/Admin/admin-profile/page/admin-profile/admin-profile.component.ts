@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ThemePalette } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-admin-profile',
@@ -8,12 +8,11 @@ import { ThemePalette } from '@angular/material/core';
 })
 export class AdminProfileComponent implements OnInit {
 
-  @Input()
-  color: ThemePalette
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

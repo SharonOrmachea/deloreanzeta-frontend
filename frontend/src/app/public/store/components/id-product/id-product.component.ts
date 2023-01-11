@@ -35,7 +35,7 @@ export class IdProductComponent implements OnInit {
           this.product = serverProductById;
         });
     })
-   }
+  }
 
   ngOnInit(): void {
   }
