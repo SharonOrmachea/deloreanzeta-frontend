@@ -1,5 +1,5 @@
 import { AppDataSource } from '../data-source'
-import { NextFunction, Request, Response } from "express"
+import { Request, Response, NextFunction } from "express"
 import { User } from "../entity/User"
 import { validate } from "class-validator";
 
@@ -7,18 +7,19 @@ export class UserController {
 
     static getAll = async (req: Request, res: Response) => {
         const userRepository = AppDataSource.getRepository(User);
-        const users = await userRepository.find(); //Refactor try{} catch{}
+        let users;
     
         try {
-            if(users.length > 0){
-                res.send(users);
-            }else{
-                res.status(400).json({mesagge: "not results"});
-            }    
-        } catch (error) {
-            res.status(401).json({message: "probando try/catch"});
+            users = await userRepository.find({ select: ['id', 'email', 'name', 'lastname', 'telephone', 'role'] });
+        } catch (e) {
+            res.status(404).json({message: "Somenthing goes wrong"});
         }
-        
+
+        if(users.length > 0){
+            res.send(users);
+        }else{
+            res.status(404).json({message: "Not results"});
+        }
     };
   
     static getById = async (req: Request, res: Response) => {
@@ -34,41 +35,54 @@ export class UserController {
     };
 
     static newUser = async (req: Request, res: Response) => {
-        const { username, password, role } = req.body;
+        const { email, password, name, lastname, telephone } = req.body;
         const user = new User();
         
-        user.username = username;
+        user.email = email;
         user.password = password;
-        user.role = role;
+        user.name = name;
+        user.lastname = lastname;
+        user.telephone = telephone;
+        user.role = "cliente";
+        user.resetToken = "";
         
         //Validate
-        const errors = await validate(user);
+        const validationOpt = { validationError: { target: false, value: false} };
+        const errors = await validate(user, validationOpt);
         if(errors.length > 0){
             return res.status(400).json(errors);
         }
+        
+        //Hash password
         const userRepository = AppDataSource.getRepository(User);
         try {
+            user.hashPassword();
             await userRepository.save(user);
         } catch (e) {
+            //return res.status(409).json(e);
             return res.status(409).json({message: "Username already exist"});
         }
         res.send("User created");
     };
     
     static editUser = async (req: Request, res: Response) => {
-        let user;
+        let user: User;
         const id = req.params;
-        const { username, role } = req.body;
+        const { name, lastname, telephone } = req.body;
         const userRepository = AppDataSource.getRepository(User);
         
         try {
             user = await userRepository.findOneOrFail({where: id});
-            user.username = username;
-            user.role = role;
+            user.name = name;
+            user.lastname = lastname;
+            user.telephone = telephone;
         } catch (e) {
             res.status(404).json({message: "User not found"});
         }        
-        const errors = await validate(user);
+
+        const validationOpt = { validationError: { target: false, value: false} };
+        const errors = await validate(user, validationOpt);
+        
         if(errors.length > 0){
             return res.status(404).json(errors);
         }
@@ -95,6 +109,35 @@ export class UserController {
         //Remove user
         userRepository.delete(id);
         res.status(201).json({message: "User deleted"});
+    };
+    
+    static changeRole = async (req: Request, res: Response) => {
+        let user: User;
+        const id = req.params;
+        const { role } = req.body;
+        const userRepository = AppDataSource.getRepository(User);
+        
+        try {
+            user = await userRepository.findOneOrFail({where: id});
+            user.role = role;
+        } catch (e) {
+            res.status(404).json({message: "User not found"});
+        }        
+
+        const validationOpt = { validationError: { target: false, value: false} };
+        const errors = await validate(user, validationOpt);
+        
+        if(errors.length > 0){
+            return res.status(404).json(errors);
+        }
+        //try to save
+        try {
+            await userRepository.save(user);
+        } catch (e) {
+            res.status(409).json(e);
+        }
+
+        res.status(201).json({message: "Role update"});
     };
 }
 

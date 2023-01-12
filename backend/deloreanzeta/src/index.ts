@@ -1,16 +1,16 @@
 import * as express from "express"
-import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
 import * as cors from "cors";
 import helmet from "helmet";
 import routes from "./routes"
+import * as config from "./config/config";
 
-const PORT = process.env.PORT || 3000;
+const PORT = config.PORT    
 
 AppDataSource.initialize().then(async () => {
 
     // create express app
-    const app = express()
+    const app = express();
     // middlewares
     app.use(cors());
     app.use(helmet());
