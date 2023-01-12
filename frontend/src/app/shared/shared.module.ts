@@ -6,10 +6,11 @@ import { SwiperModule } from 'swiper/angular';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -17,7 +18,6 @@ import { TitleComponent } from './components/title/title.component';
     NavBarComponent,
     FooterComponent,
     NotFoundComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent
@@ -25,14 +25,15 @@ import { TitleComponent } from './components/title/title.component';
   imports: [
     CommonModule,
     RouterModule,
-    SwiperModule
+    SwiperModule,
+    HttpClientModule,
+
   ],
   exports: [
     RouterModule,
     NavBarComponent,
     NotFoundComponent,
     FooterComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent

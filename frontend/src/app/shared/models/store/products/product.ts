@@ -1,5 +1,5 @@
 export class Product{
-  id!:string;
+  id?:string;
   name!:string;
   price!:any|number;
   previousPrice?:number;
@@ -7,5 +7,5 @@ export class Product{
   category!:string[];
   imageUrl!:string[];
   description?:string;
-  information?:string;
+  information!:string;
 }

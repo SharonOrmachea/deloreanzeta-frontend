@@ -8,6 +8,7 @@ import { Product } from '../../../models/store/products/product';
 @Injectable({
   providedIn: 'root'
 })
+
 export class CartService {
 
   private cart:Cart = this.getCartFromLocalStorage();

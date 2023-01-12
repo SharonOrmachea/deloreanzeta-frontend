@@ -4,10 +4,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -21,8 +24,19 @@ import { PrivateComponent } from './private/private.component';
     CommonModule,
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    MatAutocompleteModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-bottom-right',
+      newestOnTop:false,
+      maxOpened: 1,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      preventDuplicates: true,
+    })
   ],
   providers: [
 
