@@ -19,6 +19,8 @@ export class IdProductComponent implements OnInit {
 
   product!:Product;
 
+  priceFinally:number = 0;
+
   productQuantity:number = 1;
 
   constructor(
@@ -56,5 +58,4 @@ export class IdProductComponent implements OnInit {
     this.cartService.addToCart(this.product);
     this.router.navigateByUrl('/store/cart');
   }
-
 }
