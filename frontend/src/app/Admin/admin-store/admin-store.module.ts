@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -27,7 +26,6 @@ import { AdminStoreComponent } from './page/admin-store.component';
   ],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
     ReactiveFormsModule,
     MatSelectModule,
     MatAutocompleteModule,

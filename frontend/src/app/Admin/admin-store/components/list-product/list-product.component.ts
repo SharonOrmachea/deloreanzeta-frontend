@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../../../../shared/services/store/productos/product.service';
-import { Product } from '../../../../../shared/models/store/products/product';
+import { ProductService } from '../../../../shared/services/store/productos/product.service';
+import { Product } from '../../../../shared/models/store/products/product';
 import { ToastrService } from 'ngx-toastr';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';

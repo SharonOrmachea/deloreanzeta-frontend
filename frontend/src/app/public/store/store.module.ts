@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-import { PublicRoutingModule } from '../public-routing.module';
 import { SwiperModule } from 'swiper/angular';
 
 import { StoreComponent } from './page/store.component';
@@ -10,6 +9,8 @@ import { ProductsComponent } from './components/all products/products.component'
 import { IdProductComponent } from './components/id-product/id-product.component';
 
 import { IdProductDirective } from './directive/id-product.directive';
+
+import { AdminStoreModule } from 'src/app/Admin/admin-store/admin-store.module';
 
 
 
@@ -23,8 +24,8 @@ import { IdProductDirective } from './directive/id-product.directive';
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule,
     SharedModule,
+    AdminStoreModule,
     SwiperModule,
   ],
   providers: []

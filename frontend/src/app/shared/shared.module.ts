@@ -9,7 +9,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
-import { HttpClientModule } from '@angular/common/http';
+import { PublicRoutingModule } from '../public/public-routing.module';
+import { PrivateRoutingModule } from '../private/private-routing.module';
 
 
 
@@ -26,7 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     RouterModule,
     SwiperModule,
-    HttpClientModule,
+    PublicRoutingModule,
+    PrivateRoutingModule
   ],
   exports: [
     RouterModule,

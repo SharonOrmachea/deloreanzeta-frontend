@@ -9,13 +9,13 @@ import { FormSignInComponent } from './components/form-sign-in/form-sign-in.comp
 
 
 @NgModule({
-    declarations: [
-        SignInComponent,
-        FormSignInComponent
-    ],
-    imports: [
-        CommonModule,
-        SharedModule,
-    ]
+  declarations: [
+    SignInComponent,
+    FormSignInComponent
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+  ]
 })
 export class SignInModule { }

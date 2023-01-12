@@ -24,9 +24,9 @@ import { PrivateModule } from './private/private.module';
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     PublicModule,
     PrivateModule,
