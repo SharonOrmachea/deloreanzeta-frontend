@@ -15,7 +15,7 @@ Scenario Outline: Visualizar todos los prodcutos de la categoria <categoria>
 Given estoy en store de Delorean Zeta
 When hago scroll down hasta la seccion "Todos los productos"
 When hago click sobre la categoria <Categoria>
-Then se visualiza todos los prodcutos de esa categoria
+Then se visualiza todos los productos de esa categoria
 
 Examples:
 |categoria|

@@ -1,0 +1,112 @@
+@import 'extends-class' 
+@import 'mixins-responsive'
+
+.formulario
+  @extend .font-general
+  @extend .flex-column-around-center
+  heigth: auto
+  gap: 20px
+  a
+    color: $black
+
+.box1
+  @extend .flex-column-center
+  background-color: $white
+  width: auto
+  height: auto
+  border-radius: 16px
+  padding: 40px
+  gap: 30px
+  @include screen (480px)
+    width: 89%
+  //------------------------------
+  .titulo
+    @extend .flex-column-around-center
+    color: $black
+    img
+      @extend .logoDLZ-Autito
+  //------------------------------
+  .div-form
+
+  .form
+    @extend .flex-column-around-center
+    gap: 30px
+
+    .inputs
+      @extend .flex-column-center
+      gap: 30px
+        
+      @include screen (290px)
+        gap: 10px
+
+      label
+        display: flex
+        align-items: flex-end
+        vertical-align: bottom
+        color: $gray
+        @include screen (290px)
+          font-size: 18px
+
+      input
+        width: 487px
+        height: 41px
+        padding: 1px 5px
+        border-radius: 12px
+        border-width: 1px
+        border-color: $gray
+
+      .input-area
+        @include screen (480px)
+          max-width: 340px
+
+        @include screen (390px)
+          max-width: 300px
+
+        @include screen (290px)
+          max-width: 240px
+
+      .textarea
+        width: 487px
+        height: 24vh
+        border-radius: 12px
+        border-width: 1px
+        border-color: $gray
+
+        @include screen (480px)
+          max-width: 340px
+
+        @include screen (390px)
+          max-width: 300px
+
+        @include screen (290px)
+          max-width: 240px
+
+  .submit
+    @extend .flex-column-around-center
+    @include screen (480px)
+      max-width: 480px
+
+    @include screen (380px)
+      max-width: 380px
+
+    @include screen (290px)
+      max-width: 290px
+
+    .input-submit
+      @extend .general-button
+      @extend .large-button
+      margin-top: 3vh
+      background-color: $pink
+
+      @include screen (480px)
+        max-width: 80%
+      
+      @include screen (390px)
+        max-width: 70%
+
+      @include screen (290px)
+        max-width: 65%
+
+  //------------------------------
+
+ 

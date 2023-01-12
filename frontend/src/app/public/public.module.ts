@@ -6,6 +6,7 @@ import { LoginModule } from './login/login.module';
 import { SignInModule } from './sign-in/sign-in.module';
 import { PrivateRoutingModule } from '../private/private-routing.module';
 import { StoreModule } from './store/store.module';
+import { HiringModule } from './hiring/hiring.module';
 
 
 
@@ -20,7 +21,8 @@ import { StoreModule } from './store/store.module';
     HomeModule,
     LoginModule,
     SignInModule,
-    StoreModule
+    StoreModule,
+    HiringModule,
 
   ],
   providers: [
