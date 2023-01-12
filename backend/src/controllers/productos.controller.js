@@ -23,7 +23,7 @@ export const getProductos = async (req, res) => {
        if(rows.length <= 0){
            return res.status(404).json({
             message: "Producto not found"
-            });  
+            });
         }
         res.json(rows);
     }catch(error){
