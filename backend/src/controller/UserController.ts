@@ -27,7 +27,7 @@ export class UserController {
         const userRepository = AppDataSource.getRepository(User);
         
         try {
-            const user = await userRepository.findOneOrFail({where: id});
+            const user = await userRepository.find({select: ['id', 'email', 'name', 'lastname', 'telephone', 'role'], where: id});
             res.send(user);
         } catch (e) {
             res.status(400).json({message: "Not result"});
