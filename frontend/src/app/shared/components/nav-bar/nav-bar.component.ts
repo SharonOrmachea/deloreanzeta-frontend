@@ -1,8 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserResponse } from '../../interfaces/iUserLogin';
 import { CartService } from '../../services/store/cart/cart.service';
 import { UserService } from '../../services/user/user.service';
-import { UserResponse } from '../../interfaces/iUserLogin';
+
 
 @Component({
   selector: 'app-nav-bar',

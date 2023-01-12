@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, catchError, map, Observable, tap, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-
-import { USER_LOGIN_URL, USER_REGISTER_URL } from '../../constants/urls';
-
-import { IUserRegister } from '../../interfaces/iUserRegister';
+import { USER_LOGIN_URL } from '../../constants/urls';
 import { UserLogin, UserResponse } from '../../interfaces/iUserLogin';
+
+
 
 const helper = new JwtHelperService();
 

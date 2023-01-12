@@ -64,7 +64,7 @@ export class ProductUpComponent implements OnInit {
       information: this.productForm.get('information')?.value,
     }
 
-    this.productService.setProduct(PRODUCTO).subscribe(data => {
+    this.productService.postProduct(PRODUCTO).subscribe(data => {
       this.toastr.success('Producto agregado a la tienda', 'Producto agregado');
     }, error => {
       console.log(error);
