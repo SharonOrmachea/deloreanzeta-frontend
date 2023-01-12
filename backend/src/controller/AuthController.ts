@@ -99,7 +99,7 @@ class AuthController{
             });
         } catch (e) {
             emailStatus = e;
-            return res.status(400).json({message:"Something goes wrong"})
+            return res.status(400).json(emailStatus)
         }
 
 
@@ -107,7 +107,7 @@ class AuthController{
             await userRepository.save(user);
         }catch(e){
             emailStatus = e;
-            return res.status(400).json({message: "Something goes wrong"});
+            return res.status(400).json({message: "Something goes wrong11"});
         }
 
         res.json({message, info: emailStatus, test: verificationLink});
