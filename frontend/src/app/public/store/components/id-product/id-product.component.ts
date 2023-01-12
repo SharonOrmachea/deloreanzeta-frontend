@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 import { Product } from '../../../../shared/models/store/products/product';
 
 import { ProductService } from '../../../../shared/services/store/productos/product.service';
 import { CartService } from '../../../../shared/services/store/cart/cart.service';
-import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
+
 
 
 @Component({

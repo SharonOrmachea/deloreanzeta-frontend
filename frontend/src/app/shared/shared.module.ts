@@ -27,7 +27,6 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     SwiperModule,
     HttpClientModule,
-
   ],
   exports: [
     RouterModule,

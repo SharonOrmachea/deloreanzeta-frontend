@@ -11,6 +11,8 @@ import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { PublicModule } from './public/public.module';
+import { PrivateModule } from './private/private.module';
 
 
 
@@ -26,6 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    PublicModule,
+    PrivateModule,
     SharedModule,
     MatAutocompleteModule,
     ToastrModule.forRoot({

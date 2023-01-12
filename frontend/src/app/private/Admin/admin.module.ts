@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdminProfileModule } from './admin-profile/admin-profile.module';
+import { AdminStoreModule } from './admin-store/admin-store.module';
+import { AdminStoreComponent } from './admin-store/page/admin-store.component';
+
 
 
 
@@ -10,7 +12,10 @@ import { AdminProfileModule } from './admin-profile/admin-profile.module';
   ],
   imports: [
     CommonModule,
-    AdminProfileModule,
+    AdminStoreModule
+  ],
+  exports: [
+    AdminStoreComponent
   ]
 })
 export class AdminModule { }

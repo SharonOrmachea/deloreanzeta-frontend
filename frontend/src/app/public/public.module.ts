@@ -10,6 +10,7 @@ import { HiringModule } from './hiring/hiring.module';
 
 
 
+
 @NgModule({
   declarations: [
 
@@ -23,7 +24,6 @@ import { HiringModule } from './hiring/hiring.module';
     SignInModule,
     StoreModule,
     HiringModule,
-
   ],
   providers: [
 

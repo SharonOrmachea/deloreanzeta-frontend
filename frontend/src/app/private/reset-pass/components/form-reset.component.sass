@@ -1,12 +1,11 @@
 @import 'extends-class'
 @import 'mixins-responsive'
+
 .formulario
   @extend .font-general
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
-  @include screen (480px)
-   max-width: 100%
 
   a
     color: $black
@@ -20,32 +19,20 @@
   padding: 40px
   gap: 30px
 
-  @include screen (480px)
-   max-width: 90%
-
-  //------------------------------
   .titulo
     @extend .flex-column-around-center
     color: $black
+
     img
       @extend .logoDLZ-Autito
-  //------------------------------
+
   .form
     @extend .flex-column-around-center
     gap: 30px
 
-    @include screen (480px)
-      max-width: 80%
-    @include screen (320px)
-      max-width: 100%
-
-
-
     .inputs
       @extend .flex-column-center
       gap: 30px
-      @include screen (480px)
-        max-width: 80%
 
       label
         display: flex
@@ -53,21 +40,15 @@
         vertical-align: bottom
         color: $gray
 
-
       .box-pass
         display: flex
         flex-direction: column
-        @include screen (480px)
-         max-width: 150%
-        @include screen (290px)
-          max-width: 150%
-          font-size: 12px
-
 
         .pass-hide
           color: $gray
           display: flex
           justify-content: space-between
+
           i
             @extend .font-general
             cursor: pointer
@@ -80,9 +61,6 @@
         border-width: 1px
         border-color: $gray
 
-        @include screen (480px)
-        max-width: 100%
-    //------------------------------
     .validacion
       display: grid
       grid-template-columns: repeat(1, 1fr)
@@ -101,27 +79,17 @@
           width: 20px
           margin-left: 10px
 
-        input[type="checkbox"]:checked
-          accent-color: $black
-
         label
           width: 450px
-    //------------------------------
-    .reset-pass
-      @include screen (480px)
-         max-width: 100%
 
+    .reset-pass
       @extend .flex-column-around-center
       gap: 20px
+
       input
         @extend .general-button
         @extend .large-button
         background-color: $pink
-
-        @include screen (480px)
-         max-width: 100%
-         font-size: 12px
-
 
 
 .box2
@@ -132,17 +100,11 @@
   display: flex
   align-items: center
   justify-content: center
-  @include screen (480px)
-   max-width: 90%
 
-  //------------------------------
   .login
     display: flex
     flex-direction: row
     font-size: 18px
     gap: 10px
     margin-top: 15px
-
-    @include screen (290px)
-     font-size: 12px
 

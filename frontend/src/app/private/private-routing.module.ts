@@ -7,9 +7,6 @@ import { CartComponent } from './cart/page/cart.component';
 import { ProductsComponent } from "../public/store/components/all products/products.component";
 import { StoreComponent } from "../public/store/page/store.component";
 import { UserComponent } from './user/page/user.component';
-import { AdminProfileComponent } from "./Admin/admin-profile/page/admin-profile/admin-profile.component";
-import { ProductUpComponent } from './Admin/admin-profile/components/admin-store/components/product-up/product-up.component';
-import { AdminStoreComponent } from './Admin/admin-profile/components/admin-store/page/admin-store.component';
 
 
 
@@ -21,10 +18,6 @@ const routes: Routes = [
       { path: 'store', component: StoreComponent, children: [
         { path: '', component: ProductsComponent },
         { path: 'cart', component: CartComponent },
-      ]},
-      { path: 'admin/profile', component: AdminProfileComponent, children: [
-        { path: 'store', component:  AdminStoreComponent },
-        { path: 'edit-product/:id', component: ProductUpComponent }
       ]},
       { path: 'user/profile', component: UserComponent, children: [
         // { path: '', component: ProductsComponent },

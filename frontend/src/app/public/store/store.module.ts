@@ -25,8 +25,7 @@ import { IdProductDirective } from './directive/id-product.directive';
     CommonModule,
     PublicRoutingModule,
     SharedModule,
-    SwiperModule
-
+    SwiperModule,
   ],
   providers: []
 })

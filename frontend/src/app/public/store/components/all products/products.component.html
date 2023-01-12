@@ -1,12 +1,12 @@
 <body>
   <app-carrusel></app-carrusel>
 
-  <app-not-found
+  <!-- <app-not-found
     [visible]="!products || !products.length"
     notFoundMessage="No hay productos cargados en la tienda"
     resetLinkText="Volver a Inicio"
     resetLinkRoute="/home"
-  ></app-not-found>
+  ></app-not-found> -->
 
   <section class="contenedor" *ngIf="products && products.length">
 
@@ -16,24 +16,23 @@
 
     <div class="contenedor-categoria">
       <div class="category">
+        <a routerLink="/store">Todos</a>
         <a *ngFor="let tag of categories" routerLink="/store/category/{{ tag.name }}" class="tag">
           <strong>{{ tag.name }}</strong>
         </a>
       </div>
 
-      <div class="notFound">
-
-        <!-- <app-not-found
-          [visible]="categories.name"
-          notFoundMessage="Aún no hay productos asociados a esta categoría"
-          resetLinkText="Volver a la Tienda"
-          resetLinkRoute="/store"
-        ></app-not-found> -->
-
-      </div>
     </div>
 
-    <div class="contenedor-productos">
+    <app-not-found
+      [visible]="!products || !products.length"
+      notFoundMessage="No hay productos cargados en la tienda"
+      resetLinkText="Volver a Inicio"
+      resetLinkRoute="/home"
+    ></app-not-found>
+
+    <div class="contenedor-productos" *ngIf="products && products.length">
+
       <ul>
         <li *ngFor="let product of products">
           <a routerLink="/store/product/{{ product.id }}">

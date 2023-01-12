@@ -86,90 +86,44 @@
         @include screen (480px)
          max-width: 70%
          margin-left:15%
-       
+
     //------------------------------
     .validacion
       display: grid
       grid-template-columns: repeat(1, 1fr)
-     
+
       ul
         font-size: 15px
         display: grid
         grid-template-columns: repeat(2, 225px)
         align-items: center
         color: $gray
-        @include screen (480px)
-         max-width: 400px
-        @include screen (390px)
-         width:300px
-         grid-template-columns: repeat( 2,160px)
-        @include screen (320px)
-         width:250px
-         grid-template-columns: repeat( 2,100px)
-        @include screen (290px)
-         width:250px
-         grid-template-columns: repeat( 2,90px)
-         margin-left: 10px
-      li
-         @include screen (480px)
-           max-width: 50%
-           font-size: 12px
-         @include screen (390px)
-           width: 100px
-           
+
       .terminos
         display: grid
         grid-template-columns: repeat(2, 40px)
-        @include screen (480px)
-         max-width: 100%
-        @include screen (390px)
-         max-width: 80%
-        @include screen (290px)
-         max-width:70%
-         margin-left: 10px
 
         input
           width: 20px
           margin-left: 10px
-          
+
 
         input[type="checkbox"]:checked
           accent-color: $black
-          @include screen (480px)
-            width:20px
-          @include screen (290px)
-            width:10px
 
         label
           width: 450px
-          @include screen (480px)
-            font-size: 9px
-            max-width: 400px
-          @include screen (390px)
-            font-size: 9px
-            max-width: 250px
-          @include screen (320px)
-            font-size: 9px
-            max-width: 200px
-          @include screen (290px)
-            font-size: 9px
-            max-width: 180px
-            
+
     //------------------------------
     .sign-in
       @extend .flex-column-around-center
       gap: 20px
-      @include screen (320px)
-         max-width: 120%
-         font-size: 12px
+
       input
         @extend .general-button
         @extend .large-button
         background-color: $pink
-        @include screen (480px)
-         max-width: 60%
-        @include screen (320px)
-          font-size: 12px
+
 .box2
   background-color: $white
   width: 570px
@@ -178,8 +132,7 @@
   display: flex
   align-items: center
   justify-content: center
-  @include screen (480px)
-   max-width: 80%
+
   //------------------------------
   .login
     display: flex
@@ -187,5 +140,4 @@
     font-size: 18px
     gap: 10px
     margin-top: 15px
-    @include screen (320px)
-     font-size: 13px
+
