@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../../../shared/services/user/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,69 +12,71 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 })
 
-export class FormLoginComponent implements OnInit {
+export class FormLoginComponent implements OnInit, OnDestroy {
 
   hide = true;
 
-  loginForm!:FormGroup;
-  // isSubmitted = false;
-  // returnUrl = '';
+  loginForm: FormGroup;
+
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private formBuilder:FormBuilder,
     private userService:UserService,
     private activatedRoute:ActivatedRoute,
     private router:Router) {
-    // this.login = new FormGroup({
-    //   email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
-    //   password: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'),
-    //   Validators.minLength(8)])
-    // });
+
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*')]],
+    });
   }
 
   ngOnInit(): void {
-    const userData = {
-      email: 'probando@gmail.com',
-      password: 'Hola1234'
+    
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  onLogin(){
+    const formValue = this.loginForm.value;
+    this.subscription.add(
+      this.userService.login(formValue).subscribe( res => {
+        if(res){
+          this.router.navigate(['/home'])
+        }
+      })
+    );
+  }
+
+  getErrorMessage(field:string): string{
+    let message = '';
+
+    if (this.loginForm.get(field)!.errors?.['required']){
+      message = 'Debes ingresar un valor';
+    }else if(this.loginForm.get(field)!.hasError('pattern')){
+      if(field == 'email'){
+        message = 'El Email no es valido';
+      }else{
+        message = 'La contraseña no es valida';
+      }
+
+    }else if(this.loginForm.get(field)?.hasError('minlength')){
+      const minLength = this.loginForm.get(field)!.errors?.['minlength'].requiredLength;
+      message = `Este campo no puede tener menos de ${minLength} caracteres`;
     }
 
-    this.userService.login(userData).subscribe( res => console.log('Inicio de Sesion'));
-
-    this.loginForm = this.formBuilder.group({
-      email:['', [Validators.required, Validators.email]],
-      password:['', [Validators.required]]
-    });
-
-    // this.returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'];
+    return message;
   }
 
-  onLogin():void{
-    const formValue = this.loginForm.value;
-    this.userService.login(formValue).subscribe( res => {
-      if (res){
-        this.router.navigate(['/home'])
-      }
-    })
+  isValidField(field:string): boolean{
+    return (
+      (this.loginForm.get(field)!.touched ||
+      this.loginForm.get(field)!.dirty) &&
+      !this.loginForm.get(field)!.valid);
   }
-
-  // get fc(){
-  //   return this.loginForm.controls;
-  // }
-
-  // submit() {
-  //   this.isSubmitted = true;
-
-  //   if(this.loginForm.invalid) return;
-
-  //   this.userService.login({
-  //     email: this.fc['email'].value,
-  //     password: this.fc['password'].value
-  //   }).subscribe(() => {
-  //     this.router.navigateByUrl(this.returnUrl);
-  //   });
-  // }
-
-
 
 }
 

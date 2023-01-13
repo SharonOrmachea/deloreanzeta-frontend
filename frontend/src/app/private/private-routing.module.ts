@@ -7,6 +7,8 @@ import { CartComponent } from './cart/page/cart.component';
 import { ProductsComponent } from "../public/store/components/all products/products.component";
 import { StoreComponent } from "../public/store/page/store.component";
 import { UserComponent } from './user/page/user.component';
+import { CheckLoginGuard } from "../shared/guards/check-login.guard";
+
 
 
 
@@ -14,12 +16,13 @@ const routes: Routes = [
   { path: '', component: PrivateComponent, children:
     [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'recover/password', component: ResetPassComponent },
+      { path: 'recover/password', component: ResetPassComponent, canActivate: [CheckLoginGuard] },
       { path: 'store', component: StoreComponent, children: [
         { path: '', component: ProductsComponent },
-        { path: 'cart', component: CartComponent },
+        { path: 'cart', component: CartComponent, },
       ]},
-      { path: 'user/profile', component: UserComponent, children: [
+      { path: 'user/profile', component: UserComponent,
+        children: [
         // { path: '', component: ProductsComponent },
         // { path: '', component: ProductsComponent },
       ]},

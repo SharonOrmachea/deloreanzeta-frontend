@@ -50,22 +50,26 @@
       </div>
     </div>
 
-    <div class="buttons-outside" >
+    <div class="buttons-outside" *ngIf="!isLogged; else viewLogout">
       <button class="sign-in-outside" (click)="paginaSignIn()" tabindex=”0”><strong>Regístrate</strong></button>
       <button class="login-outside" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
     </div>
-    <div class="user-outside" >
-      <ul>
-        <li class="menu-container" >
-          <a routerLink="/admin/profile"><strong>Sharon</strong></a>
-          <div class="menu">
-            <a routerLink="/profile"><strong>Perfil</strong></a>
-            <a routerLink="/orders"><strong>Pedidos</strong></a>
-            <a (click)="onLogout()"><strong>Cerrar Sesión</strong></a>
-          </div>
-        </li>
-      </ul>
-    </div>
+
+    <ng-template #viewLogout>
+      <div class="user-outside" >
+        <ul>
+          <li class="menu-container" >
+            <a routerLink="/admin/profile"><strong>Sharon</strong></a>
+            <div class="menu">
+              <a routerLink="/profile"><strong>Perfil</strong></a>
+              <a routerLink="/orders"><strong>Pedidos</strong></a>
+              <a (click)="onLogout()"><strong>Cerrar Sesión</strong></a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </ng-template>
+
     <div class="cart-outside" >
       <a routerLink="/store/cart">
         <i class="bi bi-cart3"></i>

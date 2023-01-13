@@ -3,6 +3,16 @@ import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 
+// USUARIOS REGISTRADOS
+// ADMINISTRADOR
+//   email:'lopez.b.axel@gmail.com',
+//   password: 'Aa123456'
+
+// CLIENTES
+//   email:'cliente2@gmail.com',
+//   password: 'Aa123456'
+
+
 export const sample_products: Product[] = [
   {
     id: '1',

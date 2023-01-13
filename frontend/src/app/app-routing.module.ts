@@ -9,9 +9,9 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 const routes: Routes = [
   { path: '', loadChildren: () => import('./public/public.module').then(m => m.PublicModule) },
   { path: '', loadChildren: () => import('./private/private.module').then(m => m.PrivateModule) },
-  { path: '**', component: NotFoundComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'store', component: StoreComponent }
+  { path: 'store', component: StoreComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

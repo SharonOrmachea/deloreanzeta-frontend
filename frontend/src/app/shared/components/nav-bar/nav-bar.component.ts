@@ -1,8 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserResponse } from '../../interfaces/iUserLogin';
 import { CartService } from '../../services/store/cart/cart.service';
 import { UserService } from '../../services/user/user.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -11,14 +12,16 @@ import { UserService } from '../../services/user/user.service';
   styleUrls: ['./nav-bar.component.sass']
 })
 
-export class NavBarComponent implements OnInit {
+export class NavBarComponent implements OnInit, OnDestroy {
 
   @Input()
   visibleNav = true;
 
   cartQuantity = 0;
 
-  user!:UserResponse;
+  isLogged = false;
+
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private router: Router,
@@ -27,7 +30,7 @@ export class NavBarComponent implements OnInit {
 
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
-    })
+    });
 
     // userService.userObservable.subscribe((newUser) => {
     //   this.user = newUser;
@@ -35,22 +38,25 @@ export class NavBarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.subscription.add(
+      this.userService.isLogged.subscribe( res => this.isLogged = res)
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe;
   }
 
   paginaLogin(){
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
 
   paginaSignIn(){
-    this.router.navigate(['/sign-in'])
+    this.router.navigate(['/sign-in']);
   }
 
-  onLogout(){
+  onLogout():void {
     this.userService.logout();
-  }
-
-  get isAuth(){
-    return this.user.token;
   }
 
 }
