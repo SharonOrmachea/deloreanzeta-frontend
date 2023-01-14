@@ -15,6 +15,9 @@ import { StoreComponent } from './store/page/store.component';
 import { ProductsComponent } from "./store/components/all products/products.component";
 import { IdProductComponent } from "./store/components/id-product/id-product.component";
 import { HiringComponent } from "./hiring/page/hiring.component";
+import { NewsComponent } from "./news/page/news.component";
+import { AllNewsComponent } from "./news/components/all-news/all-news.component";
+import { IdNewsComponent } from "./news/components/id-news/id-news.component";
 
 
 
@@ -38,6 +41,10 @@ const routes: Routes = [
 
       ]},
       { path: 'hiring', component: HiringComponent },
+      { path: 'news', component: NewsComponent, children: [
+        { path: '', component: AllNewsComponent },
+        { path: 'news/:id', component: IdNewsComponent },
+      ]}
     ]
   }
 ];

@@ -1,0 +1,92 @@
+@import 'extends-class' 
+@import 'mixins-responsive'
+  
+.main
+  @extend .font-general
+  background: none
+  color: $white
+
+  .div-title
+    margin-top: 5vh
+    margin-bottom: 8vh
+    display: block
+    .title
+      font-size: 40px
+      text-align: center
+
+  div
+    display: flex
+    flex-direction: row
+    .main-new
+      width: 48%
+      margin-left: 1%
+      margin-right: 1%
+      border: 2px solid $white
+      background-color: $white
+      border-radius: 15px
+      color: $white
+
+  .section-notices
+    @extend .flex-evenly-center
+    flex-wrap: wrap
+    gap: 50px
+    .card-new
+      @extend .flex-column-center
+      width: 354px
+      // Está rígido, en pixeles, tomando como muestra la cantidad de caracteres de nuestra data
+      height: 866px
+      // Está en auto para que sea "flexible", de acorde a los caracteres introducidos. Recomiendo usar esta propiedad para que se ajuste, siempre y cuando todas las noticias tengan la misma cantidad de caracteres...
+      height: auto
+      border: 1px solid $white
+      // background-color: $white
+      border-radius: 15px
+      .image-new
+        width: 350px
+        height: 365px
+        border-radius: 15px 15px 0 0
+        // border-block-end-style: inherit
+        border-block-end: inherit
+      .body-card-new
+        @extend .flex-column-center
+        gap: 10px 0
+        h4,
+        .text-card-new,
+        button
+          text-align: center
+          // color: $black
+          padding: 0 13px
+        h4
+          margin-top: 1vh
+          font-size: 24px
+        .text-card-new
+          font-size: 16px
+          font-weight: 600
+        .date
+          font-size: 13px
+          margin: 0
+          font-style: italic
+        button 
+          @extend .short-button
+          margin-bottom: 16px
+          font-weight: bold
+          background-color: $aqua-marine
+          color: $white
+          border: $white
+        button:hover
+          background-color: $white
+          color: $aqua-marine
+          animation: anim 1.5s infinite alternate
+          @keyframes anim
+              from
+                  filter: drop-shadow(0px 5px 20px $aqua-marine)
+              
+              to
+                  filter: drop-shadow(0px 0px 5px $aqua-marine)
+    
+    .card-new:hover
+      box-shadow: $white 0px 5px 15px
+      filter: saturate(1.2)
+      // background-color: black
+
+              
+          
