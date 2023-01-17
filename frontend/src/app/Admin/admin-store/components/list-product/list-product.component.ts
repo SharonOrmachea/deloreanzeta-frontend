@@ -61,7 +61,7 @@ export class ListProductComponent implements OnInit {
 
   deleteProduct(id:any){
     this.productService.deleteProduct(id).subscribe(data => {
-      this.toastr.error('El producto fue eliminado con exito', 'Producto Eliminado');
+      this.toastr.success('El producto fue eliminado con exito', 'Producto Eliminado');
       this.getAllProducts();
     }, error => {
       console.log(error);

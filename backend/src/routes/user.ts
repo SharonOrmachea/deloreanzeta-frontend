@@ -15,6 +15,6 @@ router.patch("/:id", [checkJwt, checkRole(['admin'])], UserController.editUser);
 
 router.delete("/:id", [checkJwt, checkRole(['admin'])], UserController.deleteUser);
 
-router.patch("/:id", [checkJwt, checkRole(['admin'])], UserController.changeRole);
+router.patch("/change-role/:id", [checkJwt, checkRole(['admin'])], UserController.changeRole);
 
 export default router;

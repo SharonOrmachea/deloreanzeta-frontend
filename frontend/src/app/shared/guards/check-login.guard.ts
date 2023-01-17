@@ -3,7 +3,7 @@ import { CanActivate } from '@angular/router';
 import { Observable} from 'rxjs';
 import { map, take } from 'rxjs/operators';
 
-import { UserService } from '../services/user/user.service';
+import { AuthService } from '../services/auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ import { UserService } from '../services/user/user.service';
 
 export class CheckLoginGuard implements CanActivate {
 
-  constructor(private userService:UserService){}
+  constructor(private authService:AuthService){}
 
   canActivate(): Observable<boolean> {
-    return this.userService.isLogged.pipe( take(1), map(
+    return this.authService.isLogged.pipe( take(1), map(
        (isLogged: boolean) => !isLogged)
       );
 

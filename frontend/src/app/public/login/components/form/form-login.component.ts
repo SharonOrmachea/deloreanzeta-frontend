@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../../../shared/services/user/user.service';
+import { AuthService } from '../../../../shared/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
+
 
 
 @Component({
@@ -22,7 +24,7 @@ export class FormLoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder:FormBuilder,
-    private userService:UserService,
+    private authService:AuthService,
     private activatedRoute:ActivatedRoute,
     private router:Router) {
 
@@ -33,7 +35,7 @@ export class FormLoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   ngOnDestroy(): void {
@@ -43,7 +45,7 @@ export class FormLoginComponent implements OnInit, OnDestroy {
   onLogin(){
     const formValue = this.loginForm.value;
     this.subscription.add(
-      this.userService.login(formValue).subscribe( res => {
+      this.authService.login(formValue).subscribe( res => {
         if(res){
           this.router.navigate(['/home'])
         }

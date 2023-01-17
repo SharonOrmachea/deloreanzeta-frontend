@@ -21,7 +21,6 @@ import { CheckLoginGuard } from '../shared/guards/check-login.guard';
 
 
 
-
 const routes: Routes = [
   { path: '', component: PublicComponent, children:
     [

@@ -13,7 +13,7 @@
 .box1
   @extend .flex-column-center
   background-color: $white
-  width: auto
+  max-width: 570px
   height: auto
   border-radius: 16px
   padding: 40px
@@ -31,47 +31,32 @@
     gap: 60px
 
     .inputs
-      @extend .flex-column-center
-      gap: 50px
+      display: flex
+      flex-direction: column
+      gap: 2em
 
-      label
-        display: flex
-        align-items: flex-end
-        vertical-align: bottom
-        color: $gray
-
-      .box-pass
+      .box-form
         display: flex
         flex-direction: column
-
-        .pass-hide
-          color: $gray
-          display: flex
-          justify-content: space-between
-
-          i
-            @extend .font-general
-            cursor: pointer
-
-
-      input
         width: 487px
-        height: 41px
-        padding: 1px 5px
-        border-radius: 12px
-        border-width: 1px
-        border-color: $gray
+        font-size: 18px
 
-  //------------------------------
+      i
+        cursor: pointer
+
+  //------------ NO TOCAR ------------------
   .login
     @extend .flex-column-around-center
-
     gap: 20px
 
     button
       @extend .general-button
       @extend .large-button
+      display: flex
+      justify-content: space-around
+      align-items: center
       background-color: $pink
+
 
 .box2
   background-color: $white

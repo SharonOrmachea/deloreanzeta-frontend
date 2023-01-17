@@ -1,8 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserResponse } from '../../interfaces/iUserLogin';
+import { UserResponse } from '../../interfaces/iuserlogin';
 import { CartService } from '../../services/store/cart/cart.service';
-import { UserService } from '../../services/user/user.service';
+import { AuthService } from '../../services/auth/auth.service';
 import { Subscription } from 'rxjs';
 
 
@@ -26,7 +26,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     cartService:CartService,
-    private userService:UserService) {
+    private authService:AuthService) {
 
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
@@ -39,7 +39,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscription.add(
-      this.userService.isLogged.subscribe( res => this.isLogged = res)
+      this.authService.isLogged.subscribe( res => this.isLogged = res)
     );
   }
 
@@ -56,7 +56,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
   }
 
   onLogout():void {
-    this.userService.logout();
+    this.authService.logout();
   }
 
 }

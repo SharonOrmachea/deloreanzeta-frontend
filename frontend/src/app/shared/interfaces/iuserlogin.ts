@@ -1,4 +1,4 @@
-export type Role = 'CUSTOMER' | 'ADMIN';
+export type Role = 'client' | 'admin' | null;
 
 export interface UserLogin{
   email:string;

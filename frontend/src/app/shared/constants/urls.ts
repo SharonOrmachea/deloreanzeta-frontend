@@ -19,7 +19,7 @@ export const USER_LOGIN_URL = BASE_URL + 'auth/login';
 // Registra un usuario y/o obtiene todos los usuarios
 export const USER_URL = BASE_URL + 'users';
 
-// Trae y/ o edita un usuario por ID (para el admin)
+// Trae, edita y/o elimina un usuario por ID (para el admin)
 export const USER_BY_ID_URL = USER_URL + '/';
 
 // Identifica el usuario al que se quiere reestablecer la contraseña

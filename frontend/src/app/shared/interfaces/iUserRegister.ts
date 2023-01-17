@@ -1,8 +1,7 @@
 export interface IUserRegister{
+  email: string;
   name: string;
   lastName: string;
   telephone: number;
-  email: string;
   password: string;
-  repeatPassword: string;
 }

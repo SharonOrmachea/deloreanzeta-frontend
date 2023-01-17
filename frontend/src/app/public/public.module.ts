@@ -25,7 +25,8 @@ import { ToursModule } from './tours/tours.module';
     SignInModule,
     StoreModule,
     HiringModule,
-
+    NewsModule,
+    ToursModule
   ],
   providers: [
 

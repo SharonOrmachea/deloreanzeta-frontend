@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 
-import { USER_LOGIN_URL } from '../../constants/urls';
-import { UserLogin, UserResponse } from '../../interfaces/iUserLogin';
+import { USER_URL, USER_BY_ID_URL } from '../../constants/urls';
+import { IUserRegister } from '../../interfaces/iUserRegister';
+import { UserLogin } from '../../interfaces/iuserlogin';
+
 
 
 const helper = new JwtHelperService();
@@ -18,64 +20,45 @@ const helper = new JwtHelperService();
 
 export class UserService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  // private userToken = new BehaviorSubject<string>(null);
 
   constructor(
     private http:HttpClient,
     private router:Router,
     private toastrService:ToastrService) {
 
-    this.checkToken();
   }
 
-  get isLogged():Observable<boolean>{
-    return this.loggedIn.asObservable();
+  getAllUsers():Observable<UserLogin[]>{
+    return this.http.get<UserLogin[]>(USER_URL).pipe(catchError(this.handlerUserError));
   }
 
-  login(authData:UserLogin): Observable<UserResponse | void>{
-    return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
-      map((res:UserResponse) => {
-        this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
-        console.log('Res->', res);
-        this.saveToken(res.token);
-        this.loggedIn.next(true);
-        return res;
-      }),
-      catchError( (error) => this.handlerError(error) )
-    );
-
+  getUserById(userId: number):Observable<UserLogin>{
+    return this.http.get<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
   }
 
-  logout(): void{
-    localStorage.removeItem('token');
-    this.loggedIn.next(false);
-    this.router.navigate(['/login']);
+  // CREAR USUARIO
+
+  newUser(user:IUserRegister): Observable<IUserRegister>{
+    return this.http.post<IUserRegister>(USER_URL, user).pipe(catchError(this.handlerUserError));
   }
 
-  private checkToken():void{
-    const userToken = localStorage.getItem('token');
-    const isExpired = helper.isTokenExpired(userToken);
-    console.log('isExpired->', isExpired);
-
-    if (isExpired){
-      this.logout();
-    } else {
-      this.loggedIn.next(true);
-    }
+  updateUser(userId:number, user:UserLogin):Observable<UserLogin>{
+    return this.http.patch<UserLogin>(`${USER_BY_ID_URL}/${userId}`, user).pipe(catchError(this.handlerUserError));
   }
 
-  private saveToken(token:string):void{
-    localStorage.setItem('token', token);
+  deleteUser(userId:number):Observable<{}>{
+    return this.http.delete<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
   }
 
-  private handlerError(error:any): Observable<never>{
-    let errorMessage = 'An error ocurred retrienving data';
+  handlerUserError(error:any):Observable<never>{
+    let errorMessage = 'Error mamita';
     if(error){
-      errorMessage= `Error: code ${error.message}`
-      this.toastrService.error('Email y/o contraseña invalido', 'Login Failed');
+      errorMessage =`Error ${error.message}`;
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+
   }
 
 }

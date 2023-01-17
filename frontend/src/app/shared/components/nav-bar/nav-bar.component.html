@@ -35,18 +35,21 @@
           </li>
         </ul>
 
-        <div class="buttons" >
+        <div class="buttons" *ngIf="!isLogged; else viewLogout">
           <button class="sign-in" (click)="paginaSignIn()" tabindex=”0”><strong>Regístrate</strong></button>
           <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
         </div>
-        <div class="cart">
-          <a routerLink="/store/cart">
-            <i class="bi bi-cart3"></i>
-            <span class="notificacion" *ngIf="cartQuantity">
-              <strong>{{ cartQuantity }}</strong>
-            </span>
-          </a>
-        </div>
+
+        <ng-template #viewLogout>
+          <div class="cart">
+            <a routerLink="/store/cart">
+              <i class="bi bi-cart3"></i>
+              <span class="notificacion" *ngIf="cartQuantity">
+                <strong>{{ cartQuantity }}</strong>
+              </span>
+            </a>
+          </div>
+        </ng-template>
       </div>
     </div>
 
@@ -70,14 +73,16 @@
       </div>
     </ng-template>
 
-    <div class="cart-outside" >
-      <a routerLink="/store/cart">
-        <i class="bi bi-cart3"></i>
-        <span class="notif-outside" *ngIf="cartQuantity">
-          <strong>{{ cartQuantity }}</strong>
-        </span>
-      </a>
-    </div>
+    <ng-template #viewLogout>
+      <div class="cart-outside" >
+        <a routerLink="/store/cart">
+          <i class="bi bi-cart3"></i>
+          <span class="notif-outside" *ngIf="cartQuantity">
+            <strong>{{ cartQuantity }}</strong>
+          </span>
+        </a>
+      </div>
+    </ng-template>
   </nav>
 
 </header>
