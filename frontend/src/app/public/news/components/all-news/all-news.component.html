@@ -1,0 +1,16 @@
+<div class="main">
+    <div class="div-title">
+        <h2 class="title"><strong>Noticias</strong></h2>
+    </div>
+    <section class="section-notices">
+        <div class="card-new" *ngFor="let new of news">
+            <img [src]="new.imageUrl" class="image-new">
+            <div class="body-card-new">
+                <h4><strong>{{new.name}}</strong></h4>
+                <p class="text-card-new date">{{new.date}}</p>
+                <p class="text-card-new">{{new.description}}</p>
+                <button>LEER MÁS</button>
+            </div>
+        </div>
+    </section>
+</div>

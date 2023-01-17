@@ -13,20 +13,31 @@
   .contenedor1
     @extend .flex-column-around-center
 
+    @include screen (290px)
+      max-width: 220px
+
     img
       width: 20em
 
       @include min-screen (290px)
         width: 15em
 
+      @include screen (290px)
+        width: 13em
+
     .redes
       @extend .flex-row-evenly-center
       width: 287px
+
+      @include screen (290px)
+        max-width: 220px !important
 
       a
         color: $pink
         font-size: 2em
         text-decoration: none
+        @include screen (290px)
+          font-size: 1.5em
 
         a:link
           text-decoration: none
@@ -47,6 +58,8 @@
       font-size: 20px
       margin: 0
       text-align: center
+      @include screen (290px)
+        font-size: 18px
 
     ul
       // @extend .flex-row-around-center-wrap
@@ -71,5 +84,7 @@
           text-decoration: none
           color: #FFFFFF
           font-size: 20px
+          @include screen (290px)
+            font-size: 18px
 
 
