@@ -13,44 +13,44 @@
     @include screen (720px)
       margin-top: 1vh
       margin-bottom: 5vh
-    @include screen (480px)
-      margin-top: 0.5vh
-      margin-bottom: 2vh
     .title
       font-size: 40px
       text-align: center
 
   .section-notices
-    @extend .flex-evenly-center
+    @extend .flex-column-center
     flex-wrap: wrap
-    gap: 50px
+    gap: 40px
+    // color: $gray
     @include screen (720px)
       gap: 20px
     @include screen (480px)
       gap: 25px
     .card-new
-      @extend .flex-column-center
-      width: 354px
+      @extend .flex-row-center
+      width: 80%
       // Está rígido, en pixeles, tomando como muestra la cantidad de caracteres de nuestra data
-      height: 866px
+      height: 280px
       // Está en auto para que sea "flexible", de acorde a los caracteres introducidos. Recomiendo usar esta propiedad para que se ajuste, siempre y cuando todas las noticias tengan la misma cantidad de caracteres...
-      height: auto
+      // height: auto
       border: 1px solid $white
       // background-color: $white
       border-radius: 15px
+      background-color: #ffffff3a
+      @include screen (1024px)
+        max-height: 320px
       @include screen (720px)
-        width: 650px
+        width: 90%
         height: 200px
         display: flex
         flex-direction: row
         align-items: center
-        border-radius: 0px
-      @include screen (520px)
+      @include screen (540px)
         height: auto
-        width: auto
       @include screen (480px)
         width: 72%
         height: 500px
+        max-height: 500px
         border-radius: 15px
         display: flex
         flex-direction: column
@@ -63,14 +63,20 @@
       @include screen (230px)
         height: auto
       .image-new
-        width: 350px
-        height: 365px
-        border-radius: 15px 15px 0 0
-        border-block-end: inherit
+        width: 40%
+        height: 100%
+        border-radius: 15px 0 0 15px
+        // border-block-end: inherit
+        object-fit: cover
+        border-right-color: #f8f9fa
+        border-right-style: solid
+        border-right-width: inherit
+        @include screen (1024px)
+          width: 170px
         @include screen (720px)
           width: 270px !important
           height: 198px
-          border-radius: 0px
+          border-radius: 15px 0 0 15px
           object-fit: cover
         @include screen (480px)
           width: 100% !important
@@ -83,10 +89,14 @@
       .body-card-new
         @extend .flex-column-center
         gap: 8px 0
+        align-items: flex-start
+        margin: 0 50px
+        @include screen (1000px)
+          margin: 0 10px
         @include screen (720px)
           gap: 3px
-          margin-left: 15px
-          margin-right: 15px
+          margin-left: 25px
+          margin-right: 20px
         @include screen (480px)
           margin: auto
           display: flex
@@ -102,8 +112,6 @@
         h4,
         .text-card-new,
         button
-          text-align: center
-          // color: $black
           padding: 0 13px
           @include screen (720px)
             padding: 0
@@ -111,31 +119,35 @@
             margin-bottom: 2px
         h4
           margin-top: 1vh
-          font-size: 24px
+          font-size: 30px
+          text-align: left
           @include screen (720px)
             font-size: 20px
           @include screen (480px)
             font-size: 19px
+            text-align: center
           @include screen (290px)
             font-size: 16px
           @include screen (230px)
             font-size: 14px
         .text-card-new
-          font-size: 16px
-          font-weight: 600
+          font-size: 18px
+          text-align: left
           @include screen (720px)
             font-size: 15px
           @include screen (480px)
             font-size: 14px
+            text-align: center
           @include screen (290px)
             font-size: 13px
           @include screen (230px)
             font-size: 11px
             margin-bottom: 3px
         .date
-          font-size: 13px
+          font-size: 14px
           margin: 0
           font-style: italic
+          text-align: left
           @include screen (720px)
             font-size: 10px
           @include screen (480px)
@@ -149,12 +161,15 @@
           background-color: $aqua-marine
           color: $white
           border: $white
+          margin-left: 10px
           @include screen (720px)
             font-size: 14px
             margin-bottom: 5px
             width: 110px
             height: 30px
+            margin-left: 32%
           @include screen (480px)
+            margin-left: 0
             width: 80%
             height: 35px
             border-radius: 32px
