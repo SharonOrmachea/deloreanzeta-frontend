@@ -7,13 +7,14 @@ import { SignInModule } from './sign-in/sign-in.module';
 import { PrivateRoutingModule } from '../private/private-routing.module';
 import { StoreModule } from './store/store.module';
 import { HiringModule } from './hiring/hiring.module';
+import { NewsModule } from './news/news.module';
+import { ToursModule } from './tours/tours.module';
 
 
 
 
 @NgModule({
   declarations: [
-
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,7 @@ import { HiringModule } from './hiring/hiring.module';
     SignInModule,
     StoreModule,
     HiringModule,
+
   ],
   providers: [
 

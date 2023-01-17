@@ -5,16 +5,19 @@ import { PublicComponent } from "./public.component";
 import { HomeComponent } from "./home/pages/home.component";
 import { SignInComponent } from "./sign-in/pages/sign-in.component";
 import { LoginComponent } from "./login/pages/login.component";
+import { FormLoginComponent } from './login/components/form/form-login.component';
 import { FormIdentifyComponent } from './login/components/form-identify-user/form-identify.component';
 import { StoreComponent } from './store/page/store.component';
 import { ProductsComponent } from "./store/components/all products/products.component";
 import { IdProductComponent } from "./store/components/id-product/id-product.component";
 import { HiringComponent } from "./hiring/page/hiring.component";
-import { FormLoginComponent } from './login/components/form/form-login.component';
+
+import { NewsComponent } from "./news/page/news.component";
+import { AllNewsComponent } from "./news/components/all-news/all-news.component";
+import { IdNewsComponent } from "./news/components/id-news/id-news.component";
+import { ToursComponent } from "./tours/pages/tours.component";
 
 import { CheckLoginGuard } from '../shared/guards/check-login.guard';
-
-
 
 
 
@@ -37,6 +40,11 @@ const routes: Routes = [
 
       ] },
       { path: 'hiring', component: HiringComponent },
+      { path: 'news', component: NewsComponent, children: [
+        { path: '', component: AllNewsComponent },
+        { path: 'news/:id', component: IdNewsComponent },
+      ]},
+      { path: 'tours', component: ToursComponent },
     ]
   }
 ];

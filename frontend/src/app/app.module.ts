@@ -28,19 +28,8 @@ import { PrivateModule } from './private/private.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
-    PublicModule,
-    PrivateModule,
     SharedModule,
-    MatAutocompleteModule,
-    ToastrModule.forRoot({
-      timeOut:3000,
-      positionClass:'toast-bottom-right',
-      newestOnTop:false,
-      maxOpened: 1,
-      progressBar: true,
-      progressAnimation: 'decreasing',
-      preventDuplicates: true,
-    })
+    BrowserAnimationsModule
   ],
   providers: [
 
