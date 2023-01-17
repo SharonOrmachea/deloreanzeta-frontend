@@ -18,6 +18,7 @@ import { HiringComponent } from "./hiring/page/hiring.component";
 import { NewsComponent } from "./news/page/news.component";
 import { AllNewsComponent } from "./news/components/all-news/all-news.component";
 import { IdNewsComponent } from "./news/components/id-news/id-news.component";
+import { ToursComponent } from "./tours/pages/tours.component";
 
 
 
@@ -44,7 +45,8 @@ const routes: Routes = [
       { path: 'news', component: NewsComponent, children: [
         { path: '', component: AllNewsComponent },
         { path: 'news/:id', component: IdNewsComponent },
-      ]}
+      ]},
+      { path: 'tours', component: ToursComponent },
     ]
   }
 ];
