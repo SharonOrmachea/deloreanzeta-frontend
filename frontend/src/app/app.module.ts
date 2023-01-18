@@ -4,7 +4,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { PublicModule } from './public/public.module';
@@ -15,6 +14,7 @@ import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
 
 import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
+import { AdminModule } from './Admin/admin.module';
 
 
 
@@ -31,7 +31,19 @@ import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    PublicModule,
+    PrivateModule,
+    AdminModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:3000,
+      positionClass:'toast-bottom-right',
+      newestOnTop:false,
+      maxOpened: 1,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      preventDuplicates: true,
+    })
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true }

@@ -21,6 +21,8 @@ export class AuthService {
 
   private role = new BehaviorSubject<Role>(null);
 
+  private userToken = new BehaviorSubject<string>('holaputo');
+
   constructor(
     private http:HttpClient,
     private router:Router,
@@ -33,14 +35,24 @@ export class AuthService {
     return this.loggedIn.asObservable();
   }
 
+  get isAdmin$(): Observable<Role> {
+    return this.role.asObservable();
+  }
+
+  get userTokenValue(): string{
+    return this.userToken.getValue();
+  }
+
   login(authData:UserLogin): Observable<UserResponse | void>{
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
-      map((res:UserResponse) => {
+      map((user:UserResponse) => {
         this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
-        console.log('Res->', res);
-        this.saveToken(res.token);
+        console.log('Res->', user);
+        this.saveToken(user.token);
         this.loggedIn.next(true);
-        return res;
+        this.role.next(user.role);
+        this.userToken.next(user.token);
+        return user;
       }),
       catchError( (error) => this.handlerError(error) )
     );
@@ -50,7 +62,7 @@ export class AuthService {
   logout(): void{
     localStorage.removeItem('token');
     this.loggedIn.next(false);
-    this.role.next(null)
+    this.role.next(null);
     this.router.navigate(['/login']);
   }
 
