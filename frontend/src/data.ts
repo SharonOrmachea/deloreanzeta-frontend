@@ -2,6 +2,7 @@ import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
+import { Tours } from './app/shared/models/tours/tours';
 
 // USUARIOS REGISTRADOS
 // ADMINISTRADOR
@@ -12,9 +13,6 @@ import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 //   email:'cliente2@gmail.com',
 //   password: 'Aa123456'
 
-import { Login } from "./app/shared/models/sign-in/sign-in";
-import { Register } from './app/shared/models/sign-up/sign-up';
-import { Tours } from './app/shared/models/tours/tours';
 
 export const sample_products: Product[] = [
   {
