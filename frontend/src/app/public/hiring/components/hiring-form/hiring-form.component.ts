@@ -7,9 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HiringFormComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

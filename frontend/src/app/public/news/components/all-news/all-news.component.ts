@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -9,20 +10,13 @@ import { NewsService } from 'src/app/shared/services/news/news.service';
 })
 export class AllNewsComponent implements OnInit {
 
-  news:News[] = []
+  news:News[] = [];
 
-  first:any[] = [
-    {
-      id: '3',
-      name: 'Soy una noticia',
-      date: '05/12/2022',
-      description: 'Soy una descripcion breve de la noticia. Esperemos que el equipo de tester me apruebe la sección, guiño guiño 😉',
-      imageUrl: './assets/news/news3.jpg'
-    }
-  ]
+  constructor( private _servicio:NewsService ) {
 
-  constructor(private newService:NewsService) {
-    this.news = this.newService.getAll();
+    this.news = this._servicio.getAll();
+
+  
   }
 
   ngOnInit(): void {
