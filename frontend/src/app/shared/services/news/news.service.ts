@@ -14,4 +14,9 @@ export class NewsService {
   getAll():News[]{
     return sample_news;
   }
+
+  getNewById(elementId:string){
+    return this.getAll().find(i => i.id == elementId) ?? new News();
+  }
+
 }

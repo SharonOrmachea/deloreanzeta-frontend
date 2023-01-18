@@ -9,6 +9,7 @@ import { StoreModule } from './store/store.module';
 import { HiringModule } from './hiring/hiring.module';
 import { NewsModule } from './news/news.module';
 import { ToursModule } from './tours/tours.module';
+import { GalleryModule } from './gallery/gallery.module';
 
 
 
@@ -26,7 +27,8 @@ import { ToursModule } from './tours/tours.module';
     StoreModule,
     HiringModule,
     NewsModule,
-    ToursModule
+    ToursModule,
+    GalleryModule,
   ],
   providers: [
 
