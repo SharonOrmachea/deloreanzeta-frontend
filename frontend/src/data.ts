@@ -12,6 +12,9 @@ import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 //   email:'cliente2@gmail.com',
 //   password: 'Aa123456'
 
+import { Login } from "./app/shared/models/sign-in/sign-in";
+import { Register } from './app/shared/models/sign-up/sign-up';
+import { Tours } from './app/shared/models/tours/tours';
 
 export const sample_products: Product[] = [
   {
@@ -271,5 +274,24 @@ export const sample_carousel: Carousel[] = [
   },
 ]
 
+export const sample_tours: Tours[] = [
+  {
+    id: '1',
+    date: '05 de Junio del 2022',
+    name: 'Un nombre para el tour',
+    place: 'Jose cuchillos paz, Buenos Aires.'
+  },
+  {
+    id: '2',
+    date: '20 de Agosto del 2022',
+    name: 'Otro nombre para el tour',
+    place: 'Tour mar de las pompas, Buenos Aires.'
+  },
+  {
+    id: '3',
+    date: '05 de Junio del 2022',
+    name: 'Otro de otro nombre para el tour',
+    place: 'Quien sabe que mas hay, Buenos Aires.'
+  },
 
-
+]
