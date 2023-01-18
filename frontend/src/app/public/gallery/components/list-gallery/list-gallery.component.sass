@@ -1,0 +1,18 @@
+@import 'extends-class' 
+@import 'mixins-responsive'
+  
+.gallery
+  @extend .font-general
+  background: none
+  color: $white
+
+  .div-title
+    margin-top: 2vh
+    margin-bottom: 5vh
+    display: block
+    @include screen (720px)
+      margin-top: 1vh
+      margin-bottom: 5vh
+    .title
+      font-size: 40px
+      text-align: center
