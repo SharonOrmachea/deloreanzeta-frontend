@@ -19,6 +19,8 @@ import { NewsComponent } from "./news/page/news.component";
 import { AllNewsComponent } from "./news/components/all-news/all-news.component";
 import { IdNewsComponent } from "./news/components/id-news/id-news.component";
 import { ToursComponent } from "./tours/pages/tours.component";
+import { GalleryComponent } from "./gallery/pages/gallery/gallery.component";
+
 
 
 
@@ -47,6 +49,7 @@ const routes: Routes = [
         { path: 'news/:id', component: IdNewsComponent },
       ]},
       { path: 'tours', component: ToursComponent },
+      { path: 'gallery', component: GalleryComponent },
     ]
   }
 ];

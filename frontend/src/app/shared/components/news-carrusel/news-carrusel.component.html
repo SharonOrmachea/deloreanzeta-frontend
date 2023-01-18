@@ -53,7 +53,7 @@
     >
     <ng-template swiperSlide *ngFor="let noticia of news">
       <div class="contenedor-news">
-        <a routerLink="/news/notice/{{ noticia.id }}">
+        <a routerLink="/news/{{ noticia.id }}">
           <div class="">
             <img
               [src]="noticia.imageUrl"
