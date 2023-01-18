@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -11,8 +12,14 @@ export class IdNewsComponent implements OnInit {
 
   news:News[] = []
 
-  constructor(private _servicio: NewsService) {
-    this.news = this._servicio.getAll()
+  new!:News[];
+
+  constructor(activatedRoute:ActivatedRoute,
+              private newService:NewsService) {
+    // activatedRoute.params.subscribe((params) => {
+    //   if(params['id'])
+    //   this.new = newService.getNewById(params['id']);
+    // })
   }
 
   ngOnInit(): void {
