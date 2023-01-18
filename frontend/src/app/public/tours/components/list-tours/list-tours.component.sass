@@ -1,0 +1,114 @@
+@import 'variables'
+@import 'mixins-responsive'
+
+section
+ background:$background-02-DLZ-url
+ background-repeat: no-repeat
+ background-size: 100%
+
+ @include screen (1020px)
+  max-width: 1020px
+  margin-top: 50px
+ @include screen (760px)
+  background-size: cover
+  height: 450px
+ @include screen (480px)
+  background-size: cover
+  height: 430px
+
+h1
+ font-family: $font-general
+ font-size: 32px
+ font-weight: 700
+ line-height: 48px
+ letter-spacing: 1px
+ color: #FFFFFF
+ text-align: center
+ margin-top: 20px
+ padding-top: 42px
+ padding-bottom: 30px
+ @include screen (1020px)
+  padding-bottom: 10px
+
+
+
+ul
+  background: #0F0F0F
+  width: 700px
+  height: 80%
+  border-radius: 3px
+  margin-left: 350px
+  padding: 20px 20px 20px 20px
+
+  @include screen (1020px)
+   max-width: 500px
+   height: 480px
+   padding: 0px auto
+   margin-left: 250px
+
+  @include screen (760px)
+   max-width: 400px
+   height: 300px
+   margin-left: 200px
+
+  @include screen (480px)
+   max-width: 350px
+   height: 300px
+   margin-left: 60px
+
+  @include screen (390px)
+   max-width: 300px
+   height: 300px
+   margin-left: 40px
+
+  @include screen (320px)
+   max-width: 270px
+   height: 300px
+   margin-left: 20px
+
+
+  @include screen (290px)
+   max-width: 250px
+   height: 300px
+   margin-left: 20px
+
+li
+    font-family: $font-general
+    font-size: 16px
+    margin-left: 20px
+    color: #FFFFFF
+    font-weight: 400
+    line-height: 48px
+    letter-spacing: 1px
+    text-align: left
+    list-style: none
+    text-transform: uppercase
+    @include screen (1020px)
+     font-size: 10px
+     margin: 0px auto
+     height: 35px
+
+    @include screen (760px)
+     margin: 0px auto
+     height: 20px
+    @include screen (480px)
+     margin: 0px auto
+     height: 20px
+     font-size: 8px
+    @include screen (390px)
+     margin: 0px auto
+     height: 20px
+     font-size: 7px
+    @include screen (320px)
+     margin: 0px auto
+     height: 20px
+     font-size: 7px
+
+    @include screen (290px)
+     margin: 0px auto
+     height: 20px
+     font-size: 5px
+
+.new
+  color: #E01D8D
+
