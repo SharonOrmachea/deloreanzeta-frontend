@@ -21,7 +21,7 @@ export class AuthService {
 
   private role = new BehaviorSubject<Role>(null);
 
-  private userToken = new BehaviorSubject<string>('holaputo');
+  private userToken = new BehaviorSubject<string>('hola');
 
   constructor(
     private http:HttpClient,
@@ -60,21 +60,23 @@ export class AuthService {
   }
 
   logout(): void{
-    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.loggedIn.next(false);
     this.role.next(null);
     this.router.navigate(['/login']);
   }
 
   private checkToken():void{
-    const userToken = localStorage.getItem('token');
-    const isExpired = helper.isTokenExpired(userToken);
-    console.log('isExpired->', isExpired);
+    const user = JSON.parse(localStorage.getItem('user')) || null;
 
-    if (isExpired){
-      this.logout();
-    } else {
-      this.loggedIn.next(true);
+    if (user){
+      const isExpired = helper.isTokenExpired(user.token);
+
+      if (isExpired){
+        this.logout();
+      } else {
+        this.loggedIn.next(true);
+      }
     }
   }
 
