@@ -21,7 +21,7 @@ export class AuthService {
 
   private role = new BehaviorSubject<Role>(null);
 
-  private userToken = new BehaviorSubject<string>('hola');
+  private userToken = new BehaviorSubject<string>(null!);
 
   constructor(
     private http:HttpClient,
@@ -39,7 +39,7 @@ export class AuthService {
     return this.role.asObservable();
   }
 
-  get userTokenValue(): string{
+  get userTokenValue(): string {
     return this.userToken.getValue();
   }
 
@@ -48,7 +48,7 @@ export class AuthService {
       map((user:UserResponse) => {
         this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
         console.log('Res->', user);
-        this.saveToken(user.token);
+        this.saveLocalStorage(user);
         this.loggedIn.next(true);
         this.role.next(user.role);
         this.userToken.next(user.token);
@@ -63,11 +63,12 @@ export class AuthService {
     localStorage.removeItem('user');
     this.loggedIn.next(false);
     this.role.next(null);
+    this.userToken.next(null!);
     this.router.navigate(['/login']);
   }
 
   private checkToken():void{
-    const user = JSON.parse(localStorage.getItem('user')) || null;
+    const user = JSON.parse(localStorage.getItem('user')!);
 
     if (user){
       const isExpired = helper.isTokenExpired(user.token);
@@ -76,12 +77,15 @@ export class AuthService {
         this.logout();
       } else {
         this.loggedIn.next(true);
+        this.role.next(user.role);
+        this.userToken.next(user.token);
       }
     }
   }
 
-  private saveToken(token:string):void{
-    localStorage.setItem('token', token);
+  private saveLocalStorage(user:UserResponse):void{
+    const { userId, message, ...rest } = user;
+    localStorage.setItem('user', JSON.stringify(rest));
   }
 
   private handlerError(error:any): Observable<never>{
