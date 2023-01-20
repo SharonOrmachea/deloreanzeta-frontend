@@ -3,5 +3,6 @@ export class News{
   name!:string; //listo
   date!:string;
   description?:string;
+  bodyDescription?:string;
   imageUrl?:string; //listo
 }

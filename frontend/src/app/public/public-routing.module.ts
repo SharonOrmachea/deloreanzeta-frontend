@@ -46,7 +46,7 @@ const routes: Routes = [
       { path: 'hiring', component: HiringComponent },
       { path: 'news', component: NewsComponent, children: [
         { path: '', component: AllNewsComponent },
-        { path: 'news/:id', component: IdNewsComponent },
+        { path: ':id', component: IdNewsComponent },
       ]},
       { path: 'tours', component: ToursComponent },
       { path: 'gallery', component: GalleryComponent },
