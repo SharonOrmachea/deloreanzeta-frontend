@@ -9,33 +9,33 @@
   a
     color: $black
 
-.box1
-  @extend .flex-column-center
-  background-color: $white
-  width: auto
-  height: auto
-  border-radius: 16px
-  padding: 40px
-  gap: 30px 0
-  @include screen (720px)
-    width: 82%
-    padding: 25px
-    box-sizing: content-box
-  @include screen (480px)
-    width: 75%
-  @include screen (220px)
-    width: 70%
+  .box1
+    @extend .flex-column-center
+    background-color: $white
+    width: auto
+    height: auto
+    border-radius: 16px
+    padding: 40px
+    gap: 30px 0
+    @include screen (720px)
+      width: 82%
+      padding: 25px
+      box-sizing: content-box
+    @include screen (480px)
+      width: 75%
+    @include screen (220px)
+      width: 70%
 
-  .titulo
-    @extend .flex-column-around-center
-    color: $black
-    img
-      @extend .logoDLZ-Autito
+    .titulo
+      @extend .flex-column-around-center
+      color: $black
+      img
+        @extend .logoDLZ-Autito
 
-    @include screen (390px)
-      max-width: 280px
-    @include screen (290px)
-      max-width: 220px
+      @include screen (390px)
+        max-width: 280px
+      @include screen (290px)
+        max-width: 220px
     .form
       @extend .flex-column-around-center
       gap: 30px 0
@@ -49,8 +49,8 @@
         @include screen (390px)
           max-width: 80%
           margin: 0 10%
-        @include screen (290px)
-          gap: 10px
+          @include screen (290px)
+            gap: 10px
         .box
           label
             display: flex
@@ -129,114 +129,3 @@
           max-width: 70%
         @include screen (290px)
           max-width: 65%
-
-/*************/
-// .formulario
-//   @extend .font-general
-//   @extend .flex-column-around-center
-//   heigth: auto
-//   gap: 20px
-//   a
-//     color: $black
-
-// .box1
-//   @extend .flex-column-center
-//   background-color: $white
-//   width: auto
-//   height: auto
-//   border-radius: 16px
-//   padding: 40px
-//   gap: 30px
-//   @include screen (720px)
-//     width: 80%
-//   @include screen (480px)
-//     width: 89%
-
-//   .titulo
-//     @extend .flex-column-around-center
-//     color: $black
-//     img
-//       @extend .logoDLZ-Autito
-
-//   .div-form
-
-//   .form
-//     @extend .flex-column-around-center
-//     gap: 30px
-
-//     .inputs
-//       @extend .flex-column-center
-//       gap: 30px
-
-//       @include screen (290px)
-//         gap: 10px
-
-//       label
-//         display: flex
-//         align-items: flex-end
-//         vertical-align: bottom
-//         color: $gray
-//         @include screen (290px)
-//           font-size: 18px
-
-//       input
-//         width: 487px
-//         height: 41px
-//         padding: 1px 5px
-//         border-radius: 12px
-//         border-width: 1px
-//         border-color: $gray
-
-//       .input-area
-//         @include screen (480px)
-//           max-width: 340px
-
-//         @include screen (390px)
-//           max-width: 300px
-
-//         @include screen (290px)
-//           max-width: 240px
-
-//       .textarea
-//         width: 487px
-//         height: 24vh
-//         border-radius: 12px
-//         border-width: 1px
-//         border-color: $gray
-
-//         @include screen (480px)
-//           max-width: 340px
-
-//         @include screen (390px)
-//           max-width: 300px
-
-//         @include screen (290px)
-//           max-width: 240px
-
-//   .submit
-//     @extend .flex-column-around-center
-//     @include screen (480px)
-//       max-width: 480px
-
-//     @include screen (380px)
-//       max-width: 380px
-
-//     @include screen (290px)
-//       max-width: 290px
-
-//     .input-submit
-//       @extend .general-button
-//       @extend .large-button
-//       margin-top: 3vh
-//       background-color: $pink
-
-//       @include screen (480px)
-//         max-width: 80%
-
-//       @include screen (390px)
-//         max-width: 70%
-
-//       @include screen (290px)
-//         max-width: 65%
-
-
