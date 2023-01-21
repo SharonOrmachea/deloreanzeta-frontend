@@ -2,36 +2,17 @@
     <div class="div-title">
         <h2 class="title"><strong>Noticias</strong></h2>
     </div>
-    
-    <section class="section-notices">
-        <div class="card-new" *ngFor="let new of news, index as i">
-            <img [src]="new.imageUrl" class="image-new">
-            <div class="body-card-new">
-                <h4><strong>{{new.name}}</strong></h4>
-                <p class="text-card-new date">{{new.date}}</p>
-                <p class="text-card-new">{{new.description}}</p>
-                <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
-            </div>
-        </div>
-    </section>
 
-    <!--PAGINATION-->
-    <nav aria-label="Page navigation example" class="nav-pagitacion">
-        <ul class="pagination">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item active"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-    </nav>
+    <div class="section-notices">
+      <div class="card-new" *ngFor="let new of news | paginate: { itemsPerPage: 4, currentPage: p }">
+        <img [src]="new.imageUrl" class="image-new">
+          <div class="body-card-new">
+              <h4><strong>{{new.name}}</strong></h4>
+              <p class="text-card-new date">{{new.date}}</p>
+              <p class="text-card-new">{{new.description}}</p>
+              <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
+          </div>
+      </div>
 
+    <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls>
 </div>
