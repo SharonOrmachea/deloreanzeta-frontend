@@ -3,7 +3,7 @@ Feature: Carrito_de_compras
 
 COMO usuario logueado
 QUIERO un carrito de compras
-PARA cargar productos y concretar comprar
+PARA cargar y eliminar productos y concretar compra
 
 Scenario: Agregar un producto al carrito
 Given estoy en store de Delorean Zeta

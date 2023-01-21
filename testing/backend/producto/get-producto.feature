@@ -1,3 +1,4 @@
+ @ceciliaBruno @regresion @producto @get 
  Feature: Get producto 
 
   Scenario: Obtener todas las productos

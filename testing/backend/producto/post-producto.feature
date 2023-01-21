@@ -1,3 +1,4 @@
+ @ceciliaBruno @regresion @producto @post
  Feature: Post producto
 
   Scenario: Dar de alta una producto
