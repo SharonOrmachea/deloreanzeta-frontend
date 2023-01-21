@@ -5,19 +5,35 @@ main
   @extend .font-general
   background: none
   color: $white
-  display: flex
+  @extend .flex-column-start
   justify-content: center
-  align-items: flex-start
-  flex-direction: column
+  @include screen (800px)
+    align-items: center
 
   .div-title
-    margin: 5vh 0 6vh 3vw
+    margin: 5vh 0 6vh 5vw
     display: block
+    max-width: 75vw
+    @include screen (800px)
+      text-align: center
     @include screen (720px)
       margin-top: 1vh
       margin-bottom: 5vh
+      max-width: none
+    @include screen (500px)
+      max-width: 90vw
+      margin: 0 8vw 3vh 8vw
+    @include screen (500px)
+      max-width: 92vw
     .title
       font-size: 40px
+      @include screen (500px)
+        margin-bottom: 1.5vh
+        font-size: 34px 
+      @include screen (400px)
+        font-size: 30px
+      @include screen (300px)
+        font-size: 26px       
     .date
       margin-top: 1.5vh
       font-size: 14px
@@ -31,6 +47,13 @@ main
       width: 55%
       height: 90vh
       object-fit: cover
+      @include screen (720px)
+        height: 70vh
+      @include screen (500px)
+        height: 60vh
+        width: 80vw
+      @include screen (300px)
+        height: 52vh
 
     .container-iframe
       width: 25%
@@ -38,52 +61,69 @@ main
       flex-direction: column
       align-items: center
       justify-content: space-evenly
-      // display: none
+      @include screen (800px)
+        display: none
       iframe
         height: 50%
+        @include screen (900px)
+          width: 100%
       p
         font-size: 18px
+        @include screen (900px)
+          font-size: 16px
 
   .body-description
     width: 75%
     margin: 5vh 5% 1vh 5%
+    @include screen (480px)
+      margin: 3vh 2vw 0 2vw
+      width: 85%
+    @include screen (300px)
+      display: flex
+      flex-direction: column
+
     .description
       font-size: 22px
       text-align: left
       line-height: 1.7
       text-transform: capitalize
+      @include screen (480px)
+        font-size: 20px
+        line-height: 1.6
+      @include screen (300px)
+        font-size: 19px
 
-.diseno-b
-  @extend .font-general
-  background: none
-  color: $white
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-direction: column
-  .div-title2
-    margin: 5vh 0 0 3vw
-    display: block
-    @include screen (720px)
-      margin-top: 1vh
-      margin-bottom: 5vh
-    .title2
-      font-size: 40px
-  .date2
-    margin: 1vh
-    font-size: 14px
-    margin-bottom: 6vh
+// .diseno-b
+//   @extend .font-general
+//   background: none
+//   color: $white
+//   display: flex
+//   justify-content: center
+//   align-items: center
+//   flex-direction: column
+//   .div-title2
+//     margin: 5vh 0 0 3vw
+//     display: block
+//     @include screen (720px)
+//       margin-top: 1vh
+//       margin-bottom: 5vh
+//     .title2
+//       font-size: 40px
+//   .date2
+//     margin: 1vh
+//     font-size: 14px
+//     margin-bottom: 6vh
 
-  .image-notice2
-    width: 60%
-    height: 90vh
-    object-fit: cover
+//   .image-notice2
+//     width: 60%
+//     height: 90vh
+//     object-fit: cover
 
-  .body-description2
-    width: 60%
-    margin: 5vh 20% 1vh 20%
-    .description2
-      font-size: 22px
-      text-align: center
-      line-height: 1.7
-      text-transform: capitalize
+//   .body-description2
+//     width: 60%
+//     margin: 5vh 20% 1vh 20%
+//     .description2
+//       font-size: 22px
+//       text-align: center
+//       line-height: 1.7
+//       text-transform: capitalize
