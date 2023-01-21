@@ -1,1 +1,8 @@
-<p>list-tours works!</p>
+<section>
+  <app-title
+  title="TOURS 2023"
+></app-title>
+  <ul>
+      <li *ngFor="let tours of tours">  {{ tours.date }} {{tours.name}}  {{tours.place}}</li>
+  </ul>
+</section>
