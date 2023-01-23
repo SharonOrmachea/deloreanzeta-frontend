@@ -19,6 +19,7 @@ export class IdProductComponent implements OnInit {
 
   priceFinally:number = 0;
 
+
   productQuantity:number = 1;
 
   categories?:ProductCategories[];
@@ -28,12 +29,27 @@ export class IdProductComponent implements OnInit {
               private productService:ProductService,
               private cartService:CartService) {
 
-
     this.categories = this.productService.getAllProductCategories();
+
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
       this.product = productService.getProductById(params['id']);
-    })
+
+
+    });
+
+    // this.priceFinally = this.product.map(i => {
+    //   i.previousPrice - (i.previousPrice * (i.discount / 100));
+    // })
+    
+
+    // let properties = Object.keys(this.product);
+    // for (let i = 0; i < properties.length; i++) {
+    //   let property = properties[i];
+    //   console.log(`${property}: ${this.product["name"]}`);
+    // }
+    console.log(this.product.price)
+    
    }
 
   ngOnInit(): void {
