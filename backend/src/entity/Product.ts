@@ -1,7 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Unique, Column, ManyToOne, OneToMany} from "typeorm"
 import { MinLength, IsNotEmpty, IsOptional } from "class-validator";
 import { Category } from "./Category";
-import { Image } from "./Image";
 
 @Entity()
 @Unique(["name"])
@@ -35,10 +34,9 @@ export class Product {
     @IsOptional()
     information: string;
 
-    @OneToMany(() => Image, (image) => image.product)
-    image: Image[];
-    
-    @ManyToOne(() => Category, (category) => category.products)
-    category: Category;
+    @Column("simple-array")
+    images: string[];
 
+    @ManyToOne(() => Category, category => category.products)
+    category: Category;
 }
