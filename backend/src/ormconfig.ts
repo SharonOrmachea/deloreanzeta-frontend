@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { Category } from './entity/Category';
+import { Image } from './entity/Image';
 import { Product } from './entity/Product';
 import { User } from './entity/User';
 
@@ -14,7 +15,7 @@ export const config: DataSourceOptions = {
 	username: 'root',
 	password: '0000',
 	database: 'deloreanzeta',
-	entities: [Category, Product, User],
+	entities: [Category, Image, Product, User],
 	synchronize: true,
 	logging: false,
 };

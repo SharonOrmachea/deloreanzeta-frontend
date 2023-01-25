@@ -1,7 +1,9 @@
 import { Request, Response } from 'express';
 import { Product } from '../entity/Product';
-import { Category } from '../entity/Category';
+//import { Category } from '../entity/Category';
 import { getProductRepository } from '../repositories/ProductRepository';
+import { getCategoryRepository } from '../repositories/CategoryRepository';
+import { Image } from '../entity/Image';
 
 export class ProductController {
 	static getAll = async (req: Request, res: Response) => {
@@ -27,13 +29,10 @@ export class ProductController {
 	};
 
 	static getById = async (req: Request, res: Response) => {
-		const productRepository = AppDataSource.getRepository(Product);
+		const productRepository = getProductRepository();
 
 		try {
-			const product = await await productRepository.query(
-				'SELECT * FROM product WHERE id = ?',
-				[req.params.id]
-			); //productRepository.find({ select: ['id', 'name', 'price', 'image', 'description', 'information'], where: id });
+			const product = await productRepository.findById(parseInt(req.params.id))//.query('SELECT * FROM product WHERE id = ?',[req.params.id]); 
 			res.send(product);
 		} catch (e) {
 			res.status(400).json({ message: 'Not result' });
@@ -41,40 +40,35 @@ export class ProductController {
 	};
 
 	static newProduct = async (req: Request, res: Response) => {
-		const { name, price, images, description, information, category } =
-			req.body;
-		const categoryRepository = AppDataSource.getRepository(Category);
-		//const productRepository = AppDataSource.getRepository(Product);
+		const { name, price, images, description, information, category } = req.body;
+		const categoryRepository = getCategoryRepository();
 		const productRepository = getProductRepository();
-		let categoryModel = new Category();
 		let product = new Product();
+        let image = new Image();
 
 		try {
-			const categoryExist = await categoryRepository.find({
-				select: ['id', 'name'],
-				where: { id: category },
-			});
+			const categoryExist = await categoryRepository.findById(category);
 
-			//console.log('contenido de categoriaExist ',categoryExist);
-			if (categoryExist.length > 0) {
+			if (categoryExist !== null) {
 				product.name = name;
 				product.price = price;
 				product.description = description;
 				product.information = information;
-				categoryModel.id = categoryExist[0].id;
-				categoryModel.name = categoryExist[0].name;
 
-				product.category = categoryModel;
-				product.images = images;
+                for(let i = 0; i < images.length; i++){
+                    const buffer = Buffer.from(images[i], "utf-8");
+                    const imageProduct = new Image();
+                    imageProduct.data = buffer;
+                    product.images.push(imageProduct);    
+                }
+				product.category = categoryExist;
 
 				await productRepository.save(product);
 			} else {
-				return res
-					.status(404)
-					.json({ message: 'The category does not exist' });
+				return res.status(404).json({ message: 'The category does not exist' });
 			}
-		} catch (e) {
-			return res.status(409).json(e);
+		} catch (error) {
+			return res.status(409).json(error);
 		}
 		res.send('Product created');
 	};
