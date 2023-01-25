@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import { Image } from "./Image";
 
 @Entity()
 export class New {
@@ -13,4 +14,10 @@ export class New {
 
     @Column()
     content: string;
+
+    @Column()
+    image: Image;
+
+    @Column()
+    createdAt: Date;
 }

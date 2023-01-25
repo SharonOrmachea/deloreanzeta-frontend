@@ -19,12 +19,8 @@ export class NewRepository extends Repository<New> {
     async saveNew(neww: New): Promise<New> {
         return await this.save(neww);
     }
-    async createNew(title: string, content: string, description: string): Promise<New> {
-        return await this.create({
-            title,
-            content,
-            description
-        });
+    async createNew(neww: New): Promise<New> {
+        return await this.create(neww);
     }
     async updateNew(neww: New): Promise<New> {
         return await this.save(neww);
