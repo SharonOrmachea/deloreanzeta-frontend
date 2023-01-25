@@ -10,7 +10,7 @@ export class CategoryRepository extends Repository<Category> {
     findById(id: number) {
         return this.findOneBy({ id });
     }
-    async findAll(): Promise<Array<Category>> {
+    async findAll(): Promise<Category[]> {
         const categories = await this.createQueryBuilder('category')
             .getMany();
         return categories;

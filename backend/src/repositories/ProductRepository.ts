@@ -17,7 +17,7 @@ export class ProductRepository extends Repository<Product> {
 	findById(id: number) {
 		return this.findOneBy({ id });
 	}
-	async findByCategory(category: string): Promise<Array<Product>> {
+	async findByCategory(category: string): Promise<Product[]> {
 		// using query builder to get all products by category with name
 		const products = await this.createQueryBuilder('product')
 			.leftJoinAndSelect('product.category', 'category')
