@@ -1,9 +1,9 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserResponse } from '../../interfaces/iuserlogin';
+import { UserResponse, Role } from '../../interfaces/iuserlogin';
 import { CartService } from '../../services/store/cart/cart.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 
 
 @Component({
@@ -21,7 +21,11 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   isLogged = false;
 
+  isAdmin:Role = null!;
+
   private subscription: Subscription = new Subscription();
+
+  private destroy$ = new Subject<any>();
 
   constructor(
     private router: Router,
@@ -31,20 +35,19 @@ export class NavBarComponent implements OnInit, OnDestroy {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
-
-    // userService.userObservable.subscribe((newUser) => {
-    //   this.user = newUser;
-    // })
   }
 
   ngOnInit(): void {
-    this.subscription.add(
-      this.authService.isLogged.subscribe( res => this.isLogged = res)
-    );
+    this.authService.user$.pipe(takeUntil(this.destroy$)).subscribe((user: UserResponse) => {
+      this.isLogged = true;
+      this.isAdmin = user?.role;
+    });
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe;
+    this.destroy$.next({});
+    this.destroy$.complete();
+
   }
 
   paginaLogin(){
@@ -57,6 +60,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogout():void {
     this.authService.logout();
+    this.isLogged = false;
   }
 
 }

@@ -17,11 +17,7 @@ const helper = new JwtHelperService();
 
 export class AuthService {
 
-  private loggedIn = new BehaviorSubject<boolean>(false);
-
-  private role = new BehaviorSubject<Role>(null);
-
-  private userToken = new BehaviorSubject<string>(null!);
+  private user = new BehaviorSubject<UserResponse>(null!);
 
   constructor(
     private http:HttpClient,
@@ -31,27 +27,23 @@ export class AuthService {
     this.checkToken();
   }
 
-  get isLogged():Observable<boolean>{
-    return this.loggedIn.asObservable();
+  get user$():Observable<UserResponse> {
+    return this.user.asObservable();
   }
 
-  get isAdmin$(): Observable<Role> {
-    return this.role.asObservable();
-  }
-
-  get userTokenValue(): string {
-    return this.userToken.getValue();
+  get userValue():UserResponse {
+    return this.user.getValue();
   }
 
   login(authData:UserLogin): Observable<UserResponse | void>{
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
       map((user:UserResponse) => {
         this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
-        console.log('Res->', user);
         this.saveLocalStorage(user);
-        this.loggedIn.next(true);
-        this.role.next(user.role);
-        this.userToken.next(user.token);
+        this.user.next(user);
+
+        console.log('Res->', user);
+        
         return user;
       }),
       catchError( (error) => this.handlerError(error) )
@@ -61,14 +53,12 @@ export class AuthService {
 
   logout(): void{
     localStorage.removeItem('user');
-    this.loggedIn.next(false);
-    this.role.next(null);
-    this.userToken.next(null!);
+    this.user.next(null!);
     this.router.navigate(['/login']);
   }
 
   private checkToken():void{
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(localStorage.getItem('user')!) || null;
 
     if (user){
       const isExpired = helper.isTokenExpired(user.token);
@@ -76,9 +66,7 @@ export class AuthService {
       if (isExpired){
         this.logout();
       } else {
-        this.loggedIn.next(true);
-        this.role.next(user.role);
-        this.userToken.next(user.token);
+        this.user.next(user);
       }
     }
   }
@@ -89,13 +77,13 @@ export class AuthService {
   }
 
   private handlerError(error:any): Observable<never>{
-    let errorMessage = 'An error ocurred retrienving data';
+    let errorMessage = 'Un error';
     if(error){
       errorMessage= `Error: code ${error.message}`
       this.toastrService.error('Email y/o contraseña invalido', 'Login Failed');
     }
     console.log(errorMessage);
-    return throwError(errorMessage);
+    return throwError(() => errorMessage);
   }
 
 }

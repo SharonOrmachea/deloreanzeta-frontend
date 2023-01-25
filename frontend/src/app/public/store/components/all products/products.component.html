@@ -2,22 +2,23 @@
   <app-carrusel></app-carrusel>
 
   <app-admin-store></app-admin-store>
-  
-  <!-- <app-not-found
-    [visible]="!products || !products.length"
-    notFoundMessage="No hay productos cargados en la tienda"
-    resetLinkText="Volver a Inicio"
-    resetLinkRoute="/home"
-  ></app-not-found> -->
 
-  <section class="contenedor" *ngIf="products && products.length">
+  <section class="contenedor">
 
     <app-title
       title="Todos los productos"
     ></app-title>
 
     <div class="contenedor-categoria">
-      <div class="category">
+
+      <app-not-found
+        [visible]="!products || !products.length"
+        notFoundMessage="No hay productos cargados en esta categoria"
+        resetLinkText="Volver a la tienda"
+        resetLinkRoute="/store"
+      ></app-not-found>
+
+      <div class="category" *ngIf="products && products.length">
         <a routerLink="/store">Todos</a>
         <a *ngFor="let tag of categories" routerLink="/store/category/{{ tag.name }}" class="tag">
           <strong>{{ tag.name }}</strong>

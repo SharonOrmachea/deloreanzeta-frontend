@@ -16,7 +16,7 @@ export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + 'categoria/';
 // Login de usuarios
 export const USER_LOGIN_URL = BASE_URL + 'auth/login';
 
-// Registra un usuario y/o obtiene todos los usuarios
+// Registra un usuario y/o obtiene todos los usuarios (para el admin)
 export const USER_URL = BASE_URL + 'users';
 
 // Trae, edita y/o elimina un usuario por ID (para el admin)

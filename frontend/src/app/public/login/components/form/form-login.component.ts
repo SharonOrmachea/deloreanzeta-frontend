@@ -25,7 +25,6 @@ export class FormLoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private activatedRoute:ActivatedRoute,
     private router:Router) {
 
     this.loginForm = this.formBuilder.group({
@@ -34,9 +33,7 @@ export class FormLoginComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

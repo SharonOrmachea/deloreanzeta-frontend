@@ -6,13 +6,13 @@
       <h2><strong>Iniciar Sesión</strong></h2>
     </div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form"  name="log-in">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form"  name="login">
 
       <div class="inputs">
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
             <mat-label for="">Email</mat-label>
-            <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ex. delorean@gmail.com">
+            <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ex. delorean@gmail.com" tabindex=”0”>
             <mat-error *ngIf="isValidField('email')">
               <strong>{{ getErrorMessage('email') }}</strong>
             </mat-error>
@@ -22,7 +22,7 @@
         <div class="box-form">
           <mat-form-field color="accent">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” required>
+            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” tabindex=”0” required>
             <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </i>
@@ -35,16 +35,17 @@
 
       <div class="login">
         <button [disabled]="loginForm.invalid" class="btn btn-lg" type="submit" tabindex=”0” >Iniciar Sesión</button>
-        <a
-          routerLink='/login/identify'
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          tabindex=”0”>
-          <strong>¿Olvidaste tu contraseña?</strong>
-        </a>
       </div>
-
     </form>
+    <div>
+      <a
+        routerLink='/login/identify'
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        tabindex=”0”>
+        <strong>¿Olvidaste tu contraseña?</strong>
+      </a>
+    </div>
   </div>
 
   <div class="box2">
