@@ -3,7 +3,25 @@
         <h2 class="title"><strong>Galería</strong></h2>
     </div>
 
-    <!-- <div class="gallery" *ngFor="let i of news">
-        <img [src]="i.imageUrl" class="image-gallery">
-    </div> -->
+    <!-- <section class="contenedorSwiper">
+        <swiper
+          [navigation]="true"
+          [loop]="true"
+          [spaceBetween]="10"
+          class="mySwiper"
+        >
+          <ng-template swiperSlide *ngFor="let i of sources">
+            <div class="contenedorImagen">
+              <img [src]="i.imageUrl" alt="Delorean-Banner">
+            </div>
+          </ng-template>
+        </swiper>
+    </section> -->
+    <div class="gallerySection">
+        <div *ngFor="let i of sources" class="card-gallery">
+            <img [src]="i.imageUrl" class="image-gallery">
+            <p><span>{{i.title}}</span></p>
+        </div>
+    </div>
+
 </main>

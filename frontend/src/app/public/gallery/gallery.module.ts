@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { ListGalleryComponent } from './components/list-gallery/list-gallery.component';
 import { SharedModule } from '../../shared/shared.module';
-
+import { SwiperModule } from 'swiper/angular';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { SharedModule } from '../../shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    SwiperModule
   ]
 })
 export class GalleryModule { }
