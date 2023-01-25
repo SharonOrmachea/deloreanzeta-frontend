@@ -22,6 +22,12 @@ export class UserRepository extends Repository<User> {
     async createUser(user: User): Promise<User> {
         return await this.create(user);
     }
+    async updateUser(user: User): Promise<User> {
+        return await this.save(user);
+    }
+    async deleteUser(user: User): Promise<User> {
+        return await this.remove(user);
+    }
 }
 
 export const getUserRepository = () => {
