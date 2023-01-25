@@ -1,25 +1,24 @@
 import * as express from "express"
-import { AppDataSource } from "./data-source"
+import { config as dbconfig } from "./data-source"
 import * as cors from "cors";
 import helmet from "helmet";
 import routes from "./routes"
 import * as config from "./config/config";
+import { createConnection } from "typeorm";
 
 const PORT = config.PORT    
 
-AppDataSource.initialize().then(async () => {
+// create express app
+const app = express();
+// middlewares
+app.use(cors());
+app.use(helmet());
+app.use(express.json());
 
-    // create express app
-    const app = express();
-    // middlewares
-    app.use(cors());
-    app.use(helmet());
-    app.use(express.json());
+app.use("/", routes);
 
-    app.use("/", routes);
-
-    // start express server
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-
-
-}).catch(error => console.log(error))
+// init db connection
+createConnection(dbconfig)
+    .then(() => console.log("Connected to database"))
+    .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
+    .catch(error => console.log(error));
