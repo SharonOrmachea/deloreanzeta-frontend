@@ -1,4 +1,4 @@
-import { AppDataSource } from '../data-source';
+import { AppDataSource } from '../ormconfig';
 import { Request, Response } from "express";
 import { validate } from 'class-validator';
 import { Category } from "../entity/Category";

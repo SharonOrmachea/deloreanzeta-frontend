@@ -1,4 +1,4 @@
-import { AppDataSource } from '../data-source'
+import { AppDataSource } from '../ormconfig'
 import { Request, Response, NextFunction } from "express"
 import { User } from "../entity/User"
 import { validate } from "class-validator";
