@@ -1,12 +1,13 @@
-import { AppDataSource } from '../ormconfig';
+//import { AppDataSource } from '../data-source';
 import { Request, Response } from "express";
 import { validate } from 'class-validator';
 import { Category } from "../entity/Category";
+import { getCategoryRepository } from "../repositories/CategoryRepository";
 
 export class CategoryController {
 
     static getAll = async (req: Request, res: Response) => {
-        const categoryRepository = AppDataSource.getRepository(Category);
+        const categoryRepository = getCategoryRepository();
         let categories;
     
         try {
@@ -24,7 +25,7 @@ export class CategoryController {
   
     static getById = async (req: Request, res: Response) => {
         const id = req.params;
-        const categoryRepository = AppDataSource.getRepository(Category);
+        const categoryRepository = getCategoryRepository();
         
         try {
             const category = await categoryRepository.find({select: ['id', 'name'], where: id});
@@ -47,7 +48,7 @@ export class CategoryController {
             return res.status(400).json(errors);
         }
         
-        const categoryRepository = AppDataSource.getRepository(Category);
+        const categoryRepository = getCategoryRepository()
         try {
             await categoryRepository.save(category);
         } catch (e) {
@@ -60,7 +61,7 @@ export class CategoryController {
         let category: Category;
         const id = req.params;
         const { name } = req.body;
-        const categoryRepository = AppDataSource.getRepository(Category);
+        const categoryRepository = getCategoryRepository()
         
         try {
             category = await categoryRepository.findOneOrFail({where: id});
@@ -87,7 +88,7 @@ export class CategoryController {
 
     static deleteCategory = async (req: Request, res: Response) => {
         const id = req.params;
-        const categoryRepository = AppDataSource.getRepository(Category);
+        const categoryRepository = getCategoryRepository()
 
         let category: Category;
         try {
