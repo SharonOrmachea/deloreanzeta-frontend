@@ -44,7 +44,7 @@ class AuthController {
 				message: 'Old password and new password are required',
 			});
 		}
-		const userRepository = AppDataSource.getRepository(User);
+		const userRepository = getUserRepository();
 		let user: User;
 
 		try {
@@ -84,7 +84,7 @@ class AuthController {
 		let verificationLink;
 		let emailStatus = 'OK';
 
-		const userRepository = AppDataSource.getRepository(User);
+		const userRepository = getUserRepository();
 		let user: User;
 
 		try {
@@ -134,7 +134,7 @@ class AuthController {
 			res.status(400).json({ message: 'All the fields are required' });
 		}
 
-		const userRepository = AppDataSource.getRepository(User);
+		const userRepository = getUserRepository();
 		let jwtPayload;
 		let user: User;
 

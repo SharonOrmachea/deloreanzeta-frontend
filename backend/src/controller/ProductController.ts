@@ -56,7 +56,7 @@ export class ProductController {
 				product.information = information;
 
                 for(let i = 0; i < images.length; i++){
-                    const buffer = Buffer.from(images[i], "utf-8");
+                    const buffer = Buffer.from(images[i], "base64");
                     const imageProduct = new Image();
                     imageProduct.data = buffer;
                     product.images.push(imageProduct);    
