@@ -16,6 +16,17 @@ export class UserRepository extends Repository<User> {
             .getMany();
         return users;
     }
+    async findByCredentials(email: string, password: string): Promise<User> {
+        // getting the user by email and password
+        const user = await this.createQueryBuilder('user')
+            .where('user.email = :email', { email })
+            .getOneOrFail();
+        // if the user exists and the password is correct
+        if (user && user.checkPassword(password)) {
+            return user;
+        }
+        throw new Error('User or password incorrect');
+    }
     async saveUser(user: User): Promise<User> {
         return await this.save(user);
     }
