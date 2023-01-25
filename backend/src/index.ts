@@ -1,5 +1,5 @@
 import * as express from "express"
-import { config as dbconfig } from "./data-source"
+import { config as dbconfig } from "./ormconfig"
 import * as cors from "cors";
 import helmet from "helmet";
 import routes from "./routes"
