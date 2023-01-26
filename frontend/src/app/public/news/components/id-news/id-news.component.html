@@ -7,10 +7,13 @@
 
     <div class="div-content">
         <img src={{new.imageUrl}} alt={{new.name}} class="image-notice">
-        <div class="container-iframe">
+        <aside class="container-iframe">
             <iframe src="https://www.youtube.com/embed/N0INGR9iiek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <p>Hola, soy una columna. Creo que acá podría ir algún tipo de texto o archivo para rellenar el 100% del ancho. Que opinas?</p>
-        </div>
+            <div>  
+                <p>¿Querés ver todas las fotos y videos? ¡Ve hacia nuestra galería!</p>
+                <button routerLink="/gallery">Ir a Galería</button>
+            </div>
+        </aside>
     </div>
 
     <article class="body-description">

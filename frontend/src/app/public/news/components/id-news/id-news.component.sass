@@ -67,10 +67,19 @@ main
         height: 50%
         @include screen (900px)
           width: 100%
-      p
-        font-size: 18px
-        @include screen (900px)
-          font-size: 16px
+      div
+        @extend .flex-column-around-center
+        p
+          font-size: 18px
+          text-align: center
+          @include screen (900px)
+            font-size: 16px
+        button
+          @extend .short-button
+          font-weight: bold
+        button:hover
+          background: rgb(0, 0, 0, 0.7)
+          color: $white
 
   .body-description
     width: 75%
@@ -84,7 +93,7 @@ main
 
     .description
       font-size: 22px
-      text-align: left
+      text-align: justify
       line-height: 1.7
       text-transform: capitalize
       @include screen (480px)

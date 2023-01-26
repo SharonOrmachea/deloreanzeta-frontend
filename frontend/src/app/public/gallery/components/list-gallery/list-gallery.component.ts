@@ -1,19 +1,31 @@
-import { Component, OnInit } from '@angular/core';
-import { News } from 'src/app/shared/models/news/news';
-import { NewsService } from 'src/app/shared/services/news/news.service';
+import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { Sources } from 'src/app/shared/models/gallery/gallery';
+import { GalleryService } from 'src/app/shared/services/gallery/gallery.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+
 
 @Component({
   selector: 'app-list-gallery',
   templateUrl: './list-gallery.component.html',
-  styleUrls: ['./list-gallery.component.sass']
+  styleUrls: ['./list-gallery.component.sass'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListGalleryComponent implements OnInit {
 
-  news:News[] = [];
+  // sources:Sources[] = [];
 
-  constructor( private _servicio:NewsService ) {
+  sources!:Sources[];
 
-    this.news = this._servicio.getAll();
+  constructor( private _servicio:GalleryService, private modalService: NgbModal ) {
+
+    this.sources = this._servicio.getAll();
+    
+  }
+
+  open(content: TemplateRef<any>) {
+    this.modalService.open(content);
   }
 
   ngOnInit(): void {
