@@ -11,10 +11,10 @@ import { Router } from '@angular/router';
 })
 export class FormIdentifyComponent implements OnInit {
 
-  identify:FormGroup;
+  identifyEmail:FormGroup;
 
   constructor(private router: Router) {
-    this.identify = new FormGroup({
+    this.identifyEmail = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')])
     })
 
@@ -24,7 +24,29 @@ export class FormIdentifyComponent implements OnInit {
   }
 
   continueToCode() {
-    this.router.navigate(['login/code'])
+    this.router.navigate(['recover/password'])
+  }
+
+  getErrorMessage(field:string): string{
+    let message = '';
+
+    if (this.identifyEmail.get(field)!.errors?.['required']){
+      message = 'Debes ingresar un valor';
+    }else if(this.identifyEmail.get(field)!.hasError('pattern')){
+      if(field == 'email'){
+        message = 'El Email no es valido';
+      }
+    }
+
+    return message;
+  }
+
+  isValidField(field:string): boolean{
+    return (
+      (this.identifyEmail.get(field)!.touched ||
+      this.identifyEmail.get(field)!.dirty) &&
+      !this.identifyEmail.get(field)!.valid
+    );
   }
 
 }
