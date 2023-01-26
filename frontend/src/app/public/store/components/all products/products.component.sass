@@ -1,4 +1,5 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 body
   background: none
@@ -115,3 +116,14 @@ section
         .price
           color: $violet
           font-size: 1.4em
+
+    .div-pagination
+      display: flex
+      align-items: center
+      justify-content: center
+      .pagination
+        font-weight: bold
+        font-size: 22px
+        margin-top: 6vh
+        @include screen (500px)
+          letter-spacing: 10px

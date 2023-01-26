@@ -20,6 +20,7 @@ export class IdProductComponent implements OnInit {
 
   priceFinally:number = 0;
 
+
   productQuantity:number = 1;
 
   constructor(

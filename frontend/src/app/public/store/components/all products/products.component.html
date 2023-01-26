@@ -37,7 +37,7 @@
     <div class="contenedor-productos" *ngIf="products && products.length">
 
       <ul>
-        <li *ngFor="let product of products">
+        <li *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: p }">
           <a routerLink="/store/product/{{ product.id }}">
             <div class="col">
               <div class="image-name">

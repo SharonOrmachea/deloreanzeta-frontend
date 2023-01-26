@@ -7,7 +7,7 @@ import { StoreComponent } from './page/store.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { ProductsComponent } from './components/all products/products.component';
 import { IdProductComponent } from './components/id-product/id-product.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { IdProductDirective } from './directive/id-product.directive';
 
 import { AdminStoreModule } from 'src/app/Admin/admin-store/admin-store.module';
@@ -27,6 +27,9 @@ import { AdminStoreModule } from 'src/app/Admin/admin-store/admin-store.module';
     SharedModule,
     AdminStoreModule,
     SwiperModule,
+    SwiperModule,
+    NgxPaginationModule
+
   ],
   providers: []
 })

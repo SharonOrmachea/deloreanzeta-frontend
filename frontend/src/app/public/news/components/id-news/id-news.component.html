@@ -1,16 +1,19 @@
 <main>
     <div class="div-title">
-    <h5>DISEÑO A</h5>
+        <!-- <h5>DISEÑO A</h5> -->
         <h2 class="title"><strong>{{new.name}}</strong></h2>
         <small class="date">{{new.date}}</small>
     </div>
 
     <div class="div-content">
         <img src={{new.imageUrl}} alt={{new.name}} class="image-notice">
-        <div class="container-iframe">
+        <aside class="container-iframe">
             <iframe src="https://www.youtube.com/embed/N0INGR9iiek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            <p>Hola, soy una columna. Creo que acá podría ir algún tipo de texto o archivo para rellenar el 100% del ancho. Que opinas?</p>
-        </div>
+            <div>
+                <p>¿Querés ver todas las fotos y videos? ¡Ve hacia nuestra galería!</p>
+                <button routerLink="/gallery">Ir a Galería</button>
+            </div>
+        </aside>
     </div>
 
     <article class="body-description">
@@ -20,7 +23,7 @@
         <p class="description">{{new.content}}</p>
     </article>
 </main>
-<br><br><br><br>
+<!-- <br><br><br><br>
 <br><br><br><br>
 <div class="diseno-b">
     <div class="div-title2">
@@ -38,4 +41,4 @@
         <p class="description2">{{new.content}}</p>
         <p class="description2">{{new.content}}</p>
     </article>
-</div>
+</div> -->
