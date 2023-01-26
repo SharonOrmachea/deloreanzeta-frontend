@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import { Product } from '../entity/Product';
 //import { Category } from '../entity/Category';
-import productRepository from '../repositories/ProductRepository';
-import categoryRepository from '../repositories/CategoryRepository';
+import ProductRepository from '../repositories/ProductRepository';
+import CategoryRepository from '../repositories/CategoryRepository';
 import { Image } from '../entity/Image';
 
 export class ProductController {
 	static getAll = async (req: Request, res: Response) => {
+		const productRepository = ProductRepository;
 		const { page, limit } = req.query;
 		// parse page and limit to number
 		const pageInt = parseInt(page as string);
@@ -28,6 +29,8 @@ export class ProductController {
 	};
 
 	static getById = async (req: Request, res: Response) => {
+		const productRepository = ProductRepository;
+
 		try {
 			const product = await productRepository.findById(parseInt(req.params.id))//.query('SELECT * FROM product WHERE id = ?',[req.params.id]); 
 			res.send(product);
@@ -38,6 +41,8 @@ export class ProductController {
 
 	static newProduct = async (req: Request, res: Response) => {
 		const { name, price, images, description, information, category } = req.body;
+		const categoryRepository = CategoryRepository;
+		const productRepository = ProductRepository;
 		let product = new Product();
         let image = new Image();
 
@@ -54,7 +59,7 @@ export class ProductController {
                     const buffer = Buffer.from(images[i], "base64");
                     const imageProduct = new Image();
                     imageProduct.data = buffer;
-                    product.images.push(imageProduct);    
+                    product.images.push(imageProduct);
                 }
 				product.category = categoryExist;
 
