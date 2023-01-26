@@ -1,28 +1,25 @@
-import { EntityRepository, getCustomRepository, Repository } from 'typeorm';
+import conn from '../dbConnection';
 import { Category } from '../entity/Category';
 
-@EntityRepository(Category)
-export class CategoryRepository extends Repository<Category> {
+const CategoryRepository = conn.getRepository(Category).extend({
     // custom methods
-    findByName(name: string) {
-        return this.findOneBy({ name });
-    }
-    findById(id: number) {
-        return this.findOneBy({ id });
-    }
+    async findByName(name: string): Promise<Category> {
+        return await this.findOneBy({ name });
+    },
+    async findById(id: number): Promise<Category> {
+        return await this.findOneBy({ id });
+    },
     async findAll(): Promise<Category[]> {
         const categories = await this.createQueryBuilder('category')
             .getMany();
         return categories;
-    }
+    },
     async saveCategory(category: Category): Promise<Category> {
         return await this.save(category);
-    }
+    },
     async createCategory(category: Category): Promise<Category> {
         return await this.create(category);
     }
-}
+});
 
-export const getCategoryRepository = () => {
-    return getCustomRepository(CategoryRepository);
-}
+export default CategoryRepository;

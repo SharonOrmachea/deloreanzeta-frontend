@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import * as config from '../config/config';
 import { validate } from 'class-validator';
 import { transporter } from '../config/mailer';
-import { getUserRepository } from '../repositories/UserRepository';
+import userRepository from '../repositories/UserRepository';
 import { StatusCodes } from 'http-status-codes';
 
 class AuthController {
@@ -17,7 +17,6 @@ class AuthController {
 		}
 
 		try {
-			const userRepository = getUserRepository();
 			const user = await userRepository.findByCredentials(
 				email,
 				password
@@ -44,7 +43,6 @@ class AuthController {
 				message: 'Old password and new password are required',
 			});
 		}
-		const userRepository = getUserRepository();
 		let user: User;
 
 		try {
@@ -84,7 +82,6 @@ class AuthController {
 		let verificationLink;
 		let emailStatus = 'OK';
 
-		const userRepository = getUserRepository();
 		let user: User;
 
 		try {
@@ -134,7 +131,6 @@ class AuthController {
 			res.status(400).json({ message: 'All the fields are required' });
 		}
 
-		const userRepository = getUserRepository();
 		let jwtPayload;
 		let user: User;
 

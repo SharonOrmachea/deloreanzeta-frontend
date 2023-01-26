@@ -1,12 +1,11 @@
-import * as express from "express"
-import { config as dbconfig } from "./ormconfig"
-import * as cors from "cors";
-import helmet from "helmet";
-import routes from "./routes"
-import * as config from "./config/config";
-import { createConnection } from "typeorm";
+import * as express from 'express';
+import * as cors from 'cors';
+import helmet from 'helmet';
+import routes from './routes';
+import * as config from './config/config';
+import { initialize as initializeDb } from './dbConnection';
 
-const PORT = config.PORT    
+const PORT = config.PORT;
 
 // create express app
 const app = express();
@@ -15,10 +14,9 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-app.use("/", routes);
+app.use('/', routes);
 
-// init db connection
-createConnection(dbconfig)
-    .then(() => console.log("Connected to database"))
-    .then(() => app.listen(PORT, () => console.log(`Server running on port ${PORT}`)))
-    .catch(error => console.log(error));
+
+initializeDb().then(() => {
+    app.listen(PORT, () => console.log(`Server running on port http://localhost:${PORT}/`));
+}).catch((error) => console.log(error));

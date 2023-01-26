@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
-import { getNewRepository } from '../repositories/NewRepository';
+import newRepository from '../repositories/NewRepository';
 import { StatusCodes } from 'http-status-codes';
 import { New } from '../entity/New';
 import { Image } from '../entity/Image';
 
 export class NewController {
     static getAll = async (req: Request, res: Response) => {
-        const newRepository = getNewRepository();
         const news = await newRepository.findAll();
         res.status(StatusCodes.OK).json({ message: 'OK', news });
     };
@@ -15,7 +14,6 @@ export class NewController {
         const { id } = req.params;
         const idInt = parseInt(id as string);
 
-        const newRepository = getNewRepository();
         const neww = await newRepository.findById(idInt);
         res.status(StatusCodes.OK).json({ message: 'OK', neww });
     }
@@ -31,7 +29,6 @@ export class NewController {
         neww.image.data = Buffer.from(image, 'base64');
         neww.createdAt = new Date();
         
-        const newRepository = getNewRepository();
         const result = await newRepository.createNew(neww);
         res.status(StatusCodes.CREATED).json({ message: 'OK', result });
     }
@@ -41,7 +38,6 @@ export class NewController {
         const idInt = parseInt(id as string);
         const { title, content, image } = req.body;
 
-        const newRepository = getNewRepository();
         const neww = await newRepository.findById(idInt);
         neww.title = title;
         neww.content = content;
@@ -57,7 +53,6 @@ export class NewController {
         const { id } = req.params;
         const idInt = parseInt(id as string);
 
-        const newRepository = getNewRepository();
         const neww = await newRepository.findById(idInt);
         await newRepository.deleteNew(neww);
         res.status(StatusCodes.OK).json({ message: 'OK' });
