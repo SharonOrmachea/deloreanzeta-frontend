@@ -22,9 +22,13 @@ export class ProductsComponent implements OnInit {
 
   categories!:ProductCategories[];
 
+  p:any;
+
   constructor(
     private productService:ProductService,
     activatedRoute:ActivatedRoute) {
+
+    this.p =1;
 
     let productsObservable:Observable<Product[]>;
 
