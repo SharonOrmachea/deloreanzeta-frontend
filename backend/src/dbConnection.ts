@@ -5,9 +5,7 @@ import { Image } from './entity/Image';
 import { Product } from './entity/Product';
 import { User } from './entity/User';
 
-
-// creating config for typeorm for mysql
-export const config: DataSourceOptions = {
+const config: DataSourceOptions = {
 	type: 'mysql',
 	host: 'localhost',
 	port: 3306,
@@ -20,4 +18,18 @@ export const config: DataSourceOptions = {
 };
 
 const conn = new DataSource(config);
+
+// return new Promise with the execution of intilization of the connection
+export const initialize = async (): Promise<void> => {
+	return new Promise((resolve, reject) => {
+		conn.initialize().then(() => {
+			console.log('Database connected');
+			resolve();
+		}).catch((error) => {
+			console.log('Database connection failed');
+			reject(error);
+		});
+	});
+};
+
 export default conn;
