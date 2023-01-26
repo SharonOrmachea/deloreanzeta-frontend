@@ -6,7 +6,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 
-import { USER_URL, USER_BY_ID_URL } from '../../constants/urls';
+import { USER_URL, USER_BY_EMAIL_URL } from '../../constants/urls';
 import { IUserRegister } from '../../interfaces/iUserRegister';
 import { UserLogin } from '../../interfaces/iuserlogin';
 
@@ -33,8 +33,8 @@ export class UserService {
     return this.http.get<UserLogin[]>(USER_URL).pipe(catchError(this.handlerUserError));
   }
 
-  getUserById(userId: number):Observable<UserLogin>{
-    return this.http.get<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
+  getUserByEmail(userId: number):Observable<UserLogin>{
+    return this.http.get<UserLogin>(`${USER_BY_EMAIL_URL}/${userId}`).pipe(catchError(this.handlerUserError));
   }
 
   // CREAR USUARIO
@@ -44,12 +44,12 @@ export class UserService {
   }
 
   updateUser(userId:number, user:UserLogin):Observable<UserLogin>{
-    return this.http.patch<UserLogin>(`${USER_BY_ID_URL}/${userId}`, user).pipe(catchError(this.handlerUserError));
+    return this.http.patch<UserLogin>(`${USER_BY_EMAIL_URL}/${userId}`, user).pipe(catchError(this.handlerUserError));
   }
 
-  deleteUser(userId:number):Observable<{}>{
-    return this.http.delete<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
-  }
+  // deleteUser(userId:number):Observable<{}>{
+  //   return this.http.delete<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
+  // }
 
   handlerUserError(error:any):Observable<never>{
     let errorMessage = 'Error mamita';
