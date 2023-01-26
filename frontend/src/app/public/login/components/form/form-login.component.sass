@@ -19,20 +19,62 @@
   padding: 40px
   gap: 30px
 
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+    padding: 20px
+
+  @include screen(390px)
+    width: 270px
+    padding: 20px
+
+  @include screen(290px)
+    width: 270px
+
   //------------------------------
   .titulo
     @extend .flex-column-around-center
     color: $black
+    gap: 15px
+
+    @include screen(290px)
+      gap: 10px
 
     h2
-      font-size: 40px
+      font-size: 35px
+
+      @include screen(560px)
+        font-size: 30px
 
     img
       @extend .logoDLZ-Autito
+
+      @include screen(390px)
+        width: 170px
+
+      @include screen(290px)
+        width: 150px
   //------------------------------
   .form
     @extend .flex-column-center
     gap: 60px
+
+    @include screen(720px)
+      width: 470px
+      gap: 40px
+
+    @include screen(560px)
+      width: 370px
+      gap: 30px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 270px
+      gap: 40px
 
     .inputs
       display: flex
@@ -44,6 +86,18 @@
         flex-direction: column
         width: 487px
         font-size: 18px
+
+        @include screen(720px)
+          width: 370px
+
+        @include screen(560px)
+          width: 290px
+
+        @include screen(390px)
+          width: 230px
+
+        @include screen(290px)
+          width: 230px
 
       i
         cursor: pointer
@@ -61,8 +115,34 @@
       align-items: center
       background-color: $pink
 
+      @include screen(720px)
+        width: 370px
+
+      @include screen(560px)
+        width: 290px
+
+      @include screen(390px)
+        width: 230px
+
+      @include screen(290px)
+        width: 230px
+
+  .forgot-pass
+    display: flex
+    justify-content: space-around
+
+    @include screen(720px)
+      font-size: 18px
+
+    @include screen(390px)
+      width: 100%
+      font-size: 16px
+
+    @include screen(290px)
+      width: 230px
 
 .box2
+  @extend .flex-column-center
   background-color: $white
   width: 570px
   height: 64px
@@ -71,6 +151,18 @@
   align-items: center
   justify-content: center
 
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
+
   //------------------------------
   .sign-in
     display: flex
@@ -78,5 +170,14 @@
     font-size: 18px
     gap: 10px
     margin-top: 15px
+
+    @include screen(390px)
+      font-size: 15px
+      gap: 5px
+
+    @include screen(290px)
+      font-size: 15px
+      gap: 5px
+
 
 

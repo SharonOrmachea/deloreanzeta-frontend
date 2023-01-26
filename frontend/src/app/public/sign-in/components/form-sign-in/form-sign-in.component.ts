@@ -51,7 +51,6 @@ export class FormSignInComponent implements OnInit {
   }
 
 
-
   ngOnInit(): void {}
 
   registerNewUser(){
@@ -60,8 +59,7 @@ export class FormSignInComponent implements OnInit {
 
     if (this.signInForm.valid){
       const userValue = this.signInForm.value;
-      this.userService.newUser(userValue).subscribe(
-        (response) => {
+      this.userService.newUser(userValue).subscribe((response) => {
           console.log(response);
         }, (error) => {
           console.log(error);

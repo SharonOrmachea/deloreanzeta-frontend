@@ -19,17 +19,64 @@
   padding: 40px
   gap: 30px
 
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+    padding: 20px
+
+  @include screen(390px)
+    width: 270px
+    padding: 20px
+
+  @include screen(290px)
+    width: 270px
+
   //------------------------------
   .titulo
     @extend .flex-column-around-center
     color: $black
 
+    @include screen(290px)
+      gap: 10px
+
+    h2
+      font-size: 35px
+
+      @include screen(560px)
+        font-size: 30px
+
+      @include screen(390px)
+        font-size: 25px
+
     img
       @extend .logoDLZ-Autito
+
+      @include screen(390px)
+        width: 170px
+
+      @include screen(290px)
+        width: 150px
   //------------------------------
   .form
     @extend .flex-column-around-center
     gap: 20px
+
+    @include screen(720px)
+      width: 470px
+      gap: 10px
+
+    @include screen(560px)
+      width: 370px
+      gap: 10px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 270px
+      gap: 40px
 
     .inputs
       display: flex
@@ -42,14 +89,30 @@
         width: 487px
         font-size: 18px
 
+        @include screen(720px)
+          width: 370px
+
+        @include screen(560px)
+          width: 290px
+
+        @include screen(390px)
+          width: 230px
+
+        @include screen(290px)
+          width: 230px
+
       i
         cursor: pointer
 
     //------------------------------
     .validacion
-      display: grid
-      grid-template-columns: repeat(1, 1fr)
+      display: flex
+      flex-direction: column
+      width: 100%
       gap: 20px
+
+      @include screen(720px)
+        gap: 15px
 
       ul
         font-size: 15px
@@ -58,9 +121,22 @@
         align-items: center
         color: $gray
 
+        @include screen(720px)
+          grid-template-columns: repeat(2, 220px)
+          padding: auto
+          margin: auto
+
+        @include screen(560px)
+          grid-template-columns: repeat(1, 260px)
+          font-size: 18px
+
+        @include screen(390px)
+          grid-template-columns: repeat(1, 200px)
+          font-size: 15px
+
       .terminos
         display: grid
-        width: 487px
+        width: 100%
         grid-template-columns: repeat(2, 40px)
 
         input
@@ -72,6 +148,16 @@
 
         label
           width: 450px
+          @include screen(720px)
+            width: 400px
+
+          @include screen(560px)
+            width: 330px
+            font-size: 15px
+
+          @include screen(390px)
+            width: 220px
+            font-size: 14px
 
     //------------------------------
     .sign-in
@@ -86,14 +172,37 @@
         align-items: center
         background-color: $pink
 
+        @include screen(720px)
+        width: 370px
+
+        @include screen(560px)
+          width: 290px
+
+        @include screen(390px)
+          width: 230px
+
+        @include screen(290px)
+          width: 230px
+
 .box2
-  background-color: $white
   width: 570px
   height: 64px
   border-radius: 24px
   display: flex
   align-items: center
   justify-content: center
+
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
 
   //------------------------------
   .login
@@ -102,4 +211,12 @@
     font-size: 18px
     gap: 10px
     margin-top: 15px
+
+    @include screen(390px)
+      font-size: 15px
+      gap: 5px
+
+    @include screen(290px)
+      font-size: 15px
+      gap: 5px
 
