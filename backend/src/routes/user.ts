@@ -10,7 +10,7 @@ router.get("/", [/*checkJwt/*, checkRole(['admin'])*/], UserController.getAll);
 
 router.get("/:id", [/*checkJwt, checkRole(['admin'])*/], UserController.getById);
 
-router.post("/", validateRegister, [checkJwt, checkRole(['admin'])], UserController.newUser);
+router.post("/", validateRegister, UserController.newUser);
 
 router.patch("/:id", validateRegister, [/*checkJwt, checkRole(['admin'])*/], UserController.editUser);
 
