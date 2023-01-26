@@ -61,7 +61,7 @@ export class UserController {
 		const userRepository = getUserRepository();
 		try {
 			user.hashPassword();
-			await userRepository.save(user);
+			await userRepository.createUser(user);
 		} catch (e) {
 			return res.status(StatusCodes.CONFLICT).json({ message: 'Username already exist' });
 		}
