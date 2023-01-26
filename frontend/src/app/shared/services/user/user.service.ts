@@ -39,7 +39,7 @@ export class UserService {
 
   // CREAR USUARIO
 
-  newUser(user:IUserRegister): Observable<IUserRegister>{
+  newUser(user:IUserRegister): Observable<IUserRegister | void>{
     return this.http.post<IUserRegister>(USER_URL, user).pipe(catchError(this.handlerUserError));
   }
 
@@ -57,7 +57,7 @@ export class UserService {
       errorMessage =`Error ${error.message}`;
     }
     console.log(errorMessage);
-    return throwError(errorMessage);
+    return throwError(() =>(errorMessage));
 
   }
 

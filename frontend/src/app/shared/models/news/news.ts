@@ -3,6 +3,6 @@ export class News{
   name!:string;
   date!:string;
   description?:string;
-  bodyDescription?:string;
+  content?:string;
   imageUrl?:string;
 }

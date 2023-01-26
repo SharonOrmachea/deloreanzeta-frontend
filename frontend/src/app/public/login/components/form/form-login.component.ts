@@ -74,7 +74,8 @@ export class FormLoginComponent implements OnInit, OnDestroy {
     return (
       (this.loginForm.get(field)!.touched ||
       this.loginForm.get(field)!.dirty) &&
-      !this.loginForm.get(field)!.valid);
+      !this.loginForm.get(field)!.valid
+    );
   }
 
 }

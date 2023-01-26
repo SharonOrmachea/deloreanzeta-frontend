@@ -19,12 +19,8 @@ export const sample_products: Product[] = [
     id: '1',
     name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Tazas',
-      'Cuadros'
-    ],
+    category: 'Tazas',
     imageUrl: [
       './assets/store/products/delorean(1).png',
       './assets/store/products/delorean(2).png',
@@ -38,11 +34,8 @@ export const sample_products: Product[] = [
     id: '2',
     name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Cuadros'
-    ],
+    category: 'Cuadros',
     imageUrl: [
       './assets/store/products/delorean(5).png',
       './assets/store/products/delorean(6).png',
@@ -56,11 +49,8 @@ export const sample_products: Product[] = [
     id: '3',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Remeras'
-    ],
+    category: 'Remeras',
     imageUrl: [
       './assets/store/products/delorean(9).png',
       './assets/store/products/delorean(10).png',
@@ -74,12 +64,8 @@ export const sample_products: Product[] = [
     id: '4',
     name: 'Soy un producto',
     price: 1500,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Tazas',
-      'Remeras'
-    ],
+    category: 'Tazas',
     imageUrl: [
       './assets/store/products/delorean(1).png',
       './assets/store/products/delorean(2).png',
@@ -93,11 +79,8 @@ export const sample_products: Product[] = [
     id: '5',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Cuadros'
-    ],
+    category: 'Cuadros',
     imageUrl: [
       './assets/store/products/delorean(5).png',
       './assets/store/products/delorean(6).png',
@@ -111,11 +94,8 @@ export const sample_products: Product[] = [
     id: '6',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Remeras'
-    ],
+    category: 'Remeras',
     imageUrl: [
       './assets/store/products/delorean(9).png',
       './assets/store/products/delorean(10).png',
@@ -129,11 +109,8 @@ export const sample_products: Product[] = [
     id: '7',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Tazas'
-    ],
+    category: 'Tazas',
     imageUrl: [
       './assets/store/products/delorean(1).png',
       './assets/store/products/delorean(2).png',
@@ -147,11 +124,8 @@ export const sample_products: Product[] = [
     id: '8',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Cuadros'
-    ],
+    category: 'Cuadros',
     imageUrl: [
       './assets/store/products/delorean(5).png',
       './assets/store/products/delorean(6).png',
@@ -165,11 +139,8 @@ export const sample_products: Product[] = [
     id: '9',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Remeras'
-    ],
+    category: 'Remeras',
     imageUrl: [
       './assets/store/products/delorean(9).png',
       './assets/store/products/delorean(10).png',
@@ -183,11 +154,8 @@ export const sample_products: Product[] = [
     id: '10',
     name: 'Soy un producto',
     price: 1400,
-    previousPrice: 2000,
     discount: 30,
-    category: [
-      'Tazas'
-    ],
+    category: 'Tazas',
     imageUrl: [
       './assets/store/products/delorean(1).png',
       './assets/store/products/delorean(2).png',
@@ -212,7 +180,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🤗',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news1.jpg'
   },
   {
@@ -220,7 +188,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
@@ -228,7 +196,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
   {
@@ -236,7 +204,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -244,7 +212,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -252,7 +220,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -260,7 +228,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -268,7 +236,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
-    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
 ]

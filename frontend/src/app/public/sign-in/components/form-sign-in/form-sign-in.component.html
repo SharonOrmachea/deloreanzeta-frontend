@@ -23,16 +23,16 @@
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
             <mat-label for="">Apellido</mat-label>
-            <input class="mat-input" type="text" matInput formControlName="lastName" tabindex=”0” required>
-            <mat-error *ngIf="isValidField('lastName')">
-              <strong>{{ getErrorMessage('lastName') }}</strong>
+            <input class="mat-input" type="text" matInput formControlName="lastname" tabindex=”0” required>
+            <mat-error *ngIf="isValidField('lastname')">
+              <strong>{{ getErrorMessage('lastname') }}</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
-            <mat-label>Telefono</mat-label>
+            <mat-label>Teléfono</mat-label>
             <input type="tel" formControlName="telephone" matInput placeholder="555-555-1234" tabindex=”0” required>
             <mat-error *ngIf="isValidField('telephone')">
               <strong>{{ getErrorMessage('telephone') }}</strong>
@@ -86,14 +86,14 @@
           <li type="disc">Usa 8 o más caracteres</li>
         </ul>
         <div class="terminos">
-          <input type="checkbox" formControlName="termsAndConditions" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" tabindex=”0” required>
+          <input type="checkbox"  id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" tabindex=”0” required>
           <label for="politica-privacidad">
             <strong>Al crear una cuenta aceptas los </strong> <a routerLink='#'>Términos y Condiciones</a><strong> y la </strong><a routerLink='#'>Política de Privacidad</a>.
           </label>
-          <!-- <mat-error *ngIf="isValidField('termsAndConditions')">
-            <strong>Debe aceptar los terminos y condiciones para poder registrarse</strong>
-          </mat-error> -->
         </div>
+        <!-- <mat-error *ngIf="isValidField('termsAndConditions')">
+          <strong>Debe aceptar los terminos y condiciones para poder registrarse</strong>
+        </mat-error> -->
 
       </div>
 

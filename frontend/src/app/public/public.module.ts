@@ -10,6 +10,7 @@ import { HiringModule } from './hiring/hiring.module';
 import { NewsModule } from './news/news.module';
 import { ToursModule } from './tours/tours.module';
 import { GalleryModule } from './gallery/gallery.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -21,6 +22,7 @@ import { GalleryModule } from './gallery/gallery.module';
     CommonModule,
     PublicRoutingModule,
     PrivateRoutingModule,
+    HttpClientModule,
     HomeModule,
     LoginModule,
     SignInModule,
