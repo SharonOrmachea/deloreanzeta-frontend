@@ -5,6 +5,7 @@ import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 import { Login } from "./app/shared/models/sign-in/sign-in";
 import { Register } from './app/shared/models/sign-up/sign-up';
 import { Sources } from "./app/shared/models/gallery/gallery";
+import { Tours } from './app/shared/models/tours/tours';
 
 export const sample_products: Product[] = [
   {
@@ -286,58 +287,26 @@ export const sample_carousel: Carousel[] = [
   },
 ]
 
-export const sample_register: Register[] = [
+export const sample_tours: Tours[] = [
   {
-    name: 'Jotaro',
-    lastname: 'Joestar',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
+    id: '1',
+    date: '05 de Junio del 2022',
+    name: 'Un nombre para el tour',
+    place: 'Jose cuchillos paz, Buenos Aires.'
   },
   {
-    name: 'Dio',
-    lastname: 'Brando',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
+    id: '2',
+    date: '20 de Agosto del 2022',
+    name: 'Otro nombre para el tour',
+    place: 'Tour mar de las pompas, Buenos Aires.'
   },
   {
-    name: 'Sanji',
-    lastname: 'Vinsmoke',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
+    id: '3',
+    date: '05 de Junio del 2022',
+    name: 'Otro de otro nombre para el tour',
+    place: 'Quien sabe que mas hay, Buenos Aires.'
   },
-  {
-    name: 'Zoro',
-    lastname: 'Roronoa',
-    telephone: 1125641208,
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123',
-    repeatPassword: 'contraPrueba123'
-  }
-]
 
-export const sample_login: Login[] = [
-  {
-    email: 'delorean.01@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.02@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.03@test.com',
-    password: 'contraPrueba123'
-  },
-  {
-    email: 'delorean.04@test.com',
-    password: 'contraPrueba123'
-  }
 ]
 
 export const sample_sources: Sources[] = [

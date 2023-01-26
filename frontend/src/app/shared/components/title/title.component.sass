@@ -14,12 +14,16 @@ section
     padding: 1em 2em
     margin: auto
     border-bottom: 1px solid $white
-
+    @include screen (480px)
+     justify-content: space-between
     @include screen(390px)
-      width: 75%
+      width: 90%
       justify-content: space-around
       margin: auto
-
+    @include screen(320px)
+      width: 100%
+    @include screen(290px)
+      width: 100%
     h1
       @include screen(390px)
         font-size: 1.5em
@@ -27,7 +31,15 @@ section
 
     .verMas
       width: 10%
-
+      @include screen (480px) 
+       width: 50%
+       margin-left: 40px
+      @include screen (390px) 
+       width: 60%
+      @include screen (320px) 
+       width: 60%
+      @include screen (290px) 
+       width: 40%
       a
         font-size: 1.1rem
         padding: 1rem
@@ -35,3 +47,9 @@ section
         background-color: $pink
         color: $white
         text-decoration: none
+        @include screen (480px)
+         font-size: 15px
+        @include screen (320px)
+         font-size: 15px
+        @include screen (290px)
+         font-size: 15px
