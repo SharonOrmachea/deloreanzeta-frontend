@@ -19,12 +19,6 @@ export class Product {
     @IsNotEmpty()
     price: string;
     
-    /*@Column()
-    @MinLength(3)
-    @IsNotEmpty()
-    image: string;
-    */
-   
     @Column()
     @MinLength(10)
     @IsNotEmpty()
@@ -35,10 +29,9 @@ export class Product {
     @IsOptional()
     information: string;
 
-    @OneToMany(() => Image, (image) => image.product)
-    image: Image[];
-    
-    @ManyToOne(() => Category, (category) => category.products)
-    category: Category;
+    @OneToMany(() => Image, image => image.product)
+    images: Image[];
 
+    @ManyToOne(() => Category, category => category.products)
+    category: Category;
 }

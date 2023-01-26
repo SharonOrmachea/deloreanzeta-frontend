@@ -4,12 +4,14 @@ import auth from "./auth";
 import user from "./user";
 import category from "./category";
 import product from "./product";
+import neww from "./new";
 
 const routes = Router();
 
- routes.use("/auth", auth);
- routes.use("/users", user);
- routes.use("/category", category);
- routes.use("/product", product);
+routes.use("/auth", auth);
+routes.use("/users", user);
+routes.use("/category", category);
+routes.use("/product", product);
+routes.use("/new", neww);
 
- export default routes;
+export default routes;

@@ -1,19 +1,25 @@
-import { Entity, PrimaryGeneratedColumn, Unique, Column, ManyToOne} from "typeorm"
-import { MinLength, IsNotEmpty, IsOptional } from "class-validator";
-import { Product } from "./Product";
+// imports for creating a new entity
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
+import { Product } from './Product';
 
 @Entity()
-@Unique(["route"])
-export class Image {
+export class Image extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
     @Column()
-    //@MinLength(3)
-    @IsNotEmpty()
-    route: string;
+    name: string;
 
-    @ManyToOne(() => Product, (product) => product.image)
+    @Column()
+    url: string;
+
+    @Column({ type: 'blob' })
+    data: Buffer;
+
+    @Column()
+    productId: number;
+
+    @ManyToOne(() => Product, product => product.images)
+    @JoinColumn({ name: 'productId' })
     product: Product;
-
 }

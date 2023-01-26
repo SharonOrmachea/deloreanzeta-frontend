@@ -1,144 +1,140 @@
-import { AppDataSource } from '../data-source'
-import { Request, Response, NextFunction } from "express"
-import { User } from "../entity/User"
-import { validate } from "class-validator";
+import { Request, Response, NextFunction } from 'express';
+import { User } from '../entity/User';
+import { validate } from 'class-validator';
+import { getUserRepository } from '../repositories/UserRepository';
+import { StatusCodes } from 'http-status-codes';
 
 export class UserController {
+	static getAll = async (req: Request, res: Response) => {
+		try {
+			const userRepository = getUserRepository();
+			const users = await userRepository.findAll();
+			res.send(users);
+		} catch (e) {
+            // check if is a typeorm error and thor error 500
+            if (e.name === 'QueryFailedError') {
+                return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
+            }
+			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Not results' });
+		}
+	};
 
-    static getAll = async (req: Request, res: Response) => {
-        const userRepository = AppDataSource.getRepository(User);
-        let users;
-    
-        try {
-            users = await userRepository.find({ select: ['id', 'email', 'name', 'lastname', 'telephone', 'role'] });
-        } catch (e) {
-            res.status(404).json({message: "Somenthing goes wrong"});
-        }
+	static getById = async (req: Request, res: Response) => {
+		const { id } = req.params;
+		const idInt = parseInt(id as string);
 
-        if(users.length > 0){
-            res.send(users);
-        }else{
-            res.status(404).json({message: "Not results"});
-        }
-    };
-  
-    static getById = async (req: Request, res: Response) => {
-        const id = req.params;
-        const userRepository = AppDataSource.getRepository(User);
-        
-        try {
-            const user = await userRepository.find({select: ['id', 'email', 'name', 'lastname', 'telephone', 'role'], where: id});
-            res.send(user);
-        } catch (e) {
-            res.status(400).json({message: "Not result"});
-        }
-    };
+		try {
+			const userRepository = getUserRepository();
+			const user = await userRepository.findById(idInt);
+			res.send(user);
+		} catch (e) {
+            // check if is a typeorm error and thor error 500
+            if (e.name === 'QueryFailedError') {
+                return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
+            }
+			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'Not result' });
+		}
+	};
 
-    static newUser = async (req: Request, res: Response) => {
-        const { email, password, name, lastname, telephone } = req.body;
-        const user = new User();
-        
-        user.email = email;
-        user.password = password;
-        user.name = name;
-        user.lastname = lastname;
-        user.telephone = telephone;
-        user.role = "cliente";
-        user.resetToken = "";
-        
-        //Validate
-        const validationOpt = { validationError: { target: false, value: false} };
-        const errors = await validate(user, validationOpt);
-        if(errors.length > 0){
-            return res.status(400).json(errors);
-        }
-        
-        //Hash password
-        const userRepository = AppDataSource.getRepository(User);
-        try {
-            user.hashPassword();
-            await userRepository.save(user);
-        } catch (e) {
-            //return res.status(409).json(e);
-            return res.status(409).json({message: "Username already exist"});
-        }
-        res.send("User created");
-    };
-    
-    static editUser = async (req: Request, res: Response) => {
-        let user: User;
-        const id = req.params;
-        const { name, lastname, telephone } = req.body;
-        const userRepository = AppDataSource.getRepository(User);
-        
-        try {
-            user = await userRepository.findOneOrFail({where: id});
-            user.name = name;
-            user.lastname = lastname;
-            user.telephone = telephone;
-        } catch (e) {
-            res.status(404).json({message: "User not found"});
-        }        
+	static newUser = async (req: Request, res: Response) => {
+		const { email, password, name, lastname, telephone } = req.body;
+		const user = new User();
 
-        const validationOpt = { validationError: { target: false, value: false} };
-        const errors = await validate(user, validationOpt);
-        
-        if(errors.length > 0){
-            return res.status(404).json(errors);
-        }
-        //try to save
-        try {
-            await userRepository.save(user);
-        } catch (e) {
-            res.status(409).json({message: "Username already in use"});
-        }
+		user.email = email;
+		user.password = password;
+		user.name = name;
+		user.lastname = lastname;
+		user.telephone = telephone;
+		user.role = 'cliente';
+		user.resetToken = '';
 
-        res.status(201).json({message: "User update"});
-    };
+		// validate
+		const validationOpt = {
+			validationError: { target: false, value: false },
+		};
+		const errors = await validate(user, validationOpt);
+		if (errors.length > 0) {
+			return res.status(StatusCodes.BAD_REQUEST).json(errors);
+		}
 
-    static deleteUser = async (req: Request, res: Response) => {
-        const id = req.params;
-        const userRepository = AppDataSource.getRepository(User);
+		//hash password
+		const userRepository = getUserRepository();
+		try {
+			user.hashPassword();
+			await userRepository.save(user);
+		} catch (e) {
+			return res.status(StatusCodes.CONFLICT).json({ message: 'Username already exist' });
+		}
+		return res.status(StatusCodes.CREATED).json({ message: 'User created' });
+	};
 
-        let user: User;
-        try {
-            user = await userRepository.findOneOrFail({where: id});
-        } catch (e) {
-            return res.status(404).json({message: "User not found"});
-        }
-        //Remove user
-        userRepository.delete(id);
-        res.status(201).json({message: "User deleted"});
-    };
-    
-    static changeRole = async (req: Request, res: Response) => {
-        let user: User;
-        const id = req.params;
-        const { role } = req.body;
-        const userRepository = AppDataSource.getRepository(User);
-        
-        try {
-            user = await userRepository.findOneOrFail({where: id});
-            user.role = role;
-        } catch (e) {
-            res.status(404).json({message: "User not found"});
-        }        
+	static editUser = async (req: Request, res: Response) => {
+		const { id } = req.params;
+		const idInt = parseInt(id as string);
 
-        const validationOpt = { validationError: { target: false, value: false} };
-        const errors = await validate(user, validationOpt);
-        
-        if(errors.length > 0){
-            return res.status(404).json(errors);
-        }
-        //try to save
-        try {
-            await userRepository.save(user);
-        } catch (e) {
-            res.status(409).json(e);
-        }
+		const userRepository = getUserRepository();
 
-        res.status(201).json({message: "Role update"});
-    };
+		try {
+			const { name, lastname, telephone } = req.body;
+			const user = await userRepository.findById(idInt);
+			user.name = name;
+			user.lastname = lastname;
+			user.telephone = telephone;
+			userRepository.updateUser(user);
+		} catch (e) {
+			// check if is a typeorm error and thor error 500
+			if (e.name === 'QueryFailedError') {
+				return res
+					.status(StatusCodes.INTERNAL_SERVER_ERROR)
+					.json({ message: 'Internal server error' });
+			}
+			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'User not found' });
+		}
+
+        return res.status(StatusCodes.CREATED).json({ message: 'User updated' });
+	};
+
+	static deleteUser = async (req: Request, res: Response) => {
+		const { id } = req.params;
+        const idInt = parseInt(id as string);
+		const userRepository = getUserRepository();
+
+		try {
+			const user = await userRepository.findById(idInt);
+            userRepository.deleteUser(user);
+		} catch (e) {
+            // check if is a typeorm error and thor error 500
+            if (e.name === 'QueryFailedError') {
+                return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ message: 'Internal server error' });
+            }
+			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'User not found' });
+		}
+
+		return res.status(StatusCodes.CREATED).json({ message: 'User deleted' });
+	};
+
+	static changeRole = async (req: Request, res: Response) => {
+		const { id } = req.params;
+        const idInt = parseInt(id as string);
+		const { role } = req.body;
+		const userRepository = getUserRepository();
+
+		try {
+			const user = await userRepository.findById(idInt);
+			user.role = role;
+            userRepository.updateUser(user);
+		} catch (e) {
+            // check if is a typeorm error and thor error 500
+            if (e.name === 'QueryFailedError') {
+                return res
+                    .status(StatusCodes.INTERNAL_SERVER_ERROR)
+                    .json({ message: 'Internal server error' });
+            }
+            return res.status(StatusCodes.BAD_REQUEST).json({ message: 'User not found' });
+		}
+
+		return res.status(StatusCodes.CREATED).json({ message: 'Role update' });
+	};
 }
 
 export default UserController;
