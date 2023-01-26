@@ -35,7 +35,7 @@
 
     <div class="contenedor-productos" *ngIf="categories.length">
       <ul>
-        <li *ngFor="let product of products">
+        <li *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: p }">
           <a routerLink="/store/product/{{ product.id }}">
             <div class="col">
               <div class="image-name">
@@ -66,6 +66,9 @@
           </div>
         </li>
       </ul>
+      <div class="div-pagination">
+        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls> 
+      </div>
     </div>
   </section>
 </body>
