@@ -1,13 +1,12 @@
 import { Request, Response, NextFunction } from 'express';
 import { User } from '../entity/User';
 import { validate } from 'class-validator';
-import { getUserRepository } from '../repositories/UserRepository';
+import userRepository from '../repositories/UserRepository';
 import { StatusCodes } from 'http-status-codes';
 
 export class UserController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
-			const userRepository = getUserRepository();
 			const users = await userRepository.findAll();
 			res.send(users);
 		} catch (e) {
@@ -24,7 +23,6 @@ export class UserController {
 		const idInt = parseInt(id as string);
 
 		try {
-			const userRepository = getUserRepository();
 			const user = await userRepository.findById(idInt);
 			res.send(user);
 		} catch (e) {
@@ -57,8 +55,6 @@ export class UserController {
 			return res.status(StatusCodes.BAD_REQUEST).json(errors);
 		}
 
-		//hash password
-		const userRepository = getUserRepository();
 		try {
 			user.hashPassword();
 			await userRepository.createUser(user);
@@ -71,8 +67,6 @@ export class UserController {
 	static editUser = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-
-		const userRepository = getUserRepository();
 
 		try {
 			const { name, lastname, telephone } = req.body;
@@ -97,7 +91,6 @@ export class UserController {
 	static deleteUser = async (req: Request, res: Response) => {
 		const { id } = req.params;
         const idInt = parseInt(id as string);
-		const userRepository = getUserRepository();
 
 		try {
 			const user = await userRepository.findById(idInt);
@@ -117,7 +110,6 @@ export class UserController {
 		const { id } = req.params;
         const idInt = parseInt(id as string);
 		const { role } = req.body;
-		const userRepository = getUserRepository();
 
 		try {
 			const user = await userRepository.findById(idInt);

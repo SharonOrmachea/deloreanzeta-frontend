@@ -1,11 +1,10 @@
 import 'reflect-metadata';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { Category } from './entity/Category';
 import { Image } from './entity/Image';
 import { Product } from './entity/Product';
 import { User } from './entity/User';
 
-// imports for typeorm
-import { DataSourceOptions } from 'typeorm';
 
 // creating config for typeorm for mysql
 export const config: DataSourceOptions = {
@@ -19,3 +18,6 @@ export const config: DataSourceOptions = {
 	synchronize: true,
 	logging: false,
 };
+
+const conn = new DataSource(config);
+export default conn;
