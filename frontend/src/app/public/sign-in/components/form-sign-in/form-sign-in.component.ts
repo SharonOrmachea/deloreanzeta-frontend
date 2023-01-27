@@ -42,14 +42,14 @@ export class FormSignInComponent implements OnInit {
     ) {
 
     this.signInForm = this.formBuilder.group({
-      name: ['', [Validators.required, ]],
-      lastname: ['', Validators.required],
-      telephone: ['', Validators.required],
-      email: ['', [Validators.required, this.validatorService.emailValidator]],
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      telephone: ['', [Validators.required, Validators.minLength(10), Validators.pattern(/^[0-9]+$/)]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*')]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'), this.validatorService.checkPasswords('password')]],
       termsAndConditions: [false, Validators.requiredTrue]
-    }, { validator: this.validatorService.checkPasswords(this.signInForm)}
+    },
     );
 
   }
@@ -64,15 +64,15 @@ export class FormSignInComponent implements OnInit {
     if (this.signInForm.valid){
       const userValue = this.signInForm.value;
       this.userService.newUser(userValue).subscribe((response) => {
-          console.log(response);
-          this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
-          this.router.navigate(['/login']);
-          this.signInForm.reset();
-        }, (error) => {
-          console.log(error);
-          this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
-        }
-      );
+        console.log(response);
+        this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
+        this.router.navigate(['/login']);
+        this.signInForm.reset();
+      }, (error) => {
+        console.log(error);
+        this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
+      }
+    );
     }
   }
 
@@ -80,65 +80,13 @@ export class FormSignInComponent implements OnInit {
     return this.signInForm.controls;
   }
 
-  isValidField(field:string): boolean{
-    this.getErrorMessage(field);
-    return (
-      (this.signInForm.get(field)!.touched ||
-      this.signInForm.get(field)!.dirty) &&
-      !this.signInForm.get(field)!.valid
-    );
-  }
-
-  // getErrorMessage(field:string): void{
-  //   const {errors} = <FormGroup>this.signInForm.get(field);
-
-  //   if (errors) {
-  //     // const minlength = this.signInForm.get(field)!.errors?.['minlength'].requiredLength;
-  //     const minlength = errors?.['minlength']?.requiredLength;
-
-  //     // Se crea un nuevo tipo parecido a un objeto, donde las claves y los valores son de tipo string
-  //     // Esto le permite a TypeScript saber que cuando se intenta acceder a las propiedades del objeto
-  //     // usando una variable tipo string es algo valido y que va a funcionar.
-  //     // De esta forma podemos usar una variable de tipo string como indice para acceder a las
-  //     // propiedades del objeto sin que tire error.
-  //     const messages: Record<string, string> = {
-  //       required: 'Este campo no puede estar vacio',
-  //       pattern: 'El Email no es valido',
-  //       minlength: `Este campo no puede tener menos de ${minlength} caracteres`,
-  //     };
-
-  //     const errorKey = Object.keys(errors).find(Boolean);
-
-  //     // Verificamos si errorKey está definido y si existe en messages, si está definido entonces
-  //     // se asigna el mensaje a errorMessage, si no se le asigna null.
-  //     if (errorKey && errorKey in messages) {
-  //       this.errorMessage = messages[errorKey];
-  //     } else {
-  //       this.errorMessage = null;
-  //     }
-  //   }
-
-  // }
 
   getErrorMessage(field:string): string{
+    return this.validatorService.getErrorMessage(field, this.signInForm);
+  }
 
-    let errorMessage!: string;
-
-    if (this.signInForm.get(field)!.errors?.['required']){
-      errorMessage = 'Debes ingresar un valor';
-    }else if(this.signInForm.get(field)!.hasError('pattern')){
-      if(field == 'email'){
-        errorMessage = 'El Email no es valido';
-      }else{
-        errorMessage = 'La contraseña no es valida';
-      }
-
-    }else if(this.signInForm.get(field)?.hasError('minlength')){
-      const minLength = this.signInForm.get(field)!.errors?.['minlength'].requiredLength;
-      errorMessage = `Este campo no puede tener menos de ${minLength} caracteres`;
-    }
-
-    return errorMessage;
+  isValidField(field:string): boolean{
+    return this.validatorService.isValidField(field, this.signInForm);
   }
 
 

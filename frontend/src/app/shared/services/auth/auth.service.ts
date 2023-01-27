@@ -41,9 +41,6 @@ export class AuthService {
         this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
         this.saveLocalStorage(user);
         this.user.next(user);
-
-        console.log('Res->', user);
-        
         return user;
       }),
       catchError( (error) => this.handlerError(error) )
@@ -82,7 +79,6 @@ export class AuthService {
       errorMessage= `Error: code ${error.message}`
       this.toastrService.error('Email y/o contraseña invalido', 'Login Failed');
     }
-    console.log(errorMessage);
     return throwError(() => errorMessage);
   }
 

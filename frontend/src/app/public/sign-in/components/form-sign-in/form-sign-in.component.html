@@ -73,6 +73,9 @@
             <mat-error *ngIf="isValidField('confirmPassword')">
               <strong>{{ getErrorMessage('confirmPassword') }}</strong>
             </mat-error>
+            <mat-error *ngIf="signInForm.get('confirmPassword')?.hasError('matchOther')">
+              <strong>Las contraseñas no coinciden</strong>
+            </mat-error>
           </mat-form-field>
         </div>
 

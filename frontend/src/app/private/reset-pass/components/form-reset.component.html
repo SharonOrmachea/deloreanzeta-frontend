@@ -33,6 +33,9 @@
             <mat-error *ngIf="isValidField('confirmPassword')">
               <strong>{{ getErrorMessage('confirmPassword') }}</strong>
             </mat-error>
+            <mat-error *ngIf="resetForm.get('confirmPassword')?.hasError('matchOther')">
+              <strong>Las contraseñas no coinciden</strong>
+            </mat-error>
           </mat-form-field>
         </div>
 
@@ -49,7 +52,7 @@
 
 
       <div class="reset-pass">
-        <button type="submit" tabindex=”0”>Restablecer la Contraseña</button>
+        <button [disabled]="resetForm.invalid" type="submit" class="btn btn-lg" tabindex=”0”>Restablecer la Contraseña</button>
       </div>
 
     </form>

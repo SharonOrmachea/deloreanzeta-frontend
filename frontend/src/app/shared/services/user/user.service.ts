@@ -6,11 +6,9 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 
-import { USER_URL, USER_BY_EMAIL_URL } from '../../constants/urls';
+import { USER_URL, USER_BY_EMAIL_URL, USER_IDENTIFY_EMAIL_URL } from '../../constants/urls';
 import { IUserRegister } from '../../interfaces/iUserRegister';
-import { UserLogin } from '../../interfaces/iuserlogin';
-
-
+import { UserLogin, UserSendEmail } from '../../interfaces/iuserlogin';
 
 const helper = new JwtHelperService();
 
@@ -29,24 +27,32 @@ export class UserService {
 
   }
 
+  // TRAE TODOS LOS USUARIOS
   getAllUsers():Observable<UserLogin[]>{
     return this.http.get<UserLogin[]>(USER_URL).pipe(catchError(this.handlerUserError));
   }
 
-  getUserByEmail(userId: number):Observable<UserLogin>{
-    return this.http.get<UserLogin>(`${USER_BY_EMAIL_URL}/${userId}`).pipe(catchError(this.handlerUserError));
+  // ENVIA EMAIL DE RESET PASS AL MAIL
+  sendEmail(userEmail: string):Observable<UserSendEmail>{
+    return this.http.post<UserSendEmail>(USER_IDENTIFY_EMAIL_URL,userEmail).pipe(catchError(this.handlerUserError));
+  }
+
+  // TRAE UN USUARIO POR EMAIL
+  getUserByEmail(userEmail: string):Observable<UserLogin>{
+    return this.http.get<UserLogin>(`${USER_BY_EMAIL_URL}/${userEmail}`).pipe(catchError(this.handlerUserError));
   }
 
   // CREAR USUARIO
-
   newUser(user:IUserRegister): Observable<IUserRegister | void>{
     return this.http.post<IUserRegister>(USER_URL, user).pipe(catchError(this.handlerUserError));
   }
 
+  // EDITA UN USUARIO
   updateUser(userId:number, user:UserLogin):Observable<UserLogin>{
     return this.http.patch<UserLogin>(`${USER_BY_EMAIL_URL}/${userId}`, user).pipe(catchError(this.handlerUserError));
   }
 
+  // ELIMINA UN USUARIO
   // deleteUser(userId:number):Observable<{}>{
   //   return this.http.delete<UserLogin>(`${USER_BY_ID_URL}/${userId}`).pipe(catchError(this.handlerUserError));
   // }
@@ -56,7 +62,6 @@ export class UserService {
     if(error){
       errorMessage =`Error ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(() =>(errorMessage));
 
   }

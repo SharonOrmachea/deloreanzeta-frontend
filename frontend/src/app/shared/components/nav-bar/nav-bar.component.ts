@@ -19,7 +19,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   cartQuantity = 0;
 
-  isLogged = false;
+  isLogged!:boolean;
 
   isAdmin:Role = null!;
 

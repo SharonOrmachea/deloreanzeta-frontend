@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../../../shared/services/auth/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ValidationsService } from '../../../../shared/services/validations/validations.service';
 
 
 
@@ -25,7 +26,8 @@ export class FormLoginComponent implements OnInit, OnDestroy {
   constructor(
     private formBuilder:FormBuilder,
     private authService:AuthService,
-    private router:Router) {
+    private router:Router,
+    private validatorService:ValidationsService) {
 
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
@@ -50,32 +52,16 @@ export class FormLoginComponent implements OnInit, OnDestroy {
     );
   }
 
+  get formControls() {
+    return this.loginForm.controls;
+  }
+
   getErrorMessage(field:string): string{
-    let message = '';
-
-    if (this.loginForm.get(field)!.errors?.['required']){
-      message = 'Debes ingresar un valor';
-    }else if(this.loginForm.get(field)!.hasError('pattern')){
-      if(field == 'email'){
-        message = 'El Email no es valido';
-      }else{
-        message = 'La contraseña no es valida';
-      }
-
-    }else if(this.loginForm.get(field)?.hasError('minlength')){
-      const minLength = this.loginForm.get(field)!.errors?.['minlength'].requiredLength;
-      message = `Este campo no puede tener menos de ${minLength} caracteres`;
-    }
-
-    return message;
+    return this.validatorService.getErrorMessage(field, this.loginForm);
   }
 
   isValidField(field:string): boolean{
-    return (
-      (this.loginForm.get(field)!.touched ||
-      this.loginForm.get(field)!.dirty) &&
-      !this.loginForm.get(field)!.valid
-    );
+    return this.validatorService.isValidField(field, this.loginForm);
   }
 
 }

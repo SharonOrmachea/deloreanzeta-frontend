@@ -6,7 +6,7 @@
       <h2><strong>Recupera tu Cuenta</strong></h2>
     </div>
 
-    <form [formGroup]="identifyEmail" (ngSubmit)="toLogin()" class="form" name="recover" >
+    <form [formGroup]="identifyEmail" (ngSubmit)="sendEmail()" class="form" name="recover" >
 
       <div class="inputs">
         <div class="box-mail">
@@ -21,7 +21,7 @@
       </div>
 
       <div class="continue">
-        <button [disabled]="identifyEmail.invalid" type="submit" tabindex=”0”>Continuar</button>
+        <button [disabled]="identifyEmail.invalid" class="btn btn-lg" type="submit" tabindex=”0”>Continuar</button>
       </div>
 
     </form>

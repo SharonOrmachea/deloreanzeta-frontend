@@ -22,11 +22,11 @@ export class FormResetComponent implements OnInit {
     ) {
 
     this.resetForm = this.formBuilder.group({
-      password: ['', Validators.required],
-      confirmPassword: ['', Validators.required],
-    }, 
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*')]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'), this.validatorService.checkPasswords('password')]],
+    },
     );
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -40,35 +40,13 @@ export class FormResetComponent implements OnInit {
     return this.resetForm.controls;
   }
 
-  isValidField(field:string): boolean{
-    return (
-      (this.resetForm.get(field)!.touched ||
-      this.resetForm.get(field)!.dirty) &&
-      !this.resetForm.get(field)!.valid
-    );
-  }
 
   getErrorMessage(field:string): string{
-
-    let errorMessage!: string;
-
-    if (this.resetForm.get(field)!.errors?.['required']){
-      errorMessage = 'Debes ingresar un valor';
-    }else if(this.resetForm.get(field)!.hasError('pattern')){
-      if(field == 'email'){
-        errorMessage = 'El Email no es valido';
-      }else{
-        errorMessage = 'La contraseña no es valida';
-      }
-
-    }else if(this.resetForm.get(field)?.hasError('minlength')){
-      const minLength = this.resetForm.get(field)!.errors?.['minlength'].requiredLength;
-      errorMessage = `Este campo no puede tener menos de ${minLength} caracteres`;
-    }
-
-    return errorMessage;
+    return this.validatorService.getErrorMessage(field, this.resetForm);
   }
 
-
+  isValidField(field:string): boolean{
+    return this.validatorService.isValidField(field, this.resetForm);
+  }
 
 }

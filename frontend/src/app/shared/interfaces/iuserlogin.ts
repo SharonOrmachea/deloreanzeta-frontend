@@ -11,3 +11,7 @@ export interface UserResponse {
   userId: number;
   role: Role;
 }
+
+export interface UserSendEmail{
+  email:string;
+}
