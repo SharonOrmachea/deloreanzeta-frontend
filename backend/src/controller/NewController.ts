@@ -7,7 +7,7 @@ import { Image } from '../entity/Image';
 export class NewController {
     static getAll = async (req: Request, res: Response) => {
         const news = await newRepository.findAll();
-        res.status(StatusCodes.OK).json({ message: 'OK', news });
+        return res.status(StatusCodes.OK).json({ message: 'OK', news });
     };
 
     static getById = async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ export class NewController {
         const idInt = parseInt(id as string);
 
         const neww = await newRepository.findById(idInt);
-        res.status(StatusCodes.OK).json({ message: 'OK', neww });
+        return res.status(StatusCodes.OK).json({ message: 'OK', neww });
     }
 
     static createNew = async (req: Request, res: Response) => {
@@ -30,7 +30,7 @@ export class NewController {
         neww.createdAt = new Date();
         
         const result = await newRepository.createNew(neww);
-        res.status(StatusCodes.CREATED).json({ message: 'OK', result });
+        return res.status(StatusCodes.CREATED).json({ message: 'OK', result });
     }
 
     static updateNew = async (req: Request, res: Response) => {
@@ -46,7 +46,7 @@ export class NewController {
         neww.image.data = Buffer.from(image, 'base64');
 
         await newRepository.updateNew(neww);
-        res.status(StatusCodes.OK).json({ message: 'OK', neww });
+        return res.status(StatusCodes.OK).json({ message: 'OK', neww });
     }
 
     static deleteNew = async (req: Request, res: Response) => {
@@ -55,6 +55,6 @@ export class NewController {
 
         const neww = await newRepository.findById(idInt);
         await newRepository.deleteNew(neww);
-        res.status(StatusCodes.OK).json({ message: 'OK' });
+        return res.status(StatusCodes.OK).json({ message: 'OK' });
     }
 }

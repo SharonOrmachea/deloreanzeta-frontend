@@ -18,12 +18,12 @@ export class ProductController {
 				pageInt,
 				limitInt
 			);
-			res.send(products);
+			return res.send(products);
 		} catch (error) {
 			if (error.name === 'QueryFailedError') {
-				res.status(500).send({ message: 'Internal server error' });
+				return res.status(500).send({ message: 'Internal server error' });
 			} else {
-				res.status(400).send({ message: 'Bad request' });
+				return res.status(400).send({ message: 'Bad request' });
 			}
 		}
 	};
@@ -33,9 +33,9 @@ export class ProductController {
 
 		try {
 			const product = await productRepository.findById(parseInt(req.params.id))//.query('SELECT * FROM product WHERE id = ?',[req.params.id]); 
-			res.send(product);
+			return res.send(product);
 		} catch (e) {
-			res.status(400).json({ message: 'Not result' });
+			return res.status(400).json({ message: 'Not result' });
 		}
 	};
 
@@ -72,6 +72,6 @@ export class ProductController {
 		} catch (error) {
 			return res.status(409).json(error);
 		}
-		res.send('Product created');
+		return res.send('Product created');
 	};
 }

@@ -1,23 +1,23 @@
-import { Entity, PrimaryGeneratedColumn, Column} from "typeorm"
-import { Image } from "./Image";
+import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Image } from './Image';
 
 @Entity()
 export class New {
-    @PrimaryGeneratedColumn()
-    id: number
+	@PrimaryGeneratedColumn()
+	id: number;
 
-    @Column()
-    title: string;
+	@Column()
+	title: string;
 
-    @Column()
-    description: string;
+	@Column()
+	description: string;
 
-    @Column()
-    content: string;
+	@Column()
+	content: string;
 
-    @Column()
-    image: Image;
+	@Column()
+	image: Image;
 
-    @Column()
-    createdAt: Date;
+	@Column()
+	createdAt: Date;
 }

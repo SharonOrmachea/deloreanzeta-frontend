@@ -8,7 +8,7 @@ export class UserController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const users = await userRepository.findAll();
-			res.send(users);
+			return  res.send(users);
 		} catch (e) {
             // check if is a typeorm error and thor error 500
             if (e.name === 'QueryFailedError') {
@@ -23,7 +23,7 @@ export class UserController {
 
 		try {
 			const user = await userRepository.findByEmail(email);
-			res.send(user);
+			return res.send(user);
 		} catch (e) {
             // check if is a typeorm error and thor error 500
             if (e.name === 'QueryFailedError') {

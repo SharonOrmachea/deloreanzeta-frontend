@@ -22,13 +22,15 @@ const conn = new DataSource(config);
 // return new Promise with the execution of intilization of the connection
 export const initialize = async (): Promise<void> => {
 	return new Promise((resolve, reject) => {
-		conn.initialize().then(() => {
-			console.log('Database connected');
-			resolve();
-		}).catch((error) => {
-			console.log('Database connection failed');
-			reject(error);
-		});
+		conn.initialize()
+			.then(() => {
+				console.log('Database connected');
+				resolve();
+			})
+			.catch((error) => {
+				console.log('Database connection failed');
+				reject(error);
+			});
 	});
 };
 

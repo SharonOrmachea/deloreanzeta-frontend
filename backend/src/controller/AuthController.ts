@@ -22,13 +22,13 @@ class AuthController {
 				password
 			);
 
-            const token = jwt.sign(
-                { userId: user.id, username: user.email },
-                config.JWT_SECRET,
-                { expiresIn: '1d' }
-            );
+			const token = jwt.sign(
+				{ userId: user.id, username: user.email },
+				config.JWT_SECRET,
+				{ expiresIn: '1d' }
+			);
 
-            res.status(StatusCodes.OK).json({ message: 'OK', token });
+			return res.status(StatusCodes.OK).json({ message: 'OK', token });
 		} catch (e) {
 			return res.status(400).json({ message: e.message });
 		}
@@ -39,7 +39,7 @@ class AuthController {
 		const { oldPassword, newPassword } = req.body;
 
 		if (!oldPassword || !newPassword) {
-			res.status(400).json({
+			return res.status(400).json({
 				message: 'Old password and new password are required',
 			});
 		}
@@ -50,11 +50,15 @@ class AuthController {
 				where: { id: userId },
 			});
 		} catch (e) {
-			res.status(400).json({ message: 'Somenthing goes wrong' });
+			return res.status(StatusCodes.NOT_FOUND).json({
+				message: 'Somenthing goes wrong',
+			});
 		}
 
 		if (!user.checkPassword(oldPassword)) {
-			return res.status(400).json({ message: 'Check your old password' });
+			return res
+				.status(StatusCodes.BAD_REQUEST)
+				.json({ message: 'Check your old password' });
 		}
 		user.password = newPassword;
 		const validationOps = {
@@ -63,14 +67,14 @@ class AuthController {
 		const errors = await validate(validationOps);
 
 		if (errors.length > 0) {
-			return res.status(400).json(errors);
+			return res.status(StatusCodes.BAD_REQUEST).json(errors);
 		}
 
 		//Hash password
 		user.hashPassword();
 		userRepository.save(user);
 
-		res.json({ message: 'Password change' });
+		return res.json({ message: 'Password change' });
 	};
 
 	static forgotPassword = async (req: Request, res: Response) => {
@@ -81,9 +85,9 @@ class AuthController {
 		const message = 'Check your mail for a link to reset your password.';
 		let verificationLink;
 		let emailStatus = 'OK';
-		
+
 		let user: User;
-		
+
 		user = await userRepository.findOneOrFail({ where: { email } });
 
 		const token = jwt.sign(
@@ -110,17 +114,21 @@ class AuthController {
 			});
 		} catch (e) {
 			emailStatus = e;
-			return res.status(400).json(emailStatus);
+			return res.status(StatusCodes.BAD_REQUEST).json(emailStatus);
 		}
 
 		try {
 			await userRepository.save(user);
 		} catch (e) {
 			emailStatus = e;
-			return res.status(400).json({ message: 'Something goes wrong' });
+			return res
+				.status(StatusCodes.BAD_REQUEST)
+				.json({ message: 'Something goes wrong' });
 		}
 
-	res.json({ /*message, info: emailStatus, test: verificationLink*/ token });
+		return res.json({
+			/*message, info: emailStatus, test: verificationLink*/ token,
+		});
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {
@@ -129,7 +137,9 @@ class AuthController {
 
 		if (!resetToken || !newPassword) {
 			//if(!(resetToken && newPassword)){
-			res.status(400).json({ message: 'All the fields are required' });
+			return res.status(StatusCodes.BAD_REQUEST).json({
+				message: 'All the fields are required',
+			});
 		}
 
 		let jwtPayload;
@@ -141,7 +151,9 @@ class AuthController {
 				where: { resetToken: resetToken },
 			});
 		} catch (error) {
-			return res.status(401).json({ message: error });
+			return res
+				.status(StatusCodes.UNAUTHORIZED)
+				.json({ message: error });
 		}
 
 		user.password = newPassword;
@@ -158,10 +170,12 @@ class AuthController {
 			user.hashPassword();
 			await userRepository.save(user);
 		} catch (error) {
-			return res.status(401).json({ message: error });
+			return res
+				.status(StatusCodes.UNAUTHORIZED)
+				.json({ message: error });
 		}
 
-		res.json({ message: 'Password changed' });
+		return res.json({ message: 'Password changed' });
 	};
 }
 
