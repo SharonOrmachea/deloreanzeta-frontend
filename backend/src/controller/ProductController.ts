@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { Product } from '../entity/Product';
-//import { Category } from '../entity/Category';
-import ProductRepository from '../repositories/ProductRepository';
-import CategoryRepository from '../repositories/CategoryRepository';
 import { Image } from '../entity/Image';
+import { Product } from '../entity/Product';
+import CategoryRepository from '../repositories/CategoryRepository';
+import ProductRepository from '../repositories/ProductRepository';
+//import 
 
 export class ProductController {
 	static getAll = async (req: Request, res: Response) => {
@@ -47,20 +47,22 @@ export class ProductController {
         let image = new Image();
 
 		try {
-			const categoryExist = await categoryRepository.findById(category);
+			const categoryExist = await categoryRepository.findByName(category);
 
 			if (categoryExist !== null) {
 				product.name = name;
 				product.price = price;
 				product.description = description;
 				product.information = information;
-
+/*
                 for(let i = 0; i < images.length; i++){
                     const buffer = Buffer.from(images[i], "base64");
                     const imageProduct = new Image();
                     imageProduct.data = buffer;
                     product.images.push(imageProduct);
                 }
+*/
+				product.images = images;
 				product.category = categoryExist;
 
 				await productRepository.save(product);
