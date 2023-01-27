@@ -1,6 +1,8 @@
-@import 'extends-class' 
+@import 'extends-class'
 @import 'mixins-responsive'
-  
+
+
+
 .main
   @extend .font-general
   background: none
@@ -158,7 +160,7 @@
             font-size: 9px
           @include screen (230px)
             font-size: 8px
-        button 
+        button
           @extend .short-button
           margin-bottom: 16px
           font-weight: bold
@@ -184,7 +186,7 @@
             @keyframes anim
               from
                   filter: drop-shadow(0px 5px 20px $aqua-marine)
-              
+
               to
                   filter: drop-shadow(0px 0px 5px $aqua-marine)
           @include screen (290px)
@@ -201,10 +203,10 @@
           @keyframes anim
               from
                   filter: drop-shadow(0px 5px 20px $aqua-marine)
-              
+
               to
                   filter: drop-shadow(0px 0px 5px $aqua-marine)
-    
+
     .card-new:hover
       box-shadow: $white 0px 5px 15px
       filter: saturate(1.2)
@@ -218,5 +220,4 @@
           font-weight: bold
           font-size: 22px
 
-              
-          
+

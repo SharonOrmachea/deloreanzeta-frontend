@@ -1,20 +1,9 @@
 @import 'variables'
 @import 'mixins-responsive'
 
-section
- background:$background-02-DLZ-url
- background-repeat: no-repeat
- background-size: 100%
 
- @include screen (1020px)
-  max-width: 1020px
-  margin-top: 50px
- @include screen (760px)
-  background-size: cover
-  height: 450px
- @include screen (480px)
-  background-size: cover
-  height: 430px
+
+
 
 h1
  font-family: $font-general
@@ -33,7 +22,9 @@ h1
 
 
 ul
-  background: #0F0F0F
+  background: black
+  box-shadow: white 0px 5px 15px
+  border-radius: 30px
   width: 700px
   height: 80%
   border-radius: 3px
@@ -83,28 +74,39 @@ li
     text-align: left
     list-style: none
     text-transform: uppercase
+
+li:nth-child(-n + 3)
+    color: pink
+    font-weight: bold
+
+
     @include screen (1020px)
      font-size: 10px
      margin: 0px auto
      height: 35px
 
     @include screen (760px)
+     font-size: 10px
      margin: 0px auto
      height: 20px
     @include screen (480px)
+     font-size: 10px
      margin: 0px auto
      height: 20px
      font-size: 8px
     @include screen (390px)
+     font-size: 10px
      margin: 0px auto
      height: 20px
      font-size: 7px
     @include screen (320px)
+     font-size: 10px
      margin: 0px auto
      height: 20px
      font-size: 7px
 
     @include screen (290px)
+     font-size: 10px
      margin: 0px auto
      height: 20px
      font-size: 5px

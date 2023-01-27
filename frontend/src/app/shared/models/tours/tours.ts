@@ -4,3 +4,4 @@ export class Tours{
   name!:string;
   place!:string;
 }
+
