@@ -4,14 +4,22 @@ import { Category } from './entity/Category';
 import { Image } from './entity/Image';
 import { Product } from './entity/Product';
 import { User } from './entity/User';
+import {
+	DB_TYPE,
+	DB_HOST,
+	DB_PORT,
+	DB_USER,
+	DB_PASSWORD,
+	DB_DATABASE,
+} from './config/config';
 
 const config: DataSourceOptions = {
-	type: 'mysql',
-	host: 'localhost',
-	port: 3306,
-	username: 'root',
-	password: '0000',
-	database: 'deloreanzeta',
+	type: `${DB_TYPE}` as any,
+	host: DB_HOST,
+	port: DB_PORT as number,
+	username: DB_USER,
+	password: DB_PASSWORD,
+	database: DB_DATABASE,
 	entities: [Category, Image, Product, User],
 	synchronize: true,
 	logging: false,
