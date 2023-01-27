@@ -1,6 +1,7 @@
 import { CategoryController } from "../controller/CategoryController";
-import {Router} from "express";
+import { Router } from "express";
 import { checkRole } from "../middlewares/role";
+import { validateCategory } from "../middlewares/category.validator";
 
 const router = Router();
 
@@ -8,9 +9,9 @@ router.get("/", [/*checkJwt, checkRole(['admin'])*/], CategoryController.getAll)
 
 router.get("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.getById);
 
-router.post("/", [/*checkJwt, checkRole(['admin'])*/], CategoryController.newCategory);
+router.post("/", validateCategory, [/*checkJwt, checkRole(['admin'])*/], CategoryController.newCategory);
 
-router.patch("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.editCategory);
+router.patch("/:id", validateCategory, [/*checkJwt, checkRole(['admin'])*/], CategoryController.editCategory);
 
 router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.deleteCategory);
 

@@ -1,5 +1,5 @@
 import { UserController } from "../controller/UserController";
-import {Router} from "express";
+import { Router } from "express";
 import { checkJwt } from "../middlewares/jwt";
 import { checkRole } from "../middlewares/role";
 import { validateRegister } from "../middlewares/users.validator";

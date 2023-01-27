@@ -1,5 +1,5 @@
-import {body} from "express-validator";
-import {validateResult} from "./validate.helper";
+import { body } from "express-validator";
+import { validateResult } from "./validate.helper";
 
 export const validateRegister = [
     body("email")
