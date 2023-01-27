@@ -22,13 +22,13 @@ class AuthController {
 				password
 			);
 
-			const token = jwt.sign(
-				{ userId: user.id, username: user.email },
-				config.JWT_SECRET,
-				{ expiresIn: '1d' }
-			);
+            const token = jwt.sign(
+                { userId: user.id, username: user.email },
+                config.JWT_SECRET,
+                { expiresIn: '1d' }
+            );
 
-			return res.status(StatusCodes.OK).json({ message: 'OK', token });
+            res.status(StatusCodes.OK).json({ message: 'OK', token });
 		} catch (e) {
 			return res.status(400).json({ message: e.message });
 		}
@@ -39,7 +39,7 @@ class AuthController {
 		const { oldPassword, newPassword } = req.body;
 
 		if (!oldPassword || !newPassword) {
-			return res.status(400).json({
+			res.status(400).json({
 				message: 'Old password and new password are required',
 			});
 		}
@@ -50,15 +50,11 @@ class AuthController {
 				where: { id: userId },
 			});
 		} catch (e) {
-			return res.status(StatusCodes.NOT_FOUND).json({
-				message: 'Somenthing goes wrong',
-			});
+			res.status(400).json({ message: 'Somenthing goes wrong' });
 		}
 
 		if (!user.checkPassword(oldPassword)) {
-			return res
-				.status(StatusCodes.BAD_REQUEST)
-				.json({ message: 'Check your old password' });
+			return res.status(400).json({ message: 'Check your old password' });
 		}
 		user.password = newPassword;
 		const validationOps = {
@@ -67,14 +63,14 @@ class AuthController {
 		const errors = await validate(validationOps);
 
 		if (errors.length > 0) {
-			return res.status(StatusCodes.BAD_REQUEST).json(errors);
+			return res.status(400).json(errors);
 		}
 
 		//Hash password
 		user.hashPassword();
 		userRepository.save(user);
 
-		return res.json({ message: 'Password change' });
+		res.json({ message: 'Password change' });
 	};
 
 	static forgotPassword = async (req: Request, res: Response) => {
@@ -82,53 +78,66 @@ class AuthController {
 		if (!email) {
 			return res.status(400).json({ message: 'Username is required' });
 		}
-		const message = 'Check your mail for a link to reset your password.';
-		let verificationLink;
-		let emailStatus = 'OK';
+		const emailExist = await userRepository.findByEmail(email);	
 
-		let user: User;
-
-		user = await userRepository.findOneOrFail({ where: { email } });
-
-		const token = jwt.sign(
-			{ userId: user.id, username: user.email },
-			config.JWT_SECRET_RESET,
-			{ expiresIn: '10m' }
-		);
-		try {
-			verificationLink = `http://localhost:4200/#/recover/password/${token}`;
-			user.resetToken = token;
-		} catch (e) {
-			return res.json({ message });
+		try{
+			if(emailExist !== null){
+				const message = 'Check your mail for a link to reset your password.';
+				let verificationLink;
+				let emailStatus = 'OK';
+				let user: User;
+				user = await userRepository.findOneOrFail({ where: { email } });
+		
+				const token = jwt.sign(
+					{ userId: user.id, username: user.email },
+					config.JWT_SECRET_RESET,
+					{ expiresIn: '10m' }
+				);
+				try {
+					verificationLink = `http://localhost:4200/#/recover/password/${token}`;
+					user.resetToken = token;
+				} catch (e) {
+					return res.json({ message });
+				}
+				//sendEmail
+				try {
+					// send mail with defined transport object
+					await transporter.sendMail({
+						from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
+						to: user.email, // list of receivers
+						subject: 'Forgot password ✔', // Subject line
+						//text: "Hello world?", // plain text body
+						html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
+						<a href="${verificationLink}">${verificationLink}</a>`, // html body
+					});
+				} catch (e) {
+					emailStatus = e;
+					return res.status(400).json(emailStatus);
+				}
+		
+				try {
+					await userRepository.save(user);
+				} catch (e) {
+					emailStatus = e;
+					return res.status(400).json({ message: 'Something goes wrong' });
+				}
+		
+				return res.status(StatusCodes.OK).json({message: "Todo OK"});
+			}else{
+				return res.json({message: "email not found"});
+			}
+		}catch(e){
+			throw new Error(e);
 		}
-		//sendEmail
-		try {
-			// send mail with defined transport object
-			await transporter.sendMail({
-				from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
-				to: user.email, // list of receivers
-				subject: 'Forgot password ✔', // Subject line
-				//text: "Hello world?", // plain text body
-				html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
-                <a href="${verificationLink}">${verificationLink}</a>`, // html body
-			});
-		} catch (e) {
-			emailStatus = e;
-			return res.status(StatusCodes.BAD_REQUEST).json(emailStatus);
-		}
+	};
 
-		try {
-			await userRepository.save(user);
-		} catch (e) {
-			emailStatus = e;
-			return res
-				.status(StatusCodes.BAD_REQUEST)
-				.json({ message: 'Something goes wrong' });
-		}
-
-		return res.json({
-			/*message, info: emailStatus, test: verificationLink*/ token,
-		});
+	static autorizationPassword = async(req: Request, res: Response) => {
+		/*if(){
+			return res.status(StatusCodes.ACCEPTED);
+		}else{
+			return res.status(StatusCodes.UNAUTHORIZED);
+		}*/
+		
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {
@@ -137,9 +146,7 @@ class AuthController {
 
 		if (!resetToken || !newPassword) {
 			//if(!(resetToken && newPassword)){
-			return res.status(StatusCodes.BAD_REQUEST).json({
-				message: 'All the fields are required',
-			});
+			res.status(400).json({ message: 'All the fields are required' });
 		}
 
 		let jwtPayload;
@@ -151,9 +158,7 @@ class AuthController {
 				where: { resetToken: resetToken },
 			});
 		} catch (error) {
-			return res
-				.status(StatusCodes.UNAUTHORIZED)
-				.json({ message: error });
+			return res.status(401).json({ message: error });
 		}
 
 		user.password = newPassword;
@@ -170,12 +175,10 @@ class AuthController {
 			user.hashPassword();
 			await userRepository.save(user);
 		} catch (error) {
-			return res
-				.status(StatusCodes.UNAUTHORIZED)
-				.json({ message: error });
+			return res.status(401).json({ message: error });
 		}
 
-		return res.json({ message: 'Password changed' });
+		res.json({ message: 'Password changed' });
 	};
 }
 
