@@ -34,7 +34,8 @@ export class IdProductComponent implements OnInit {
       if(params['id'])
         this.productService.getProductById(params['id']).subscribe(serverProductById => {
           this.product = serverProductById;
-        });
+        }
+      );
     })
   }
 

@@ -1,16 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, FormArray, RequiredValidator } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { UserService } from '../../../../shared/services/user/user.service';
-import { IUserRegister } from '../../../../shared/interfaces/iUserRegister';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
-enum Action {
-  EDIT = 'edit',
-  NEW = 'new'
-}
 
 @Component({
   selector: 'app-form-sign-in',
@@ -25,13 +19,9 @@ export class FormSignInComponent implements OnInit {
 
   signInForm!:FormGroup;
 
-  actionToDo = Action.NEW;
-
   isSubmitted = false;
 
   returnUrl = '';
-
-  private subscription: Subscription = new Subscription();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -63,13 +53,11 @@ export class FormSignInComponent implements OnInit {
 
     if (this.signInForm.valid){
       const userValue = this.signInForm.value;
-      this.userService.newUser(userValue).subscribe((response) => {
-        console.log(response);
+      this.userService.newUser(userValue).subscribe(() => {
         this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
         this.router.navigate(['/login']);
         this.signInForm.reset();
-      }, (error) => {
-        console.log(error);
+      }, () => {
         this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
       }
     );
@@ -79,7 +67,6 @@ export class FormSignInComponent implements OnInit {
   get formControls() {
     return this.signInForm.controls;
   }
-
 
   getErrorMessage(field:string): string{
     return this.validatorService.getErrorMessage(field, this.signInForm);

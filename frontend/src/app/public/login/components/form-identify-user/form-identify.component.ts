@@ -1,5 +1,4 @@
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
@@ -40,14 +39,17 @@ export class FormIdentifyComponent implements OnInit {
 
     if (this.identifyEmail.valid){
       const userValue = this.identifyEmail.value;
-      this.userService.sendEmail(userValue).subscribe((response) => {
-        console.log(response);
-        this.toastrService.success('Verifique su casilla de correo electronico', 'Email Enviado');
-        this.router.navigate(['/login']);
-        this.identifyEmail.reset();
-      }, (error) => {
-        console.log(error);
-        this.toastrService.error('Usuario inexistente, compruebe el email ingresado', 'Email Failed');
+      this.userService.sendEmail(userValue).subscribe( response => {
+        if(response){
+          console.log(response);
+          this.toastrService.success('Verifique su casilla de correo electronico', 'Email Enviado');
+          this.router.navigate(['/login']);
+          this.identifyEmail.reset();
+        } else{
+          console.log(Error);
+          this.toastrService.error('Usuario inexistente, compruebe el email ingresado', 'Email Failed');
+        }
+
       })
     }
 

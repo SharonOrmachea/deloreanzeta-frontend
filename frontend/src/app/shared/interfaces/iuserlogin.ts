@@ -15,3 +15,9 @@ export interface UserResponse {
 export interface UserSendEmail{
   email:string;
 }
+
+export interface UserResetPass{
+  password:string;
+  confirmPassword:string;
+}
+

@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', component: PrivateComponent, children:
     [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'recover/password', component: ResetPassComponent, canActivate: [CheckLoginGuard] },
+      { path: 'recover/password/:cookie', component: ResetPassComponent, canActivate: [CheckLoginGuard] },
       { path: 'store', component: StoreComponent, children: [
         { path: '', component: ProductsComponent },
         { path: 'cart', component: CartComponent, },

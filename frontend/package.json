@@ -27,6 +27,7 @@
     "angular-module": "^1.0.1",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.2",
+    "cookie-storage": "^6.1.0",
     "daisyui": "^2.46.1",
     "jquery": "^3.6.1",
     "ng-image-slider": "^6.1.0",
