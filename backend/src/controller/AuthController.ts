@@ -116,7 +116,7 @@ class AuthController {
 			await userRepository.save(user);
 		} catch (e) {
 			emailStatus = e;
-			return res.status(400).json({ message: 'Something goes wrong11' });
+			return res.status(400).json({ message: 'Something goes wrong' });
 		}
 
 		res.json({ message, info: emailStatus, test: verificationLink });

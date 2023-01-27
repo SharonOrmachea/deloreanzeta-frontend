@@ -174,3 +174,40 @@ export const validateLogin = [
         validateResult(req, res, next);
     }
 ]
+
+export const validatePassword = [
+    body("oldPassword, newPassword")
+        .exists()
+        .withMessage("La contraseña del usuario no fue ingresado")
+        .not()
+        .isEmpty()
+        .withMessage("La contraseña no puede no puede estar vacia")
+        .isLength({ min: 8 })
+        .withMessage('La contraseña debe componerse de al menos 8 caracteres')
+        .custom((value, {req}) => {
+            if(value.trim() == 0)
+                throw new Error("La contraseña no puede componerse unicamente de espacios");
+            return true;
+            }
+        )
+        .custom((value, {req}) => {
+            let cantMayusculas = 0;
+            let cantMinusculas = 0;
+            let cantNumeros = 0;
+            for(let i = 0; i < value.length; i++){
+                if((value[i].charCodeAt(0) >= 65 && value[i].charCodeAt(0) <= 90) || value[i].charCodeAt(0) == 165)
+                    cantMayusculas++;
+                else if((value[i].charCodeAt(0) >= 97 && value[i].charCodeAt(0) <= 122) || value[i].charCodeAt(0) == 164)
+                    cantMinusculas++;
+                else if(value[i].charCodeAt(0) >= 48 && value[i].charCodeAt(0) <= 57)
+                    cantNumeros++;
+            }
+            if(!(cantMayusculas > 0 && cantMinusculas > 0 && cantNumeros > 0))
+                throw new Error("La contraseña debe componerse de al menos una mayuscula, una minuscula y un numero");
+            return true;
+        })
+        ,
+    (req, res, next) => {
+        validateResult(req, res, next);
+    }
+]
