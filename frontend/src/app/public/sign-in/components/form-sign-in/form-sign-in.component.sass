@@ -28,10 +28,6 @@
 
   @include screen(390px)
     width: 270px
-    padding: 20px
-
-  @include screen(290px)
-    width: 270px
 
   //------------------------------
   .titulo
@@ -148,6 +144,7 @@
 
         label
           width: 450px
+
           @include screen(720px)
             width: 400px
 
@@ -167,9 +164,6 @@
       button
         @extend .general-button
         @extend .large-button
-        display: flex
-        justify-content: space-around
-        align-items: center
         background-color: $pink
 
         @include screen(720px)
@@ -185,6 +179,7 @@
           width: 230px
 
 .box2
+  background-color: $white
   width: 570px
   height: 64px
   border-radius: 24px

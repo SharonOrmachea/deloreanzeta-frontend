@@ -2,6 +2,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
 
 @Component({
@@ -13,9 +14,13 @@ export class FormIdentifyComponent implements OnInit {
 
   identifyEmail:FormGroup;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private validatorService:ValidationsService
+    ) {
+
     this.identifyEmail = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')])
+      email: new FormControl('', [Validators.required, this.validatorService.emailValidator])
     })
 
   }
@@ -23,30 +28,20 @@ export class FormIdentifyComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  continueToCode() {
-    this.router.navigate(['recover/password'])
+  toLogin() {
+    this.router.navigate(['/login'])
+  }
+
+  get formControls() {
+    return this.identifyEmail.controls;
   }
 
   getErrorMessage(field:string): string{
-    let message = '';
-
-    if (this.identifyEmail.get(field)!.errors?.['required']){
-      message = 'Debes ingresar un valor';
-    }else if(this.identifyEmail.get(field)!.hasError('pattern')){
-      if(field == 'email'){
-        message = 'El Email no es valido';
-      }
-    }
-
-    return message;
+    return this.validatorService.getErrorMessage(field, this.identifyEmail);
   }
 
   isValidField(field:string): boolean{
-    return (
-      (this.identifyEmail.get(field)!.touched ||
-      this.identifyEmail.get(field)!.dirty) &&
-      !this.identifyEmail.get(field)!.valid
-    );
+    return this.validatorService.isValidField(field, this.identifyEmail);
   }
 
 }

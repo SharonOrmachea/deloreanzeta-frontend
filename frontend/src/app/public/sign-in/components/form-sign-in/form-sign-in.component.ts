@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder, FormArray, RequiredValidator } from '@angular/forms';
 import { UserService } from '../../../../shared/services/user/user.service';
 import { IUserRegister } from '../../../../shared/interfaces/iUserRegister';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
 enum Action {
   EDIT = 'edit',
@@ -36,17 +37,20 @@ export class FormSignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private toastrService:ToastrService
+    private toastrService:ToastrService,
+    private validatorService:ValidationsService
     ) {
 
     this.signInForm = this.formBuilder.group({
-      name: ['', ],
-      lastname: ['', ],
-      telephone: ['', ],
-      email: ['', ],
-      password: ['', ],
-      confirmPassword: ['', ],
-    });
+      name: ['', [Validators.required, ]],
+      lastname: ['', Validators.required],
+      telephone: ['', Validators.required],
+      email: ['', [Validators.required, this.validatorService.emailValidator]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      termsAndConditions: [false, Validators.requiredTrue]
+    }, { validator: this.validatorService.checkPasswords(this.signInForm)}
+    );
 
   }
 
@@ -61,32 +65,15 @@ export class FormSignInComponent implements OnInit {
       const userValue = this.signInForm.value;
       this.userService.newUser(userValue).subscribe((response) => {
           console.log(response);
+          this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
+          this.router.navigate(['/login']);
+          this.signInForm.reset();
         }, (error) => {
           console.log(error);
+          this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
         }
       );
     }
-
-    // const userValue:IUserRegister = {
-    //   name: this.signInForm.get('name')?.value,
-    //   lastName: this.signInForm.get('lastName')?.value,
-    //   telephone: this.signInForm.get('telephone')?.value,
-    //   email: this.signInForm.get('email')?.value,
-    //   password: this.signInForm.get('password')?.value,
-    // }
-
-    // console.log(userValue);
-
-    // this.subscription
-    //   this.userService.newUser(userValue).subscribe((response) => {
-    //     console.log(response);
-    //     this.toastrService.success('Puede Iniciar Sesion', 'Usuario Creado');
-    //     this.router.navigate(['/login']);
-    //   }, (error) => {
-    //     console.log(error);
-    //     this.signInForm.reset();
-    //   });
-
   }
 
   get formControls() {

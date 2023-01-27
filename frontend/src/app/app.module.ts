@@ -36,7 +36,7 @@ import { AdminModule } from './Admin/admin.module';
     AdminModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut:3000,
+      timeOut:5000,
       positionClass:'toast-bottom-right',
       newestOnTop:false,
       maxOpened: 1,

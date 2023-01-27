@@ -86,14 +86,14 @@
           <li type="disc">Usa 8 o más caracteres</li>
         </ul>
         <div class="terminos">
-          <input type="checkbox"  id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" tabindex=”0” required>
+          <input type="checkbox" formControlName="termsAndConditions" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" tabindex=”0” required>
           <label for="politica-privacidad">
             <strong>Al crear una cuenta aceptas los </strong> <a routerLink='#'>Términos y Condiciones</a><strong> y la </strong><a routerLink='#'>Política de Privacidad</a>.
           </label>
         </div>
-        <!-- <mat-error *ngIf="isValidField('termsAndConditions')">
+        <mat-error *ngIf="isValidField('termsAndConditions')">
           <strong>Debe aceptar los terminos y condiciones para poder registrarse</strong>
-        </mat-error> -->
+        </mat-error>
 
       </div>
 
