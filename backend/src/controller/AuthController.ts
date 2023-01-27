@@ -81,17 +81,18 @@ class AuthController {
 		const message = 'Check your mail for a link to reset your password.';
 		let verificationLink;
 		let emailStatus = 'OK';
-
+		
 		let user: User;
+		
+		user = await userRepository.findOneOrFail({ where: { email } });
 
+		const token = jwt.sign(
+			{ userId: user.id, username: user.email },
+			config.JWT_SECRET_RESET,
+			{ expiresIn: '10m' }
+		);
 		try {
-			user = await userRepository.findOneOrFail({ where: { email } });
-			const token = jwt.sign(
-				{ userId: user.id, username: user.email },
-				config.JWT_SECRET_RESET,
-				{ expiresIn: '10m' }
-			);
-			verificationLink = `http://localhost:3000/new-password/${token}`;
+			verificationLink = `http://localhost:4200/#/recover/password/${token}`;
 			user.resetToken = token;
 		} catch (e) {
 			return res.json({ message });
@@ -116,10 +117,10 @@ class AuthController {
 			await userRepository.save(user);
 		} catch (e) {
 			emailStatus = e;
-			return res.status(400).json({ message: 'Something goes wrong11' });
+			return res.status(400).json({ message: 'Something goes wrong' });
 		}
 
-		res.json({ message, info: emailStatus, test: verificationLink });
+	res.json({ /*message, info: emailStatus, test: verificationLink*/ token });
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {

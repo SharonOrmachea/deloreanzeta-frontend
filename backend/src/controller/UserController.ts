@@ -19,11 +19,10 @@ export class UserController {
 	};
 
 	static getById = async (req: Request, res: Response) => {
-		const { id } = req.params;
-		const idInt = parseInt(id as string);
+		const { email } = req.params;
 
 		try {
-			const user = await userRepository.findById(idInt);
+			const user = await userRepository.findByEmail(email);
 			res.send(user);
 		} catch (e) {
             // check if is a typeorm error and thor error 500
