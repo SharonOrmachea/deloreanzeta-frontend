@@ -1,5 +1,7 @@
 const BASE_URL = 'http://localhost:3000/';
 
+// -----------------------TIENDA------------------------------------------------
+
 // Productos
 
 export const PRODUCT_URL = BASE_URL + 'api/producto';
@@ -11,7 +13,7 @@ export const PRODUCT_CATEGORIES_URL = BASE_URL + 'api/categoria';
 export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + 'categoria/';
 
 
-// Usuarios
+// -----------------------USUARIOS------------------------------------------------
 
 // Login de usuarios
 export const USER_LOGIN_URL = BASE_URL + 'auth/login';
@@ -23,13 +25,17 @@ export const USER_URL = BASE_URL + 'users';
 export const USER_BY_EMAIL_URL = USER_URL + '/';
 
 // Se cambia la contraseña de un usuario logueado (pide la contraseña anterior y la nueva) POST
-export const USER_CHANGE_PASS_URL = BASE_URL + 'auth/change-password'
+export const USER_CHANGE_PASS_URL = BASE_URL + 'auth/change-password';
 
 // Se envia al email del usuario al que se quiere reestablecer la contraseña (pide el email) POST
-export const USER_IDENTIFY_EMAIL_URL = BASE_URL + 'auth/forgot-password'
+export const USER_IDENTIFY_EMAIL_URL = BASE_URL + 'auth/forgot-password';
 
 // Autorizacion que valida restablecimiento de contraseña olvidada (POST)
-export const AUTHORIZE_RESET_PASS_URL = BASE_URL + 'auth/authorize-password'
+export const AUTHORIZE_RESET_PASS_URL = BASE_URL + 'auth/authorize-password';
 
 // Reestablece la contraseña olvidada
-export const RESET_PASS_URL = BASE_URL + 'auth/new-password'
+export const RESET_PASS_URL = BASE_URL + 'auth/new-password';
+
+// -----------------------CONTRATACIONES------------------------------------------------
+
+export const SEND_HIRING_URL = BASE_URL + '';

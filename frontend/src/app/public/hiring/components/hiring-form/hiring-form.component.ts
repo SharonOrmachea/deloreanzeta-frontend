@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+
 import { ToastrService } from 'ngx-toastr';
+import { HiringService } from 'src/app/shared/services/hiring/hiring.service';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
 @Component({
@@ -15,9 +16,9 @@ export class HiringFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router,
     private toastrService:ToastrService,
-    private validatorService:ValidationsService
+    private validatorService:ValidationsService,
+    private hiringService:HiringService
   ) {
 
     this.hiringForm = this.formBuilder.group({
@@ -31,11 +32,22 @@ export class HiringFormComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  sendHiring(){
+    if (this.hiringForm.valid){
+      const hiringFormValue = this.hiringForm.value;
+      this.hiringService.sendHiring(hiringFormValue).subscribe((res)=>{
+        console.log(res);
+        this.toastrService.success('Verifique su casilla de correo electronico para más informacion acerca de los tiempos de espera de respuesta', 'Formulario enviado');
+        this.hiringForm.reset();
+      }, (error) => {
+        this.toastrService.error('No se pudo enviar su solicitud, hubo un error en el servidor, intentelo de nuevo más tarde', 'Error');
+        console.log(error);
+      })
+    }
 
   }
-
-  sendHiring(){}
 
   get formControls() {
     return this.hiringForm.controls;

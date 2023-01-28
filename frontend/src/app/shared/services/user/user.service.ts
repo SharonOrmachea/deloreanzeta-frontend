@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ToastrService } from 'ngx-toastr';
 
 import { USER_URL, USER_BY_EMAIL_URL, USER_IDENTIFY_EMAIL_URL, RESET_PASS_URL, AUTHORIZE_RESET_PASS_URL } from '../../constants/urls';
+
 import { IUserRegister } from '../../interfaces/iUserRegister';
 import { UserLogin, UserResetPass, UserSendEmail } from '../../interfaces/iuserlogin';
+
 import { AuthorizeHeaders } from '../../models/users/authorizeHeaders';
 
 const helper = new JwtHelperService();
@@ -19,14 +19,7 @@ const helper = new JwtHelperService();
 
 export class UserService {
 
-  // private userToken = new BehaviorSubject<string>(null);
-
-  constructor(
-    private http: HttpClient,
-    private router: Router,
-    private toastrService: ToastrService) {
-
-  }
+  constructor( private http: HttpClient ) {}
 
   // CREAR USUARIO
   newUser(user: IUserRegister): Observable<IUserRegister | void> {
@@ -69,7 +62,7 @@ export class UserService {
   // }
 
   handlerUserError(error: any): Observable<never> {
-    let errorMessage = 'Error mamita';
+    let errorMessage = 'Error';
     if (error) {
       errorMessage = `Error ${error.message}`;
     }

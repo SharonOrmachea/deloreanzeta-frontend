@@ -19,8 +19,6 @@ export class FormSignInComponent implements OnInit {
 
   signInForm!:FormGroup;
 
-  isSubmitted = false;
-
   returnUrl = '';
 
   constructor(
@@ -49,15 +47,13 @@ export class FormSignInComponent implements OnInit {
 
   registerNewUser(){
 
-    this.isSubmitted = true;
-
     if (this.signInForm.valid){
       const userValue = this.signInForm.value;
-      this.userService.newUser(userValue).subscribe(() => {
+      this.userService.newUser(userValue).subscribe((res) => {
         this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
         this.router.navigate(['/login']);
         this.signInForm.reset();
-      }, () => {
+      }, (error) => {
         this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
       }
     );

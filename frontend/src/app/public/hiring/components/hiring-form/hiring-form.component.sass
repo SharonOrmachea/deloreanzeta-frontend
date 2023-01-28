@@ -17,25 +17,33 @@
     height: auto
     border-radius: 16px
     padding: 40px
-    gap: 30px 0
+    gap: 30px
 
-    @include screen (720px)
-      width: 82%
-      padding: 25px
-      box-sizing: content-box
+    @include screen(720px)
+      width: 470px
 
-    @include screen (480px)
-      width: 75%
+    @include screen(560px)
+      width: 370px
+      padding: 20px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 240px
 
     @include screen (220px)
-      width: 70%
+      width: 200px
+      gap: 5px
 
     .titulo
       @extend .flex-column-around-center
       color: $black
+      gap: 10px
 
       @include screen (390px)
         max-width: 280px
+
       @include screen (290px)
         max-width: 220px
 
@@ -48,35 +56,41 @@
         @include screen(390px)
           font-size: 25px
 
+        @include screen(290px)
+          font-size: 22px
+
       img
         @extend .logoDLZ-Autito
 
         @include screen(390px)
-        width: 170px
+          width: 170px
 
         @include screen(290px)
           width: 150px
 
     .form
       @extend .flex-column-around-center
-      gap: 30px
+      gap: 20px
 
-      @include screen (720px)
-        max-width: 500px
+      @include screen(720px)
+        width: 470px
+        gap: 10px
+
+      @include screen(560px)
+        width: 370px
+
+      @include screen(390px)
+        width: 270px
+
+      @include screen(290px)
+        gap: 10px
+
+      @include screen (290px)
+        width: 150px
 
       .inputs
         @extend .flex-column-center
-        gap: 30px
-
-        @include screen (720px)
-          max-width: 500px
-
-        @include screen (390px)
-          max-width: 80%
-          margin: 0 10%
-
-        @include screen (290px)
-          gap: 10px
+        gap: 0.5em
 
         .box
           display: flex
@@ -93,45 +107,11 @@
           @include screen(390px)
             width: 230px
 
-          @include screen(290px)
-            width: 230px
+          @include screen (290px)
+            width: 200px
 
-          .input-area
-            @include screen (480px)
-              max-width: 340px
-            @include screen (440px)
-              max-width: 315px
-            @include screen (390px)
-              max-width: 260px
-            @include screen (330px)
-              max-width: 230px
-            @include screen (290px)
-              max-width: 220px
-            @include screen (260px)
-              max-width: 180px
-          .textarea
-            width: 487px
-            height: 24vh
-            border-radius: 12px
-            border-width: 1px
-            border-color: $gray
-            @include screen (720px)
-              max-width: 520px
-            @include screen (600px)
-              max-width: 410px
-              box-sizing: content-box
-            @include screen (480px)
-              max-width: 340px
-            @include screen (440px)
-              max-width: 315px
-            @include screen (390px)
-              max-width: 260px
-            @include screen (330px)
-              max-width: 230px
-            @include screen (290px)
-              max-width: 220px
-            @include screen (260px)
-              max-width: 180px
+          @include screen (220px)
+            width: 170px
 
     .submit
       @extend .flex-column-around-center
@@ -145,7 +125,7 @@
         background-color: $pink
 
         @include screen(720px)
-        width: 370px
+          width: 370px
 
         @include screen(560px)
           width: 290px
@@ -154,4 +134,7 @@
           width: 230px
 
         @include screen(290px)
-          width: 230px
+          width: 200px
+
+        @include screen (220px)
+          width: 170px
