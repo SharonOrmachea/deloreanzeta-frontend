@@ -13,7 +13,7 @@
         <div class="box-pass">
           <mat-form-field class="example-full-width"color="accent">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” required>
+            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0”>
             <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </i>
@@ -26,7 +26,7 @@
         <div class="box-pass">
           <mat-form-field class="example-full-width" color="accent">
             <mat-label>Repetir Contraseña</mat-label>
-            <input matInput type="password" [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" tabindex=”0” required>
+            <input matInput type="password" [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" tabindex=”0”>
             <i mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </i>

@@ -22,7 +22,7 @@
         <div class="box-form">
           <mat-form-field color="accent">
             <mat-label>Contraseña</mat-label>
-            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” tabindex=”0” required>
+            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0” tabindex=”0”>
             <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
             </i>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="login">
-        <button [disabled]="loginForm.invalid" class="btn btn-lg" type="submit" tabindex=”0” >Iniciar Sesión</button>
+        <button [disabled]="loginForm.invalid" class="btn btn-lg" type="submit" tabindex=”0”>Iniciar Sesión</button>
       </div>
     </form>
     <div class="forgot-pass">
