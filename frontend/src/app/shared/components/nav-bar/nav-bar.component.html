@@ -1,6 +1,90 @@
 <header>
 
-  <nav class="navbar navbar-expand-lg">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+
+    <a class="logo" routerLink='/home' tabindex=”0”>
+      <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg">
+      <i class="bi bi-list"></i>
+    </button>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+      <!-- ----------------------------------------------------------- -->
+      <div class="offcanvas-header">
+        <a class="logo-header" routerLink='/home' tabindex=”0”>
+          <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
+        </a>
+        <button type="button" class="btn" data-bs-dismiss="offcanvas" aria-label="Close">
+          <i class="bi bi-x-lg"></i>
+        </button>
+      </div>
+
+      <div class="offcanvas-body">
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink='/home' routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Inicio</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/gallery" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Galería</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/store" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tienda</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/news" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Noticias</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/tours" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Tours</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>La Banda</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/hiring" routerLinkActive="active" ariaCurrentWhenActive="page" tabindex=”0”><strong>Contrataciones</strong></a>
+          </li>
+        </ul>
+
+        <div class="buttons-login" >
+          <button class="sign-in" (click)="paginaSignIn()" tabindex=”0”><strong>Regístrate</strong></button>
+          <button class="login" (click)="paginaLogin()" tabindex=”0”><strong>Iniciar Sesión</strong></button>
+          <div > <!-- #viewLogout en un ng-template CARRITO-->
+            <div class="cart">
+              <a routerLink="/store/cart">
+                <i class="bi bi-cart3"></i>
+                <span class="notificacion" *ngIf="cartQuantity">
+                  <strong>{{ cartQuantity }}</strong>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div> <!-- #viewLogout en un ng-template USER-->
+            <div class="user">
+              <ul>
+                <li class="menu-container" >
+                  <a routerLink="/admin/profile"><strong>Sharon</strong></a>
+                  <div class="menu">
+                    <a routerLink="/profile"><strong>Perfil</strong></a>
+                    <a routerLink="/orders"><strong>Pedidos</strong></a>
+                    <a (click)="onLogout()"><strong>Cerrar Sesión</strong></a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+
+
+    </div>
+  </nav>
+
+  <!-- <nav class="navbar navbar-expand-lg">
     <a class="logo" routerLink='/home' tabindex=”0”>
       <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
     </a>
@@ -83,6 +167,6 @@
         </a>
       </div>
     </ng-template>
-  </nav>
+  </nav> -->
 
 </header>
