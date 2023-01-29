@@ -3,6 +3,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 import { Category } from './entity/Category';
 import { Image } from './entity/Image';
 import { Product } from './entity/Product';
+import { Tour } from './entity/Tour';
 import { User } from './entity/User';
 import {
 	DB_TYPE,
@@ -20,7 +21,7 @@ const config: DataSourceOptions = {
 	username: DB_USER,
 	password: DB_PASSWORD,
 	database: DB_DATABASE,
-	entities: [Category, Image, Product, User],
+	entities: [Category, Image, Product, Tour, User],
 	synchronize: true,
 	logging: false,
 };
