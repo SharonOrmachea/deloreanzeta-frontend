@@ -38,4 +38,4 @@ export const RESET_PASS_URL = BASE_URL + 'auth/new-password';
 
 // -----------------------CONTRATACIONES------------------------------------------------
 
-export const SEND_HIRING_URL = BASE_URL + '';
+export const SEND_HIRING_URL = BASE_URL + 'hirings/send-email';
