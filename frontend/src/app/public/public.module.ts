@@ -12,6 +12,7 @@ import { ToursModule } from './tours/tours.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AboutUsModule } from './about-us/about-us.module';
 
 
 
@@ -31,6 +32,7 @@ import { HttpClientModule } from '@angular/common/http';
     NewsModule,
     ToursModule,
     GalleryModule,
+    AboutUsModule
   ],
   providers: [
 
