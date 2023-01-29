@@ -6,6 +6,7 @@ import { validate } from 'class-validator';
 import { transporter } from '../config/mailer';
 import userRepository from '../repositories/UserRepository';
 import { StatusCodes } from 'http-status-codes';
+import { header } from 'express-validator';
 
 class AuthController {
 	static login = async (req: Request, res: Response) => {
@@ -78,49 +79,73 @@ class AuthController {
 		if (!email) {
 			return res.status(400).json({ message: 'Username is required' });
 		}
-		const message = 'Check your mail for a link to reset your password.';
-		let verificationLink;
-		let emailStatus = 'OK';
+		const emailExist = await userRepository.findByEmail(email);	
+
+		try{
+			if(emailExist !== null){
+				const message = 'Check your mail for a link to reset your password.';
+				let verificationLink;
+				let emailStatus = 'OK';
+				let user: User;
+				user = await userRepository.findOneOrFail({ where: { email } });
 		
-		let user: User;
+				const token = jwt.sign(
+					{ userId: user.id, username: user.email },
+					config.JWT_SECRET_RESET,
+					{ expiresIn: '10m' }
+				);
+				try {
+					verificationLink = `http://localhost:4200/#/recover/password/${token}`;
+					user.resetToken = token;
+				} catch (e) {
+					return res.json({ message });
+				}
+				//sendEmail
+				try {
+					// send mail with defined transport object
+					await transporter.sendMail({
+						from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
+						to: user.email, // list of receivers
+						subject: 'Forgot password ✔', // Subject line
+						//text: "Hello world?", // plain text body
+						html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
+						<a href="${verificationLink}">${verificationLink}</a>`, // html body
+					});
+				} catch (e) {
+					emailStatus = e;
+					return res.status(400).json(emailStatus);
+				}
 		
-		user = await userRepository.findOneOrFail({ where: { email } });
-
-		const token = jwt.sign(
-			{ userId: user.id, username: user.email },
-			config.JWT_SECRET_RESET,
-			{ expiresIn: '10m' }
-		);
-		try {
-			verificationLink = `http://localhost:4200/#/recover/password/${token}`;
-			user.resetToken = token;
-		} catch (e) {
-			return res.json({ message });
+				try {
+					await userRepository.save(user);
+				} catch (e) {
+					emailStatus = e;
+					return res.status(400).json({ message: 'Something goes wrong' });
+				}
+		
+				return res.status(StatusCodes.OK).json({message: "Todo OK"});
+			}else{
+				return res.json({message: "email not found"});
+			}
+		}catch(e){
+			throw new Error(e);
 		}
-		//sendEmail
-		try {
-			// send mail with defined transport object
-			await transporter.sendMail({
-				from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
-				to: user.email, // list of receivers
-				subject: 'Forgot password ✔', // Subject line
-				//text: "Hello world?", // plain text body
-				html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
-                <a href="${verificationLink}">${verificationLink}</a>`, // html body
-			});
-		} catch (e) {
-			emailStatus = e;
-			return res.status(400).json(emailStatus);
-		}
+	};
 
-		try {
-			await userRepository.save(user);
-		} catch (e) {
-			emailStatus = e;
-			return res.status(400).json({ message: 'Something goes wrong' });
-		}
+	static autorizationPassword = async(req: Request, res: Response) => {
+		const cookie = (req.headers.Authorization)[0];
+		const jwtPayload = jwt.verify(cookie, config.JWT_SECRET_RESET);
 
-	res.json({ /*message, info: emailStatus, test: verificationLink*/ token });
+		const user = await userRepository.findOneOrFail({
+			where: { resetToken: cookie },
+		});
+		/*
+		if(req.headers.Authorization.){
+			return res.status(StatusCodes.ACCEPTED);
+		}else{
+			return res.status(StatusCodes.UNAUTHORIZED);
+		}*/
+		
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {

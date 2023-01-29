@@ -1,6 +1,5 @@
 import { ProductController } from "../controller/ProductController";
 import {Router} from "express";
-import { checkRole } from "../middlewares/role";
 
 const router = Router();
 
