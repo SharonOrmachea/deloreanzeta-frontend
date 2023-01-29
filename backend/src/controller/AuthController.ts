@@ -6,6 +6,7 @@ import { validate } from 'class-validator';
 import { transporter } from '../config/mailer';
 import userRepository from '../repositories/UserRepository';
 import { StatusCodes } from 'http-status-codes';
+import { header } from 'express-validator';
 
 class AuthController {
 	static login = async (req: Request, res: Response) => {
@@ -132,7 +133,14 @@ class AuthController {
 	};
 
 	static autorizationPassword = async(req: Request, res: Response) => {
-		/*if(){
+		const cookie = (req.headers.Authorization)[0];
+		const jwtPayload = jwt.verify(cookie, config.JWT_SECRET_RESET);
+
+		const user = await userRepository.findOneOrFail({
+			where: { resetToken: cookie },
+		});
+		/*
+		if(req.headers.Authorization.){
 			return res.status(StatusCodes.ACCEPTED);
 		}else{
 			return res.status(StatusCodes.UNAUTHORIZED);
