@@ -1,5 +1,5 @@
 @import 'extends-class'
-@import 'mixins-responsive'
+// @import 'mixins-responsive'
 
 section
   @extend .flex-column-around-center
@@ -8,32 +8,40 @@ section
   background-repeat: no-repeat
   background-size: 100%
   width: 100%
-  height: 59em
-  @include screen (480px)
-   max-height: 350px
-  @include screen (320px)
-   max-height: 370px
-  @include screen (290px)
-   max-height: 400px
+  height: 100vh
+
+  // @include screen (480px)
+  //  max-height: 350px
+
+  // @include screen (320px)
+  //  max-height: 370px
+
+  // @include screen (290px)
+  //  max-height: 400px
+
   .nav-bar
     width: 100%
     height: 30%
 
   .delorean
     height: 70%
-   
+
     img
       height: 364px
       width: 1001px
-      @include screen (480px)
-       height: 100px
-       width: 400px
-      @include screen (390px)
-       height: 100px
-       width: 350px
-      @include screen (390px)
-       height: 100px
-       width: 270px
-      @include screen (320px)
-       height: 100px
-       width: 200px
+
+      // @include screen (480px)
+      //  height: 100px
+      //  width: 400px
+
+      // @include screen (390px)
+      //  height: 100px
+      //  width: 350px
+
+      // @include screen (390px)
+      //  height: 100px
+      //  width: 270px
+
+      // @include screen (320px)
+      //  height: 100px
+      //  width: 200px
