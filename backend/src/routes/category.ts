@@ -13,6 +13,6 @@ router.post("/", validateCategory, [/*checkJwt, checkRole(['admin'])*/], Categor
 
 router.patch("/:id", validateCategory, [/*checkJwt, checkRole(['admin'])*/], CategoryController.editCategory);
 
-router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.deleteCategory);
+//router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.deleteCategory);
 
 export default router;

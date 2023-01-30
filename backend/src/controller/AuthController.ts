@@ -6,7 +6,6 @@ import { validate } from 'class-validator';
 import { transporter } from '../config/mailer';
 import userRepository from '../repositories/UserRepository';
 import { StatusCodes } from 'http-status-codes';
-import { header } from 'express-validator';
 
 class AuthController {
 	static login = async (req: Request, res: Response) => {

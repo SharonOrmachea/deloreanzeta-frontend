@@ -44,7 +44,7 @@ export class ProductController {
 		const categoryRepository = CategoryRepository;
 		const productRepository = ProductRepository;
 		let product = new Product();
-        let image = new Image();
+        //let image = new Image();
 
 		try {
 			const categoryExist = await categoryRepository.findByName(category);
@@ -54,14 +54,14 @@ export class ProductController {
 				product.price = price;
 				product.description = description;
 				product.information = information;
-/*
+				/*
                 for(let i = 0; i < images.length; i++){
                     const buffer = Buffer.from(images[i], "base64");
                     const imageProduct = new Image();
                     imageProduct.data = buffer;
                     product.images.push(imageProduct);
                 }
-*/
+				*/
 				product.images = images;
 				product.category = categoryExist;
 
