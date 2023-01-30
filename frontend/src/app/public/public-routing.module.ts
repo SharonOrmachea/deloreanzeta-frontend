@@ -18,6 +18,7 @@ import { ToursComponent } from "./tours/pages/tours.component";
 import { GalleryComponent } from "./gallery/pages/gallery/gallery.component";
 
 import { CheckLoginGuard } from '../shared/guards/check-login.guard';
+import { AboutUsComponent } from './about-us/pages/about-us.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes = [
       ]},
       { path: 'tours', component: ToursComponent },
       { path: 'gallery', component: GalleryComponent },
+      { path: 'about-us', component: AboutUsComponent },
     ]
   }
 ];
