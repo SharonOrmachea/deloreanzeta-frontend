@@ -2,22 +2,21 @@
 @import 'mixins-responsive'
 
 
+section 
+ display: flex
+ flex-direction: column
+ align-items: center 
+ margin: auto
+ text-align: center
 
-
-
-h1
+.title strong
  font-family: $font-general
  font-size: 32px
- font-weight: 700
  line-height: 48px
  letter-spacing: 1px
  color: #FFFFFF
- text-align: center
- margin-top: 20px
- padding-top: 42px
- padding-bottom: 30px
- @include screen (1020px)
-  padding-bottom: 10px
+ margin-top: 50px
+ 
 
 
 
@@ -25,92 +24,109 @@ ul
   background: black
   box-shadow: white 0px 5px 15px
   border-radius: 30px
-  width: 700px
+  width: 80%
   height: 80%
   border-radius: 3px
-  margin-left: 350px
   padding: 20px 20px 20px 20px
-
+  margin: auto
   @include screen (1020px)
-   max-width: 500px
-   height: 480px
    padding: 0px auto
-   margin-left: 250px
-
+   
   @include screen (760px)
-   max-width: 400px
-   height: 300px
-   margin-left: 200px
-
+   max-width:100%
+   max-height: 100%
+  
   @include screen (480px)
-   max-width: 350px
-   height: 300px
-   margin-left: 60px
-
+   max-width:100%
+   max-height: 100%
+   
   @include screen (390px)
-   max-width: 300px
-   height: 300px
-   margin-left: 40px
+  max-width:100%
+   max-height: 100%
 
   @include screen (320px)
-   max-width: 270px
-   height: 300px
-   margin-left: 20px
-
-
+   max-width:100%
+   max-height: 100%
+   
   @include screen (290px)
-   max-width: 250px
-   height: 300px
-   margin-left: 20px
+   max-width:100%
+   max-height: 100%
+   
 
 li
     font-family: $font-general
     font-size: 16px
     margin-left: 20px
     color: #FFFFFF
-    font-weight: 400
+    font-weight: 400px
     line-height: 48px
     letter-spacing: 1px
     text-align: left
     list-style: none
     text-transform: uppercase
-
-li:nth-child(-n + 3)
-    color: pink
-    font-weight: bold
-
-
+    
     @include screen (1020px)
-     font-size: 10px
+     font-size: 16px
      margin: 0px auto
-     height: 35px
+     heigth:10px
 
     @include screen (760px)
      font-size: 10px
      margin: 0px auto
-     height: 20px
+     
+     
     @include screen (480px)
      font-size: 10px
      margin: 0px auto
-     height: 20px
-     font-size: 8px
+  
+     
     @include screen (390px)
      font-size: 10px
      margin: 0px auto
-     height: 20px
-     font-size: 7px
+   
+     
     @include screen (320px)
      font-size: 10px
      margin: 0px auto
-     height: 20px
-     font-size: 7px
+    
+     
 
     @include screen (290px)
      font-size: 10px
      margin: 0px auto
-     height: 20px
-     font-size: 5px
+    
+     
 
-.new
-  color: #E01D8D
+
+li:nth-child(-n + 3)
+    color: #E01D8D
+    font-weight: bold
+
+
+    @include screen (1020px)
+     font-size: 16px
+     margin: 0px auto
+    
+
+    @include screen (760px)
+     font-size: 10px
+     margin: 0px auto
+          
+    @include screen (480px)
+     font-size: 10px
+     margin: 0px auto
+     
+    @include screen (390px)
+     font-size: 10px
+     margin: 0px auto
+    
+    @include screen (320px)
+     font-size: 10px
+     margin: 0px auto
+    
+
+    @include screen (290px)
+     font-size: 10px
+     margin: 0px auto
+  
 
