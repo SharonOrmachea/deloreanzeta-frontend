@@ -110,8 +110,10 @@
           </li>
         </ul>
 
-        <div class="buttons-login">
-          <div *ngIf="isLogged; else viewLogout">
+        <div class="buttons">
+
+          <div class="buttons-logout">
+            <!-- *ngIf="isLogged; else viewLogout" en un div -->
             <button class="sign-in" (click)="paginaSignIn()" tabindex="”0”">
               <strong>Regístrate</strong>
             </button>
@@ -120,7 +122,7 @@
             </button>
           </div>
 
-          <ng-template #viewLogout>
+          <ng-template class="buttons-login">
             <!-- #viewLogout en un ng-template CARRITO-->
             <div class="cart">
               <a routerLink="/store/cart">
@@ -162,18 +164,7 @@
               </li>
             </div>
           </ng-template>
-          <!-- <div class="user">
-              <ul>
-                <li class="menu-container" >
-                  <a routerLink="/admin/profile"><strong>Sharon</strong></a>
-                  <div class="menu">
-                    <a routerLink="/profile"><strong>Perfil</strong></a>
-                    <a routerLink="/orders"><strong>Pedidos</strong></a>
-                    <a (click)="onLogout()"><strong>Cerrar Sesión</strong></a>
-                  </div>
-                </li>
-              </ul>
-            </div> -->
+
         </div>
       </div>
     </div>

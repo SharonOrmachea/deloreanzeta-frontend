@@ -27,6 +27,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<any>();
 
+
   constructor(
     private router: Router,
     cartService:CartService,
@@ -60,7 +61,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogout():void {
     this.authService.logout();
-    this.isLogged = false;
+    // this.isLogged = false;
   }
 
 }
