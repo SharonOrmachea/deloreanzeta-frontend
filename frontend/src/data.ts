@@ -317,6 +317,26 @@ export const sample_tours: Tours[] = [
     place: 'Quien sabe que mas hay, Buenos Aires.'
   },
 
+  {
+    id: '4',
+    date: '05 de Junio del 2022',
+    name: 'Un nombre para el tour',
+    place: 'Jose cuchillos paz, Buenos Aires.'
+  },
+  {
+    id: '5',
+    date: '20 de Agosto del 2022',
+    name: 'Otro nombre para el tour',
+    place: 'Tour mar de las pompas, Buenos Aires.'
+  },
+  {
+    id: '6',
+    date: '05 de Junio del 2022',
+    name: 'Otro de otro nombre para el tour',
+    place: 'Quien sabe que mas hay, Buenos Aires.'
+  },
+
+
 ]
 
 export const sample_sources: Sources[] = [
