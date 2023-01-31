@@ -1,90 +1,96 @@
 @import 'extends-class'
 @import 'mixins-responsive'
 
-.contenedor
-  @extend .font-general
-  @extend .flex-column-evenly-center
-  width: 100%
-  height: auto
-  margin: 0px
-  gap: 1em
-  color: #FFFFFF
+section
+  height: 50vh
+  display: flex
+  justify-content: space-around
+  align-items: center
 
-  .contenedor1
-    @extend .flex-column-around-center
-
-    @include screen (290px)
-      max-width: 220px
-
-    img
-      width: 20em
-
-      @include min-screen (290px)
-        width: 15em
-
-      @include screen (290px)
-        width: 13em
-
-    .redes
-      @extend .flex-row-evenly-center
-      width: 287px
-
-      @include screen (290px)
-        max-width: 220px !important
-
-      a
-        color: $pink
-        font-size: 2em
-        text-decoration: none
-        @include screen (290px)
-          font-size: 1.5em
-
-        a:link
-          text-decoration: none
-          color: $pink
-
-        a:visited
-          text-decoration: none
-          color: $pink
-
-  .contenedor2
-    display: flex
-    flex-direction: column
-    justify-content: space-around
-    align-items: center
+  .contenedor
+    @extend .font-general
+    @extend .flex-column-evenly-center
     width: 100%
+    height: auto
+    margin: 0px
     gap: 1em
-    p
-      font-size: 20px
-      margin: 0
-      text-align: center
+    color: #FFFFFF
+
+    .contenedor1
+      @extend .flex-column-around-center
+
       @include screen (290px)
-        font-size: 18px
+        max-width: 220px
 
-    ul
-      // @extend .flex-row-around-center-wrap
-      display: flex
-      flex-direction: row
-      justify-content: space-evenly
-      align-items: center
-      flex-wrap: wrap
-      width: 40%
-      padding: 0
+      img
+        width: 20em
 
-      @include screen (1220px)
-        width: 100%
-        gap: 1em
+        @include min-screen (290px)
+          width: 15em
 
-      @include screen (480px)
-        gap: 0.5em
+        @include screen (290px)
+          width: 13em
 
-      li
-        list-style: none
+      .redes
+        @extend .flex-row-evenly-center
+        width: 287px
+
+        @include screen (290px)
+          max-width: 220px !important
+
         a
+          color: $pink
+          font-size: 2em
           text-decoration: none
-          color: #FFFFFF
-          font-size: 20px
           @include screen (290px)
-            font-size: 18px
+            font-size: 1.5em
+
+          a:link
+            text-decoration: none
+            color: $pink
+
+          a:visited
+            text-decoration: none
+            color: $pink
+
+    .contenedor2
+      display: flex
+      flex-direction: column
+      justify-content: space-around
+      align-items: center
+      width: 100%
+      gap: 1em
+      p
+        font-size: 20px
+        margin: 0
+        text-align: center
+        @include screen (290px)
+          font-size: 18px
+
+      ul
+        // @extend .flex-row-around-center-wrap
+        display: flex
+        flex-direction: row
+        justify-content: space-evenly
+        align-items: center
+        flex-wrap: wrap
+        width: 40%
+        padding: 0
+
+        @include screen (1220px)
+          width: 100%
+          gap: 1em
+
+        @include screen (480px)
+          gap: 0.5em
+
+        li
+          list-style: none
+          a
+            text-decoration: none
+            color: #FFFFFF
+            font-size: 20px
+            @include screen (290px)
+              font-size: 18px
 
 
