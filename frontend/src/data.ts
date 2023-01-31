@@ -2,8 +2,6 @@ import { Product } from "./app/shared/models/store/products/product";
 import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
-import { Login } from "./app/shared/models/sign-in/sign-in";
-import { Register } from './app/shared/models/sign-up/sign-up';
 import { Sources } from "./app/shared/models/gallery/gallery";
 import { Tours } from './app/shared/models/tours/tours';
 
