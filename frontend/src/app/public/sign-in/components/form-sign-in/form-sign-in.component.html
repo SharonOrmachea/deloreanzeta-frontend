@@ -33,7 +33,7 @@
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
             <mat-label>Teléfono</mat-label>
-            <input type="tel" formControlName="telephone" matInput placeholder="555-555-1234" tabindex=”0”>
+            <input type="tel" formControlName="telephone" matInput placeholder="Ej. 5545281234" tabindex=”0”>
             <mat-error *ngIf="isValidField('telephone')">
               <strong>{{ getErrorMessage('telephone') }}</strong>
             </mat-error>
@@ -43,7 +43,7 @@
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
             <mat-label for="">Email</mat-label>
-            <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ex. delorean@gmail.com" tabindex=”0”>
+            <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ej. delorean@gmail.com" tabindex=”0”>
             <mat-error *ngIf="isValidField('email')">
               <strong>{{ getErrorMessage('email') }}</strong>
             </mat-error>

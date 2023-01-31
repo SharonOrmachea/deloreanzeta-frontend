@@ -41,18 +41,21 @@ export class ValidationsService {
     let message = '';
 
     if (form.get(field)!.errors?.['required']){
-      message = 'Este campo no puede estar vacio';
+      message = 'Este campo no puede estar vacío';
     }else if(form.get(field)!.hasError('pattern')){
       if(field == 'email'){
-        message = 'El Email no es valido';
+        message = 'El Email no es válido';
       }else if (field == 'password' || field == 'confirmPassword'){
-        message = 'La contraseña no es valida';
+        message = 'La contraseña no es válida';
       }else{
-        message = 'Los caracteres ingresados en el campo no son validos';
+        message = 'Los caracteres ingresados en el campo no son válidos';
       }
     }else if(form.get(field)?.hasError('minlength')){
       const minLength = form.get(field)!.errors?.['minlength'].requiredLength;
       message = `Este campo no puede tener menos de ${minLength} caracteres`;
+    }else if(form.get(field)?.hasError('maxlength')){
+      const maxLength = form.get(field)!.errors?.['maxlength'].requiredLength;
+      message = `Este campo no puede tener más de ${maxLength} caracteres`;
     }
 
     return message;
