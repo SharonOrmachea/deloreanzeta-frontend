@@ -21,12 +21,14 @@ export class ProductsComponent implements OnInit {
 
   categories!:ProductCategories[];
 
+  p:any;
+
   constructor(private productService:ProductService,
               activatedRoute:ActivatedRoute) {
 
     this.products = this.productService.getAllProducts();
     this.categories = this.productService.getAllProductCategories();
-
+    this.p = 1;
     activatedRoute.params.subscribe((params) => {
       if(params['category'])
       this.products = this.productService.getProductsByCategories(params['category']);

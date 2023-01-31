@@ -10,6 +10,7 @@ import { HiringModule } from './hiring/hiring.module';
 import { NewsModule } from './news/news.module';
 import { ToursModule } from './tours/tours.module';
 import { GalleryModule } from './gallery/gallery.module';
+import { AboutUsModule } from './about-us/about-us.module';
 
 
 
@@ -28,6 +29,7 @@ import { GalleryModule } from './gallery/gallery.module';
     NewsModule,
     ToursModule,
     GalleryModule,
+    AboutUsModule
   ],
   providers: [
 
