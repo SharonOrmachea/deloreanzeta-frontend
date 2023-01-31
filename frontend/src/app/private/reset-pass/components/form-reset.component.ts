@@ -56,7 +56,6 @@ export class FormResetComponent implements OnInit {
     });
   }
 
-
   continueToCode(){
     const tokenCookie = this.cookieStorage.getItem('token');
     const userPasswords = this.resetForm.value;
