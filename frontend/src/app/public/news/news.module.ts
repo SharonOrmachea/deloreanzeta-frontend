@@ -4,18 +4,19 @@ import { NewsComponent } from './page/news.component';
 import { SharedModule } from '../../shared/shared.module';
 import { AllNewsComponent } from './components/all-news/all-news.component';
 import { IdNewsComponent } from './components/id-news/id-news.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     NewsComponent,
     AllNewsComponent,
-    IdNewsComponent
+    IdNewsComponent,
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    NgxPaginationModule,
   ]
 })
 export class NewsModule { }

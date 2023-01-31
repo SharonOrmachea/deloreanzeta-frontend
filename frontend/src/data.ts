@@ -4,6 +4,7 @@ import { ProductCategories } from "./app/shared/models/store/category/product-ta
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 import { Login } from "./app/shared/models/sign-in/sign-in";
 import { Register } from './app/shared/models/sign-up/sign-up';
+import { Sources } from "./app/shared/models/gallery/gallery";
 import { Tours } from './app/shared/models/tours/tours';
 
 export const sample_products: Product[] = [
@@ -194,6 +195,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🤗',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news1.jpg'
   },
   {
@@ -201,6 +203,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
@@ -208,6 +211,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
   {
@@ -215,6 +219,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -222,6 +227,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -229,6 +235,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -236,6 +243,7 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
@@ -243,6 +251,31 @@ export const sample_news: News[] = [
     name: 'Soy una noticia con un maximo de 51 caracteres',
     date: '05/12/2022',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    imageUrl: './assets/news/news3.jpg'
+  },
+  {
+    id: '9',
+    name: 'Soy una noticia con un maximo de 51 caracteres',
+    date: '05/12/2022',
+    description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    imageUrl: './assets/news/news2.jpg'
+  },
+  {
+    id: '10',
+    name: 'Soy una noticia con un maximo de 51 caracteres',
+    date: '05/12/2022',
+    description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
+    imageUrl: './assets/news/news2.jpg'
+  },
+  {
+    id: '11',
+    name: 'Soy una noticia con un maximo de 51 caracteres',
+    date: '05/12/2022',
+    description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
+    bodyDescription: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
 ]
@@ -294,4 +327,20 @@ export const sample_tours: Tours[] = [
   },
 
 
+]
+
+export const sample_sources: Sources[] = [
+  {id: "1", title: "Teatro de la Ópera", imageUrl: './assets/news/news6.jpg'},
+  {id: "2", title: "Estadio Olímpico", imageUrl: './assets/news/news2.jpg'},
+  {id: "3", title: "Arena 02", imageUrl: './assets/news/news3.jpg'},
+  {id: "4", title: "Accorhotels Arena", imageUrl: './assets/news/news4.jpg'},
+  {id: "5", title: "Ziggo Dome", imageUrl: './assets/news/news5.jpg'},
+  {id: "6", title: " Mercedes-Benz Arena", imageUrl: './assets/news/news1.jpg'},
+  {id: "7", title: "Palalottomatica", imageUrl: './assets/news/news6.jpg'},
+  {id: "8", title: "Arena Di Verona", imageUrl: './assets/news/news4.jpg'},
+  {id: "9", title: "Sse Hydro", imageUrl: './assets/news/news5.jpg'},
+  {id: "10", title: "Manchester Arena", imageUrl: './assets/news/news5.jpg'},
+  {id: "11", title: "Madison Square Garden", imageUrl: './assets/news/news6.jpg'},
+  {id: "12", title: "Estadio Único de La Plata", imageUrl: './assets/news/news2.jpg'},
+  {id: "13", title: "Estadio Malvinas Argentinas", imageUrl: './assets/news/news3.jpg'},
 ]

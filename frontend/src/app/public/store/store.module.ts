@@ -8,7 +8,7 @@ import { StoreComponent } from './page/store.component';
 import { CarruselComponent } from './components/carrusel/carrusel.component';
 import { ProductsComponent } from './components/all products/products.component';
 import { IdProductComponent } from './components/id-product/id-product.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { IdProductDirective } from './directive/id-product.directive';
 
 
@@ -25,7 +25,8 @@ import { IdProductDirective } from './directive/id-product.directive';
     CommonModule,
     PublicRoutingModule,
     SharedModule,
-    SwiperModule
+    SwiperModule,
+    NgxPaginationModule
 
   ],
   providers: []

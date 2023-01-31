@@ -1,16 +1,44 @@
-<div>
-    <h2><strong>SOY UNA NOTICIA</strong></h2>
-    <main>
-        <!-- <h3 class="title-notice">{{new.name}}</h3>
+<main>
+    <div class="div-title">
+        <!-- <h5>DISEÑO A</h5> -->
+        <h2 class="title"><strong>{{new.name}}</strong></h2>
+        <small class="date">{{new.date}}</small>
+    </div>
 
+    <div class="div-content">
         <img src={{new.imageUrl}} alt={{new.name}} class="image-notice">
+        <aside class="container-iframe">
+            <iframe src="https://www.youtube.com/embed/N0INGR9iiek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div>  
+                <p>¿Querés ver todas las fotos y videos? ¡Ve hacia nuestra galería!</p>
+                <button routerLink="/gallery">Ir a Galería</button>
+            </div>
+        </aside>
+    </div>
 
-        <small>{{new.date}}</small>
+    <article class="body-description">
+        <p class="description">{{new.description}}</p>
+        <p class="description">{{new.bodyDescription}}</p>
+        <p class="description">{{new.bodyDescription}}</p>
+        <p class="description">{{new.bodyDescription}}</p>
+    </article>
+</main>
+<!-- <br><br><br><br>
+<br><br><br><br>
+<div class="diseno-b">
+    <div class="div-title2">
+        <h5>DISEÑO B</h5>
+        <h2 class="title2"><strong>{{new.name}}</strong></h2>
+    </div>
 
-        <article class="body-description">
-            <p class="description">
-                {{new.description}}
-            </p>
-        </article> -->
-    </main>
-</div>
+    <small class="date2">{{new.date}}</small>
+
+    <img src={{new.imageUrl}} alt={{new.name}} class="image-notice2">
+
+    <article class="body-description2">
+        <p class="description2">{{new.description}}</p>
+        <p class="description2">{{new.bodyDescription}}</p>
+        <p class="description2">{{new.bodyDescription}}</p>
+        <p class="description2">{{new.bodyDescription}}</p>
+    </article>
+</div> -->
