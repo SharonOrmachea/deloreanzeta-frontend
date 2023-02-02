@@ -9,7 +9,7 @@ export class Tour {
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	name: string;
+	place: string;
 
 	@Column()
 	@MinLength(3)
@@ -19,6 +19,6 @@ export class Tour {
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	place: string;
+	city: string;
 
 }

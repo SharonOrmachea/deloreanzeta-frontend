@@ -6,7 +6,53 @@
           <div class="text-center">
             <span class="title">Crear Producto</span>
           </div>
-          <form class="mt-4 formulario" [formGroup]="tourForm" (ngSubmit)="addTour()">
+          <form class="form" [formGroup]="tourForm" (ngSubmit)="addTour()" class="form"  name="login">
+
+            <div class="inputs">
+
+              <div class="date-picker">
+                <mat-form-field class="example-full-width" color="accent">
+                  <mat-label for="">Elije una fecha</mat-label>
+                  <input matInput [matDatepicker]="picker" formControlName="date" tabindex=”0”>
+                  <mat-datepicker-toggle
+                    matIconSuffix
+                    [for]="picker"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker touchUi #picker></mat-datepicker>
+                  <mat-error *ngIf="isValidField('date')">
+                    <strong>{{ getErrorMessage('date') }}</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="box-form">
+                <mat-form-field class="example-full-width" color="accent">
+                  <mat-label for="">Lugar</mat-label>
+                  <input  class="mat-input" type="text" matInput formControlName="place" tabindex=”0”>
+                  <mat-error *ngIf="isValidField('place')">
+                    <strong>{{ getErrorMessage('place') }}</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+              <div class="box-form">
+                <mat-form-field class="example-full-width" color="accent">
+                  <mat-label for="">Ciudad</mat-label>
+                  <input class="mat-input" type="text" matInput formControlName="city" tabindex=”0”>
+                  <mat-error *ngIf="isValidField('city')">
+                    <strong>{{ getErrorMessage('city') }}</strong>
+                  </mat-error>
+                </mat-form-field>
+              </div>
+
+            </div>
+
+            <div class="submit">
+              <button [disabled]="tourForm.invalid" class="btn btn-lg" type="submit" tabindex=”0”>Agregar</button>
+            </div>
+
+          </form>
+          <!-- <form class="mt-4 formulario" [formGroup]="tourForm" (ngSubmit)="addTour()">
 
             <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>Choose a date</mat-label>
@@ -48,7 +94,7 @@
                 Agregar
               </button>
             </div>
-          </form>
+          </form> -->
         </div>
       </div>
     </div>
