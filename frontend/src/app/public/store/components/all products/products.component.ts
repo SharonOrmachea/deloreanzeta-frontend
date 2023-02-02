@@ -26,7 +26,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService:ProductService,
-    activatedRoute:ActivatedRoute) {
+    activatedRoute:ActivatedRoute
+    ) {
 
     this.p =1;
 

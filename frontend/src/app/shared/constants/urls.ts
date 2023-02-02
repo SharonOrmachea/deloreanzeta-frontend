@@ -39,7 +39,7 @@ export const USER_IDENTIFY_EMAIL_URL = BASE_URL + 'auth/forgot-password';
 // Autorizacion que valida restablecimiento de contraseña olvidada (POST)
 export const AUTHORIZE_RESET_PASS_URL = BASE_URL + 'auth/authorize-password';
 
-// Reestablece la contraseña olvidada
+// Reestablece la contraseña olvidada (POST)
 export const RESET_PASS_URL = BASE_URL + 'auth/new-password';
 
 // -----------------------CONTRATACIONES------------------------------------------------

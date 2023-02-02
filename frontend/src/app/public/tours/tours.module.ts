@@ -4,6 +4,7 @@ import { ToursComponent } from './pages/tours.component';
 import { ListToursComponent } from './components/list-tours/list-tours.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SwiperModule } from 'swiper/angular';
+import { AdminToursModule } from '../../Admin/admin-tours/admin-tours.module';
 
 
 
@@ -17,7 +18,8 @@ import { SwiperModule } from 'swiper/angular';
   imports: [
     CommonModule,
     SharedModule,
-    SwiperModule
+    SwiperModule,
+    AdminToursModule
   ]
 })
 export class ToursModule { }
