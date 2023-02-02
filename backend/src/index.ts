@@ -4,7 +4,7 @@ import helmet from 'helmet';
 import routes from './routes';
 import { PORT } from './config/config';
 import { initialize as initializeDb } from './dbConnection';
-
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 // create express app
 const app = express();
 // middlewares

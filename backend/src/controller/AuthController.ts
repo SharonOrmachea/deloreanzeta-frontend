@@ -74,7 +74,7 @@ class AuthController {
 		res.json({ message: 'Password change' });
 	};
 
-	static forgotPassword = async (req: Request, res: Response) => {
+	/*static forgotPassword = async (req: Request, res: Response) => {
 		const { email } = req.body;
 		if (!email) {
 			return res.status(400).json({ message: 'Username is required' });
@@ -144,7 +144,7 @@ class AuthController {
 			return res.status(StatusCodes.ACCEPTED);
 		}else{
 			return res.status(StatusCodes.UNAUTHORIZED);
-		}*/
+
 		
 	};
 
@@ -187,7 +187,7 @@ class AuthController {
 		}
 
 		res.json({ message: 'Password changed' });
-	};
+	};*/
 }
 
 export default AuthController;

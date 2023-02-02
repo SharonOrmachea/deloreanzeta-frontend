@@ -6,9 +6,9 @@ import { validateRegister } from "../middlewares/users.validator";
 
 const router = Router();
 
-router.get("/", [/*checkJwt/*, checkRole(['admin'])*/], UserController.getAll);
+router.get("/", [checkJwt, checkRole(['admin'])], UserController.getAll);
 
-router.get("/:id", [/*checkJwt, checkRole(['admin'])*/], UserController.getById);
+router.get("/:id", [checkJwt, checkRole(['admin'])], UserController.getById);
 
 router.post("/", validateRegister, UserController.newUser);
 
