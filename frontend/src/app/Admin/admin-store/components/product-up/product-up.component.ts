@@ -23,11 +23,11 @@ export class ProductUpComponent implements OnInit {
   productForm:FormGroup;
 
   constructor(
-    private fb:FormBuilder,
+    private formBuilder:FormBuilder,
     private productService:ProductService,
     private toastr:ToastrService) {
 
-    this.productForm = this.fb.group({
+    this.productForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       price: ['', [Validators.required]],
       discount: [''],

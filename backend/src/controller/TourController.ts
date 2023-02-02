@@ -1,16 +1,15 @@
-//import { AppDataSource } from '../data-source';
 import { Request, Response } from 'express';
 import { validate } from 'class-validator';
-import { Category } from '../entity/Category';
-import categoryRepository from '../repositories/CategoryRepository';
+import { Tour } from '../entity/Tour';
+import tourRepository from '../repositories/TourRepository';
 import { StatusCodes } from 'http-status-codes';
 
-export class CategoryController {
+export class TourController {
 
 	static getAll = async (req: Request, res: Response) => {
 		try {
-			const categories = await categoryRepository.findAll();
-			return res.send(categories);
+			const tours = await tourRepository.findAll();
+			return res.send(tours);
 		} catch (e) {
 			return res
 				.status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -22,56 +21,60 @@ export class CategoryController {
 		try {
 			const { id } = req.params;
 			const idInt = parseInt(id as string);
-			const category = await categoryRepository.findById(idInt);
-			return res.send(category);
+			const tour = await tourRepository.findById(idInt);
+			return res.send(tour);
 		} catch (e) {
 			return res.status(StatusCodes.NOT_FOUND).json({ message: 'Not result' });
 		}
 	};
 
-	static newCategory = async (req: Request, res: Response) => {
-		const { name } = req.body;
-		const category = new Category();
+	static newTour = async (req: Request, res: Response) => {
+		const { place, date, city } = req.body;
+		const tour = new Tour();
 
-		category.name = name;
+		tour.place = place;
+        tour.city = city;
+        tour.date = date;
 
 		const validationOpt = {
 			validationError: { target: false, value: false },
 		};
-		const errors = await validate(category, validationOpt);
-		if (errors.length > 0) {
-			return res.status(400).json(errors);
+		const e = await validate(tour, validationOpt);
+		if (e.length > 0) {
+			return res.status(400).json(e);
 		}
 
 		try {
-			await categoryRepository.save(category);
-			return res.status(StatusCodes.CREATED).send('Category created');
+			await tourRepository.save(tour);
+			return res.status(StatusCodes.CREATED).send('Tour created');
 		} catch (e) {
 			return res.status(409).json(e);
 		}
 	};
 
-	static editCategory = async (req: Request, res: Response) => {
+	static editTour = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { name } = req.body;
+		const { city, date, place } = req.body;
 
 		try {
-			const category = await categoryRepository.findById(idInt);
-			category.name = name;
+			const tour = await tourRepository.findById(idInt);
+			tour.place = place;
+            tour.date = date;
+            tour.city = city;
 
 			const validationOpt = {
 				validationError: { target: false, value: false },
 			};
-			const errors = await validate(category, validationOpt);
-			if (errors.length > 0) {
-				return res.status(StatusCodes.BAD_REQUEST).json(errors);
+			const e = await validate(tour, validationOpt);
+			if (e.length > 0) {
+				return res.status(StatusCodes.BAD_REQUEST).json(e);
 			}
-			await categoryRepository.save(category);
+			await tourRepository.save(tour);
 
 			return res
 				.status(StatusCodes.CREATED)
-				.json({ message: 'Category updated' });
+				.json({ message: 'Tour updated' });
 		} catch (e) {
 			if (e.name === 'QueryFailedError') {
 				return res
@@ -80,32 +83,31 @@ export class CategoryController {
 			}
 			return res
 				.status(StatusCodes.NOT_FOUND)
-				.json({ message: 'Category not found' });
+				.json({ message: 'Tour not found' });
 		}
 	};
 
-	/*static deleteCategory = async (req: Request, res: Response) => {
+	static deleteTour = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
 
 		try {
-			await categoryRepository.findById(idInt);
+			await tourRepository.findById(idInt);
 		} catch (e) {
 			return res
 				.status(StatusCodes.NOT_FOUND)
-				.json({ message: 'Category not found' });
+				.json({ message: 'Tour not found' });
 		}
 
 		try {
-			categoryRepository.delete(id);
+			tourRepository.delete(id);
 			return res
 				.status(StatusCodes.CREATED)
-				.json({ message: 'Category deleted' });
+				.json({ message: 'Tour deleted' });
 		} catch (error) {
 			return res
 				.status(StatusCodes.INTERNAL_SERVER_ERROR)
 				.json({ message: 'Something goes wrong' });
 		}
-	};*/
-
+	};
 }

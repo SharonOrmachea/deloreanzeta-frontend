@@ -19,13 +19,14 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   cartQuantity = 0;
 
-  isLogged!:boolean;
+  isLogged:boolean = true;
 
   isAdmin:Role = null!;
 
   private subscription: Subscription = new Subscription();
 
   private destroy$ = new Subject<any>();
+
 
   constructor(
     private router: Router,
@@ -60,7 +61,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogout():void {
     this.authService.logout();
-    this.isLogged = false;
+    // this.isLogged = false;
   }
 
 }

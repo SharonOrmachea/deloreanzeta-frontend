@@ -1,19 +1,22 @@
 import {Router} from "express";
 
 import auth from "./auth";
-import user from "./user";
 import category from "./category";
-import product from "./product";
-import neww from "./new";
 import hiring from "./hiring"
+import neww from "./new";
+import product from "./product";
+import tour from "./tour"
+import user from "./user";
 
 const routes = Router();
 
 routes.use("/auth", auth);
-routes.use("/users", user);
 routes.use("/category", category);
-routes.use("/product", product);
-routes.use("/new", neww);
 routes.use("/hirings", hiring);
+routes.use("/new", neww);
+routes.use("/product", product);
+routes.use("/users", user);
+routes.use("/tour", tour);
+
 
 export default routes;

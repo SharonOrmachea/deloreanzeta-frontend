@@ -1,7 +1,6 @@
 import {Router} from "express";
 import HiringController from "../controller/HiringController";
 import { validateMail } from "../middlewares/mail.validator";
-
 const router = Router();
 
 //Send email

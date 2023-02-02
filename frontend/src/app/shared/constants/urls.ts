@@ -39,9 +39,28 @@ export const USER_IDENTIFY_EMAIL_URL = BASE_URL + 'auth/forgot-password';
 // Autorizacion que valida restablecimiento de contraseña olvidada (POST)
 export const AUTHORIZE_RESET_PASS_URL = BASE_URL + 'auth/authorize-password';
 
-// Reestablece la contraseña olvidada
+// Reestablece la contraseña olvidada (POST)
 export const RESET_PASS_URL = BASE_URL + 'auth/new-password';
 
 // -----------------------CONTRATACIONES------------------------------------------------
 
 export const SEND_HIRING_URL = BASE_URL + 'hirings/send-email';
+
+// -----------------------TOURS------------------------------------------------
+
+// Trae todos los Tours - GET
+export const TOURS_URL = BASE_URL + 'tour';
+
+// Trae un Tour por ID - GET
+export const TOUR_BY_ID_URL = TOURS_URL + '/';
+
+// Agrega un nuevo Tour - POST
+export const TOUR_NEW_URL = TOURS_URL;
+
+// Edita un Tour - PATCH
+export const TOUR_EDIT_URL = TOUR_BY_ID_URL;
+
+// Elimina un Tour - DELETE
+export const TOUR_DELETE_URL = TOUR_BY_ID_URL;
+
+

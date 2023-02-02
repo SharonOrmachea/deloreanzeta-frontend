@@ -1,6 +1,7 @@
 export class Tours{
-  id?:string;
-  date!:string;
-  name!:string;
+  id?:number;
+  date!:Date;
   place!:string;
+  city!:string;
 }
+

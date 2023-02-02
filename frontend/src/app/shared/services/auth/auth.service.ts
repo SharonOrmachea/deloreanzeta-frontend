@@ -7,7 +7,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 
 import { USER_LOGIN_URL } from '../../constants/urls';
-import { Role, UserLogin, UserResponse } from '../../interfaces/iuserlogin';
+import { UserLogin, UserResponse } from '../../interfaces/iuserlogin';
 
 const helper = new JwtHelperService();
 
