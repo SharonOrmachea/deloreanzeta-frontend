@@ -1,24 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ToastrService } from 'ngx-toastr';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 import { ToursService } from '../../../../shared/services/tours/tours.service';
 
+import { DatePipe } from '../../../../shared/pipes/date.pipe';
 
 @Component({
   selector: 'app-tours-up',
   templateUrl: './tours-up.component.html',
   styleUrls: ['./tours-up.component.sass'],
-  providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-  ]
+  providers: [ DatePipe ]
 })
 export class ToursUpComponent implements OnInit {
 
   tourForm:FormGroup;
 
+  date = new Date();
 
   constructor(
     private formBuilder:FormBuilder,
@@ -32,6 +31,8 @@ export class ToursUpComponent implements OnInit {
       place: ['', [Validators.required]],
       city: ['', [Validators.required]],
     })
+
+
   }
 
   ngOnInit(): void {
@@ -44,7 +45,7 @@ export class ToursUpComponent implements OnInit {
         this.toastrService.success('Nueva fecha agregada a Tours', 'Fecha Agregada');
         this.tourForm.reset();
       }, (error) => {
-        this.toastrService.error('No se pudo registrar su petición, compruebe los datos ingresados', 'Tours Failed');
+        this.toastrService.error(error, 'Tours Failed');
       }
     );
     }

@@ -13,7 +13,7 @@
               <div class="date-picker">
                 <mat-form-field class="example-full-width" color="accent">
                   <mat-label for="">Elije una fecha</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="date" tabindex=”0”>
+                  <input matInput [matDatepicker]="picker" [value]="date | customDateFormat" formControlName="date" tabindex=”0”>
                   <mat-datepicker-toggle
                     matIconSuffix
                     [for]="picker"
@@ -23,6 +23,8 @@
                     <strong>{{ getErrorMessage('date') }}</strong>
                   </mat-error>
                 </mat-form-field>
+
+                
               </div>
 
               <div class="box-form">
