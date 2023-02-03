@@ -24,7 +24,8 @@ export class ListProductComponent implements OnInit {
   constructor(
     private productService:ProductService,
     private fb:FormBuilder,
-    private toastr:ToastrService) {
+    private toastr:ToastrService
+    ) {
 
     this.productForm = this.fb.group({
       name: [''],

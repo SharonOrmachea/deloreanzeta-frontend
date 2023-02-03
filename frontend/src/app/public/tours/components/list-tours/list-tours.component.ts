@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
 
 import { Tours } from 'src/app/shared/models/tours/tours';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -13,19 +13,29 @@ import { Tours } from 'src/app/shared/models/tours/tours';
 })
 export class ListToursComponent implements OnInit {
 
-  // tours :Tours[] = [];
+  tours:Tours[] = [];
 
   constructor(
-    private tourService:ToursService
+    private tourService:ToursService,
+    private toastr:ToastrService
     ) {
 
-    let toursObservable:Observable<Tours[]>;
 
-    toursObservable = this.tourService.getAllTours();
 
-   }
+  }
 
   ngOnInit(): void {
+    this.getAllTours();
   }
+
+  getAllTours(){
+    this.tourService.getAllTours().subscribe(data => {
+      this.tours = data;
+    }, error => {
+      console.log(error)
+    })
+  }
+
+  
 
 }

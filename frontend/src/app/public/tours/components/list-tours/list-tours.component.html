@@ -4,9 +4,8 @@
   </div>
   <div class="list">
     <ul>
-      <li >
-        <!-- {{ tours.date }} {{ tours.name }} {{ tours.place }} -->
-        <!-- *ngFor="let tours of tours" -->
+      <li *ngFor="let tour of tours">
+        {{ tour.date }} {{ tour.place }} {{ tour.city }}
       </li>
     </ul>
   </div>

@@ -2,7 +2,7 @@ const BASE_URL = 'http://localhost:3000/';
 
 // -----------------------TIENDA------------------------------------------------
 
-// PRODUCTO
+// --PRODUCTO--
 
 // Trae todos los productos - GET
 export const PRODUCT_URL = BASE_URL + 'api/producto';
@@ -10,7 +10,7 @@ export const PRODUCT_URL = BASE_URL + 'api/producto';
 // Trae un producto por ID - GET
 export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
 
-// CATEGORIA
+// --CATEGORIA--
 
 // Trae todas las categorias - GET
 export const PRODUCT_CATEGORIES_URL = BASE_URL + 'api/categoria';
