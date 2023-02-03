@@ -21,7 +21,7 @@ class HiringController {
                     from: "Nuevo interesado en la banda",//sender address
                     to: "lopez.b.axel@gmail.com", // list of receivers
                     subject: 'Posible contratación', // Subject line
-                    text: `Informacion de contacto \nNombre completo: ${name} ${lastname} \nTelefono: ${telephone} \nEmail: ${email} \nAsunto: ${business} \nMensaje: ${message}`, // plain text body
+                    text: `Información de contacto \nNombre completo: ${name} ${lastname} \nTeléfono: ${telephone} \nEmail: ${email} \nAsunto: ${business} \nMensaje: ${message}`, // plain text body
                     
                 });
                 //send mail visitor
@@ -29,7 +29,7 @@ class HiringController {
                     from: '"Saludos" <deloreanzeta@example.com>', //sender address
                     to: email, // list of receivers
                     subject: 'Pronto nos comunicaremos', // Subject line
-                    text: `Hola, pronto nos estaremos comunicando con vos, en caso de no establecer un contacto en los proximos dias te dejaremos el numero de contacto para comunicarte con nosotros.\nNumero: 1122334455\nMuchas gracias`, // plain text body
+                    text: `Hola, pronto nos estaremos comunicando con vos, en caso de no establecer un contacto en los próximos días te dejaremos el número de contacto para comunicarte con nosotros.\nNumero: 1122334455\nMuchas gracias`, // plain text body
                     
                 });
 
