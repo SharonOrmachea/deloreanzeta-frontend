@@ -12,6 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
+import { DatePipe } from './pipes/date.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { TitleComponent } from './components/title/title.component';
     NotFoundComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
-    TitleComponent
+    TitleComponent,
+    DatePipe
   ],
   imports: [
     CommonModule,
@@ -39,7 +41,8 @@ import { TitleComponent } from './components/title/title.component';
     FooterComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
-    TitleComponent
+    TitleComponent,
+    DatePipe
   ],
   providers: []
 })
