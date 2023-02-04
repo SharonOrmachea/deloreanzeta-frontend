@@ -24,37 +24,44 @@ import { CheckLoginGuard } from '../shared/guards/check-login.guard';
 
 
 const routes: Routes = [
-  { path: '', component: PublicComponent, children:
-    [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
-      { path: 'home', component: HomeComponent },
-      { path: 'sign-in', component: SignInComponent, canActivate: [CheckLoginGuard], },
-      { path: 'login', component: LoginComponent, canActivate: [CheckLoginGuard],
-        children: [
-          { path: '', component: FormLoginComponent, canActivate: [CheckLoginGuard] },
-          { path: 'identify', component: FormIdentifyComponent, canActivate: [CheckLoginGuard] },
-      ] },
-      { path: 'store', component: StoreComponent,
-        children: [
-          { path: 'product/:id', component: IdProductComponent },
-          { path: 'category/:category', component: ProductsComponent },
+  {
+    path: '', component: PublicComponent, children:
+      [
+        { path: '', redirectTo: 'home', pathMatch: 'full' },
+        { path: 'home', component: HomeComponent },
+        { path: 'sign-in', component: SignInComponent, canActivate: [CheckLoginGuard], },
+        {
+          path: 'login', component: LoginComponent, canActivate: [CheckLoginGuard],
+          children: [
+            { path: '', component: FormLoginComponent, canActivate: [CheckLoginGuard] },
+            { path: 'identify', component: FormIdentifyComponent, canActivate: [CheckLoginGuard] },
+          ]
+        },
+        {
+          path: 'store', component: StoreComponent,
+          children: [
+            { path: 'product/:id', component: IdProductComponent },
+            { path: 'category/:category', component: ProductsComponent },
 
-      ] },
-      { path: 'hiring', component: HiringComponent },
-      { path: 'news', component: NewsComponent, children: [
-        { path: '', component: AllNewsComponent },
-        { path: ':id', component: IdNewsComponent },
-      ]},
-      { path: 'tours', component: ToursComponent },
-      { path: 'gallery', component: GalleryComponent },
-      { path: 'about-us', component: AboutUsComponent },
-    ]
+          ]
+        },
+        { path: 'hiring', component: HiringComponent },
+        {
+          path: 'news', component: NewsComponent, children: [
+            { path: '', component: AllNewsComponent },
+            { path: ':id', component: IdNewsComponent },
+          ]
+        },
+        { path: 'tours', component: ToursComponent },
+        { path: 'gallery', component: GalleryComponent },
+        { path: 'about-us', component: AboutUsComponent },
+      ]
   }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forChild(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
 })
 
-export class PublicRoutingModule {}
+export class PublicRoutingModule { }

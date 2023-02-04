@@ -21,10 +21,11 @@
               <tr *ngFor="let tour of tours" class="product-info">
                 <th scope="row">{{ tour.id }}</th>
                 <td>{{ tour.date }}</td>
-                <td>{{ tour.place }}</td>
-                <td>{{ tour.city }}</td>
+                <td>{{ tour.place | titlecase }}</td>
+                <td>{{ tour.city | titlecase }}</td>
                 <td class="bi-icon">
                   <i
+                    [routerLink]="['/']"
                     class="bi bi-pencil-square text-primary"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
@@ -67,7 +68,7 @@
 
       <div class="modal-body">
         <div class="card-body">
-          <form class="mt-1" [formGroup]="toursForm" (ngSubmit)="editTour()">
+          <form class="mt-1" [formGroup]="toursForm" >  <!--(ngSubmit)="editTour()" -->
 
             <div class="mb-3">
               <mat-form-field class="example-full-width" color="accent">

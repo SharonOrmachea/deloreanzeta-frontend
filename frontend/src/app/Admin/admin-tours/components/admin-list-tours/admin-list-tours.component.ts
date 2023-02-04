@@ -43,7 +43,9 @@ export class AdminListToursComponent implements OnInit {
     })
   }
 
-  editTour(){}
+  editTour(id:Tours){
+    this.tourService.updateTour(id);
+  }
 
   deleteTour(id:any){
     this.tourService.deleteTour(id).subscribe(data => {

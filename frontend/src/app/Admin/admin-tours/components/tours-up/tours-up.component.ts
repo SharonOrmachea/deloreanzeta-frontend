@@ -33,12 +33,24 @@ export class ToursUpComponent implements OnInit {
     })
 
 
+
+
   }
 
   ngOnInit(): void {
   }
 
   addTour(){
+    let dateForm = this.tourForm.get('date')?.value;
+    let dateObject = new Date(dateForm);
+    let formatDate = dateObject.toLocaleDateString('es-ES', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    this.tourForm.patchValue({ date: formatDate })
+    let valueTour = this.tourForm.value;
+    console.log(valueTour);
     if (this.tourForm.valid){
       const userValue = this.tourForm.value;
       this.toursService.newTour(userValue).subscribe((res) => {
@@ -50,6 +62,19 @@ export class ToursUpComponent implements OnInit {
     );
     }
   }
+
+  // addTour(){
+  //   let dateForm = this.tourForm.get('date')?.value;
+  //   let dateObject = new Date(dateForm);
+  //   let formatDate = dateObject.toLocaleDateString('es-ES', {
+  //     year: 'numeric',
+  //     month: 'long',
+  //     day: 'numeric'
+  //   });
+  //   this.tourForm.patchValue({ date: formatDate })
+  //   let valueTour = this.tourForm.value;
+  //   console.log(valueTour);
+  // }
 
   get formControls() {
     return this.tourForm.controls;

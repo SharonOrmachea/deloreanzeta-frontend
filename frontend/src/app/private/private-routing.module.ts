@@ -8,6 +8,8 @@ import { ProductsComponent } from "../public/store/components/all products/produ
 import { StoreComponent } from "../public/store/page/store.component";
 import { UserComponent } from './user/page/user.component';
 import { CheckLoginGuard } from "../shared/guards/check-login.guard";
+import { ToursComponent } from "../public/tours/pages/tours.component";
+import { ListToursComponent } from '../public/tours/components/list-tours/list-tours.component';
 
 
 
@@ -21,6 +23,10 @@ const routes: Routes = [
         { path: '', component: ProductsComponent },
         { path: 'cart', component: CartComponent, },
       ]},
+      { path: 'tours', component: ToursComponent, children:[
+        { path: '', component: ListToursComponent },
+        // { path: ':id', component:  },
+      ] },
       { path: 'user/profile', component: UserComponent,
         children: [
         // { path: '', component: ProductsComponent },
