@@ -29,8 +29,8 @@ export class ToursService {
   }
 
   // EDITA UN TOUR
-  updateTour(tourValue:Tours): Observable<Tours>{
-    return this.http.patch<Tours>(TOUR_EDIT_URL, tourValue).pipe(catchError(this.handlerUserError));
+  updateTour(tourId:number, tourValue:Tours): Observable<Tours>{
+    return this.http.patch<Tours>(`${TOUR_EDIT_URL}/${tourId}`, tourValue).pipe(catchError(this.handlerUserError));
   }
 
   //ELIMINA UN TOUR

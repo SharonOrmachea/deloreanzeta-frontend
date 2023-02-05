@@ -1,28 +1,60 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
-.card-body
-  color: $black
-
-  .title
-    font-size: 2em
-
-  .product-info
-    text-align: center
-
-  .mb-3
-    textarea
-      resize: none
-
-  .bi-icon
+section
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  .newTour
     display: flex
-    justify-content: space-evenly
-    .bi
-      cursor: pointer
-      font-size: 1.3em
+    justify-content: flex-end
+    width: 65%
 
-.modal
-  color: $black
+    button
+      @extend .general-button
+      @extend .large-button
+      display: flex
+      justify-content: space-around
+      align-items: center
+      background-color: $pink
 
-  .button-save
-    background-color: $pink
-    color: $white
+      @include screen(720px)
+        width: 370px
+
+      @include screen(560px)
+        width: 290px
+
+      @include screen(390px)
+        width: 230px
+
+      @include screen(290px)
+        width: 230px
+
+  .card-body
+    color: $black
+
+    .title
+      font-size: 2em
+
+    .product-info
+      text-align: center
+
+    .mb-3
+      textarea
+        resize: none
+
+    .bi-icon
+      display: flex
+      justify-content: space-evenly
+      button
+        border: none
+        background: none
+        font-size: 1.3em
+
+  .modal
+    color: $black
+
+    .button-save
+      background-color: $pink
+      color: $white

@@ -1,9 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+
 import { Tours } from 'src/app/shared/models/tours/tours';
+
+import { ToastrService } from 'ngx-toastr';
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
+
+import { ToursUpComponent } from '../tours-up/tours-up.component';
 
 @Component({
   selector: 'app-admin-list-tours',
@@ -14,20 +19,13 @@ export class AdminListToursComponent implements OnInit {
 
   tours:Tours[] = [];
 
-  toursForm:FormGroup;
+
 
   constructor(
     private tourService:ToursService,
     private toastr:ToastrService,
-    private formBuilder:FormBuilder,
-    private validatorService:ValidationsService,
+    private dialog: MatDialog
     ) {
-
-      this.toursForm = this.formBuilder.group({
-        date: ['', [Validators.required]],
-        place: ['', [Validators.required]],
-        city: ['', [Validators.required]],
-      })
 
   }
 
@@ -43,25 +41,25 @@ export class AdminListToursComponent implements OnInit {
     })
   }
 
-  editTour(id:Tours){
-    this.tourService.updateTour(id);
+  openModal(tour={}):void {
+    console.log('Tour->', tour);
+    this.dialog.open(ToursUpComponent, {
+      height: 'auto',
+      width: '600px',
+      data: { title: 'Agregar Fecha', tour}
+
+    });
+
+    // dialogRef.afterClosed().subscribe
   }
 
   deleteTour(id:any){
     this.tourService.deleteTour(id).subscribe(data => {
-      this.toastr.success('El tour fue eliminado con exito', 'Producto Eliminado');
+      this.toastr.success('La fecha fue eliminado con exito', 'Fecha Eliminada');
       this.getAllTours();
     }, error => {
       console.log(error);
     })
-  }
-
-  getErrorMessage(field:string): string{
-    return this.validatorService.getErrorMessage(field, this.toursForm);
-  }
-
-  isValidField(field:string): boolean{
-    return this.validatorService.isValidField(field, this.toursForm);
   }
 
 }

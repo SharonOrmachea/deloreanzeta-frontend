@@ -1,121 +1,53 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="col-lg-8-offset-lg-2">
-      <div class="card">
-        <div class="card-body text-center">
-          <span class="title"><strong>Listado de Tours</strong></span>
-          <table
-            *ngIf="tours.length > 0"
-            class="table table-striped mt-4"
-          >
-            <thead>
-              <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Lugar</th>
-                <th scope="col">Ciudad</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let tour of tours" class="product-info">
-                <th scope="row">{{ tour.id }}</th>
-                <td>{{ tour.date }}</td>
-                <td>{{ tour.place | titlecase }}</td>
-                <td>{{ tour.city | titlecase }}</td>
-                <td class="bi-icon">
-                  <i
-                    [routerLink]="['/']"
-                    class="bi bi-pencil-square text-primary"
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
-                  ></i>
-                  <i
-                    (click)="deleteTour(tour.id)"
-                    class="bi bi-trash3 text-danger"
-                  ></i>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+<section>
+  <div class="newTour">
+    <div class="button-new">
+      <button class="btn btn-lg" (click)="openModal()">Agregar Fecha</button>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-8-offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title"><strong>Listado de Tours</strong></span>
+            <table
+              *ngIf="tours.length > 0"
+              class="table table-striped mt-4"
+            >
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Lugar</th>
+                  <th scope="col">Ciudad</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let tour of tours" class="product-info">
+                  <th scope="row">{{ tour.id }}</th>
+                  <td>{{ tour.date }}</td>
+                  <td>{{ tour.place | titlecase }}</td>
+                  <td>{{ tour.city | titlecase }}</td>
+                  <td class="bi-icon">
+                    <button
+                      (click)="openModal(tour)"
+                      class="bi bi-pencil-square text-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    ></button>
+                    <button
+                      (click)="deleteTour(tour.id)"
+                      class="bi bi-trash3 text-danger"
+                    ></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- Modal | PopUp Editar Producto -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-2"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">
-          Editar Fecha ID:
-        </h1>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-          aria-label="Close"
-        ></button>
-      </div>
-
-      <div class="modal-body">
-        <div class="card-body">
-          <form class="mt-1" [formGroup]="toursForm" >  <!--(ngSubmit)="editTour()" -->
-
-            <div class="mb-3">
-              <mat-form-field class="example-full-width" color="accent">
-                  <mat-label for="">Elije una fecha</mat-label>
-                  <input matInput [matDatepicker]="picker" formControlName="date" tabindex=”0”>
-                  <mat-datepicker-toggle
-                    matIconSuffix
-                    [for]="picker"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker touchUi #picker></mat-datepicker>
-                  <mat-error *ngIf="isValidField('date')">
-                    <strong>{{ getErrorMessage('date') }}</strong>
-                  </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="mb-3">
-              <mat-form-field class="example-full-width" color="accent">
-                <mat-label for="">Lugar</mat-label>
-                <input  class="mat-input" type="text" matInput formControlName="place" tabindex=”0”>
-                <mat-error *ngIf="isValidField('place')">
-                  <strong>{{ getErrorMessage('place') }}</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="mb-3">
-              <mat-form-field class="example-full-width" color="accent">
-                <mat-label for="">Ciudad</mat-label>
-                <input class="mat-input" type="text" matInput formControlName="city" tabindex=”0”>
-                <mat-error *ngIf="isValidField('city')">
-                  <strong>{{ getErrorMessage('city') }}</strong>
-                </mat-error>
-              </mat-form-field>
-            </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                Cerrar
-              </button>
-              <button type="submit" class="btn button-save">Guardar Cambios</button>
-            </div>
-
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+</section>
 
