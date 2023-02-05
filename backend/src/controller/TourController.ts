@@ -29,12 +29,12 @@ export class TourController {
 	};
 
 	static newTour = async (req: Request, res: Response) => {
-		const { name, date, place } = req.body;
+		const { place, date, city } = req.body;
 		const tour = new Tour();
 
-		tour.name = name;
-        tour.place = place;
+		tour.place = place;
         tour.date = date;
+        tour.city = city;
 
 		const validationOpt = {
 			validationError: { target: false, value: false },
@@ -55,13 +55,13 @@ export class TourController {
 	static editTour = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { name, date, place } = req.body;
+		const { place, date, city } = req.body;
 
 		try {
 			const tour = await tourRepository.findById(idInt);
-			tour.name = name;
+			tour.place = place;
             tour.date = date;
-            tour.place = place;
+            tour.city = city;
 
 			const validationOpt = {
 				validationError: { target: false, value: false },

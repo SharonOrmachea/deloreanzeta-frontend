@@ -7,12 +7,6 @@ export class Tour {
 	id: number;
 
 	@Column()
-	@MinLength(3)
-	@IsNotEmpty()
-	name: string;
-
-	@Column()
-	@MinLength(3)
 	@IsNotEmpty()
 	date: Date;
 
@@ -20,5 +14,10 @@ export class Tour {
 	@MinLength(3)
 	@IsNotEmpty()
 	place: string;
+
+	@Column()
+	@MinLength(3)
+	@IsNotEmpty()
+	city: string;
 
 }
