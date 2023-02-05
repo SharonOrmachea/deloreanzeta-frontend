@@ -120,9 +120,9 @@ export const validateRegister = [
 		.withMessage(
 			'El telefono del usuario debe ser una cadena de caracteres'
 		)
-		.isLength({ min: 10 })
+		.isLength({ min: 10, max: 10})
 		.withMessage(
-			'El telefono del usuario debe componerse de al menos 10 caracteres'
+			'El telefono del usuario debe componerse de 10 caracteres'
 		)
 		.custom((value, { req }) => {
 			if (value.trim() == 0)

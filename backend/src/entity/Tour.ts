@@ -7,14 +7,13 @@ export class Tour {
 	id: number;
 
 	@Column()
-	@MinLength(3)
 	@IsNotEmpty()
-	place: string;
+	date: Date;
 
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	date: Date;
+	place: string;
 
 	@Column()
 	@MinLength(3)

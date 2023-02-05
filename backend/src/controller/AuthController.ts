@@ -89,18 +89,19 @@ class AuthController {
 				user = await userRepository.findOneOrFail({ where: { email } });
 		
 				const token = jwt.sign(
-					{ userId: user.id, username: user.email },
+					{ username: user.email, cadenaSecret: "deloreanzeta" },
 					config.JWT_SECRET_RESET,
 					{ expiresIn: '10m' }
 				);
 				try {
 					verificationLink = `http://localhost:4200/#/recover/password/${token}`;
 					user.resetToken = token;
+				
 				} catch (e) {
 					return res.json({ message });
 				}
 				//sendEmail
-				try {
+				try {/*
 					// send mail with defined transport object
 					await transporter.sendMail({
 						from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
@@ -109,7 +110,8 @@ class AuthController {
 						//text: "Hello world?", // plain text body
 						html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
 						<a href="${verificationLink}">${verificationLink}</a>`, // html body
-					});
+					});*/
+					console.log("todo ok")
 				} catch (e) {
 					emailStatus = e;
 					return res.status(400).json(emailStatus);
@@ -121,7 +123,7 @@ class AuthController {
 					emailStatus = e;
 					return res.status(400).json({ message: 'Something goes wrong' });
 				}
-		
+				return res.json({message: token});
 				return res.status(StatusCodes.OK).json({message: "Todo OK"});
 			}else{
 				return res.json({message: "email not found"});
@@ -132,19 +134,27 @@ class AuthController {
 	};
 
 	static autorizationPassword = async(req: Request, res: Response) => {
-		const cookie = (req.headers.Authorization)[0];
-		const jwtPayload = jwt.verify(cookie, config.JWT_SECRET_RESET);
-
-		const user = await userRepository.findOneOrFail({
-			where: { resetToken: cookie },
-		});
-		/*
-		if(req.headers.Authorization.){
-			return res.status(StatusCodes.ACCEPTED);
-		}else{
-			return res.status(StatusCodes.UNAUTHORIZED);
-		}*/
+		const token = req.headers.authorization;
 		
+		/*let jwtPayload = jwt.verify(token, "resetpassword");
+		console.log("chekeo el payload: ",jwtPayload);*/
+		
+		const user = await userRepository.findOneOrFail({
+			where: { resetToken: token },
+		});
+		
+		if(token == user.resetToken){
+			return res.status(StatusCodes.OK).json({ message: "Token valido"});
+		}else{
+			return res.status(StatusCodes.CONFLICT).json({message: "Token invalido"});
+		}
+
+	};
+
+	static newPasswordReset = async(req: Request, res: Response) => {
+		const token = req.headers.authorization;
+		const { password, confirmPassword } = req.body;
+
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {

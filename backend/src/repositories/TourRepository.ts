@@ -3,7 +3,7 @@ import { Tour } from '../entity/Tour';
 
 const CategoryRepository = conn.getRepository(Tour).extend({
 	// custom methods
-	async findByName(place: string): Promise<Tour> {
+	async findByPlace(place: string): Promise<Tour> {
 		return await this.findOneBy({ place });
 	},
 	async findById(id: number): Promise<Tour> {
