@@ -1,40 +1,16 @@
-<body>
-  <!-- <app-carrusel></app-carrusel> -->
+<section>
 
   <app-not-found
     [visible]="!products || !products.length"
-    notFoundMessage="No hay productos cargados en la tienda"
-    resetLinkText="Volver al Inicio"
-    resetLinkRoute="/home"
+    notFoundMessage="Aún no hay productos asociados a esta categoría"
+    resetLinkText="Volver a la Tienda"
+    resetLinkRoute="/store"
   ></app-not-found>
 
-  <section class="contenedor" *ngIf="products && products.length">
+  <section class="contenedor" >
 
-    <app-title
-      title="Todos los productos"
-    ></app-title>
-
-    <div class="contenedor-categoria">
-      <div class="category">
-        <a *ngFor="let tag of categories" routerLink="/store/category/{{ tag.name }}" class="tag">
-          <strong>{{ tag.name }}</strong>
-        </a>
-      </div>
-
-      <div class="notFound">
-
-        <!-- <app-not-found
-          [visible]="categories.name"
-          notFoundMessage="Aún no hay productos asociados a esta categoría"
-          resetLinkText="Volver a la Tienda"
-          resetLinkRoute="/store"
-        ></app-not-found> -->
-
-      </div>
-    </div>
-
-    <div class="contenedor-productos" *ngIf="categories.length">
-      <ul>
+    <div class="contenedor-productos" >
+      <ul *ngIf="products && products.length">
         <li *ngFor="let product of products | paginate: { itemsPerPage: 4, currentPage: p }">
           <a routerLink="/store/product/{{ product.id }}">
             <div class="col">
@@ -66,12 +42,13 @@
           </div>
         </li>
       </ul>
+
       <div class="div-pagination">
         <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls>
       </div>
     </div>
   </section>
-</body>
+</section>
 
 
 

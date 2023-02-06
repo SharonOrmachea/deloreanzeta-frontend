@@ -6,178 +6,178 @@ import { Sources } from "./app/shared/models/gallery/gallery";
 import { Tours } from './app/shared/models/tours/tours';
 
 export const sample_products: Product[] = [
-  {
-    id: '1',
-    name: 'Soy un producto con un maximo de 45 caracteres',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Tazas',
-      'Cuadros'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png',
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '2',
-    name: 'Soy un producto con un maximo de 45 caracteres',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Cuadros'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(5).png',
-      './assets/store/products/delorean(6).png',
-      './assets/store/products/delorean(7).png',
-      './assets/store/products/delorean(8).png'
-  ],
-    description: 'Soy la informacion del producto'
-  },
-  {
-    id: '3',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Remeras'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(9).png',
-      './assets/store/products/delorean(10).png',
-      './assets/store/products/delorean(11).jpg',
-      './assets/store/products/delorean(12).png'
-    ],
-    description: 'Soy la informacion del producto'
-  },
-  {
-    id: '4',
-    name: 'Soy un producto',
-    price: 1500,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Tazas',
-      'Remeras'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: 'Soy la informacion del producto'
-  },
-  {
-    id: '5',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Cuadros'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(5).png',
-      './assets/store/products/delorean(6).png',
-      './assets/store/products/delorean(7).png',
-      './assets/store/products/delorean(8).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '6',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Remeras'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(9).png',
-      './assets/store/products/delorean(10).png',
-      './assets/store/products/delorean(11).png',
-      './assets/store/products/delorean(12).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '7',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Tazas'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '8',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Cuadros'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(5).png',
-      './assets/store/products/delorean(6).png',
-      './assets/store/products/delorean(7).png',
-      './assets/store/products/delorean(8).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '9',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Remeras'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(9).png',
-      './assets/store/products/delorean(10).png',
-      './assets/store/products/delorean(11).png',
-      './assets/store/products/delorean(12).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
-  {
-    id: '10',
-    name: 'Soy un producto',
-    price: 1400,
-    previousPrice: 2000,
-    discount: 30,
-    category: [
-      'Tazas'
-    ],
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
-  },
+  // {
+  //   id: '1',
+  //   name: 'Soy un producto con un maximo de 45 caracteres',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Tazas',
+  //     'Cuadros'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(1).png',
+  //     './assets/store/products/delorean(2).png',
+  //     './assets/store/products/delorean(3).png',
+  //     './assets/store/products/delorean(4).png',
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '2',
+  //   name: 'Soy un producto con un maximo de 45 caracteres',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Cuadros'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(5).png',
+  //     './assets/store/products/delorean(6).png',
+  //     './assets/store/products/delorean(7).png',
+  //     './assets/store/products/delorean(8).png'
+  // ],
+  //   description: 'Soy la informacion del producto'
+  // },
+  // {
+  //   id: '3',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Remeras'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(9).png',
+  //     './assets/store/products/delorean(10).png',
+  //     './assets/store/products/delorean(11).jpg',
+  //     './assets/store/products/delorean(12).png'
+  //   ],
+  //   description: 'Soy la informacion del producto'
+  // },
+  // {
+  //   id: '4',
+  //   name: 'Soy un producto',
+  //   price: 1500,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Tazas',
+  //     'Remeras'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(1).png',
+  //     './assets/store/products/delorean(2).png',
+  //     './assets/store/products/delorean(3).png',
+  //     './assets/store/products/delorean(4).png'
+  //   ],
+  //   description: 'Soy la informacion del producto'
+  // },
+  // {
+  //   id: '5',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Cuadros'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(5).png',
+  //     './assets/store/products/delorean(6).png',
+  //     './assets/store/products/delorean(7).png',
+  //     './assets/store/products/delorean(8).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '6',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Remeras'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(9).png',
+  //     './assets/store/products/delorean(10).png',
+  //     './assets/store/products/delorean(11).png',
+  //     './assets/store/products/delorean(12).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '7',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Tazas'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(1).png',
+  //     './assets/store/products/delorean(2).png',
+  //     './assets/store/products/delorean(3).png',
+  //     './assets/store/products/delorean(4).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '8',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Cuadros'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(5).png',
+  //     './assets/store/products/delorean(6).png',
+  //     './assets/store/products/delorean(7).png',
+  //     './assets/store/products/delorean(8).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '9',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Remeras'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(9).png',
+  //     './assets/store/products/delorean(10).png',
+  //     './assets/store/products/delorean(11).png',
+  //     './assets/store/products/delorean(12).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
+  // {
+  //   id: '10',
+  //   name: 'Soy un producto',
+  //   price: 1400,
+  //   previousPrice: 2000,
+  //   discount: 30,
+  //   category: [
+  //     'Tazas'
+  //   ],
+  //   imageUrl: [
+  //     './assets/store/products/delorean(1).png',
+  //     './assets/store/products/delorean(2).png',
+  //     './assets/store/products/delorean(3).png',
+  //     './assets/store/products/delorean(4).png'
+  //   ],
+  //   description: 'Hola Testing, soy la informacion del producto donde mido la cantidad de caracteres que puedo almacenar sin que se agrande el divisor y controlar que por mas lineas de texto agregue esto va a seguir con el mismo tamaño. Prueba de desarrollo superada, se adapta re bien! Espero que mi pagina pase sus test tambien. Gracias por el esfuerzo y empeño que le estan poniendo al proyecto para que salga bien... Saludos! Sharon.'
+  // },
 ]
 
 export const sample_productTags: ProductCategories[] = [

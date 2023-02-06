@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
-import { MaterialModule } from './material.module';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -27,7 +26,7 @@ import { TitleComponent } from './components/title/title.component';
     HttpClientModule,
     RouterModule,
     SwiperModule,
-    MaterialModule
+
   ],
   exports: [
     HttpClientModule,
@@ -37,7 +36,8 @@ import { TitleComponent } from './components/title/title.component';
     FooterComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
-    TitleComponent
+    TitleComponent,
+
   ],
   providers: []
 })
