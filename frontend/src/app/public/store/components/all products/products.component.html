@@ -1,5 +1,5 @@
 <body>
-  <app-carrusel></app-carrusel>
+  <!-- <app-carrusel></app-carrusel> -->
 
   <app-not-found
     [visible]="!products || !products.length"
@@ -67,7 +67,7 @@
         </li>
       </ul>
       <div class="div-pagination">
-        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls> 
+        <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls>
       </div>
     </div>
   </section>

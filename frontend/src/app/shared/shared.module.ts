@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
+import { MaterialModule } from './material.module';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
@@ -18,7 +18,6 @@ import { TitleComponent } from './components/title/title.component';
     NavBarComponent,
     FooterComponent,
     NotFoundComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent
@@ -27,7 +26,8 @@ import { TitleComponent } from './components/title/title.component';
     CommonModule,
     HttpClientModule,
     RouterModule,
-    SwiperModule
+    SwiperModule,
+    MaterialModule
   ],
   exports: [
     HttpClientModule,
@@ -35,7 +35,6 @@ import { TitleComponent } from './components/title/title.component';
     NavBarComponent,
     NotFoundComponent,
     FooterComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent
