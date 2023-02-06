@@ -42,7 +42,6 @@ export class AdminListToursComponent implements OnInit {
   }
 
   openModal(tour={}):void {
-    console.log('Tour->', tour);
     this.dialog.open(ToursUpComponent, {
       height: 'auto',
       width: '600px',

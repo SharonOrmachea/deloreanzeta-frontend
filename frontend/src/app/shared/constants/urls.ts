@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:3000/';
 // --PRODUCTO--
 
 // Trae todos los productos - GET
-export const PRODUCT_URL = BASE_URL + 'api/producto';
+export const PRODUCT_URL = BASE_URL + 'product';
 
 // Trae un producto por ID - GET
 export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
@@ -13,10 +13,10 @@ export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
 // --CATEGORIA--
 
 // Trae todas las categorias - GET
-export const PRODUCT_CATEGORIES_URL = BASE_URL + 'api/categoria';
+export const PRODUCT_CATEGORIES_URL = BASE_URL + 'category';
 
 // Trae un producto por categoria - GET
-export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + 'categoria/';
+export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + '';
 
 
 // -----------------------USUARIOS------------------------------------------------

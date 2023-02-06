@@ -7,7 +7,7 @@ import { ToursService } from '../../../../shared/services/tours/tours.service';
 
 import { DatePipe } from '../../../../shared/pipes/date.pipe';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Tours } from 'src/app/shared/models/tours/tours';
+
 
 enum Action {
   EDIT = 'edit',
@@ -38,7 +38,7 @@ export class ToursUpComponent implements OnInit {
     ) {
 
     this.tourForm = this.formBuilder.group({
-      date: ['', [Validators.required]],
+      date: [''],
       place: ['', [Validators.required]],
       city: ['', [Validators.required]],
     })
@@ -46,6 +46,10 @@ export class ToursUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.data?.tour.hasOwnProperty('id')){
+      this.actionToDo = Action.EDIT;
+      this.pathFormData();
+    }
   }
 
   formatDate(){
@@ -56,39 +60,41 @@ export class ToursUpComponent implements OnInit {
       month: 'long',
       day: 'numeric'
     });
-    this.tourForm.patchValue({ date: formatDate });
+    const stringDate = formatDate + '';
+    this.tourForm.patchValue({ date: stringDate});
   }
 
   saveTour(){
     this.formatDate();
     let valueTour = this.tourForm.value;
-    console.log(valueTour);
-
-    if(this.actionToDo === Action.NEW && this.tourForm.valid){
+    console.log(valueTour)
+    console.log(this.actionToDo == Action.NEW)
+    if(this.actionToDo == Action.NEW){
       this.toursService.newTour(valueTour).subscribe((res) => {
+        console.log('crear')
         this.toastr.success('Nueva fecha agregada a Tours', 'Fecha Agregada');
         this.tourForm.reset();
       }, (error) => {
         this.toastr.error(error, 'Tours Failed');
       }
       );
-    } else if(this.actionToDo === Action.EDIT && this.tourForm.valid){
+    } else if(this.actionToDo == Action.EDIT){
+      console.log('editar')
       const tourId = this.data?.tour?.id;
-      this.toursService.updateTour(tourId, valueTour).subscribe(data => {
+      this.toursService.updateTour(tourId, valueTour).subscribe((res) => {
         this.toastr.success('La fecha fue editado con exito', 'Fecha Editada');
       }, error => {
         console.log(error);
       })
     }
 
-
-
-
-
   }
 
-  editTour(tourValue:Tours){
-
+  private pathFormData():void {
+    this.tourForm.patchValue({
+      place: this.data?.tour?.place,
+      city: this.data?.tour?.city
+    })
   }
 
   get formControls() {

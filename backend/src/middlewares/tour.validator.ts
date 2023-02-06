@@ -2,7 +2,7 @@ import { body } from 'express-validator';
 import { validateResult } from './validate.helper';
 
 export const validateTour = [
-	body('name')
+	body('place')
 		.exists()
 		.withMessage('El nombre del tour no fue ingresado')
 		.not()
@@ -21,7 +21,7 @@ export const validateTour = [
 				);
 			return true;
 		}),
-	body('place')
+	body('city')
 		.exists()
 		.withMessage('El campo dirección no fue ingresado')
 		.not()

@@ -17,6 +17,7 @@ import { PrivateComponent } from './private/private.component';
 import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
 import { AdminModule } from './Admin/admin.module';
 import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './shared/material.module';
 
 
 
@@ -36,8 +37,8 @@ import { FormsModule } from '@angular/forms';
     PublicModule,
     PrivateModule,
     AdminModule,
-    BrowserAnimationsModule,
     FormsModule,
+    MaterialModule,
     ToastrModule.forRoot({
       timeOut:10000,
       positionClass:'toast-bottom-right',

@@ -8,7 +8,7 @@ export class Tour {
 
 	@Column()
 	@IsNotEmpty()
-	date: Date;
+	date: string;
 
 	@Column()
 	@MinLength(3)

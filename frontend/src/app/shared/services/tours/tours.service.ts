@@ -43,6 +43,7 @@ export class ToursService {
     let errorMessage = 'Error';
     if (error) {
       errorMessage = `Error ${error.message}`;
+      console.log(errorMessage)
     }
     return throwError(() => (errorMessage));
 
