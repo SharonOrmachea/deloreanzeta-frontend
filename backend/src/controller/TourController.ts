@@ -13,6 +13,7 @@ export class TourController {
 			let resTour ;
 			for(let i = 0; i < tours.length; i++){
 				toursFormat.push(resTour = {
+					id: tours[i].id,
 					city: tours[i].city,
 					date: tours[i].date.toISOString(),
 					place: tours[i].place});
