@@ -8,7 +8,7 @@
   <div class="list">
     <ul>
       <li *ngFor="let tour of tours">
-        {{ tour.date }} {{ tour.place }} {{ tour.city }}
+        {{ tour.date | date: "EEEE d, MMMM, yyyy"}} {{ tour.place }} {{ tour.city }}
       </li>
     </ul>
   </div>

@@ -39,9 +39,9 @@ export class ToursUpComponent implements OnInit {
 
     this.tourForm = this.formBuilder.group({
       date: ['', [Validators.required]],
-      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
-      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
-    })
+      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
+      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
+    });
 
   }
 
@@ -61,20 +61,16 @@ export class ToursUpComponent implements OnInit {
   }
 
   formatDateToString(){
-    let dateForm = this.tourForm.get('date')?.value;
-    let dateObject = new Date(dateForm);
-    let formatDate = dateObject.toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-    const stringDate = formatDate + '';
-    this.tourForm.patchValue({ date: stringDate});
+    const dateForm = this.tourForm.get('date')?.value;
+    const dateString = dateForm.format('YYYY-MM-DDTHH:mm:ss');
+
+    this.tourForm.patchValue({ date: dateString});
   }
 
   saveTour(){
     this.formatDateToString();
     let valueTour = this.tourForm.value;
+
     if(this.actionToDo == Action.NEW){
       this.toursService.newTour(valueTour).subscribe((res) => {
         this.toastr.success('Nueva fecha agregada a Tours', 'Fecha Agregada');
@@ -94,10 +90,9 @@ export class ToursUpComponent implements OnInit {
 
   }
 
-
   private pathFormData():void {
     this.tourForm.patchValue({
-
+      date: this.data?.tour?.date,
       place: this.data?.tour?.place,
       city: this.data?.tour?.city
     })
