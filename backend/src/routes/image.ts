@@ -1,11 +1,15 @@
 import { Router } from "express";
-import { storage } from "../middlewares/storage.multer";
+//const upload = require  ("../middlewares/storage.multer");
+const multer  = require('multer')
+const upload = multer({ dest: './uploads/' })
+//import { StatusCodes } from "http-status-codes";
 
 const router = Router();
 
-router.post('/photos/upload', storage.array('photos', 10), function (req, res, next) {
-    // req.files is array of `photos` files
-    // req.body will contain the text fields, if there were any
+router.post('/profile', upload.single('image'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+  return res.status(200).json({messege: "Imagen subida"});
 })
 
 export default router;

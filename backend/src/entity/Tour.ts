@@ -6,7 +6,7 @@ export class Tour {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
+	@Column({type: "datetime"})
 	@IsNotEmpty()
 	date: string;
 
