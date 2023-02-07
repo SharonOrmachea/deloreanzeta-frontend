@@ -9,7 +9,15 @@ export class TourController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const tours = await tourRepository.findAll();
-			return res.send(tours);
+			let toursFormat = [];
+			let resTour ;
+			for(let i = 0; i < tours.length; i++){
+				toursFormat.push(resTour = {
+					city: tours[i].city,
+					date: tours[i].date.toISOString(),
+					place: tours[i].place});
+			}
+			return res.send(toursFormat);
 		} catch (e) {
 			return res
 				.status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -22,7 +30,14 @@ export class TourController {
 			const { id } = req.params;
 			const idInt = parseInt(id as string);
 			const tour = await tourRepository.findById(idInt);
-			return res.send(tour);
+			
+			let resTour = {
+			city: tour.city,
+			date: tour.date.toISOString(),
+			place: tour.place
+			}
+			
+			return res.send(resTour);
 		} catch (e) {
 			return res.status(StatusCodes.NOT_FOUND).json({ message: 'Not result' });
 		}
@@ -33,7 +48,13 @@ export class TourController {
 		const tour = new Tour();
 
 		tour.place = place;
-        tour.date = date;
+
+		let newFortmatdate = new Date(date);
+		tour.date = newFortmatdate;
+
+		console.log(newFortmatdate.toISOString());
+		
+        //tour.date = newFortmatdate;
         tour.city = city;
 
 		const validationOpt = {

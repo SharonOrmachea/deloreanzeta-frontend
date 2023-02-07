@@ -14,10 +14,10 @@ export class New {
 
 	@Column()
 	content: string;
-
+	
 	@Column()
-	image: Image;
-
+	image: string;
+	
 	@Column()
 	createdAt: Date;
 }
