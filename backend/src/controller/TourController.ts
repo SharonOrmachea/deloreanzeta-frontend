@@ -33,6 +33,7 @@ export class TourController {
 			const tour = await tourRepository.findById(idInt);
 			
 			let resTour = {
+			id: tour.id,
 			city: tour.city,
 			date: tour.date.toISOString(),
 			place: tour.place
