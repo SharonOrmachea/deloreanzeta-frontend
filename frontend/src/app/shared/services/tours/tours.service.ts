@@ -24,12 +24,12 @@ export class ToursService {
   }
 
   // AGREGA UN TOUR
-  newTour(tourValue:Tours): Observable<Tours | void>{
+  newTour(tourValue:Tours): Observable<Tours | any>{
     return this.http.post<Tours>(TOUR_NEW_URL, tourValue).pipe(catchError(this.handlerUserError));
   }
 
   // EDITA UN TOUR
-  updateTour(tourId:number, tourValue:Tours): Observable<Tours>{
+  updateTour(tourId:number, tourValue:Tours): Observable<any>{
     return this.http.patch<Tours>(`${TOUR_EDIT_URL}/${tourId}`, tourValue).pipe(catchError(this.handlerUserError));
   }
 

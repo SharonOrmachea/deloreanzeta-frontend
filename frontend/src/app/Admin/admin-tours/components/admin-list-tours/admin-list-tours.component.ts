@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Tours } from 'src/app/shared/models/tours/tours';
 
 import { ToastrService } from 'ngx-toastr';
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
-import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
 import { ToursUpComponent } from '../tours-up/tours-up.component';
 
@@ -18,8 +16,6 @@ import { ToursUpComponent } from '../tours-up/tours-up.component';
 export class AdminListToursComponent implements OnInit {
 
   tours:Tours[] = [];
-
-
 
   constructor(
     private tourService:ToursService,

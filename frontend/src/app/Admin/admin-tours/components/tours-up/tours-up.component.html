@@ -1,5 +1,4 @@
 <h1 mat-dialog-title class="title">{{ data.title }}</h1>
-{{ data.tour | json }}
 <hr />
 <mat-dialog-content>
   <div class="modal-form">
@@ -16,9 +15,10 @@
             <mat-label for="">Elije una fecha</mat-label>
             <input
               matInput
-
+              (keypress)="onKeypressEvent($event)"
               [matDatepicker]="picker"
               formControlName="date"
+              autocomplete="off"
             />
             <mat-datepicker-toggle
               matIconSuffix
