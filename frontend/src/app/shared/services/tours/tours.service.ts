@@ -25,7 +25,7 @@ export class ToursService {
 
   // AGREGA UN TOUR
   newTour(tourValue:Tours): Observable<Tours | any>{
-    return this.http.post<Tours>(TOUR_NEW_URL, tourValue).pipe(catchError(this.handlerUserError));
+    return this.http.post(TOUR_NEW_URL, tourValue, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
   }
 
   // EDITA UN TOUR
