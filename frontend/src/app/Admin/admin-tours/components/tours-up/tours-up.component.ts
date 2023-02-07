@@ -39,8 +39,8 @@ export class ToursUpComponent implements OnInit {
 
     this.tourForm = this.formBuilder.group({
       date: ['', [Validators.required]],
-      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
-      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
+      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
     });
 
   }
