@@ -14,7 +14,11 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export class ListGalleryComponent implements OnInit {
 
   sources!:Sources[];
+
   selectedImageUrl!: string;
+
+  // selectedImage!: Sources;
+
 
   constructor( private _servicio:GalleryService, private modalService: NgbModal ) {
     this.sources = this._servicio.getAll();
@@ -23,6 +27,15 @@ export class ListGalleryComponent implements OnInit {
   open(content: TemplateRef<any>, imageUrl: string) {
     this.selectedImageUrl = imageUrl;
     this.modalService.open(content, { centered: true, backdrop: 'static' });
+  }
+
+  // open(content: TemplateRef<any>, image: Sources) {
+  //   this.selectedImage = image;
+  //   this.modalService.open(content, { centered: true, backdrop: 'static' });
+  // }
+  
+  openTwo(content: TemplateRef<any>) {
+    this.modalService.open(content);
   }
 
   ngOnInit(): void {
