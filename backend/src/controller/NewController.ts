@@ -24,13 +24,15 @@ export class NewController {
         neww.title = title;
         neww.content = content;
         neww.description = content.substring(0, 50) + '...';
-        //neww.image = req.file.filename;
+        neww.image = image;
+
         neww.createdAt = new Date();
+
         console.log(
             neww.title + "\n",
             neww.content + "\n",
             neww.description + "\n",
-            image + "\n",
+            neww.image + "\n",
             neww.createdAt + "\n"
         )
         
@@ -51,11 +53,23 @@ export class NewController {
         neww.title = title;
         neww.content = content;
         neww.description = content.substring(0, 50) + '...';
-        /*neww.image = new Image();
-        neww.image.data = Buffer.from(image, 'base64');*/
+        neww.image = image.file.filename;
+        neww.createdAt = new Date();
 
-        await newRepository.updateNew(neww);
-        return res.status(StatusCodes.OK).json({ message: 'OK', neww });
+        console.log(
+            neww.title, "\n",
+            neww.content, "\n",
+            neww.description, "\n",
+            neww.image, "\n",
+            neww.createdAt, "\n",
+        )
+        
+        try{
+            await newRepository.updateNew(neww);
+            return res.status(StatusCodes.OK).json({ message: 'OK', neww });
+        }catch (e) {
+            return res.status(400).json({ message: 'Not result' });
+        }
     }
 
     static deleteNew = async (req: Request, res: Response) => {
