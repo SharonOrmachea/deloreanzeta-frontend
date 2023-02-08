@@ -5,7 +5,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-
 @Component({
   selector: 'app-list-gallery',
   templateUrl: './list-gallery.component.html',
@@ -14,18 +13,16 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 })
 export class ListGalleryComponent implements OnInit {
 
-  // sources:Sources[] = [];
-
   sources!:Sources[];
+  selectedImageUrl!: string;
 
   constructor( private _servicio:GalleryService, private modalService: NgbModal ) {
-
     this.sources = this._servicio.getAll();
-    
   }
 
-  open(content: TemplateRef<any>) {
-    this.modalService.open(content);
+  open(content: TemplateRef<any>, imageUrl: string) {
+    this.selectedImageUrl = imageUrl;
+    this.modalService.open(content, { centered: true, backdrop: 'static' });
   }
 
   ngOnInit(): void {

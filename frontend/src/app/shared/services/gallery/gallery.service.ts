@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { sample_sources } from 'src/data';
 import { Sources } from '../../models/gallery/gallery';
 
@@ -16,5 +16,7 @@ export class GalleryService {
     getNewById(elementId:string){
       return this.getAll().find(i => i.id == elementId) ?? new Sources();
     }
+
+    $modal = new EventEmitter<any>();
 
 }

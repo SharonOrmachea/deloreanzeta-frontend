@@ -1,43 +1,35 @@
 <main class="gallery">
-    <div class="div-title">
-        <h2 class="title"><strong>Galería</strong></h2>
+  <div class="div-title">
+      <h2 class="title"><strong>Galería</strong></h2>
+  </div>
+
+  <ng-template #content let-c="close" let-d="dismiss" class="template">
+    <div class="modal-header">
+      <h4 class="modal-title"></h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
 
-    <ng-template #content let-c="close" let-d="dismiss" class="template">
-      <div class="modal-header">
-        <h4 class="modal-title"></h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
+    <section class="contenedorSwiper">
+      <swiper
+        [navigation]="true"
+        [loop]="true"
+        [spaceBetween]="10"
+        class="mySwiper">
+        <ng-template swiperSlide *ngFor="let i of sources">
+          <div class="contenedorImagen">
+            <img [src]="selectedImageUrl" alt="Delorean-Banner" width="100%" height="500px">
+          </div>
+        </ng-template>
+      </swiper>
+    </section>
+  </ng-template>
 
-      <section class="contenedorSwiper">
-        <swiper
-          [navigation]="true"
-          [loop]="true"
-          [spaceBetween]="10"
-          class="mySwiper">
-          <ng-template swiperSlide *ngFor="let i of sources">
-            <div class="contenedorImagen">
-              <img [src]="i.imageUrl" alt="Delorean-Banner" width="100%" height="500px">
-            </div>
-          </ng-template>
-        </swiper>
-      </section>
-    </ng-template>
-      <!-- <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-      </div> -->
-
-    <div class="gallerySection">
-      <div *ngFor="let i of sources" class="card-gallery">
-        <img [src]="i.imageUrl" class="image-gallery" (click)="open(content)">
-        <!-- <p><span>{{i.title}}</span></p> -->
-      </div>
+  <div class="gallerySection">
+    <div *ngFor="let i of sources" class="card-gallery">
+      <img [src]="i.imageUrl ? i.imageUrl : ''" class="image-gallery" (click)="i.imageUrl ? open(content, i.imageUrl) : ''">
     </div>
+  </div>
 
 </main>

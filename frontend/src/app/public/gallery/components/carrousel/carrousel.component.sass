@@ -1,0 +1,48 @@
+@import 'extends-class'
+@import "~swiper/css"
+@import "~swiper/css/navigation"
+
+.contenedorSwiper
+  background-repeat: no-repeat
+  background-size: 100% 100%
+  height: 650px
+  color: $white
+  width: 65%
+  margin: 0 17.5%
+  position: absolute
+  z-index: 100
+  button
+    background-color: #ffffff00
+    border: none
+    font-weight: bold
+    font-size: 22px
+    color: #ffffffb7
+    width: 50px
+    height: 50px
+    position: absolute
+    left: 93%
+    top: 3.5%
+    z-index: 100
+  button:hover
+    background-color: #ffffffce
+    border: 1px
+    border-radius: 100%
+    color: $black
+
+  .contenedorImagen
+    object-fit: cover
+    margin: 0
+    img
+      width: 100%
+      box-shadow: 0px 3px 5px rgba(15, 15, 15, .5)
+      height: 500px
+
+  // no toma estilo
+      .swiper-button-prev,
+      .swiper-button-next
+        display: flex
+        color: $dark-gray
+        background-color: $white
+        width: 60px
+        height: 60px
+        border-radius: 100%
