@@ -1,5 +1,5 @@
 @import 'extends-class'
-
+@import 'mixins-responsive'
 
 body
   @extend .background
@@ -11,6 +11,6 @@ body
     display: flex
     flex-direction: column
     gap: 5em
-
-
-
+    @include screen (480px)
+     max-heigth:100%
+     
