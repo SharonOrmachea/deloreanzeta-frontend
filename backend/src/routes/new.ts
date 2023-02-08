@@ -4,7 +4,6 @@ import { checkJwt } from "../middlewares/jwt";
 import { checkRole } from "../middlewares/role";
 
 const router = Router();
-
 router.get('/', NewController.getAll);
 router.get('/:id', NewController.getById);
 router.post('/', [/*checkJwt, checkRole(['admin'])*/], NewController.createNew);

@@ -29,7 +29,7 @@ export class User {
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	name!: string;
+	name: string;
 
 	@Column()
 	@MinLength(3)
