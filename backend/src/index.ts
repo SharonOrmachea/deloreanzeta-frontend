@@ -36,7 +36,13 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }));
+app.use(bodyParser.text({ type: 'text/html' }));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.raw({ type: 'multipart/form-data' }));
 
 app.use('/', routes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
