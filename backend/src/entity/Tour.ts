@@ -6,13 +6,7 @@ export class Tour {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
-	@MinLength(3)
-	@IsNotEmpty()
-	name: string;
-
-	@Column()
-	@MinLength(3)
+	@Column({type: "datetime"})
 	@IsNotEmpty()
 	date: Date;
 
@@ -20,4 +14,9 @@ export class Tour {
 	@MinLength(3)
 	@IsNotEmpty()
 	place: string;
+
+	@Column()
+	@MinLength(3)
+	@IsNotEmpty()
+	city: string;
 }

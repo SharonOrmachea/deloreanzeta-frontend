@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import newRepository from '../repositories/NewRepository';
 import { StatusCodes } from 'http-status-codes';
 import { New } from '../entity/New';
-import { Image } from '../entity/Image';
 
 export class NewController {
     static getAll = async (req: Request, res: Response) => {
@@ -25,12 +24,22 @@ export class NewController {
         neww.title = title;
         neww.content = content;
         neww.description = content.substring(0, 50) + '...';
-        neww.image = new Image();
-        neww.image.data = Buffer.from(image, 'base64');
+        //neww.image = req.file.filename;
         neww.createdAt = new Date();
+        console.log(
+            neww.title + "\n",
+            neww.content + "\n",
+            neww.description + "\n",
+            image + "\n",
+            neww.createdAt + "\n"
+        )
         
-        const result = await newRepository.createNew(neww);
-        return res.status(StatusCodes.CREATED).json({ message: 'OK', result });
+        try{    
+            await newRepository.save(neww);
+            return res.status(StatusCodes.CREATED).send('News created');
+        }catch (error) {
+            return res.status(400).json({ message: 'Not result' });
+        }
     }
 
     static updateNew = async (req: Request, res: Response) => {
@@ -42,8 +51,8 @@ export class NewController {
         neww.title = title;
         neww.content = content;
         neww.description = content.substring(0, 50) + '...';
-        neww.image = new Image();
-        neww.image.data = Buffer.from(image, 'base64');
+        /*neww.image = new Image();
+        neww.image.data = Buffer.from(image, 'base64');*/
 
         await newRepository.updateNew(neww);
         return res.status(StatusCodes.OK).json({ message: 'OK', neww });

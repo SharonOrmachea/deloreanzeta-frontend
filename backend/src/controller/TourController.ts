@@ -9,7 +9,16 @@ export class TourController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const tours = await tourRepository.findAll();
-			return res.send(tours);
+			let toursFormat = [];
+			let resTour ;
+			for(let i = 0; i < tours.length; i++){
+				toursFormat.push(resTour = {
+					id: tours[i].id,
+					city: tours[i].city,
+					date: tours[i].date.toISOString(),
+					place: tours[i].place});
+			}
+			return res.send(toursFormat);
 		} catch (e) {
 			return res
 				.status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -22,19 +31,33 @@ export class TourController {
 			const { id } = req.params;
 			const idInt = parseInt(id as string);
 			const tour = await tourRepository.findById(idInt);
-			return res.send(tour);
+			
+			let resTour = {
+			id: tour.id,
+			city: tour.city,
+			date: tour.date.toISOString(),
+			place: tour.place
+			}
+			
+			return res.send(resTour);
 		} catch (e) {
 			return res.status(StatusCodes.NOT_FOUND).json({ message: 'Not result' });
 		}
 	};
 
 	static newTour = async (req: Request, res: Response) => {
-		const { name, date, place } = req.body;
+		const { place, date, city } = req.body;
 		const tour = new Tour();
 
-		tour.name = name;
-        tour.place = place;
-        tour.date = date;
+		tour.place = place;
+
+		let newFortmatdate = new Date(date);
+		tour.date = newFortmatdate;
+
+		console.log(newFortmatdate.toISOString());
+		
+        //tour.date = newFortmatdate;
+        tour.city = city;
 
 		const validationOpt = {
 			validationError: { target: false, value: false },
@@ -55,13 +78,13 @@ export class TourController {
 	static editTour = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { name, date, place } = req.body;
+		const { place, date, city } = req.body;
 
 		try {
 			const tour = await tourRepository.findById(idInt);
-			tour.name = name;
+			tour.place = place;
             tour.date = date;
-            tour.place = place;
+            tour.city = city;
 
 			const validationOpt = {
 				validationError: { target: false, value: false },

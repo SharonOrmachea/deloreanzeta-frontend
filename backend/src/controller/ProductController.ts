@@ -44,7 +44,6 @@ export class ProductController {
 		const categoryRepository = CategoryRepository;
 		const productRepository = ProductRepository;
 		let product = new Product();
-        //let image = new Image();
 
 		try {
 			const categoryExist = await categoryRepository.findByName(category);
@@ -54,15 +53,9 @@ export class ProductController {
 				product.price = price;
 				product.description = description;
 				product.information = information;
-				/*
-                for(let i = 0; i < images.length; i++){
-                    const buffer = Buffer.from(images[i], "base64");
-                    const imageProduct = new Image();
-                    imageProduct.data = buffer;
-                    product.images.push(imageProduct);
-                }
-				*/
+				
 				product.images = images;
+
 				product.category = categoryExist;
 
 				await productRepository.save(product);
@@ -74,4 +67,16 @@ export class ProductController {
 		}
 		return res.send('Product created');
 	};
+
+	static getProductCategory = async (req: Request, res: Response) => {
+		const productRepository = ProductRepository;
+
+		try {
+			const product = await productRepository.findById(parseInt(req.params.id))//.query('SELECT * FROM product WHERE id = ?',[req.params.id]); 
+			return res.send(product);
+		} catch (e) {
+			return res.status(400).json({ message: 'Not result' });
+		}
+	};
+
 }

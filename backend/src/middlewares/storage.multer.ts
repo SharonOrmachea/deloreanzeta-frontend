@@ -1,7 +1,7 @@
-import multer from 'multer';
+const multer = require("multer");// from 'multer';
 import path = require('path');
 
-export const storage = multer.diskStorage({
+export const upload = multer.diskStorage({
 	// setting files ubicacion for upload
 	destination: './uploads/',
 	// setting files size for upload
@@ -24,3 +24,16 @@ export const storage = multer.diskStorage({
 		cb('Error: File upload only supports the following filetypes - ' + filetypes);
 	},
 });
+
+/*const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+	  cb(null, './uploads/');
+	},
+	filename: function (req, file, cb) {
+	  const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+	  cb(null, file.fieldname + '-' + uniqueSuffix);
+	}
+  })
+  
+  const upload = multer({ storage: storage })
+*/
