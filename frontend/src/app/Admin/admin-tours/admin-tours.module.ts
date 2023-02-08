@@ -31,7 +31,7 @@ import { AdminListToursComponent } from './components/admin-list-tours/admin-lis
     AdminListToursComponent
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'es-CL' },
+    { provide: MAT_DATE_LOCALE, useValue: 'es-AR' },
     { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
     { provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }
   ]

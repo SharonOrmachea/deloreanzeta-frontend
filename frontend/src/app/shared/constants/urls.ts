@@ -63,4 +63,22 @@ export const TOUR_EDIT_URL = TOUR_BY_ID_URL;
 // Elimina un Tour - DELETE
 export const TOUR_DELETE_URL = TOUR_BY_ID_URL;
 
+// -----------------------NEWS-(Noticias)------------------------------------------------
+
+// Trae todas las Noticias - GET
+export const NEWS_URL = BASE_URL + 'new';
+
+// Trae una Noticia por ID - GET
+export const NEWS_BY_ID_URL = NEWS_URL + '/';
+
+// Agrega una nueva Noticia - POST
+export const NEWS_NEW_URL = NEWS_URL;
+
+// Edita una Noticia - PATCH
+export const NEWS_EDIT_URL = NEWS_BY_ID_URL;
+
+// Elimina una Noticia - DELETE
+export const NEWS_DELETE_URL = NEWS_BY_ID_URL;
+
+
 

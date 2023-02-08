@@ -1,63 +1,57 @@
-@import 'variables'
+@import 'extends-class'
 @import 'mixins-responsive'
 
 section
+  @extend .font-general
   display: flex
   flex-direction: column
   align-items: center
   margin: auto
   text-align: center
-  gap: 40px
+  gap: 30px
 
   .admin-list
     width: 100%
 
   .title strong
-    font-family: $font-general
     font-size: 32px
-    line-height: 48px
     letter-spacing: 1px
     color: #FFFFFF
 
   .list
+    display: flex
+    justify-content: space-around
     background: black
     box-shadow: white 0px 5px 15px
+    text-align: left
     border-radius: 30px
-    width: 60%
-    height: auto
     border-radius: 3px
-    padding: 20px
-    margin: auto
+    padding: 20px 40px
 
-    @include screen (1020px)
-      padding: 0px auto
-
-    @include screen (760px)
-      max-width: 100%
-      max-height: 100%
-
+    @include screen (720px)
+      width: 90%
+      padding: 20px 10px 20px 20px
 
     ul
+      display: flex
+      flex-direction: column
+      gap: 20px
+      padding: 0
+      margin: 0
+
       li
-        font-family: $font-general
-        font-size: 16px
-        margin-left: 20px
+        display: flex
+        gap: 40px
+        font-size: 20px
         color: #FFFFFF
-        font-weight: 400px
-        line-height: 48px
         letter-spacing: 1px
-        text-align: left
         list-style: none
-        text-transform: uppercase
 
         @include screen (1020px)
           font-size: 16px
-          margin: 0px auto
-          heigth: 10px
 
-        @include screen (760px)
-          font-size: 10px
-          margin: 0px auto
+        @include screen (290px)
+          font-size: 13px
 
       li:nth-child(-n + 3)
         color: #E01D8D
@@ -65,8 +59,7 @@ section
 
         @include screen (1020px)
           font-size: 16px
-          margin: 0px auto
 
-        @include screen (760px)
-          font-size: 10px
-          margin: 0px auto
+        @include screen (290px)
+          font-size: 13px
+

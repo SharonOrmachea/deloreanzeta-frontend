@@ -10,42 +10,40 @@
         <div class="card">
           <div class="card-body text-center">
             <span class="title"><strong>Listado de Tours</strong></span>
-            <table
-              *ngIf="tours.length > 0"
-              class="table table-striped mt-4"
-            >
-              <thead>
-                <tr>
-                  <th scope="col">ID</th>
-                  <th scope="col">Fecha</th>
-                  <th scope="col">Lugar</th>
-                  <th scope="col">Ciudad</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let tour of tours" class="product-info">
-                  <th scope="row">{{ tour.id }}</th>
-                  <td>{{ tour.date | date: "EEEE d, MMMM, yyyy" }}</td>
-                  <td>{{ tour.place | titlecase }}</td>
-                  <td>{{ tour.city | titlecase }}</td>
-                  <td class="bi-icon">
-                    <button
-                      (click)="openModal(tour)"
-                      class="bi bi-pencil-square text-primary"
-                    ></button>
-                    <button
-                      (click)="deleteTour(tour.id)"
-                      class="bi bi-trash3 text-danger"
-                    ></button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="table-responsive">
+              <table *ngIf="tours.length > 0" class="table table-striped mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Lugar</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let tour of tours" class="tour-info">
+                    <th scope="row">{{ tour.id }}</th>
+                    <td>{{ tour.date | date : "EEEE d, MMMM, yyyy" }}</td>
+                    <td>{{ tour.place | titlecase }}</td>
+                    <td>{{ tour.city | titlecase }}</td>
+                    <td class="buttons">
+                      <button
+                        (click)="openModal(tour)"
+                        class="bi bi-pencil-square text-primary"
+                      ></button>
+                      <button
+                        (click)="deleteTour(tour.id)"
+                        class="bi bi-trash3 text-danger"
+                      ></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-

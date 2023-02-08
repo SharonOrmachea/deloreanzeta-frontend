@@ -44,8 +44,6 @@ export class AdminListToursComponent implements OnInit {
       data: { title: 'Agregar Fecha', tour}
 
     });
-
-    // dialogRef.afterClosed().subscribe
   }
 
   deleteTour(id:any){

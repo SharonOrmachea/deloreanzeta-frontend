@@ -6,7 +6,7 @@ import { ValidationsService } from 'src/app/shared/services/validations/validati
 import { ToursService } from '../../../../shared/services/tours/tours.service';
 
 import { DatePipe } from '../../../../shared/pipes/date.pipe';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 enum Action {
@@ -34,6 +34,7 @@ export class ToursUpComponent implements OnInit {
     private validatorService:ValidationsService,
     private toursService: ToursService,
     private toastr:ToastrService,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
 
