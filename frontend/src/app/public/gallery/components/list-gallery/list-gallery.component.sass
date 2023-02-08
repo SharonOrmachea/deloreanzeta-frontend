@@ -17,69 +17,6 @@
       font-size: 40px
       text-align: center
 
-  .template
-    width: 100%
-    height: 600px
-    margin: 10%
-    .contenedorSwiper
-    // @extend .flex-column-around-center
-    background-repeat: no-repeat
-    background-size: 100% 100%
-    width: 100%
-    height: 500px
-    color: $white
-    .contenedorImagen
-      // width: 100%
-      // height: 100%
-      object-fit: cover
-      width: 100vw
-      max-width: 1200px
-      min-width: 500px
-      margin: 0
-    //   border-rigth-radius: 54px
-    //   border-left-radius: 54px
-      img
-        width: 100%
-        border-radius: 15px
-        box-shadow: 0px 3px 5px rgba(15, 15, 15, .5)
-
-    // .swiper
-    //   width: 100%
-    //   height: 100%
-
-    // .swiper-slide
-    //   text-align: center
-    //   font-size: 18px
-    //   /* Center slide text vertically */
-    //   display: -webkit-box
-    //   display: -ms-flexbox
-    //   display: -webkit-flex
-    //   display: flex
-    //   -webkit-box-pack: center
-    //   -ms-flex-pack: center
-    //   -webkit-justify-content: center
-    //   justify-content: center
-    //   -webkit-box-align: center
-    //   -ms-flex-align: center
-    //   -webkit-align-items: center
-    //   align-items: center
-
-    // .swiper-slide img
-    //   display: block
-    //   width: 100%
-    //   // height: 100%
-    //   object-fit: cover
-
-    // .swiper-button-prev,
-    // .swiper-button-next
-    //   display: flex
-    //   color: $dark-gray
-    //   background-color: $white
-    //   width: 60px
-    //   height: 60px
-    //   border-radius: 100%
-
-
   .gallerySection
     display: flex
     flex-wrap: wrap
@@ -94,7 +31,6 @@
       box-shadow: 0px 15px 20px -5px rgba(0, 0, 0, 0.5)
       .image-gallery
         width: 350px
-        // height: 300px
         object-fit: cover
         border-radius: .5rem 2rem
         height: 270px
@@ -105,17 +41,7 @@
         transform: scale(1.1)
         border: solid 1px $white
         filter: saturate(1.2)
-      // .image-gallery:nth-child(n+6)
-      //   width: 200px
-      //   height: 100px
-      // .image-gallery:active
-      //   zoom: 3.2
       p
-        // font-size: 28px
-        // text-transform: uppercase
-        // padding: 8px 5px
-        // max-width: 350px
-        // text-align: left
         font-weight: bold
         font-size: 18px
         position: absolute
@@ -135,6 +61,28 @@
     .card-gallery:hover
       transform: scale(1.03)
 
-    // ESTA PROPIEDAD ES PARA MARCAR EL LÍMITE DE FOTOS O VIDEOS, PARA QUE NO SEA INFINITO
+    // ESTA PROPIEDAD ES PARA MARCAR EL LÍMITE DE FOTOS, PARA QUE NO SEA INFINITO
     div:nth-child(n+15)
       display: none
+
+  .template
+    width: 100%
+    height: 600px
+    margin: 10%
+    .contenedorSwiper
+    background-repeat: no-repeat
+    background-size: 100% 100%
+    width: 100%
+    height: 500px
+    color: $white
+    background-color: red
+    .contenedorImagen
+      object-fit: cover
+      width: 100vw
+      max-width: 1200px
+      min-width: 500px
+      margin: 0
+      img
+        width: 100%
+        border-radius: 15px
+        box-shadow: 0px 3px 5px rgba(15, 15, 15, .5)

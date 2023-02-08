@@ -1,0 +1,16 @@
+<section class="contenedorSwiper">
+  <swiper
+    [slidesPerView]="1"
+    [navigation]="true"
+    [loop]="true"
+    [spaceBetween]="10"
+    class="mySwiper"
+  >
+    <ng-template swiperSlide *ngFor="let i of sources">
+      <button (click)="closeModal()">X</button>
+      <div class="contenedorImagen">
+        <img [src]="i.imageUrl"  alt="Delorean-Banner" >
+      </div>
+    </ng-template>
+  </swiper>
+</section>
