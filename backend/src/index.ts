@@ -10,26 +10,26 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const opn = require('opn');
 
-const swaggerDefinition = {
-	openapi: '3.0.0',
-	info: {
-		title: 'API Documentation',
-		version: '1.0.0',
-		description: 'API Documentation',
-	},
-	servers: [
-		{
-			url: 'http://localhost:3000',
-		},
-	],
-};
+// const swaggerDefinition = {
+// 	openapi: '3.0.0',
+// 	info: {
+// 		title: 'API Documentation',
+// 		version: '1.0.0',
+// 		description: 'API Documentation',
+// 	},
+// 	servers: [
+// 		{
+// 			url: 'http://localhost:3000',
+// 		},
+// 	],
+// };
 
-const options = {
-	swaggerDefinition,
-	apis: ['./src/routes/*.ts'],
-};
+// const options = {
+// 	swaggerDefinition,
+// 	apis: ['./src/routes/*.ts'],
+// };
 
-const swaggerSpec = swaggerJSDoc(options);
+// const swaggerSpec = swaggerJSDoc(options);
 const swaggerDocument = require('../swagger.json');
 
 const app = express();
