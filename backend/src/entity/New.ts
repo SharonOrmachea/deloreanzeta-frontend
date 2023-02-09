@@ -18,5 +18,5 @@ export class New {
 	image: string;
 
 	@Column()
-	createdAt: Date;
+	createdAt: string;
 }

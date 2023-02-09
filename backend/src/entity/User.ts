@@ -51,11 +51,11 @@ export class User {
 
 	@Column()
 	@CreateDateColumn()
-	createdAt: Date;
+	createdAt: string;
 
 	@Column()
 	@UpdateDateColumn()
-	updateAt: Date;
+	updateAt: string;
 
 	hashPassword(): void {
 		const salt = bcrypt.genSaltSync(10);
