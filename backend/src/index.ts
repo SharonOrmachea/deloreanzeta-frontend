@@ -12,10 +12,10 @@ const swaggerDocument = require('../swagger.json');
 const app = express();
 app.use(cors());
 app.use(helmet());
-app.use(express.json());
+// app.use(express.json({ limit: '500mb'}));
 app.use(express.urlencoded({ extended: true }));
 
-app.use(bodyParser.json({ type: 'application/json' }));
+app.use(bodyParser.json({ type: 'application/json', limit: '500mb' }));
 app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }));
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(bodyParser.urlencoded({ extended: true }));

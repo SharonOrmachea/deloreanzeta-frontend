@@ -13,10 +13,10 @@ export class New {
 
 	@Column()
 	content: string;
-	
-	@Column({type: "longtext"})
+
+	@Column({ type: 'longtext' })
 	image: string;
-	
+
 	@Column()
 	createdAt: Date;
 }
