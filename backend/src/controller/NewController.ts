@@ -19,13 +19,13 @@ export class NewController {
 	};
 
 	static createNew = async (req: Request, res: Response) => {
-		const { title, content, image } = req.body;
+		const { title, content, imageUrl } = req.body;
 
 		const neww = new New();
 		neww.title = title;
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
-		neww.imageUrl = image;
+		neww.imageUrl = imageUrl;
         const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
         neww.date = date.substring(0, 19).concat('.000-00:00');
 
@@ -48,13 +48,13 @@ export class NewController {
 	static updateNew = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { title, content, image } = req.body;
+		const { title, content, imageUrl } = req.body;
 
 		const neww = await newRepository.findById(idInt);
 		neww.title = title;
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
-		neww.imageUrl = image.file.filename;
+		neww.imageUrl = imageUrl.file.filename;
 		const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
         neww.date = date.substring(0, 19).concat('.000-00:00');
 
