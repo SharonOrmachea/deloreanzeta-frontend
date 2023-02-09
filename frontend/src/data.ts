@@ -3,17 +3,6 @@ import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 import { Sources } from "./app/shared/models/gallery/gallery";
-import { Tours } from './app/shared/models/tours/tours';
-
-// USUARIOS REGISTRADOS
-// ADMINISTRADOR
-//   email:'lopez.b.axel@gmail.com',
-//   password: 'Aa123456'
-
-// CLIENTES
-//   email:'cliente2@gmail.com',
-//   password: 'Aa123456'
-
 
 export const sample_products: Product[] = [
   {

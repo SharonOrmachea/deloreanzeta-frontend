@@ -1,0 +1,59 @@
+@import 'extends-class'
+@import 'mixins-responsive'
+
+section
+  @extend .font-general
+  display: flex
+  flex-direction: column
+  align-items: center
+  width: 100%
+  .newTour
+    display: flex
+    justify-content: flex-end
+    width: 65%
+
+    @include screen(720px)
+     justify-content: space-around
+
+    button
+      @extend .general-button
+      display: flex
+      justify-content: space-around
+      align-items: center
+      background-color: $pink
+      width: 220px
+      height: 41px
+      border-radius: 32px
+      font-size: 20px
+
+  .card-body
+    color: $black
+
+    .title
+      font-size: 2em
+
+    .col
+      @include screen(290px)
+        font-size: 13px
+
+    .tour-info
+      text-align: center
+
+    .buttons
+      button
+        border: none
+        background: none
+        font-size: 1.3em
+        margin-left: 10px
+
+        @include screen(390px)
+          font-size: 20px
+          margin-top: 1em
+          margin-left: 0
+
+  .modal
+    color: $black
+
+    .button-save
+      background-color: $pink
+      color: $white

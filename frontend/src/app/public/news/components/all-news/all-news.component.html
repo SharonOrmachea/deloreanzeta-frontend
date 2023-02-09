@@ -16,7 +16,7 @@
         <h4>
           <strong>{{ new.title }}</strong>
         </h4>
-        <p class="text-card-new date">{{ new.date }}</p>
+        <p class="text-card-new date">{{ new.date | date: "d/M/yyyy"}}</p>
         <p class="text-card-new">{{ new.description }}</p>
         <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
       </div>

@@ -34,7 +34,6 @@ export class ToursUpComponent implements OnInit {
     private validatorService:ValidationsService,
     private toursService: ToursService,
     private toastr:ToastrService,
-    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
 

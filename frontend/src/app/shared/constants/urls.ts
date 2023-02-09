@@ -48,37 +48,29 @@ export const SEND_HIRING_URL = BASE_URL + 'hirings/send-email';
 
 // -----------------------TOURS------------------------------------------------
 
-// Trae todos los Tours - GET
+// Trae y agrega todos los Tours - GET - POST
 export const TOURS_URL = BASE_URL + 'tour';
 
-// Trae un Tour por ID - GET
+// Trae, edita y elimina un Tour por ID - GET - PATCH - DELETE
 export const TOUR_BY_ID_URL = TOURS_URL + '/';
-
-// Agrega un nuevo Tour - POST
-export const TOUR_NEW_URL = TOURS_URL;
-
-// Edita un Tour - PATCH
-export const TOUR_EDIT_URL = TOUR_BY_ID_URL;
-
-// Elimina un Tour - DELETE
-export const TOUR_DELETE_URL = TOUR_BY_ID_URL;
 
 // -----------------------NEWS-(Noticias)------------------------------------------------
 
-// Trae todas las Noticias - GET
+// Trae y agrega todas las Noticias - GET - POST
 export const NEWS_URL = BASE_URL + 'new';
 
-// Trae una Noticia por ID - GET
+// Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
 export const NEWS_BY_ID_URL = NEWS_URL + '/';
 
-// Agrega una nueva Noticia - POST
-export const NEWS_NEW_URL = NEWS_URL;
+// -----------------------ABOUT-US-------------------------------------------------
 
-// Edita una Noticia - PATCH
-export const NEWS_EDIT_URL = NEWS_BY_ID_URL;
+// Trae todos los Integrantes - GET / Agrega un nuevo Tour - POST
+export const ABOUT_US_URL = BASE_URL + 'about-us';
 
-// Elimina una Noticia - DELETE
-export const NEWS_DELETE_URL = NEWS_BY_ID_URL;
+// Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
+export const ABOUT_US_ID_URL = NEWS_URL + '/';
+
+// -----------------------GALLERY-------------------------------------------------
 
 
 

@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 
 import { Tours } from '../../models/tours/tours';
-import { TOURS_URL, TOUR_BY_ID_URL, TOUR_DELETE_URL, TOUR_EDIT_URL, TOUR_NEW_URL } from '../../constants/urls';
+import { TOURS_URL, TOUR_BY_ID_URL } from '../../constants/urls';
 
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class ToursService {
 
   constructor( private http: HttpClient ) {}
@@ -25,17 +26,17 @@ export class ToursService {
 
   // AGREGA UN TOUR
   newTour(tourValue:Tours): Observable<Tours | any>{
-    return this.http.post(TOUR_NEW_URL, tourValue, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
+    return this.http.post(TOURS_URL, tourValue, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
   }
 
   // EDITA UN TOUR
-  updateTour(tourId:number, tourValue:Tours): Observable<any>{
-    return this.http.patch<Tours>(`${TOUR_EDIT_URL}/${tourId}`, tourValue).pipe(catchError(this.handlerUserError));
+  updateTour(id:number, tourValue:Tours): Observable<any>{
+    return this.http.patch<Tours>(`${TOUR_BY_ID_URL}/${id}`, tourValue).pipe(catchError(this.handlerUserError));
   }
 
   //ELIMINA UN TOUR
-  deleteTour(tourId:number): Observable<{}>{
-    return this.http.delete<Tours>(`${TOUR_DELETE_URL}/${tourId}`).pipe(catchError(this.handlerUserError));
+  deleteTour(id:number): Observable<{}>{
+    return this.http.delete<Tours>(`${TOUR_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
   }
 
 

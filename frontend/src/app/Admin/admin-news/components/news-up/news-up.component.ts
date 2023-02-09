@@ -29,7 +29,6 @@ export class NewsUpComponent implements OnInit {
     private formBuilder:FormBuilder,
     private validatorService:ValidationsService,
     private toastr:ToastrService,
-    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
 
   ) {
