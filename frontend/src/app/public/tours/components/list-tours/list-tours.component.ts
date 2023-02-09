@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
 
 import { Tours } from 'src/app/shared/models/tours/tours';
-import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -17,7 +16,6 @@ export class ListToursComponent implements OnInit {
 
   constructor(
     private tourService:ToursService,
-    private toastr:ToastrService
     ) {
 
 

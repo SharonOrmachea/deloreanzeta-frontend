@@ -56,7 +56,7 @@ export class NewsUpComponent implements OnInit {
   }
 
   saveNews(){
-    const valueNews = {image:this.archivo, title: this.newsForm.get('title')?.value, content: this.newsForm.get('content')?.value};
+    const valueNews = {imageUrl:this.archivo, title: this.newsForm.get('title')?.value, content: this.newsForm.get('content')?.value};
 
     if(this.actionToDo == Action.NEW){
       this.newsService.newNews(valueNews).subscribe((res) => {
