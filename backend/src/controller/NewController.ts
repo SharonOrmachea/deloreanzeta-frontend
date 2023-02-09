@@ -25,9 +25,9 @@ export class NewController {
 		neww.title = title;
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
-		neww.image = image;
+		neww.imageUrl = image;
         const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-        neww.createdAt = date.substring(0, 19).concat('.000-00:00');
+        neww.date = date.substring(0, 19).concat('.000-00:00');
 
 		// console.log(
 		// 	neww.title + '\n',ws
@@ -54,22 +54,9 @@ export class NewController {
 		neww.title = title;
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
-		neww.image = image.file.filename;
+		neww.imageUrl = image.file.filename;
 		const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
-        neww.createdAt = date.substring(0, 19).concat('.000-00:00');
-
-		console.log(
-			neww.title,
-			'\n',
-			neww.content,
-			'\n',
-			neww.description,
-			'\n',
-			neww.image,
-			'\n',
-			neww.createdAt,
-			'\n'
-		);
+        neww.date = date.substring(0, 19).concat('.000-00:00');
 
 		try {
 			await newRepository.updateNew(neww);
