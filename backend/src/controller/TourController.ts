@@ -10,6 +10,7 @@ export class TourController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const tours = await tourRepository.findAll();
+			console.log(typeof(tours))
 			return res.send(tours);
 		} catch (e) {
 			return res
@@ -39,8 +40,8 @@ export class TourController {
         console.log(date, " date es del tipo: ", typeof(date));
 		const horaServidor = new Date(date);
 		console.log(horaServidor);
-		const horaArgentina = moment(horaServidor).tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DD HH:mm:ss');
-		tour.date = horaArgentina;
+		//const horaArgentina = moment(horaServidor).tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DD HH:mm:ss');
+		tour.date = date;
 		console.log(tour.date);
 		
 		tour.city = city;
