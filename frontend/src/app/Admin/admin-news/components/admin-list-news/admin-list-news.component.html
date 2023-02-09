@@ -1,7 +1,7 @@
 <section>
   <div class="newTour">
     <div class="button-new">
-      <button class="btn btn-lg" (click)="openModal()">Agregar Fecha</button>
+      <button class="btn btn-lg" (click)="openModal()">Agregar Noticia</button>
     </div>
   </div>
   <div class="container mt-5">
@@ -9,7 +9,7 @@
       <div class="col-lg-8-offset-lg-2">
         <div class="card">
           <div class="card-body text-center">
-            <span class="title"><strong>Listado de Tours</strong></span>
+            <span class="title"><strong>Listado de Noticias</strong></span>
             <div class="table-responsive">
               <table *ngIf="news.length > 0" class="table table-striped mt-4">
                 <thead>
@@ -24,7 +24,7 @@
                   <tr *ngFor="let noticia of news" class="tour-info">
                     <th scope="row">{{ noticia.id }}</th>
                     <td>{{ noticia.date | date : "EEEE d, MMMM, yyyy" }}</td>
-                    <td>{{ noticia.name | titlecase }}</td>
+                    <td>{{ noticia.title | titlecase }}</td>
                     <td class="buttons">
                       <button
                         (click)="openModal(noticia)"

@@ -10,6 +10,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 
 import { MatMomentDateModule, MAT_MOMENT_DATE_FORMATS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { AlifeFileToBase64Module } from 'alife-file-to-base64';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
     MatDatepickerModule,
     MatInputModule,
     MatMomentDateModule,
-    MatDialogModule
+    MatDialogModule,
+    AlifeFileToBase64Module
   ],
   exports: [
     NewsUpComponent,

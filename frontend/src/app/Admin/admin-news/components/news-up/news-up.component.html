@@ -1,5 +1,5 @@
 <h1 mat-dialog-title class="title">{{ data.title }}</h1>
-<hr/>
+<hr />
 <mat-dialog-content>
   <div class="modal-form">
     <form
@@ -9,57 +9,64 @@
       class="form"
       name="login"
     >
+
       <div class="inputs">
-        <div class="date-picker box-form">
+        <div class="box-form box-image">
+          <div class="card" *ngIf="this.archivo != ''">
+            <div class="face front">
+              <img [src]="this.archivo">
+            </div>
+          </div>
+          <input
+            alife-file-to-base64
+            type="file"
+            (onFileChanged)="captureFile($event)"
+            formControlName="imageUrl"
+            tabindex="0"
+          >
+          <mat-error
+            *ngIf="
+              newsForm.get('imageUrl')?.hasError('required') &&
+              newsForm.get('imageUrl')?.touched
+            "
+          >
+            <strong
+              >La imagen del producto es <strong>obligatoria</strong></strong
+            >
+          </mat-error>
+
+        </div>
+
+        <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
-            <mat-label for="">Elije una fecha</mat-label>
+            <mat-label for="">Titulo</mat-label>
             <input
+              class="mat-input"
+              type="text"
               matInput
-              [matDatepicker]="picker"
-              formControlName="date"
-              autocomplete="off"
+              formControlName="title"
+              tabindex="0"
             />
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
-            <mat-error *ngIf="isValidField('date')">
-              <strong>{{ getErrorMessage("date") }}</strong>
+            <mat-error *ngIf="isValidField('title')">
+              <strong>{{ getErrorMessage("title") }}</strong>
             </mat-error>
           </mat-form-field>
         </div>
 
         <div class="box-form">
           <mat-form-field class="example-full-width" color="accent">
-            <mat-label for="">Lugar</mat-label>
-            <input
-              class="mat-input"
-              type="text"
+            <mat-label>Contenido de la Noticia</mat-label>
+            <textarea
               matInput
-              formControlName="place"
-              tabindex="”0”"
-            />
-            <mat-error *ngIf="isValidField('place')">
-              <strong>{{ getErrorMessage("place") }}</strong>
-            </mat-error>
+              class="mat-input"
+              formControlName="content"
+              tabindex="0"
+            ></textarea>
           </mat-form-field>
-        </div>
 
-        <div class="box-form">
-          <mat-form-field class="example-full-width" color="accent">
-            <mat-label for="">Ciudad</mat-label>
-            <input
-              class="mat-input"
-              type="text"
-              matInput
-              formControlName="city"
-              tabindex="”0”"
-            />
-            <mat-error *ngIf="isValidField('city')">
+          <!-- <mat-error *ngIf="isValidField('city')">
               <strong>{{ getErrorMessage("city") }}</strong>
-            </mat-error>
-          </mat-form-field>
+            </mat-error> -->
         </div>
       </div>
 
@@ -71,7 +78,7 @@
           [disabled]="newsForm.invalid"
           class="btn btn-lg button-submit"
           type="submit"
-          tabindex="”0”"
+          tabindex="0"
         >
           Agregar
         </button>

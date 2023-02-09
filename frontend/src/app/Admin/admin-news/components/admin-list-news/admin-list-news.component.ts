@@ -32,11 +32,11 @@ export class AdminListNewsComponent implements OnInit {
     })
   }
 
-  openModal(tour={}):void {
+  openModal(news={}):void {
     this.dialog.open(NewsUpComponent, {
       height: 'auto',
       width: '600px',
-      data: { title: 'Agregar Fecha', tour}
+      data: { title: 'Agregar Noticia', news}
 
     });
   }

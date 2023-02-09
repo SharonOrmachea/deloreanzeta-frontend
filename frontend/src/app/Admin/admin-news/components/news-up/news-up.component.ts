@@ -22,6 +22,8 @@ export class NewsUpComponent implements OnInit {
 
   actionToDo = Action.NEW;
 
+  public archivo:any = '';
+
   constructor(
     private newsService: NewsService,
     private formBuilder:FormBuilder,
@@ -33,19 +35,19 @@ export class NewsUpComponent implements OnInit {
   ) {
 
     this.newsForm = this.formBuilder.group({
-      date: ['', [Validators.required]],
-      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
-      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      title: ['', [Validators.required]],
+      content: ['', [Validators.required]],
+      imageUrl: [this.archivo, [Validators.required]]
     });
   }
 
   ngOnInit(): void {
     if(this.data?.news.hasOwnProperty('id')){
       this.actionToDo = Action.EDIT;
-      this.data.title = 'Editar Fecha';
-      this.newsForm.get('date')?.setValidators(null);
-      this.newsForm.get('place')?.setValidators(null);
-      this.newsForm.get('city')?.setValidators(null);
+      this.data.title = 'Editar Noticia';
+      this.newsForm.get('title')?.setValidators(null);
+      this.newsForm.get('content')?.setValidators(null);
+      this.newsForm.get('imageUrl')?.setValidators(null);
       this.pathFormData();
     }
   }
@@ -58,13 +60,13 @@ export class NewsUpComponent implements OnInit {
         this.toastr.success('Nueva noticia agregada', 'Noticia Agregada');
         this.newsForm.reset();
       }, (error) => {
-        this.toastr.error(error, 'news Failed');
+        this.toastr.error(error, 'News Failed');
       }
       );
     } else if(this.actionToDo == Action.EDIT){
       const newsId = this.data?.news?.id;
       this.newsService.updateNews(newsId, valueNews).subscribe((res) => {
-        this.toastr.success('La fecha fue editado con exito', 'Fecha Editada');
+        this.toastr.success('La noticia fue editada con exito', 'Noticia Editada');
       }, error => {
         console.log(error);
       })
@@ -74,11 +76,33 @@ export class NewsUpComponent implements OnInit {
 
   private pathFormData():void {
     this.newsForm.patchValue({
-      // date: this.data?.news?.date,
-      // place: this.data?.news?.place,
-      // city: this.data?.news?.city
+      title: this.data?.news?.title,
+      content: this.data?.news?.content,
+      imageUrl: this.data?.news?.imageUrl
     })
   }
+
+  // npm i alife-file-to-base64 --save
+  // importar modulo: AlifeFileToBase64Module
+  //en el input se agrega un atributo llamado alife-file-to-base64 y si se quieren cargar multiples archivos le agregamos multiple al input
+
+  // (onFileChanged)="captureFile($event)"
+
+  captureFile(event:any){
+    this.archivo = event[0].base64;
+  }
+
+  // captureFile(event:any){
+  //   const file = event.target.files[0];
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(file);
+  //   reader.onload = () => {
+  //     this.archivo = reader.result as string;
+  //   }
+  //   this.archivo =
+  //   console.log(reader);
+
+  // }
 
   get formControls() {
     return this.newsForm.controls;
