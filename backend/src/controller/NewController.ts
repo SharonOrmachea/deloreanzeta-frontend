@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import newRepository from '../repositories/NewRepository';
 import { StatusCodes } from 'http-status-codes';
 import { New } from '../entity/New';
+import moment = require('moment');
 
 export class NewController {
 	static getAll = async (req: Request, res: Response) => {
@@ -25,27 +26,16 @@ export class NewController {
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
 		neww.image = image;
-        neww.createdAt = new Date();
-        // detect timezone of neww.createdAt and save in a const variable (timezone) as number (e.g. -3)
-        const timezone = neww.createdAt.getTimezoneOffset() / 60;
-        // substract timezone from neww.createdAt
-        if(timezone !== -3)
-            neww.createdAt = new Date(neww.createdAt.getTime() - timezone * 3600000);
+        const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
+        neww.createdAt = new Date(date.substring(0, 19).concat('.000-00:00'));
 
-        // cast date to string without changing timezone
-        const dateString = neww.createdAt.toISOString().slice(0, 19).replace('T', ' ');
-        // remove timezone from string
-        const dateStringWithoutTimezone = dateString.slice(0, dateString.length - 6);
-        // cast string to date
-        neww.createdAt = new Date(dateStringWithoutTimezone);
-
-		console.log(
-			neww.title + '\n',
-			neww.content + '\n',
-			neww.description + '\n',
-			neww.image + '\n',
-			neww.createdAt + '\n'
-		);
+		// console.log(
+		// 	neww.title + '\n',ws
+		// 	neww.content + '\n',
+		// 	neww.description + '\n',
+		// 	neww.image + '\n',
+		// 	neww.createdAt + '\n'
+		// );
 
 		try {
 			await newRepository.save(neww);
