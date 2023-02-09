@@ -101,7 +101,7 @@ class AuthController {
 					return res.json({ message });
 				}
 				//sendEmail
-				try {
+				try {/*
 					// send mail with defined transport object
 					await transporter.sendMail({
 						from: '"Forgot password 👻" <deloreanzeta@example.com>', //sender address
@@ -110,7 +110,8 @@ class AuthController {
 						//text: "Hello world?", // plain text body
 						html: `<b>Please click on the following link, or paste this into your browser to complete the process:</b>
 						<a href="${verificationLink}">${verificationLink}</a>`, // html body
-					});
+					});*/
+					console.log("todo ok")
 				} catch (e) {
 					emailStatus = e;
 					return res.status(400).json(emailStatus);
