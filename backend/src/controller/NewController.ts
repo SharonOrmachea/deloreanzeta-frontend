@@ -26,13 +26,18 @@ export class NewController {
 		neww.description = content.substring(0, 50) + '...';
 		neww.image = image;
         neww.createdAt = new Date();
-		const date = new Date(
-			neww.createdAt.getTime() -
-				neww.createdAt.getTimezoneOffset() * 60000
-		).toLocaleString('en-US', {
-			timeZone: 'America/Argentina/Buenos_Aires',
-		});
-		neww.createdAt = new Date(date);
+        // detect timezone of neww.createdAt and save in a const variable (timezone) as number (e.g. -3)
+        const timezone = neww.createdAt.getTimezoneOffset() / 60;
+        // substract timezone from neww.createdAt
+        if(timezone !== -3)
+            neww.createdAt = new Date(neww.createdAt.getTime() - timezone * 3600000);
+
+        // cast date to string without changing timezone
+        const dateString = neww.createdAt.toISOString().slice(0, 19).replace('T', ' ');
+        // remove timezone from string
+        const dateStringWithoutTimezone = dateString.slice(0, dateString.length - 6);
+        // cast string to date
+        neww.createdAt = new Date(dateStringWithoutTimezone);
 
 		console.log(
 			neww.title + '\n',
