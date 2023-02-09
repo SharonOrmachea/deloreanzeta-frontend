@@ -25,6 +25,7 @@ export class NewController {
 		neww.content = content;
 		neww.description = content.substring(0, 50) + '...';
 		neww.image = image;
+        neww.createdAt = new Date();
 		const date = new Date(
 			neww.createdAt.getTime() -
 				neww.createdAt.getTimezoneOffset() * 60000
