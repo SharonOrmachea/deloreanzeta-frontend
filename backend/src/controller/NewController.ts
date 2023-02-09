@@ -7,7 +7,7 @@ import moment = require('moment');
 export class NewController {
 	static getAll = async (req: Request, res: Response) => {
 		const news = await newRepository.findAll();
-		return res.status(StatusCodes.OK).json({ message: 'OK', news });
+		return res.status(StatusCodes.OK).json({news});
 	};
 
 	static getById = async (req: Request, res: Response) => {
@@ -15,7 +15,7 @@ export class NewController {
 		const idInt = parseInt(id as string);
 
 		const neww = await newRepository.findById(idInt);
-		return res.status(StatusCodes.OK).json({ message: 'OK', neww });
+		return res.status(StatusCodes.OK).json({neww});
 	};
 
 	static createNew = async (req: Request, res: Response) => {

@@ -3,8 +3,8 @@ import { validate } from 'class-validator';
 import { Tour } from '../entity/Tour';
 import tourRepository from '../repositories/TourRepository';
 import { StatusCodes } from 'http-status-codes';
-import moment = require('moment');
-
+//import moment = require('moment');
+const moment = require('moment-timezone');
 export class TourController {
 
 	static getAll = async (req: Request, res: Response) => {
@@ -34,8 +34,16 @@ export class TourController {
 		const tour = new Tour();
 
 		tour.place = place;
-		tour.date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ').substring(0, 19).concat('.000-00:00');
-        tour.city = city;
+		//let dateActual = new Date()
+		//tour.date = moment(date).format('YYYY-MM-DDTHH:mm:ss.SSSZ').substring(0, 19).concat('.000-00:00');
+        console.log(date, " date es del tipo: ", typeof(date));
+		const horaServidor = new Date(date);
+		console.log(horaServidor);
+		const horaArgentina = moment(horaServidor).tz('America/Argentina/Buenos_Aires').format('YYYY-MM-DD HH:mm:ss');
+		tour.date = horaArgentina;
+		console.log(tour.date);
+		
+		tour.city = city;
 
 		const validationOpt = {
 			validationError: { target: false, value: false },
