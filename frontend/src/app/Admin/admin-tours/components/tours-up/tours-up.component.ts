@@ -5,8 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 import { ToursService } from '../../../../shared/services/tours/tours.service';
 
-import { DatePipe } from '../../../../shared/pipes/date.pipe';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 enum Action {
@@ -18,7 +17,6 @@ enum Action {
   selector: 'app-tours-up',
   templateUrl: './tours-up.component.html',
   styleUrls: ['./tours-up.component.sass'],
-  providers: [ DatePipe ]
 })
 
 export class ToursUpComponent implements OnInit {

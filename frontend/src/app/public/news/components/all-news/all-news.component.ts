@@ -12,8 +12,6 @@ export class AllNewsComponent implements OnInit {
 
   news:News[] = [];
 
-  new!:News[];
-
   p:any;
 
   constructor( private newsService:NewsService ) {

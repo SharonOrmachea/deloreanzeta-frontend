@@ -12,7 +12,6 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
 import { TitleComponent } from './components/title/title.component';
-import { DatePipe } from './pipes/date.pipe';
 
 
 
@@ -24,7 +23,6 @@ import { DatePipe } from './pipes/date.pipe';
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent,
-    DatePipe
   ],
   imports: [
     CommonModule,
@@ -42,7 +40,6 @@ import { DatePipe } from './pipes/date.pipe';
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent,
-    DatePipe
   ],
   providers: []
 })

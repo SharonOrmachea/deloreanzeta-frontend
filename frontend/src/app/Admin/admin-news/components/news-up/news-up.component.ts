@@ -24,6 +24,10 @@ export class NewsUpComponent implements OnInit {
 
   public archivo:any = '';
 
+  titulo:any = undefined;
+
+  contenido:any = undefined;
+
   constructor(
     private newsService: NewsService,
     private formBuilder:FormBuilder,
@@ -36,7 +40,7 @@ export class NewsUpComponent implements OnInit {
     this.newsForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       content: ['', [Validators.required]],
-      imageUrl: [this.archivo, [Validators.required]]
+      imageUrl: ['', [Validators.required]]
     });
   }
 
@@ -52,7 +56,7 @@ export class NewsUpComponent implements OnInit {
   }
 
   saveNews(){
-    let valueNews = this.newsForm.value;
+    const valueNews = {image:this.archivo, title: this.newsForm.get('title')?.value, content: this.newsForm.get('content')?.value};
 
     if(this.actionToDo == Action.NEW){
       this.newsService.newNews(valueNews).subscribe((res) => {

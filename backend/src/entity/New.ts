@@ -15,8 +15,8 @@ export class New {
 	content: string;
 
 	@Column({ type: 'longtext' })
-	imageUrl: string;
+	image: string;
 
 	@Column()
-	date: string;
+	createdAt: string;
 }
