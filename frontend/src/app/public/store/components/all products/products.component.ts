@@ -31,26 +31,39 @@ export class ProductsComponent implements OnInit {
 
     this.p =1;
 
-    let productsObservable:Observable<Product[]>;
+    // let productsObservable:Observable<Product[]>;
 
-    productsObservable = this.productService.getAllProducts();
+    // productsObservable = this.productService.getAllProducts();
 
     productService.getAllProductCategories().subscribe(serverProductCategories => {
       this.categories = serverProductCategories;
     });
 
-    activatedRoute.params.subscribe((params) => {
-      if(params['category']){
-        productsObservable = this.productService.getProductsByCategories(params['category']);
-      } else{
-        productsObservable.subscribe((serverProduct) => {
-          this.products = serverProduct;
-        })
-      }
-    })
+    // activatedRoute.params.subscribe((params) => {
+    //   if(params['category']){
+    //     productsObservable = this.productService.getProductsByCategories(params['category']);
+    //   } else{
+    //     productsObservable.subscribe((serverProduct) => {
+    //       this.products = serverProduct;
+    //     })
+    //   }
+    // })
   }
 
   ngOnInit(): void {
+    this.getAllProducts();
+
+    this.productService.getAllProductCategories().subscribe(serverProductCategories => {
+      this.categories = serverProductCategories;
+    });
+  }
+
+  getAllProducts(){
+    this.productService.getAllProducts().subscribe(data => {
+      this.products = data;
+    }, error => {
+      console.log(error)
+    })
   }
 
 }

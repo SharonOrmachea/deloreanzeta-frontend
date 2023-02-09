@@ -31,7 +31,7 @@ import { AboutUsModule } from './about-us/about-us.module';
     NewsModule,
     ToursModule,
     GalleryModule,
-    AboutUsModule
+    AboutUsModule,
   ],
   providers: [
 

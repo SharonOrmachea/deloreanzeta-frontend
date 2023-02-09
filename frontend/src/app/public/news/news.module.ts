@@ -5,6 +5,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { AllNewsComponent } from './components/all-news/all-news.component';
 import { IdNewsComponent } from './components/id-news/id-news.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { AdminNewsModule } from '../../Admin/admin-news/admin-news.module';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CommonModule,
     SharedModule,
     NgxPaginationModule,
+    AdminNewsModule
   ]
 })
 export class NewsModule { }

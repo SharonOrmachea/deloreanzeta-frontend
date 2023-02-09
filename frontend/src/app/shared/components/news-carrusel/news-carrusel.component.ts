@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Observable } from 'rxjs';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -17,12 +18,24 @@ export class NewsCarruselComponent implements OnInit {
 
   news:News[] = [];
 
-  constructor(private noticiaService:NewsService) {
-    this.news = this.noticiaService.getAll();
+  constructor(private newsService:NewsService) {
+
+    let NewsObservable:Observable<News[]>;
+
+    NewsObservable = this.newsService.getAllNews();
   }
 
 
   ngOnInit(): void {
+
+  }
+
+  getAllNews(){
+    this.newsService.getAllNews().subscribe(data => {
+      this.news = data;
+    }, error => {
+      console.log(error)
+    })
   }
 
 

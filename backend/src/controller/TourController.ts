@@ -3,6 +3,7 @@ import { validate } from 'class-validator';
 import { Tour } from '../entity/Tour';
 import tourRepository from '../repositories/TourRepository';
 import { StatusCodes } from 'http-status-codes';
+import moment = require('moment');
 
 export class TourController {
 
@@ -33,29 +34,29 @@ export class TourController {
 		const tour = new Tour();
 
 		tour.place = place;
+		tour.date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ').substring(0, 19).concat('.000-00:00');
         tour.city = city;
-        tour.date = date;
 
 		const validationOpt = {
 			validationError: { target: false, value: false },
 		};
 		const e = await validate(tour, validationOpt);
 		if (e.length > 0) {
-			return res.status(400).json(e);
+			return res.status(StatusCodes.BAD_REQUEST).json(e);
 		}
 
 		try {
 			await tourRepository.save(tour);
 			return res.status(StatusCodes.CREATED).send('Tour created');
 		} catch (e) {
-			return res.status(409).json(e);
+			return res.status(StatusCodes.CONFLICT).json(e);
 		}
 	};
 
 	static editTour = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { city, date, place } = req.body;
+		const { place, date, city } = req.body;
 
 		try {
 			const tour = await tourRepository.findById(idInt);

@@ -1,81 +1,88 @@
 @import 'extends-class'
 @import 'mixins-responsive'
 
-.card-body
-  color: $black
+h1
+  font-size: 2em
 
-  .title
-    font-size: 2em
+.form
+  @extend .flex-column-around-center
+  gap: 10px
+  height: 410px
 
-  .form
-    @extend .flex-column-around-center
-    gap: 20px
+  @include screen(390px)
+    width: 230px
 
-    @include screen(720px)
-      width: 470px
-      gap: 10px
+  @include screen(320px)
+    width: 200px
 
-    @include screen(560px)
-      width: 370px
+  @include screen(290px)
+    width: 180px
 
-    @include screen(390px)
-      width: 270px
 
-    @include screen(290px)
-      gap: 40px
+  .inputs
+    display: flex
+    flex-direction: column
+    gap: 0.5em
 
-    .inputs
+    .box-form
       display: flex
       flex-direction: column
-      gap: 0.5em
+      width: 487px
+      font-size: 18px
 
-      .box-form
-        display: flex
-        flex-direction: column
-        width: 487px
-        font-size: 18px
+      @include screen(720px)
+        width: 370px
 
-        @include screen(720px)
-          width: 370px
+      @include screen(560px)
+        width: 290px
 
-        @include screen(560px)
-          width: 290px
+      @include screen(390px)
+        width: 230px
 
-        @include screen(390px)
-          width: 230px
+      @include screen (290px)
+        width: 200px
 
-        @include screen (290px)
-          width: 200px
-
-
-      .date-picker
-        display: flex
-        flex-direction: column
-        justify-content: space-between
-        input
-          width: 440px
-
-    .submit
-      @extend .flex-column-around-center
-      margin-top: 1em
-
-      button
-        @extend .general-button
-        @extend .large-button
-        display: flex
-        justify-content: space-around
-        align-items: center
-        background-color: $pink
+    .date-picker
+      display: flex
+      flex-direction: column
+      justify-content: space-between
+      input
+        width: 440px
 
         @include screen(720px)
-          width: 370px
+          width: 330px
 
         @include screen(560px)
-          width: 290px
+          width: 250px
 
         @include screen(390px)
-          width: 230px
+          width: 190px
 
         @include screen(290px)
-          width: 230px
+          width: 160px
 
+.submit
+  display: flex
+  justify-content: space-around
+  flex-wrap: wrap
+  width: 100%
+
+  @include screen(390px)
+    width: 80%
+    gap: 1em
+
+  button
+    @extend .general-button
+
+    @include screen(390px)
+      width: 70%
+
+
+  .button-submit
+    display: flex
+    justify-content: space-around
+    align-items: center
+    background-color: $pink
+
+    @include screen(390px)
+      order: -1

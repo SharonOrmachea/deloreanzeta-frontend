@@ -29,7 +29,7 @@ export class User {
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	name!: string;
+	name: string;
 
 	@Column()
 	@MinLength(3)
@@ -51,11 +51,11 @@ export class User {
 
 	@Column()
 	@CreateDateColumn()
-	createdAt: Date;
+	createdAt: string;
 
 	@Column()
 	@UpdateDateColumn()
-	updateAt: Date;
+	updateAt: string;
 
 	hashPassword(): void {
 		const salt = bcrypt.genSaltSync(10);

@@ -5,7 +5,7 @@ const BASE_URL = 'http://localhost:3000/';
 // --PRODUCTO--
 
 // Trae todos los productos - GET
-export const PRODUCT_URL = BASE_URL + 'api/producto';
+export const PRODUCT_URL = BASE_URL + 'product';
 
 // Trae un producto por ID - GET
 export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
@@ -13,10 +13,10 @@ export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
 // --CATEGORIA--
 
 // Trae todas las categorias - GET
-export const PRODUCT_CATEGORIES_URL = BASE_URL + 'api/categoria';
+export const PRODUCT_CATEGORIES_URL = BASE_URL + 'category';
 
 // Trae un producto por categoria - GET
-export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + 'categoria/';
+export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + '';
 
 
 // -----------------------USUARIOS------------------------------------------------
@@ -48,19 +48,29 @@ export const SEND_HIRING_URL = BASE_URL + 'hirings/send-email';
 
 // -----------------------TOURS------------------------------------------------
 
-// Trae todos los Tours - GET
+// Trae y agrega todos los Tours - GET - POST
 export const TOURS_URL = BASE_URL + 'tour';
 
-// Trae un Tour por ID - GET
+// Trae, edita y elimina un Tour por ID - GET - PATCH - DELETE
 export const TOUR_BY_ID_URL = TOURS_URL + '/';
 
-// Agrega un nuevo Tour - POST
-export const TOUR_NEW_URL = TOURS_URL;
+// -----------------------NEWS-(Noticias)------------------------------------------------
 
-// Edita un Tour - PATCH
-export const TOUR_EDIT_URL = TOUR_BY_ID_URL;
+// Trae y agrega todas las Noticias - GET - POST
+export const NEWS_URL = BASE_URL + 'new';
 
-// Elimina un Tour - DELETE
-export const TOUR_DELETE_URL = TOUR_BY_ID_URL;
+// Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
+export const NEWS_BY_ID_URL = NEWS_URL + '/';
+
+// -----------------------ABOUT-US-------------------------------------------------
+
+// Trae todos los Integrantes - GET / Agrega un nuevo Tour - POST
+export const ABOUT_US_URL = BASE_URL + 'about-us';
+
+// Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
+export const ABOUT_US_ID_URL = NEWS_URL + '/';
+
+// -----------------------GALLERY-------------------------------------------------
+
 
 

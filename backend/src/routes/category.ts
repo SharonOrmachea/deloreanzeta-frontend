@@ -6,9 +6,9 @@ import { checkJwt } from "../middlewares/jwt";
 
 const router = Router();
 
-router.get("/", [/*checkJwt, checkRole(['admin'])*/], CategoryController.getAll);
+router.get("/", CategoryController.getAll);
 
-router.get("/:id", [/*checkJwt, checkRole(['admin'])*/], CategoryController.getById);
+router.get("/:id", CategoryController.getById);
 
 router.post("/", validateCategory, [/*checkJwt, checkRole(['admin'])*/], CategoryController.newCategory);
 

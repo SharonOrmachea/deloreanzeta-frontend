@@ -21,7 +21,6 @@ export class ListToursComponent implements OnInit {
     ) {
 
 
-
   }
 
   ngOnInit(): void {
@@ -36,6 +35,6 @@ export class ListToursComponent implements OnInit {
     })
   }
 
-  
+
 
 }

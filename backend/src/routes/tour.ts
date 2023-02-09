@@ -5,9 +5,9 @@ import { checkRole } from "../middlewares/role";
 
 const router = Router();
 
-router.get("/", [/*checkJwt, checkRole(['admin'])*/], TourController.getAll);
+router.get("/", TourController.getAll);
 
-router.get("/:id", [/*checkJwt, checkRole(['admin'])*/], TourController.getById);
+router.get("/:id", TourController.getById);
 
 router.post("/", validateTour, [/*checkJwt, checkRole(['admin'])*/], TourController.newTour);
 

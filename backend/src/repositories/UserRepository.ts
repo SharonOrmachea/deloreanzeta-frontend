@@ -30,7 +30,7 @@ const UserRepository = conn.getRepository(User).extend({
 	},
 	async createUser(user: User): Promise<User> {
 		const result = await this.save(user);
-		console.log(result);
+		//console.log(result);
 		return result;
 	},
 	async updateUser(user: User): Promise<User> {

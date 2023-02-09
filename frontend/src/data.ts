@@ -3,17 +3,6 @@ import { News } from "./app/shared/models/news/news";
 import { ProductCategories } from "./app/shared/models/store/category/product-tag";
 import { Carousel } from "./app/shared/models/store/carrusel/carousel";
 import { Sources } from "./app/shared/models/gallery/gallery";
-import { Tours } from './app/shared/models/tours/tours';
-
-// USUARIOS REGISTRADOS
-// ADMINISTRADOR
-//   email:'lopez.b.axel@gmail.com',
-//   password: 'Aa123456'
-
-// CLIENTES
-//   email:'cliente2@gmail.com',
-//   password: 'Aa123456'
-
 
 export const sample_products: Product[] = [
   {
@@ -178,112 +167,98 @@ export const sample_productTags: ProductCategories[] = [
 export const sample_news: News[] = [
   {
     id: '1',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🤗',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news1.jpg'
   },
   {
     id: '2',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
     id: '3',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
   {
     id: '4',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
     id: '5',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
     id: '6',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
     id: '7',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news4.jpg'
   },
   {
     id: '8',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
   {
     id: '9',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
     id: '10',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
     id: '11',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'
   },
   {
     id: '9',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
     id: '10',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 🙈',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news2.jpg'
   },
   {
     id: '11',
-    name: 'Soy una noticia con un maximo de 51 caracteres',
-    date: '05/12/2022',
+    title: 'Soy una noticia con un maximo de 51 caracteres',
     description: 'En esta sección, para que quede prolijo deben poner texto con similar cantidad de caracteres 👻',
     content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. At officia nam aut consectetur odit in ea sit nihil corrupti officiis accusamus et deserunt voluptatum dolorum natus, ullam qui sapiente tempore animi, est provident dolore, aspernatur quia. Natus facere amet quam.',
     imageUrl: './assets/news/news3.jpg'

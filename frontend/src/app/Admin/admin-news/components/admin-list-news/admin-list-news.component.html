@@ -1,0 +1,47 @@
+<section>
+  <div class="newTour">
+    <div class="button-new">
+      <button class="btn btn-lg" (click)="openModal()">Agregar Noticia</button>
+    </div>
+  </div>
+  <div class="container mt-5" *ngIf="news.length > 0">
+    <div class="row">
+      <div class="col-lg-8-offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title"><strong>Listado de Noticias</strong></span>
+            <div class="table-responsive">
+              <table class="table table-striped mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Titulo</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let noticia of news" class="tour-info">
+                    <th scope="row">{{ noticia.id }}</th>
+                    <td>{{ noticia.date | date : "EEEE d, MMMM, yyyy" }}</td>
+                    <td>{{ noticia.title | titlecase }}</td>
+                    <td class="buttons">
+                      <button
+                        (click)="openModal(noticia)"
+                        class="bi bi-pencil-square text-primary"
+                      ></button>
+                      <button
+                        (click)="deleteTour(noticia.id)"
+                        class="bi bi-trash3 text-danger"
+                      ></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

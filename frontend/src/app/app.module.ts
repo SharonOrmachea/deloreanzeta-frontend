@@ -8,15 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { PublicModule } from './public/public.module';
 import { PrivateModule } from './private/private.module';
-
+import { AdminModule } from './Admin/admin.module';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
 
 import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
-import { AdminModule } from './Admin/admin.module';
-import { FormsModule } from '@angular/forms';
 
 
 
@@ -36,8 +36,8 @@ import { FormsModule } from '@angular/forms';
     PublicModule,
     PrivateModule,
     AdminModule,
-    BrowserAnimationsModule,
     FormsModule,
+    MaterialModule,
     ToastrModule.forRoot({
       timeOut:10000,
       positionClass:'toast-bottom-right',

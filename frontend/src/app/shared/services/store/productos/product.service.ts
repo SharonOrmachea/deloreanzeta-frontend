@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 import { PRODUCT_URL, PRODUCT_CATEGORIES_URL, PRODUCT_BY_CATEGORIES_URL, PRODUCT_BY_ID_URL } from '../../../constants/urls';
 
@@ -20,7 +20,7 @@ export class ProductService {
 
   // Traer todos los productos del back-end
   getAllProducts():Observable<Product[]>{
-    return this.http.get<Product[]>(PRODUCT_URL);
+    return this.http.get<Product[]>(PRODUCT_URL).pipe(catchError(this.handlerUserError));;
   }
 
   // Traer los productos por categoria del back-end
@@ -55,6 +55,17 @@ export class ProductService {
     return tag === "All"?
     this.getAllProducts():
     this.http.get<Product[]>(PRODUCT_BY_CATEGORIES_URL + tag);
+  }
+
+
+  handlerUserError(error: any): Observable<never> {
+    let errorMessage = 'Error';
+    if (error) {
+      errorMessage = `Error ${error.message}`;
+      console.log(errorMessage)
+    }
+    return throwError(() => (errorMessage));
+
   }
 
 }

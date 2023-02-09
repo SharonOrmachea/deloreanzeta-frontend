@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminStoreModule } from './admin-store/admin-store.module';
+import { AdminNewsModule } from './admin-news/admin-news.module';
 
 
 
@@ -12,10 +13,12 @@ import { AdminStoreModule } from './admin-store/admin-store.module';
   ],
   imports: [
     CommonModule,
-    AdminStoreModule
+    AdminStoreModule,
+    AdminNewsModule
   ],
   exports: [
-
+    AdminStoreModule,
+    AdminNewsModule
   ]
 })
 export class AdminModule { }

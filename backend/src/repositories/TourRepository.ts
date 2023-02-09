@@ -1,9 +1,9 @@
 import conn from '../dbConnection';
 import { Tour } from '../entity/Tour';
 
-const CategoryRepository = conn.getRepository(Tour).extend({
+const TourRepository = conn.getRepository(Tour).extend({
 	// custom methods
-	async findByName(place: string): Promise<Tour> {
+	async findByPlace(place: string): Promise<Tour> {
 		return await this.findOneBy({ place });
 	},
 	async findById(id: number): Promise<Tour> {
@@ -21,4 +21,4 @@ const CategoryRepository = conn.getRepository(Tour).extend({
 	},
 });
 
-export default CategoryRepository;
+export default TourRepository;

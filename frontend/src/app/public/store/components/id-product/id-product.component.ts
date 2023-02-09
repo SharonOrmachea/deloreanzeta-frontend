@@ -20,7 +20,6 @@ export class IdProductComponent implements OnInit {
 
   priceFinally:number = 0;
 
-
   productQuantity:number = 1;
 
   constructor(
@@ -36,7 +35,7 @@ export class IdProductComponent implements OnInit {
           this.product = serverProductById;
         }
       );
-    })
+    });
   }
 
   ngOnInit(): void {
