@@ -3,22 +3,14 @@ import { validate } from 'class-validator';
 import { Tour } from '../entity/Tour';
 import tourRepository from '../repositories/TourRepository';
 import { StatusCodes } from 'http-status-codes';
+import moment = require('moment');
 
 export class TourController {
 
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const tours = await tourRepository.findAll();
-			let toursFormat = [];
-			let resTour ;
-			for(let i = 0; i < tours.length; i++){
-				toursFormat.push(resTour = {
-					id: tours[i].id,
-					city: tours[i].city,
-					date: tours[i].date.toISOString(),
-					place: tours[i].place});
-			}
-			return res.send(toursFormat);
+			return res.send(tours);
 		} catch (e) {
 			return res
 				.status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -31,15 +23,7 @@ export class TourController {
 			const { id } = req.params;
 			const idInt = parseInt(id as string);
 			const tour = await tourRepository.findById(idInt);
-			
-			let resTour = {
-			id: tour.id,
-			city: tour.city,
-			date: tour.date.toISOString(),
-			place: tour.place
-			}
-			
-			return res.send(resTour);
+			return res.send(tour);
 		} catch (e) {
 			return res.status(StatusCodes.NOT_FOUND).json({ message: 'Not result' });
 		}
@@ -50,13 +34,7 @@ export class TourController {
 		const tour = new Tour();
 
 		tour.place = place;
-
-		let newFortmatdate = new Date(date);
-		tour.date = newFortmatdate;
-
-		console.log(newFortmatdate.toISOString());
-		
-        //tour.date = newFortmatdate;
+		tour.date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ').substring(0, 19).concat('.000-00:00');
         tour.city = city;
 
 		const validationOpt = {
@@ -64,14 +42,14 @@ export class TourController {
 		};
 		const e = await validate(tour, validationOpt);
 		if (e.length > 0) {
-			return res.status(400).json(e);
+			return res.status(StatusCodes.BAD_REQUEST).json(e);
 		}
 
 		try {
 			await tourRepository.save(tour);
 			return res.status(StatusCodes.CREATED).send('Tour created');
 		} catch (e) {
-			return res.status(409).json(e);
+			return res.status(StatusCodes.CONFLICT).json(e);
 		}
 	};
 

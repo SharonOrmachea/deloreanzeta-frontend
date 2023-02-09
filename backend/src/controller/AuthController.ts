@@ -154,7 +154,6 @@ class AuthController {
 	static newPasswordReset = async(req: Request, res: Response) => {
 		const token = req.headers.authorization;
 		const { password, confirmPassword } = req.body;
-
 	};
 
 	static createNewPassword = async (req: Request, res: Response) => {

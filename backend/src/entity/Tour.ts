@@ -19,5 +19,4 @@ export class Tour {
 	@MinLength(3)
 	@IsNotEmpty()
 	city: string;
-
 }

@@ -6,7 +6,6 @@ const multer  = require('multer')
 const upload = multer({ dest: './uploads/' })
 
 const router = Router();
-
 router.get('/', NewController.getAll);
 router.get('/:id', NewController.getById);
 router.post('/', [/*checkJwt, checkRole(['admin']),*/upload.single('image')], NewController.createNew);
