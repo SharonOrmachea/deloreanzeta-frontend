@@ -57,6 +57,7 @@
   .contenedor-news
     border-radius: 12px
     background-color: $white
+    max-width: 320px
 
     a
       color: $white
@@ -73,7 +74,7 @@
         color: $white
 
       img
-        width: 320px
+        max-width: 320px
         height: 370px
         border-top-left-radius: 12px
         border-top-right-radius: 12px
@@ -81,12 +82,14 @@
     .contenedor
         display: flex
         flex-direction: column
-        width: 100%
-        height: 5.5em
+        justify-content: space-between
+        max-width: 320px
+        min-height: 5.5em
 
         .date
           text-align: start
           padding: 2% 4%
+          margin: 3px 5px
           p
             color: $pink
             margin: 0
@@ -94,8 +97,10 @@
 
         .name
           text-align: start
-          width: 15em
+          width: auto
           color: $dark-gray
           padding: 2% 4%
-          font-size: 20px
+          font-size: 25px
+          margin: 3px 5px
+          line-height: 30px
 

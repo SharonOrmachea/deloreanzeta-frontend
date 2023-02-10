@@ -20,14 +20,11 @@ export class NewsCarruselComponent implements OnInit {
 
   constructor(private newsService:NewsService) {
 
-    let NewsObservable:Observable<News[]>;
-
-    NewsObservable = this.newsService.getAllNews();
   }
 
 
   ngOnInit(): void {
-
+    this.getAllNews();
   }
 
   getAllNews(){

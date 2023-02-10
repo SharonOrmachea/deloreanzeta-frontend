@@ -11,14 +11,20 @@
       class="card-new"
       *ngFor="let new of news | paginate : { itemsPerPage: 4, currentPage: p }"
     >
-      <img [src]="new.imageUrl" class="image-new" />
+      <div class="image-new">
+        <img [src]="new.imageUrl">
+      </div>
       <div class="body-card-new">
-        <h4>
-          <strong>{{ new.title }}</strong>
-        </h4>
-        <p class="text-card-new date">{{ new.date | date: 'dd/MM/yyyy'}}</p>
-        <p class="text-card-new">{{ new.description }}</p>
-        <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
+        <div class="title">
+          <h4>
+            <strong>{{ new.title | titlecase}}</strong>
+          </h4>
+          <p class="text-card-new date">{{ new.date | date: 'dd/MM/yyyy' }}</p>
+          <p class="text-card-new">{{ new.description | titlecase}}</p>
+        </div>
+        <div class="button-readMore">
+          <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
+        </div>
       </div>
     </div>
 

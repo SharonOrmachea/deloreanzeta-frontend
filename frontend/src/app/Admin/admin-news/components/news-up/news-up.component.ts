@@ -38,7 +38,7 @@ export class NewsUpComponent implements OnInit {
   ) {
 
     this.newsForm = this.formBuilder.group({
-      title: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.maxLength(33)]],
       content: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]]
     });
