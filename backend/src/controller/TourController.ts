@@ -10,7 +10,6 @@ export class TourController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const tours = await tourRepository.findAll();
-			console.log(typeof(tours))
 			return res.send(tours);
 		} catch (e) {
 			return res
