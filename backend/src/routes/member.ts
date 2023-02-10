@@ -14,6 +14,6 @@ router.post("/", /*validateCategory,*/ [/*checkJwt, checkRole(['admin'])*/], Mem
 
 router.patch("/:id", /*validateCategory,*/ [/*checkJwt, checkRole(['admin'])*/], MemberController.updateMember);
 
-//router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], MemberController.deleteCategory);
+router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], MemberController.deleteMember);
 
 export default router;

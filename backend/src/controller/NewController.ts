@@ -72,8 +72,12 @@ export class NewController {
 	static deleteNew = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-
-		const neww = await newRepository.findById(idInt);
+		let neww;
+		try{
+			neww = await newRepository.findById(idInt);
+		}catch(error){
+			return res.status(409).json(error);
+		}
 		try{
 			await newRepository.deleteNew(neww);
 			return res.status(StatusCodes.OK).json({ message: 'OK' });
