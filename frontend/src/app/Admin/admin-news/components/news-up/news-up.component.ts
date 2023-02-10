@@ -81,8 +81,8 @@ export class NewsUpComponent implements OnInit {
     this.newsForm.patchValue({
       title: this.data?.news?.title,
       content: this.data?.news?.content,
-      imageUrl: this.data?.news?.imageUrl
-    })
+    });
+    this.archivo = this.data?.news?.imageUrl
   }
 
   // npm i alife-file-to-base64 --save
