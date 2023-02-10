@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
 
 import { Tours } from 'src/app/shared/models/tours/tours';
+import { News } from 'src/app/shared/models/news/news';
+import { NewsService } from 'src/app/shared/services/news/news.service';
 
 
 @Component({
@@ -28,11 +30,11 @@ export class ListToursComponent implements OnInit {
   getAllTours(){
     this.tourService.getAllTours().subscribe(data => {
       this.tours = data;
+      console.log(data)
     }, error => {
       console.log(error)
     })
   }
-
 
 
 }
