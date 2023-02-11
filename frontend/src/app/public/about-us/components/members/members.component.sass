@@ -3,94 +3,218 @@
 
 section
   @extend .font-general
-  background: none
-  padding-left: 10%
-  padding-right: 10%
+  // padding-left: 10%
+  // padding-right: 10%
   color: $white
-  min-height: 100vh
+  // min-height: 100vh
+  height: auto
+  display: flex
+  flex-direction: column
+  justify-content: space-around
+  align-items: center
+  gap: 5em
 
-.title
-   padding-top: 10%
-   padding-bottom: 5%
-   text-align: center
-
-
-.cards
-     display: flex
-     flex-direction: row
-     align-items: center
-     justify-content: space-around
-     background: none
-
-     @include screen (1020px)
-        display: flex
-        flex-direction: column
-        align-items: center
-        justify-content: space-around
-        gap: 40px
+  .title
+    h1
+      font-size: 50px
+      text-align: center
+      letter-spacing: 3px
+      @include screen(390px)
+        font-size: 40px
 
 
-.card
-    position: relative
-    width: 300px
-    height: 350px
+  .cards
+    display: flex
+    flex-direction: row
+    align-items: center
+    justify-content: space-around
     background: none
-    @include screen(390px)
-     width:250px
-     heigth:300px
-    @include screen (290px)
-     width:200px
+    gap: 5em
 
-    .face
-      position: absolute
-      width: 100%
-      height: 100%
-      border-radius: 10px
-      border-radius: 10px
-      transition: .5s
-      backface-visibility: hidden
-      transform-style: preserve-3d
-    .front
-      box-shadow: 0 5px 10px #000
+    @include screen(1220px)
+      gap: 35px
 
-      img
+    @include screen (1020px)
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: space-around
+      gap: 5em
+
+
+    .card
+      position: relative
+      width: 500px
+      height: 700px
+      background: none
+
+      @include screen(1760px)
+        width: 450px
+        height: 650px
+
+      @include screen(1680px)
+        width: 400px
+        height: 600px
+
+      @include screen(1440px)
+        width: 350px
+        height: 550px
+
+      @include screen(1220px)
+        width: 300px
+        height: 500px
+
+      @include screen (1020px)
+        width: 500px
+        height: 700px
+
+      @include screen (720px)
+        width: 400px
+        height: 600px
+
+      @include screen (480px)
+        width: 300px
+        height: 450px
+
+      @include screen(390px)
+        width: 300px
+        heigth: 350px
+
+      @include screen(320px)
+        width: 250px
+
+      @include screen (290px)
+        width:200px
+
+      .face
         position: absolute
         width: 100%
         height: 100%
-        object-fit: cover
+        border-radius: 10px
+        transition: .5s
+        backface-visibility: hidden
+        transform-style: preserve-3d
 
-      h3
-        position: absolute
-        bottom: 0
-        width: 100%
-        height: 45px
-        line-height: 45px
-        color: #fff
-        background: rgba(0,0,0,.4)
+      .front
+        box-shadow: 0 5px 10px #ffffff
+
+        img
+          position: absolute
+          width: 100%
+          height: 100%
+          object-fit: cover
+          border-radius: 10px
+
+        .title
+          display: flex
+          justify-content: space-around
+          align-items: center
+          position: absolute
+          bottom: 10px
+          width: 100%
+          height: 90px
+          background: rgba(0,0,0,.4)
+
+          h3
+            font-size: 45px
+            line-height: 45px
+            letter-spacing: 3px
+            color: #fff
+            text-align: center
+            margin: 0
+
+            @include screen(1760px)
+              font-size: 40px
+
+            @include screen(1220px)
+              font-size: 30px
+
+            @include screen (1020px)
+              font-size: 40px
+
+            @include screen (480px)
+              font-size: 30px
+
+      .back
+        transform: perspective(600px) rotateY(180deg)
+        box-shadow: 0 5px 10px #000
+        background: rgb(3, 35, 54)
+        display: flex
+        flex-direction: column
+        justify-content: space-between
         text-align: center
+        padding: 15px
+        color: #f3f3f3
 
-    .back
-      transform: perspective(600px) rotateY(180deg)
-      background: rgb(3, 35, 54)
-      display: grid
-      place-items: center
-      padding: 15px
-      color: #f3f3f3
-      text-align: center
-      box-shadow: 0 5px 10px #000
-      h3
-        font-size: 30px
-        margin-top: 20px
-        letter-spacing: 2px
+        .title-back
+          padding-top: 20px
 
-      p
-        font-size: 15px
-        letter-spacing: 1px
-        @include screen (390px)
-          font-size: 10px
+          @include screen(1220px)
+            padding-top: 10px
 
-    &:hover .front
-      transform: perspective(600px) rotateY(-180deg)
+          h3
+            font-size: 50px
+            letter-spacing: 2px
+            @include screen(1760px)
+              font-size: 40px
 
-    &:hover .back
-      transform: perspective(600px) rotateY(-360deg)
+            @include screen(1220px)
+              font-size: 30px
+
+            @include screen (1020px)
+              font-size: 40px
+
+            @include screen (480px)
+              font-size: 30px
+
+        .text
+          p
+            font-size: 25px
+            line-height: 30px
+            letter-spacing: 1px
+
+            @include screen(1760px)
+              font-size: 15px
+
+            @include screen(1440px)
+              line-height: 25px
+
+            @include screen(1220px)
+              line-height: 20px
+
+            @include screen (1020px)
+              font-size: 25px
+              line-height: 30px
+
+            @include screen (720px)
+              font-size: 18px
+
+            @include screen (480px)
+              font-size: 13px
+              line-height: 20px
+
+            @include screen (390px)
+              font-size: 10px
+
+        .profession
+          h5
+            font-size: 40px
+            letter-spacing: 4px
+
+            @include screen(1760px)
+              font-size: 30px
+
+            @include screen (1020px)
+              font-size: 40px
+
+            @include screen (720px)
+              font-size: 30px
+
+            @include screen (480px)
+              font-size: 25px
+
+      &:hover .front
+        transform: perspective(600px) rotateY(-180deg)
+
+      &:hover .back
+        transform: perspective(600px) rotateY(-360deg)
