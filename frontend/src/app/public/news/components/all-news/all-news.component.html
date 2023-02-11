@@ -10,8 +10,7 @@
               <h4><strong>{{new.name}}</strong></h4>
               <p class="text-card-new date">{{new.date}}</p>
               <p class="text-card-new">{{new.description}}</p>
-              <button routerLink="/news/{{ new.id }}">LEER MÁS</button>
-          </div>
+              <button routerLink="/news/{{ new.id }}">LEER MÁS</button>        </div>
       </div>
 
     <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="" class="pagination" (responsive)=[true]></pagination-controls>
