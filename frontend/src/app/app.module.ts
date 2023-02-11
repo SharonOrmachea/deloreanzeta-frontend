@@ -18,8 +18,6 @@ import { PrivateComponent } from './private/private.component';
 
 import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
