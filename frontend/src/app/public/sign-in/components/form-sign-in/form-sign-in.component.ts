@@ -31,10 +31,10 @@ export class FormSignInComponent implements OnInit {
 
   ngOnInit(): void { }
 
- 
 
- 
 
-  Submit() { }
+
+
+  Submit() {}
 
 }
