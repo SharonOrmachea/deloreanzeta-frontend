@@ -24,6 +24,12 @@ export class MembersUpComponent implements OnInit {
 
   public archivo:any = '';
 
+  nombre:any = undefined;
+
+  profesion:any = undefined;
+
+  descripcion:any = undefined;
+
   constructor(
     private aboutUsService:AboutUsService,
     private formBuilder:FormBuilder,
@@ -36,14 +42,14 @@ export class MembersUpComponent implements OnInit {
       name: ['', [Validators.required]],
       profession: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      imageUrl: [this.archivo, [Validators.required]]
+      imageUrl: ['', [Validators.required]]
     });
   }
 
   ngOnInit(): void {
     if(this.data?.members.hasOwnProperty('id')){
       this.actionToDo = Action.EDIT;
-      this.data.title = 'Editar Acerca de Nosotros';
+      this.data.title = 'Editar Integrante';
       this.aboutUsForm.get('name')?.setValidators(null);
       this.aboutUsForm.get('profession')?.setValidators(null);
       this.aboutUsForm.get('description')?.setValidators(null);
@@ -53,10 +59,16 @@ export class MembersUpComponent implements OnInit {
   }
 
   saveMember(){
-    let valueAboutUs = this.aboutUsForm.value;
+    const valueMembers = {
+      name: this.aboutUsForm.get('name')?.value,
+      profession: this.aboutUsForm.get('profession')?.value,
+      description: this.aboutUsForm.get('description')?.value,
+      imageUrl:this.archivo,
+
+    };
 
     if(this.actionToDo == Action.NEW){
-      this.aboutUsService.newMember(valueAboutUs).subscribe((res) => {
+      this.aboutUsService.newMember(valueMembers).subscribe((res) => {
         this.toastr.success('Descripción agregada', 'About Us Agregado');
         this.aboutUsForm.reset();
       }, (error) => {
@@ -65,10 +77,10 @@ export class MembersUpComponent implements OnInit {
       );
     } else if(this.actionToDo == Action.EDIT){
       const membersId = this.data?.members?.id;
-      this.aboutUsService.updateMember(membersId, valueAboutUs).subscribe((res) => {
+      this.aboutUsService.updateMember(membersId, valueMembers).subscribe((res) => {
         this.toastr.success('La descripción fue editada con exito', 'About Us Editada');
       }, error => {
-        console.log(error);
+        this.toastr.error(error, 'About Us Failed');
       })
     }
 
@@ -80,8 +92,11 @@ export class MembersUpComponent implements OnInit {
 
   private pathFormData():void {
     this.aboutUsForm.patchValue({
-      content: this.data?.members?.content,
-    })
+      name: this.data?.member?.name,
+      profession: this.data?.member?.profession,
+      description: this.data?.member?.description,
+    });
+    this.archivo = this.data?.member?.imageUrl;
   }
 
   get formControls() {

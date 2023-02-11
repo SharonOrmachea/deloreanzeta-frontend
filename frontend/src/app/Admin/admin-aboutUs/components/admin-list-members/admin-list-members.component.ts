@@ -21,6 +21,7 @@ export class AdminListMembersComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getAllMembers();
   }
 
   getAllMembers(){
@@ -36,7 +37,6 @@ export class AdminListMembersComponent implements OnInit {
       height: 'auto',
       width: '600px',
       data: { title: 'Agregar Integrante', news}
-
     });
   }
 

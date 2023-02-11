@@ -65,10 +65,10 @@ export const NEWS_BY_ID_URL = NEWS_URL + '/';
 // -----------------------ABOUT-US-------------------------------------------------
 
 // Trae todos los Integrantes - GET / Agrega un nuevo Tour - POST
-export const ABOUT_US_URL = BASE_URL + 'about-us';
+export const ABOUT_US_URL = BASE_URL + 'member';
 
 // Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
-export const ABOUT_US_ID_URL = NEWS_URL + '/';
+export const ABOUT_US_ID_URL = ABOUT_US_URL + '/';
 
 // -----------------------GALLERY-------------------------------------------------
 
