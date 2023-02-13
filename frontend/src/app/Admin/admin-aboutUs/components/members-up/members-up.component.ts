@@ -33,9 +33,9 @@ export class MembersUpComponent implements OnInit {
   ) {
 
     this.aboutUsForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      profession: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      name: ['', [Validators.required, Validators.maxLength(15)]],
+      profession: ['', [Validators.required, Validators.maxLength(20)]],
+      description: ['', [Validators.required, Validators.maxLength(790)]],
       imageUrl: ['', [Validators.required]]
     });
   }
