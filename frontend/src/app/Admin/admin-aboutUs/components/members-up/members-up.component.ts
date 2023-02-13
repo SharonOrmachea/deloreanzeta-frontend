@@ -24,12 +24,6 @@ export class MembersUpComponent implements OnInit {
 
   public archivo:any = '';
 
-  nombre:any = undefined;
-
-  profesion:any = undefined;
-
-  descripcion:any = undefined;
-
   constructor(
     private aboutUsService:AboutUsService,
     private formBuilder:FormBuilder,
@@ -63,7 +57,7 @@ export class MembersUpComponent implements OnInit {
       name: this.aboutUsForm.get('name')?.value,
       profession: this.aboutUsForm.get('profession')?.value,
       description: this.aboutUsForm.get('description')?.value,
-      imageUrl:this.archivo,
+      imageUrl: this.archivo,
 
     };
 
@@ -92,11 +86,11 @@ export class MembersUpComponent implements OnInit {
 
   private pathFormData():void {
     this.aboutUsForm.patchValue({
-      name: this.data?.member?.name,
-      profession: this.data?.member?.profession,
-      description: this.data?.member?.description,
+      name: this.data?.members?.name,
+      profession: this.data?.members?.profession,
+      description: this.data?.members?.description,
     });
-    this.archivo = this.data?.member?.imageUrl;
+    this.archivo = this.data?.members?.imageUrl;
   }
 
   get formControls() {

@@ -1,4 +1,4 @@
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
@@ -13,22 +13,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class FormIdentifyComponent implements OnInit {
 
-  identifyEmail:FormGroup;
+  identifyForm:FormGroup;
 
   isValid = false;
 
   constructor(
+    private formBuilder:FormBuilder,
     private router: Router,
     private validatorService:ValidationsService,
     private userService: UserService,
     private toastrService:ToastrService,
     ) {
 
-    this.identifyEmail = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')])
-    })
-
-    this.isValid = this.identifyEmail.get('email')!.errors?.['required'];
+    this.identifyForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
+    });
 
   }
 
@@ -37,14 +36,14 @@ export class FormIdentifyComponent implements OnInit {
 
   sendEmail() {
 
-    if (this.identifyEmail.valid){
-      const userValue = this.identifyEmail.value;
+    if (this.identifyForm.valid){
+      const userValue = this.identifyForm.value;
       this.userService.sendEmail(userValue).subscribe( response => {
         if(response){
           console.log(response);
           this.toastrService.success('Verifique su casilla de correo electronico', 'Email Enviado');
           this.router.navigate(['/login']);
-          this.identifyEmail.reset();
+          this.identifyForm.reset();
         } else{
           console.log(Error);
           this.toastrService.error('Usuario inexistente, compruebe el email ingresado', 'Email Failed');
@@ -56,15 +55,15 @@ export class FormIdentifyComponent implements OnInit {
   }
 
   get formControls() {
-    return this.identifyEmail.controls;
+    return this.identifyForm.controls;
   }
 
   getErrorMessage(field:string): string{
-    return this.validatorService.getErrorMessage(field, this.identifyEmail);
+    return this.validatorService.getErrorMessage(field, this.identifyForm);
   }
 
   isValidField(field:string): boolean{
-    return this.validatorService.isValidField(field, this.identifyEmail);
+    return this.validatorService.isValidField(field, this.identifyForm);
   }
 
 }

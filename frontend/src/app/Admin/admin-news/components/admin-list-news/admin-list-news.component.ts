@@ -46,7 +46,7 @@ export class AdminListNewsComponent implements OnInit {
       this.toastr.success('La fecha fue eliminado con exito', 'Fecha Eliminada');
       this.getAllNews();
     }, error => {
-      console.log(error);
+      this.toastr.success(error, 'Failed Delete');
     })
   }
 

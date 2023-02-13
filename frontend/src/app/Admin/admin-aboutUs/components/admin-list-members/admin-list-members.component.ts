@@ -32,11 +32,11 @@ export class AdminListMembersComponent implements OnInit {
     })
   }
 
-  openModal(news={}):void {
+  openModal(members={}):void {
     this.dialog.open(MembersUpComponent, {
       height: 'auto',
       width: '600px',
-      data: { title: 'Agregar Integrante', news}
+      data: { title: 'Agregar Integrante', members}
     });
   }
 
@@ -45,7 +45,7 @@ export class AdminListMembersComponent implements OnInit {
       this.toastr.success('El Integrante fue eliminado con exito', 'Integrante Eliminado');
       this.getAllMembers();
     }, error => {
-      console.log(error);
+      this.toastr.success(error, 'Failed Delete');
     })
   }
 

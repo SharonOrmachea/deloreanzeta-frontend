@@ -24,10 +24,6 @@ export class NewsUpComponent implements OnInit {
 
   public archivo:any = '';
 
-  titulo:any = undefined;
-
-  contenido:any = undefined;
-
   constructor(
     private newsService: NewsService,
     private formBuilder:FormBuilder,
@@ -52,12 +48,13 @@ export class NewsUpComponent implements OnInit {
       this.newsForm.get('content')?.setValidators(null);
       this.newsForm.get('imageUrl')?.setValidators(null);
       this.pathFormData();
+
     }
   }
 
   saveNews(){
     const valueNews = {
-      imageUrl:this.archivo,
+      imageUrl: this.archivo,
       title: this.newsForm.get('title')?.value,
       content: this.newsForm.get('content')?.value
     };
