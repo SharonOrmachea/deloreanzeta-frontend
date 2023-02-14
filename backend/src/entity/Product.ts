@@ -5,10 +5,12 @@ import {
 	Column,
 	ManyToOne,
 	OneToMany,
+	Double,
 } from 'typeorm';
 import { MinLength, IsNotEmpty, IsOptional } from 'class-validator';
 import { Category } from './Category';
 import { Image } from './Image';
+import { Blob } from 'buffer';
 
 @Entity()
 @Unique(['name'])
@@ -21,10 +23,15 @@ export class Product {
 	@IsNotEmpty()
 	name: string;
 
+	@Column({type: "double"})
+	@MinLength(3)
+	@IsNotEmpty()
+	price: Double;
+	
 	@Column()
 	@MinLength(3)
 	@IsNotEmpty()
-	price: string;
+	discount: Number;
 
 	@Column()
 	@MinLength(10)
@@ -37,7 +44,7 @@ export class Product {
 	information: string;
 
 	@OneToMany(() => Image, (image) => image.product)
-	images: Image[];
+	images: Blob[];
 
 	@ManyToOne(() => Category, (category) => category.products)
 	category: Category;

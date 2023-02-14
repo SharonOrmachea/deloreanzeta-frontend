@@ -31,6 +31,7 @@
     flex-wrap: wrap
     gap: 40px
     // color: $gray
+    min-width: 80%
     @include screen (720px)
       gap: 20px
     @include screen (480px)
@@ -39,7 +40,7 @@
       @extend .flex-row-center
       width: 80%
       // Está rígido, en pixeles, tomando como muestra la cantidad de caracteres de nuestra data
-      height: 280px
+      height: 300px
       // Está en auto para que sea "flexible", de acorde a los caracteres introducidos. Recomiendo usar esta propiedad para que se ajuste, siempre y cuando todas las noticias tengan la misma cantidad de caracteres...
       // height: auto
       border: 1px solid $white
@@ -71,35 +72,46 @@
         width: 75%
       @include screen (230px)
         height: auto
+
       .image-new
+        border-right-color: #f8f9fa
         width: 40%
         height: 100%
-        border-radius: 15px 0 0 15px
-        // border-block-end: inherit
-        object-fit: cover
-        border-right-color: #f8f9fa
         border-right-style: solid
         border-right-width: inherit
-        @include screen (1024px)
-          width: 170px
-        @include screen (720px)
-          width: 270px !important
-          height: 198px
+        object-fit: cover
+        position: relative
+        img
+          position: absolute
+          width: 100%
+          height: 100%
           border-radius: 15px 0 0 15px
-          object-fit: cover
-        @include screen (480px)
-          width: 100% !important
-          height: 48%
-          border-radius: 15px 15px 0 0
-        @include screen (290px)
-          height: 38%
-        @include screen (230px)
-          max-height: 180px
+          border-block-end: inherit
+          @include screen (1024px)
+            width: 170px
+          @include screen (720px)
+            width: 270px !important
+            height: 198px
+            border-radius: 15px 0 0 15px
+            object-fit: cover
+          @include screen (480px)
+            width: 100% !important
+            height: 48%
+            border-radius: 15px 15px 0 0
+          @include screen (290px)
+            height: 38%
+          @include screen (230px)
+            max-height: 180px
       .body-card-new
         @extend .flex-column-center
         gap: 8px 0
         align-items: flex-start
-        margin: 0 50px
+        margin: auto
+        width: 60%
+        height: 100%
+        padding: 10px 10px 10px 30px
+        display: flex
+        justify-content: space-between
         @include screen (1000px)
           margin: 0 10px
         @include screen (720px)
@@ -118,97 +130,104 @@
           gap: 6px
         @include screen (230px)
           gap: 4px
-        h4,
-        .text-card-new,
-        button
-          padding: 0 13px
-          @include screen (720px)
-            padding: 0
-            max-width: 350px
-            margin-bottom: 2px
-        h4
-          margin-top: 1vh
-          font-size: 30px
-          text-align: left
-          @include screen (720px)
-            font-size: 20px
-          @include screen (480px)
-            font-size: 19px
-            text-align: center
-          @include screen (290px)
-            font-size: 16px
-          @include screen (230px)
+
+        .title
+          height: 80%
+          display: flex
+          flex-direction: column
+          justify-content: space-around
+          h4,
+          .text-card-new
+            padding: 0 13px
+            @include screen (720px)
+              padding: 0
+              max-width: 350px
+              margin-bottom: 2px
+          h4
+            margin-top: 1vh
+            font-size: 30px
+            text-align: left
+            @include screen (720px)
+              font-size: 20px
+            @include screen (480px)
+              font-size: 19px
+              text-align: center
+            @include screen (290px)
+              font-size: 16px
+            @include screen (230px)
+              font-size: 14px
+          .text-card-new
+            font-size: 18px
+            text-align: left
+            @include screen (720px)
+              font-size: 15px
+            @include screen (480px)
+              font-size: 14px
+              text-align: center
+            @include screen (290px)
+              font-size: 13px
+            @include screen (230px)
+              font-size: 11px
+              margin-bottom: 3px
+          .date
             font-size: 14px
-        .text-card-new
-          font-size: 18px
-          text-align: left
-          @include screen (720px)
-            font-size: 15px
-          @include screen (480px)
-            font-size: 14px
-            text-align: center
-          @include screen (290px)
-            font-size: 13px
-          @include screen (230px)
-            font-size: 11px
-            margin-bottom: 3px
-        .date
-          font-size: 14px
-          margin: 0
-          font-style: italic
-          text-align: left
-          @include screen (720px)
-            font-size: 10px
-          @include screen (480px)
-            font-size: 9px
-          @include screen (230px)
-            font-size: 8px
-        button
-          @extend .short-button
-          margin-bottom: 16px
-          font-weight: bold
-          background-color: $aqua-marine
-          color: $white
-          border: $white
-          margin-left: 10px
-          @include screen (720px)
-            font-size: 14px
-            margin-bottom: 5px
-            width: 110px
-            height: 30px
-            margin-left: 32%
-          @include screen (480px)
-            margin-left: 0
-            width: 80%
-            height: 35px
-            border-radius: 32px
-            font-size: 14px
+            margin: 0
+            font-style: italic
+            text-align: left
+            @include screen (720px)
+              font-size: 10px
+            @include screen (480px)
+              font-size: 9px
+            @include screen (230px)
+              font-size: 8px
+        .button-readMore
+          height: 20%
+          button
+            @extend .short-button
+            // margin-bottom: 16px
+            font-weight: bold
+            background-color: $aqua-marine
+            color: $white
+            border: $white
+            margin-left: 10px
+            @include screen (720px)
+              font-size: 14px
+              margin-bottom: 5px
+              width: 110px
+              height: 30px
+              margin-left: 32%
+            @include screen (480px)
+              margin-left: 0
+              width: 80%
+              height: 35px
+              border-radius: 32px
+              font-size: 14px
+              background-color: $white
+              color: $aqua-marine
+              animation: anim 1.5s infinite alternate
+              @keyframes anim
+                from
+                    filter: drop-shadow(0px 5px 20px $aqua-marine)
+
+                to
+                    filter: drop-shadow(0px 0px 5px $aqua-marine)
+            @include screen (290px)
+              font-size: 12px
+              width: 85%
+              height: 32px
+            @include screen (230px)
+              font-size: 11px
+              height: 30px
+          button:hover
             background-color: $white
             color: $aqua-marine
             animation: anim 1.5s infinite alternate
             @keyframes anim
-              from
-                  filter: drop-shadow(0px 5px 20px $aqua-marine)
+                from
+                    filter: drop-shadow(0px 5px 20px $aqua-marine)
 
-              to
-                  filter: drop-shadow(0px 0px 5px $aqua-marine)
-          @include screen (290px)
-            font-size: 12px
-            width: 85%
-            height: 32px
-          @include screen (230px)
-            font-size: 11px
-            height: 30px
-        button:hover
-          background-color: $white
-          color: $aqua-marine
-          animation: anim 1.5s infinite alternate
-          @keyframes anim
-              from
-                  filter: drop-shadow(0px 5px 20px $aqua-marine)
-
-              to
-                  filter: drop-shadow(0px 0px 5px $aqua-marine)
+                to
+                    filter: drop-shadow(0px 0px 5px $aqua-marine)
 
     .card-new:hover
       box-shadow: $white 0px 5px 15px

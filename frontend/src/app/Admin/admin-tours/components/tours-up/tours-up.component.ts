@@ -37,8 +37,8 @@ export class ToursUpComponent implements OnInit {
 
     this.tourForm = this.formBuilder.group({
       date: ['', [Validators.required]],
-      place: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
-      city: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      place: ['', [Validators.required]],
+      city: ['', [Validators.required]],
     });
 
   }
@@ -66,10 +66,9 @@ export class ToursUpComponent implements OnInit {
   }
 
   saveTour(){
-    this.formatDateToString();
-    let valueTour = this.tourForm.value;
-
     if(this.actionToDo == Action.NEW){
+      this.formatDateToString();
+      let valueTour = this.tourForm.value;
       this.toursService.newTour(valueTour).subscribe((res) => {
         this.toastr.success('Nueva fecha agregada a Tours', 'Fecha Agregada');
         this.tourForm.reset();
@@ -78,6 +77,7 @@ export class ToursUpComponent implements OnInit {
       }
       );
     } else if(this.actionToDo == Action.EDIT){
+      let valueTour = this.tourForm.value;
       const tourId = this.data?.tour?.id;
       this.toursService.updateTour(tourId, valueTour).subscribe((res) => {
         this.toastr.success('La fecha fue editado con exito', 'Fecha Editada');

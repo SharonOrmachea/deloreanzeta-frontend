@@ -2,7 +2,7 @@
     <div class="div-title">
         <!-- <h5>DISEÑO A</h5> -->
         <h2 class="title"><strong>{{new.title}}</strong></h2>
-        <small class="date">{{new.date}}</small>
+        <small class="date">{{new.date | date: 'dd/MM/yyyy'}}</small>
     </div>
 
     <div class="div-content">
@@ -17,9 +17,6 @@
     </div>
 
     <article class="body-description">
-        <p class="description">{{new.description}}</p>
-        <p class="description">{{new.content}}</p>
-        <p class="description">{{new.content}}</p>
         <p class="description">{{new.content}}</p>
     </article>
 </main>

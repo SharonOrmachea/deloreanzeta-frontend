@@ -8,6 +8,7 @@ import { NewsService } from 'src/app/shared/services/news/news.service';
   templateUrl: './all-news.component.html',
   styleUrls: ['./all-news.component.sass']
 })
+
 export class AllNewsComponent implements OnInit {
 
   news:News[] = [];
@@ -26,7 +27,7 @@ export class AllNewsComponent implements OnInit {
     this.newsService.getAllNews().subscribe(data => {
       this.news = data;
     }, error => {
-      console.log(error)
+      console.log(error);
     })
   }
 

@@ -1,22 +1,20 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
 @Entity()
-export class New {
+export class Member {
 	@PrimaryGeneratedColumn()
 	id: number;
 
 	@Column()
-	title: string;
+	name: string;
+
+	@Column()
+	profession: string;
 
 	@Column()
 	description: string;
 
-	@Column()
-	content: string;
-
 	@Column({ type: 'longtext' })
 	imageUrl: string;
 
-	@Column()
-	date: string;
 }

@@ -24,10 +24,6 @@ export class NewsUpComponent implements OnInit {
 
   public archivo:any = '';
 
-  titulo:any = undefined;
-
-  contenido:any = undefined;
-
   constructor(
     private newsService: NewsService,
     private formBuilder:FormBuilder,
@@ -38,7 +34,7 @@ export class NewsUpComponent implements OnInit {
   ) {
 
     this.newsForm = this.formBuilder.group({
-      title: ['', [Validators.required]],
+      title: ['', [Validators.required, Validators.maxLength(33)]],
       content: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]]
     });
@@ -52,11 +48,16 @@ export class NewsUpComponent implements OnInit {
       this.newsForm.get('content')?.setValidators(null);
       this.newsForm.get('imageUrl')?.setValidators(null);
       this.pathFormData();
+
     }
   }
 
   saveNews(){
-    const valueNews = {image:this.archivo, title: this.newsForm.get('title')?.value, content: this.newsForm.get('content')?.value};
+    const valueNews = {
+      imageUrl: this.archivo,
+      title: this.newsForm.get('title')?.value,
+      content: this.newsForm.get('content')?.value
+    };
 
     if(this.actionToDo == Action.NEW){
       this.newsService.newNews(valueNews).subscribe((res) => {
@@ -71,18 +72,22 @@ export class NewsUpComponent implements OnInit {
       this.newsService.updateNews(newsId, valueNews).subscribe((res) => {
         this.toastr.success('La noticia fue editada con exito', 'Noticia Editada');
       }, error => {
-        console.log(error);
+        this.toastr.error(error, 'News Failed');
       })
     }
 
+  }
+
+  captureFile(event:any){
+    this.archivo = event[0].base64;
   }
 
   private pathFormData():void {
     this.newsForm.patchValue({
       title: this.data?.news?.title,
       content: this.data?.news?.content,
-      imageUrl: this.data?.news?.imageUrl
-    })
+    });
+    this.archivo = this.data?.news?.imageUrl;
   }
 
   // npm i alife-file-to-base64 --save
@@ -91,9 +96,6 @@ export class NewsUpComponent implements OnInit {
 
   // (onFileChanged)="captureFile($event)"
 
-  captureFile(event:any){
-    this.archivo = event[0].base64;
-  }
 
   // captureFile(event:any){
   //   const file = event.target.files[0];

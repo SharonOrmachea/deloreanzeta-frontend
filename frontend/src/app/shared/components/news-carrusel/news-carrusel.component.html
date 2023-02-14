@@ -4,7 +4,7 @@
     title="Noticias"
     titleButton="Ver más"
     resetLinkRoute="/news"
-  ></app-title>
+></app-title>
 
   <div class="contenedorCarrusel">
     <swiper
@@ -12,6 +12,12 @@
     [spaceBetween]="-10"
     [navigation]="true"
     [loop]="true"
+    [loopFillGroupWithBlank]="true"
+    [autoplay]="{
+      delay: 6000,
+      disableOnInteraction: false,
+      reverseDirection: true
+    }"
     [breakpoints]="{
       '300': {
         slidesPerView: 1,
@@ -64,10 +70,10 @@
 
             <div class="contenedor">
               <div class="date container">
-                <p><strong>{{ noticia.date }}</strong></p>
+                <p><strong>{{ noticia.date | date: 'dd/MM/yyyy' }}</strong></p>
               </div>
               <div class="name">
-                <strong>{{ noticia.title }}</strong>
+                <strong>{{ noticia.title | titlecase }}</strong>
               </div>
             </div>
 

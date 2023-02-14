@@ -1,8 +1,8 @@
 export class News{
   id?:string;
-  date?:Date;
+  date?:string;
   title!:string;
   description?:string;
-  content?:string;
+  content!:string;
   imageUrl?:string;
 }

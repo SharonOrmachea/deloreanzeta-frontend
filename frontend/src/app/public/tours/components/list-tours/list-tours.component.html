@@ -8,8 +8,9 @@
   <div class="list" *ngIf="tours.length > 0">
     <ul>
       <li *ngFor="let tour of tours">
-        {{ tour.date | date: "EEEE d" | uppercase }} DE {{ tour.date | date: "MMMM" | uppercase }} DEL {{ tour.date | date: "yyyy" | uppercase }} - {{ tour.place | uppercase }} - {{ tour.city | uppercase}}
+        {{ tour.date | date: "EEEE dd" | uppercase }} DE {{ tour.date | date: "MMMM" | uppercase }} DEL {{ tour.date | date: "yyyy" | uppercase }} - {{ tour.place | uppercase }} - {{ tour.city | uppercase}}
       </li>
     </ul>
   </div>
+
 </section>
