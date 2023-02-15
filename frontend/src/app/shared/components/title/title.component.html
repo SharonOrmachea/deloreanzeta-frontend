@@ -1,11 +1,13 @@
 <section>
-  <div class="title">
-    <h1><strong>{{ title }}</strong></h1>
+  <div class="title-button">
+    <div class="title">
+      <h1><strong>{{ title }}</strong></h1>
+    </div>
 
     <div *ngIf="visible" class="verMas" >
-      <a [routerLink]="resetLinkRoute">
+      <button [routerLink]="resetLinkRoute">
         <strong>{{ titleButton }} <i class="bi bi-arrow-right"></i></strong>
-      </a>
+      </button>
     </div>
 
   </div>
