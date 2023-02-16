@@ -9,6 +9,9 @@ const ProductRepository = conn.getRepository(Product).extend({
 			take: limit,
 		});
 	},
+	async findAll(): Promise<Product[]> {
+		return await this.findAll();
+	},
 	async findByName(name: string): Promise<Product> {
 		return await this.findOneBy({ name });
 	},

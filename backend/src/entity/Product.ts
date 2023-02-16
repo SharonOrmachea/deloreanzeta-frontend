@@ -43,7 +43,8 @@ export class Product {
 	@IsOptional()
 	information: string;
 
-	@OneToMany(() => Image, (image) => image.product)
+	//@OneToMany(() => Image, (image) => image.product)
+	@Column('simple-array')//({ type: 'longtext' })
 	images: Blob[];
 
 	@ManyToOne(() => Category, (category) => category.products)

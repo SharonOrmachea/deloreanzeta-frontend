@@ -31,7 +31,7 @@ export class NewController {
 		const neww = new New();
 		neww.title = title;
 		neww.content = content;
-		neww.description = content.substring(0, 50) + '...';
+		neww.description = content.substring(0, 150) + '...';
 		neww.imageUrl = imageUrl;
         const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
         neww.date = date.substring(0, 19).concat('.000-00:00');
@@ -53,7 +53,7 @@ export class NewController {
 			neww = await newRepository.findById(idInt);
 			neww.title = title;
 			neww.content = content;
-			neww.description = content.substring(0, 50) + '...';
+			neww.description = content.substring(0, 150) + '...';
 			neww.imageUrl = imageUrl;
 			const date = moment().format('YYYY-MM-DDTHH:mm:ss.SSSZ');
 	        neww.date = date.substring(0, 19).concat('.000-00:00');

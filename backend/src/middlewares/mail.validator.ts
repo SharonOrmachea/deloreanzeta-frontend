@@ -63,7 +63,7 @@ export const validateMail = [
 					value[i] != 8 &&
 					value[i] != 9
 				) {
-					throw new Error('El precio debe componerse unicamente de numeros');
+					throw new Error('El campo telefono debe componerse unicamente de numeros');
 				}
 			}
 			return true;
