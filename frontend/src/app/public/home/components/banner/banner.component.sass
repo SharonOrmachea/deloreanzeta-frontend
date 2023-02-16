@@ -10,34 +10,78 @@ section
   width: 100%
   height: 100vh
 
-  // @include screen (480px)
-  //  max-height: 350px
+  @include screen (1440px)
+    justify-content: flex-start
+    height: 100vh
+    gap: 1em
 
-  // @include screen (320px)
-  //  max-height: 370px
+  @include screen (1220px)
+    height: 600px
 
-  // @include screen (290px)
-  //  max-height: 400px
+  @include screen (1064px)
+    height: 500px
+
+  @include screen (720px)
+    height: 400px
+    gap: 0
+
+  @include screen (560px)
+    height: 300px
+
+  @include screen (480px)
+    background: none
+    height: 250px
+    gap: 2em
 
   .nav-bar
     width: 100%
     height: 30%
 
+    @include screen (1440px)
+      height: 25%
+
   .delorean
     height: 70%
+
+    @include screen (1440px)
+      height: 30%
+
+    @include screen (720px)
+      height: 60%
+
+    @include screen (390px)
+      height: 15%
+
+    // @include screen (320px)
+    //   height: 15%
+
+    @include screen (290px)
+      height: 40%
 
     img
       height: 364px
       width: 1001px
 
       @include screen(1440px)
-        height: 100px
-        width: 400px
+        height: 250px
+        width: 550px
 
-      @include screen(390px)
-        height: 100px
+      @include screen(1220px)
+        height: 200px
+        width: 450px
+
+      @include screen(720px)
+        height: 150px
         width: 350px
 
-      @include screen(320px)
-        height: 100px
-        width: 200px
+      @include screen (390px)
+        height: 130px
+        width: 280px
+
+      // @include screen (320px)
+      //   height: 130px
+      //   width: 280px
+
+      // @include screen(290px)
+      //   height: 130px
+      //   width: 280px
