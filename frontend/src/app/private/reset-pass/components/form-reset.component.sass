@@ -1,65 +1,116 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 .formulario
   @extend .font-general
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
+
   a
     color: $black
 
 .box1
   @extend .flex-column-center
   background-color: $white
-  width: auto
+  max-width: 570px
   height: auto
   border-radius: 16px
   padding: 40px
   gap: 30px
-  //------------------------------
+
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+    padding: 20px
+
+  @include screen(390px)
+    width: 270px
+
   .titulo
     @extend .flex-column-around-center
     color: $black
+    gap: 10px
+
+    @include screen(290px)
+      gap: 10px
+
+    h2
+      font-size: 30px
+
+      @include screen(560px)
+        font-size: 30px
+
+      @include screen(390px)
+        font-size: 25px
+
     img
       @extend .logoDLZ-Autito
-  //------------------------------
+
+      @include screen(390px)
+        width: 170px
+
+      @include screen(290px)
+        width: 150px
+
   .form
     @extend .flex-column-around-center
-    gap: 30px
+    gap: 20px
+
+    @include screen(720px)
+      width: 470px
+
+    @include screen(560px)
+      width: 370px
+      gap: 15px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 270px
+      gap: 40px
 
     .inputs
       @extend .flex-column-center
       gap: 30px
 
-      label
-        display: flex
-        align-items: flex-end
-        vertical-align: bottom
-        color: $gray
-
       .box-pass
         display: flex
         flex-direction: column
-
-        .pass-hide
-          color: $gray
-          display: flex
-          justify-content: space-between
-          i
-            @extend .font-general
-            cursor: pointer
-
-      input
         width: 487px
-        height: 41px
-        padding: 1px 5px
-        border-radius: 12px
-        border-width: 1px
-        border-color: $gray
-    //------------------------------
+        font-size: 18px
+        padding: 0
+
+        @include screen(720px)
+          width: 370px
+
+        @include screen(560px)
+          width: 290px
+          padding: 0
+
+        @include screen(390px)
+          width: 230px
+
+        @include screen(290px)
+          width: 230px
+
+        input
+          padding: 0
+
+        i
+          cursor: pointer
+
     .validacion
-      display: grid
-      grid-template-columns: repeat(1, 1fr)
+      display: flex
+      flex-direction: column
+      width: 100%
+      gap: 20px
+
+      @include screen(720px)
+        gap: 15px
 
       ul
         font-size: 15px
@@ -68,26 +119,62 @@
         align-items: center
         color: $gray
 
+        @include screen(720px)
+          grid-template-columns: repeat(2, 220px)
+          padding: auto
+          margin: auto
+
+        @include screen(560px)
+          grid-template-columns: repeat(1, 260px)
+          font-size: 18px
+
+        @include screen(390px)
+          grid-template-columns: repeat(1, 200px)
+          font-size: 15px
+
       .terminos
         display: grid
+        width: 100%
         grid-template-columns: repeat(2, 40px)
+
         input
           width: 20px
           margin-left: 10px
 
-        input[type="checkbox"]:checked
-          accent-color: $black
-
         label
           width: 450px
-    //------------------------------
+          @include screen(720px)
+            width: 400px
+
+          @include screen(560px)
+            width: 330px
+            font-size: 15px
+
+          @include screen(390px)
+            width: 220px
+            font-size: 14px
+
     .reset-pass
       @extend .flex-column-around-center
       gap: 20px
-      input
+
+      button
         @extend .general-button
         @extend .large-button
+        display: flex
+        justify-content: space-around
+        align-items: center
         background-color: $pink
+
+        @include screen(720px)
+          width: 370px
+
+        @include screen(560px)
+          width: 290px
+
+        @include screen(390px)
+          width: 230px
+          font-size: 16px
 
 
 .box2
@@ -98,7 +185,20 @@
   display: flex
   align-items: center
   justify-content: center
-  //------------------------------
+
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
+
+
   .login
     display: flex
     flex-direction: row
@@ -106,20 +206,11 @@
     gap: 10px
     margin-top: 15px
 
-@media (max-width:480px)
+    @include screen(390px)
+      font-size: 15px
+      gap: 5px
 
-   .box1
-    width: 440px
-    li
-     font-size: 12px
-     font-weight: bold
-     margin-left: 20px
+    @include screen(290px)
+      font-size: 15px
+      gap: 5px
 
-    input
-     max-width: 390px
-    .terminos
-     font-size: 11px
-     font-weight: bold
-     margin-left: 10px
-   .box2
-    width: 440px

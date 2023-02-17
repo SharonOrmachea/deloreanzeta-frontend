@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
+import { PublicRoutingModule } from '../public/public-routing.module';
+import { PrivateRoutingModule } from '../private/private-routing.module';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { NavBarLoginComponent } from './components/nav-bar-login/nav-bar-login.component';
 import { ProductsCarruselComponent } from '../shared/components/products-carrusel/products-carrusel.component';
 import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.component';
+import { TitleComponent } from './components/title/title.component';
+import { LoadingComponent } from './components/loading/loading.component';
+
 
 
 @NgModule({
@@ -17,25 +21,27 @@ import { NewsCarruselComponent } from './components/news-carrusel/news-carrusel.
     NavBarComponent,
     FooterComponent,
     NotFoundComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
-    NewsCarruselComponent
+    NewsCarruselComponent,
+    TitleComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,
-    HttpClientModule,
     RouterModule,
-    SwiperModule
+    SwiperModule,
+    PublicRoutingModule,
+    PrivateRoutingModule,
+    MatMenuModule
   ],
   exports: [
-    HttpClientModule,
     RouterModule,
     NavBarComponent,
     NotFoundComponent,
     FooterComponent,
-    NavBarLoginComponent,
     ProductsCarruselComponent,
-    NewsCarruselComponent
+    NewsCarruselComponent,
+    TitleComponent,
   ],
   providers: []
 })

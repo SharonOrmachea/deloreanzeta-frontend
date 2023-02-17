@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
+              "src/app/shared/lib-styles/colors-AngMat.scss",
               "src/styles.sass",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/swiper/swiper-bundle.min.css"
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
@@ -49,13 +52,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "4mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "150kb",
+                  "maximumError": "150kb"
                 }
               ],
               "fileReplacements": [

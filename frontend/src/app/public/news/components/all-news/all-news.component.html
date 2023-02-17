@@ -1,0 +1,43 @@
+<div class="main">
+  <div class="admin-list">
+    <app-admin-list-news></app-admin-list-news>
+  </div>
+  <div class="div-title">
+    <h2 class="title"><strong>Noticias</strong></h2>
+  </div>
+
+  <div class="section-notices" >
+    <div
+      class="card-new"
+      *ngFor="let new of news | paginate : { itemsPerPage: 4, currentPage: p }"
+    >
+      <div class="image-new">
+        <img [src]="new.imageUrl">
+      </div>
+      <div class="body-card-new">
+        <div class="content">
+          <div class="title-date">
+            <h4>
+              <strong>{{ new.title | titlecase}}</strong>
+            </h4>
+            <p class="text-card-new date">{{ new.date | date: 'dd/MM/yyyy' }}</p>
+          </div>
+          <div class="description">
+            <p class="text-card-new">{{ new.description | titlecase}}</p>
+          </div>
+        </div>
+        <div class="button-readMore">
+          <button routerLink="/news/{{ new.id }}"><strong>LEER MÁS</strong></button>
+        </div>
+      </div>
+    </div>
+
+    <pagination-controls
+      (pageChange)="p = $event"
+      previousLabel=""
+      nextLabel=""
+      class="pagination"
+      (responsive)="([true])"
+    ></pagination-controls>
+  </div>
+</div>

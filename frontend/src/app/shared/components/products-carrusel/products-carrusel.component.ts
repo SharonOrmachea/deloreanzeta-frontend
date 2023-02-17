@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/shared/models/store/products/product';
 import { ProductService } from 'src/app/shared/services/store/productos/product.service';
 
@@ -18,8 +18,11 @@ export class ProductsCarruselComponent implements OnInit {
 
   products:Product[] = [];
 
-  constructor(private productoService:ProductService, private router: Router) {
-    this.products = this.productoService.getAllProducts();
+  constructor(private productService:ProductService) {
+    
+    let productsObservable:Observable<Product[]>;
+
+    productsObservable = this.productService.getAllProducts();
   }
 
 
@@ -27,8 +30,5 @@ export class ProductsCarruselComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  paginaTienda(){
-    this.router.navigate(['/store'])
-  }
 
 }

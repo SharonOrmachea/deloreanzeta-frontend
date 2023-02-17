@@ -1,4 +1,16 @@
 @import 'extends-class'
+@import 'mixins-responsive'
+
+.contenedor-titulo
+  @extend .flex-column-around
+  width: 100%
+  height: auto
+  color: $white
+
+  .titulo
+    display: flex
+    justify-content: space-around
+    width: 30%
 
 section
   @extend .font-general
@@ -7,68 +19,52 @@ section
   height: auto
   color: $white
   gap: 3em
+  margin: 3em 0 0 0
 
-  .contenedor-titulo
+  .contenedor-categoria
     @extend .flex-column-around
     width: 100%
-    gap: 2em
 
-    .titulo
-      display: flex
-      justify-content: space-around
-      width: 30%
-
-    .categorias
+    .category
       display: flex
       flex-direction: row
-      justify-content: space-around
-      align-items: center
+      justify-content: flex-start
+      flex-wrap: wrap
+      width: 100%
+      gap: 2rem
+      padding: 0 5em
 
-      .name-categoria
-        display: flex
-        justify-content: space-around
-        align-items: center
-        width: 15%
+      a
+        font-size: 17px
+        padding: 0.4rem 0.9rem
+        border-radius: 10rem
+        font-weight: 600
+        border: 2px solid $white
+        background-color: #02f7ff98
+        color: $white
+        text-decoration: none
 
-        p
-          font-size: 25px
-          margin: 0
-
-      .category
-        display: flex
-        flex-direction: row
-        justify-content: space-around
-        flex-wrap: wrap
-        width: 80%
-        gap: 0.5rem
-
-        a
-          font-size: 17px
-          padding: 0.4rem 0.9rem
-          border-radius: 10rem
-          font-weight: 600
-          border: 2px solid $white
-          background-color: #02f7ff98
-          color: $white
-          text-decoration: none
-
-          .tag:active
-            box-shadow: 0 0 20px #02f6ff, 0 0 5px #02f6ff, 0 0 1px #02f6ff
-            background-color: none
+        .tag:active
+          box-shadow: 0 0 20px #02f6ff, 0 0 5px #02f6ff, 0 0 1px #02f6ff
+          background-color: none
 
   .contenedor-productos
 
     ul
-      @extend .flex-row-around
+      display: flex
+      flex-direction: row
+      justify-content: space-around
+
       flex-wrap: wrap
       list-style: none
       margin: 0 16px
       padding: 0 32px
-      gap: 5em
+      gap: 4em 0
 
       li
         background-color: $white
         border-radius: 12px
+        margin-left: 1em
 
       a
         color: $white
@@ -117,3 +113,14 @@ section
         .price
           color: $violet
           font-size: 1.4em
+
+    .div-pagination
+      display: flex
+      align-items: center
+      justify-content: center
+      .pagination
+        font-weight: bold
+        font-size: 22px
+        margin-top: 6vh
+        @include screen (500px)
+          letter-spacing: 10px

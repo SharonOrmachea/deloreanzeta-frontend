@@ -1,0 +1,19 @@
+<section>
+  <app-title
+    title="Carrito de Compras"
+    [visible]="!cart"
+    resetLinkRoute="/store"
+    titleButton="Volver a la tienda"
+    width="15%"
+  ></app-title>
+  <app-not-found
+    [visible]="!cart || !cart.items.length"
+    notFoundMessage="¡Tu carrito está vacío!"
+    resetLinkText="Volver a la tienda"
+    resetLinkRoute="/store"
+  ></app-not-found>
+  <app-cart-products
+    *ngIf="cart && cart.items.length"
+  ></app-cart-products>
+</section>
+

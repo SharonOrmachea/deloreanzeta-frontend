@@ -1,5 +1,10 @@
 <body>
-  <app-nav-bar></app-nav-bar>
+  <div class="header">
+    <app-nav-bar
+      [visibleNav]="true"
+    ></app-nav-bar>
+  </div>
+  <app-categories></app-categories>
   <div class="router-outlet">
     <router-outlet></router-outlet>
   </div>

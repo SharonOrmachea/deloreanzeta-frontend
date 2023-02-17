@@ -6,44 +6,53 @@
       <h2><strong>Cambiar Contraseña</strong></h2>
     </div>
 
-    <form class="form" action="" method="" name="reset-password">
+    <form [formGroup]="resetForm" (ngSubmit)="continueToCode()" class="form" name="reset-password">
 
       <div class="inputs">
 
         <div class="box-pass">
-          <div class="pass-hide">
-            <label for="">Contraseña</label>
-            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
-          </div>
-          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”>
+          <mat-form-field class="example-full-width"color="accent">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0”>
+            <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </i>
+            <mat-error *ngIf="isValidField('password')">
+              <strong>{{ getErrorMessage('password') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
         <div class="box-pass">
-          <div class="pass-hide">
-            <label for="">Repetir contraseña</label>
-            <i [className]="hide2 ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide2 = !hide2">{{hide2 ? ' Show' : ' Hide'}}</i>
-          </div>
-          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”>
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Repetir Contraseña</mat-label>
+            <input matInput type="password" [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" tabindex=”0”>
+            <i mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </i>
+            <mat-error *ngIf="isValidField('confirmPassword')">
+              <strong>{{ getErrorMessage('confirmPassword') }}</strong>
+            </mat-error>
+            <mat-error *ngIf="resetForm.get('confirmPassword')?.hasError('matchOther')">
+              <strong>Las contraseñas no coinciden</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
       </div>
 
       <div class="validacion">
         <ul>
-          <li type="disc">Usa al menos 1 símbolo</li>
+          <li type="disc">Usa al menos 1 mayúscula</li>
+          <li type="disc">Usa al menos 1 minúscula</li>
           <li type="disc">Usa al menos 1 número</li>
           <li type="disc">Usa 8 o más caracteres</li>
-          <li type="disc">Usa mayúsculas y minúsculas</li>
         </ul>
-        <div class="terminos">
-          <input type="checkbox" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad">
-          <label for="politica-privacidad"><strong>Al crear una cuenta aceptas los Términos de Uso y la Política de Privacidad.</strong></label>
-        </div>
-
       </div>
 
+
       <div class="reset-pass">
-        <input type="submit" (click)="continueToCode()" tabindex=”0” value="Restablecer la Contraseña">
+        <button  type="submit" class="btn btn-lg" tabindex=”0”>Restablecer la Contraseña</button>
       </div>
 
     </form>

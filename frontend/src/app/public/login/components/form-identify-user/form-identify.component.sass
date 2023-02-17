@@ -1,58 +1,124 @@
 @import 'extends-class'
+@import 'mixins-responsive'
 
 .formulario
   @extend .font-general
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
-  //------------------------------
+
   a
     color: $black
 
 .box1
   @extend .flex-column-center
   background-color: $white
-  width: auto
+  width: 570px
   height: auto
   border-radius: 16px
   padding: 40px
   gap: 30px
-  //------------------------------
+
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+    padding: 20px
+
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
+
   .titulo
     @extend .flex-column-around-center
     color: $black
+    gap: 15px
+
+    @include screen(290px)
+      gap: 10px
+
+    h2
+      font-size: 30px
+
+      @include screen(560px)
+        font-size: 25px
+
+      @include screen(290px)
+        font-size: 25px
+
     img
       @extend .logoDLZ-Autito
-  //------------------------------
+
+      @include screen(390px)
+        width: 170px
+
+      @include screen(290px)
+        width: 150px
+
   .form
     @extend .flex-column-center
     gap: 60px
+
+    @include screen(720px)
+      width: 470px
+      gap: 40px
+
+    @include screen(560px)
+      width: 370px
+      gap: 30px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 270px
+      gap: 40px
 
     .inputs
       @extend .flex-column-center
       gap: 50px
 
-      label
+      .box-mail
         display: flex
-        align-items: flex-end
-        vertical-align: bottom
-        color: $gray
-
-      input
+        flex-direction: column
         width: 487px
-        height: 41px
-        padding: 1px 5px
-        border-radius: 12px
-        border-width: 1px
-        border-color: $gray
-  //------------------------------
-  .continue
+        font-size: 18px
 
-    input
+        @include screen(720px)
+          width: 370px
+
+        @include screen(560px)
+          width: 290px
+
+        @include screen(390px)
+          width: 230px
+
+        @include screen(290px)
+          width: 230px
+
+  .continue
+    button
       @extend .general-button
       @extend .large-button
+      display: flex
+      justify-content: space-around
+      align-items: center
       background-color: $pink
 
+      @include screen(720px)
+        width: 370px
+
+      @include screen(560px)
+        width: 290px
+
+      @include screen(390px)
+        width: 230px
+
+      @include screen(290px)
+        width: 230px
 
 .box2
   background-color: $white
@@ -62,7 +128,19 @@
   display: flex
   align-items: center
   justify-content: center
-  //------------------------------
+
+  @include screen(720px)
+    width: 470px
+
+  @include screen(560px)
+    width: 370px
+
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
+
   .sign-in
     display: flex
     flex-direction: row
@@ -70,13 +148,11 @@
     gap: 10px
     margin-top: 15px
 
-@media (max-width:480px)
-   .box1
-    width: 400px
+    @include screen(390px)
+      font-size: 15px
+      gap: 5px
 
-   .box-mail
-     input
-      max-width: 350px
+    @include screen(290px)
+      font-size: 15px
+      gap: 5px
 
-   .box2
-      width: 400px

@@ -1,0 +1,236 @@
+@import 'extends-class'
+@import 'mixins-responsive'
+
+.main
+  @extend .font-general
+  background: none
+  color: $white
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
+  gap: 4em
+
+  .admin-list
+    width: 100%
+
+  .div-title
+    h2
+      font-size: 60px
+
+      @include screen(390px)
+        font-size: 50px
+
+
+  .section-notices
+    @extend .flex-column-center
+    flex-wrap: wrap
+    width: 100%
+    gap: 40px
+
+    .card-new
+      @extend .flex-row-center
+      width: 70%
+      // Está rígido, en pixeles, tomando como muestra la cantidad de caracteres de nuestra data
+      height: 300px
+      // Está en auto para que sea "flexible", de acorde a los caracteres introducidos. Recomiendo usar esta propiedad para que se ajuste, siempre y cuando todas las noticias tengan la misma cantidad de caracteres...
+      // height: auto
+      border: 1px solid $white
+      // background-color: $white
+      border-radius: 15px
+      background-color: #ffffff3a
+
+      @include screen(1064px)
+        width: 90%
+
+      @include screen(560px)
+        flex-direction: column
+        height: 600px
+
+      @include screen(480px)
+        height: 550px
+
+      @include screen(390px)
+        height: 450px
+
+      .image-new
+        border-right-color: #f8f9fa
+        width: 40%
+        height: 100%
+        border-right-style: solid
+        border-right-width: inherit
+        object-fit: cover
+        position: relative
+
+        @include screen(720px)
+          width: 50%
+
+        @include screen(560px)
+          width: 100%
+          height: 90%
+          border-right-style: none
+
+        @include screen(390px)
+          height: 80%
+
+        img
+          position: absolute
+          width: 100%
+          height: 100%
+          border-radius: 15px 0 0 15px
+          border-block-end: inherit
+
+          @include screen(560px)
+            border-top-left-radius: 15px
+            border-top-right-radius: 15px
+            border-bottom-left-radius: 0
+
+      .body-card-new
+        @extend .flex-column-center
+        gap: 8px 0
+        align-items: flex-start
+        margin: auto
+        width: 60%
+        height: 100%
+        padding: 10px 10px 10px 30px
+        display: flex
+        justify-content: space-between
+
+        @include screen(720px)
+          margin: 0
+          width: 50%
+          padding: 10px 10px 0
+          height: 100%
+
+        @include screen(560px)
+          width: 100%
+          padding: 0
+          height: 80%
+
+        .content
+          width: 100%
+          height: 80%
+          display: flex
+          flex-direction: column
+          justify-content: space-around
+
+          @include screen(720px)
+            height: 80%
+
+          @include screen(560px)
+            width: 100%
+
+          .title-date
+            display: flex
+            flex-direction: column
+            height: 45%
+            padding: 15px 0 0
+            gap: 1em
+
+            @include screen(720px)
+              height: 35%
+              gap: 1em
+
+            @include screen(560px)
+              height: 30%
+              gap: 0.5em
+              padding: 5px 15px
+
+            @include screen(480px)
+              height: 40%
+              padding: 0 10px
+
+            @include screen(390px)
+              padding: 0 5px
+
+            h4
+              margin: 0
+              font-size: 35px
+
+              @include screen(560px)
+                font-size: 30px
+
+              @include screen(480px)
+                font-size: 25px
+
+              @include screen(390px)
+                font-size: 20px
+
+            p
+              margin: 0
+              font-size: 25px
+
+          .description
+            display: flex
+            flex-wrap: wrap
+            height: 60%
+
+            @include screen(720px)
+              height: 60%
+
+            @include screen(560px)
+              width: 100%
+              height: 50%
+              padding: 0 15px
+
+            @include screen(480px)
+              padding: 0 10px
+
+            @include screen(390px)
+              padding: 0 5px
+
+            p
+              width: 100%
+              margin: 0
+              font-size: 20px
+
+        .button-readMore
+          height: 20%
+
+          @include screen(480px)
+            display: flex
+            justify-content: space-around
+            align-items: center
+            width: 100%
+            height: 30%
+
+          button
+            @extend .short-button
+            background-color: $aqua-marine
+            color: $white
+            border: $white
+            margin-left: 10px
+
+            @include screen(480px)
+              margin: 0
+
+            @keyframes anim
+              from
+                filter: drop-shadow(0px 5px 20px $aqua-marine)
+
+              to
+                filter: drop-shadow(0px 0px 5px $aqua-marine)
+
+          button:hover
+            background-color: $white
+            color: $aqua-marine
+            animation: anim 1.5s infinite alternate
+            @keyframes anim
+              from
+                filter: drop-shadow(0px 5px 20px $aqua-marine)
+
+              to
+                filter: drop-shadow(0px 0px 5px $aqua-marine)
+
+    .card-new:hover
+      box-shadow: $white 0px 5px 15px
+      filter: saturate(1.2)
+
+  .pagination
+    font-weight: bold
+    font-size: 22px
+    margin-top: 2vh
+
+
+
+

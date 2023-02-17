@@ -1,0 +1,41 @@
+<main>
+    <div class="div-title">
+        <!-- <h5>DISEÑO A</h5> -->
+        <h2 class="title"><strong>{{new.title}}</strong></h2>
+        <small class="date">{{new.date | date: 'dd/MM/yyyy'}}</small>
+    </div>
+
+    <div class="div-content">
+        <img src={{new.imageUrl}} alt={{new.title}} class="image-notice">
+        <aside class="container-iframe">
+            <iframe src="https://www.youtube.com/embed/N0INGR9iiek" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div>
+                <p>¿Querés ver todas las fotos y videos? ¡Ve hacia nuestra galería!</p>
+                <button routerLink="/gallery">Ir a Galería</button>
+            </div>
+        </aside>
+    </div>
+
+    <article class="body-description">
+        <p class="description">{{new.content}}</p>
+    </article>
+</main>
+<!-- <br><br><br><br>
+<br><br><br><br>
+<div class="diseno-b">
+    <div class="div-title2">
+        <h5>DISEÑO B</h5>
+        <h2 class="title2"><strong>{{new.name}}</strong></h2>
+    </div>
+
+    <small class="date2">{{new.date}}</small>
+
+    <img src={{new.imageUrl}} alt={{new.name}} class="image-notice2">
+
+    <article class="body-description2">
+        <p class="description2">{{new.description}}</p>
+        <p class="description2">{{new.content}}</p>
+        <p class="description2">{{new.content}}</p>
+        <p class="description2">{{new.content}}</p>
+    </article>
+</div> -->

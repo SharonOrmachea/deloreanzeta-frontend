@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
+// import { Observable } from 'rxjs';
 
-import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
+// import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 import { Product } from 'src/app/shared/models/store/products/product';
 
 import { ProductService } from 'src/app/shared/services/store/productos/product.service';
@@ -15,20 +16,44 @@ import { ProductService } from 'src/app/shared/services/store/productos/product.
 
 export class ProductsComponent implements OnInit {
 
-
   products:Product[] = [];
-  categories?:ProductCategories[];
 
-  constructor(private productService:ProductService, activatedRoute:ActivatedRoute) {
-    this.products = this.productService.getAllProducts();
-    this.categories = this.productService.getAllProductCategories();
-    activatedRoute.params.subscribe((params) => {
-      if(params['category'])
-      this.products = productService.getProductsByCategories(params['category']);
-    })
+  p:any;
+
+  constructor(
+    private productService:ProductService,
+    ) {
+
+    this.p =1;
+
+    // let productsObservable:Observable<Product[]>;
+
+    // productsObservable = this.productService.getAllProducts();
+
+    // productService.getAllProductCategories().subscribe(serverProductCategories => {
+    //   this.categories = serverProductCategories;
+    // });
+
+    // activatedRoute.params.subscribe((params) => {
+    //   if(params['category'])
+    //   this.products = this.productService.getProductsByCategories(params['category']);
+    // })
   }
 
   ngOnInit(): void {
+    this.getAllProducts();
+
+    // this.productService.getAllProductCategories().subscribe(serverProductCategories => {
+    //   this.categories = serverProductCategories;
+    // });
+  }
+
+  getAllProducts(){
+    this.productService.getAllProducts().subscribe(data => {
+      this.products = data;
+    }, error => {
+      console.log(error)
+    })
   }
 
 }

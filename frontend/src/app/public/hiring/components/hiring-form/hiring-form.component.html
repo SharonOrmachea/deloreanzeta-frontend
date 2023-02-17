@@ -1,0 +1,77 @@
+<section class="formulario">
+    <div class="box1">
+      <div class="titulo">
+        <img src="../../../../assets/DLZ-Autito2.png" alt="">
+        <h2><strong>Contrataciones</strong></h2>
+      </div>
+
+      <div class="div-form">
+        <form [formGroup]="hiringForm" (ngSubmit)="sendHiring()" id="Formulario" class="form">
+
+          <div class="inputs">
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Nombre</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="name">
+                <mat-error *ngIf="isValidField('name')">
+                  <strong>{{ getErrorMessage('name') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Apellido</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="lastname" tabindex=”0”>
+                <mat-error *ngIf="isValidField('lastname')">
+                  <strong>{{ getErrorMessage('lastname') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label>Teléfono</mat-label>
+                <input type="tel" formControlName="telephone" matInput placeholder="555-555-1234" tabindex=”0”>
+                <mat-error *ngIf="isValidField('telephone')">
+                  <strong>{{ getErrorMessage('telephone') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Email</mat-label>
+                <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ex. delorean@gmail.com" tabindex=”0”>
+                <mat-error *ngIf="isValidField('email')">
+                  <strong>{{ getErrorMessage('email') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Asunto</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="business">
+                <mat-error *ngIf="isValidField('business')">
+                  <strong>{{ getErrorMessage('business') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput formControlName="message" cols="30" rows="10" placeholder="Ex. fecha, lugar..."></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="submit">
+            <button [disabled]="hiringForm.invalid" type="submit" id="submit" name="submit" tabindex=”0” class="btn btn-lg">Enviar</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,43 @@
+@import 'extends-class'
+@import 'mixins-responsive'
+
+section
+  @extend .font-general
+  width: 100%
+  height: auto
+  color: $white
+  display: flex
+  justify-content: space-around
+  align-items: center
+
+  .card
+    max-width: 80%
+    height: auto
+    border: 1px solid $white
+    border-radius: 15px
+    background-color: #ffffff3a
+    padding: 10px
+
+    .title
+      padding: 20px 0
+      h1
+        font-size: 50px
+        text-align: center
+        margin: 0
+
+        @include screen (480px)
+          font-size: 40px
+
+        @include screen (390px)
+          font-size: 30px
+          
+    .text
+      p
+        font-size: 20px
+        text-align: justify
+        padding: 20px
+        line-height: 30px
+        letter-spacing: 1px
+
+        @include screen (480px)
+          text-align: center

@@ -1,0 +1,29 @@
+<!-- <section>
+  <app-title title="Tienda"></app-title>
+
+  <div class="contenedor-categoria">
+
+    <div class="category" *ngIf="categories && categories.length">
+      <a routerLink="/store">Todos</a>
+      <a
+
+        *ngFor="let tag of categories"
+        routerLink="/store/category/{{ tag.name }}"
+        class="tag"
+      >
+        <strong>{{ tag.name }}</strong>
+      </a>
+    </div>
+
+  </div>
+
+  <app-not-found
+    [visible]="!products || !products.length"
+    notFoundMessage="No hay productos cargados en la tienda"
+    resetLinkText="Volver al Inicio"
+    resetLinkRoute="/home"
+  ></app-not-found>
+
+  <app-products *ngIf="products && products.length"></app-products>
+
+</section> -->

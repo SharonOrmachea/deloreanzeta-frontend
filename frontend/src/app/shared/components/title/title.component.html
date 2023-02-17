@@ -1,0 +1,15 @@
+<section>
+  <div class="title-button">
+    <div class="title">
+      <h1><strong>{{ title }}</strong></h1>
+    </div>
+
+    <div *ngIf="visible" class="verMas" >
+      <button [routerLink]="resetLinkRoute">
+        <strong>{{ titleButton }} <i class="bi bi-arrow-right"></i></strong>
+      </button>
+    </div>
+
+  </div>
+</section>
+
