@@ -6,13 +6,7 @@
   @extend .flex-column-around-center
   heigth: auto
   gap: 20px
-  @include screen (480px)
-    max-width: 100%
-  @include screen (390px)
-    max-width: 100%
-  @include screen (320px)
-    max-width: 100%
-  //------------------------------
+
   a
     color: $black
 
@@ -24,122 +18,107 @@
   border-radius: 16px
   padding: 40px
   gap: 30px
-  @include screen (560px)
-     max-width:80%
 
-  @include screen (480px)
-      max-width:70%
+  @include screen(720px)
+    width: 470px
 
-  @include screen (320px)
-   max-width: 80%
+  @include screen(560px)
+    width: 370px
+    padding: 20px
 
-  //------------------------------
+  @include screen(390px)
+    width: 270px
+
+  @include screen(290px)
+    width: 270px
+
   .titulo
     @extend .flex-column-around-center
     color: $black
+    gap: 15px
+
+    @include screen(290px)
+      gap: 10px
+
+    h2
+      font-size: 30px
+
+      @include screen(560px)
+        font-size: 25px
+
+      @include screen(290px)
+        font-size: 25px
+
     img
       @extend .logoDLZ-Autito
-  //------------------------------
+
+      @include screen(390px)
+        width: 170px
+
+      @include screen(290px)
+        width: 150px
+
   .form
     @extend .flex-column-center
     gap: 60px
-    @include screen (480px)
-     max-width:80%
-    @include screen (290px)
-     max-width: 70%
+
+    @include screen(720px)
+      width: 470px
+      gap: 40px
+
+    @include screen(560px)
+      width: 370px
+      gap: 30px
+
+    @include screen(390px)
+      width: 270px
+
+    @include screen(290px)
+      width: 270px
+      gap: 40px
 
     .inputs
       @extend .flex-column-center
       gap: 50px
-      @include screen (480px)
-         max-width:200%
-      @include screen (390px)
-         max-width:200%
-      @include screen (320px)
-         max-width:200%
-      @include screen (290px)
-         max-width:200%
 
-    .box-mail
-
-       @include screen (390px)
-          max-width: 90%
-       @include screen (320px)
-          max-width: 80%
-       @include screen (290px)
-          max-width: 70%
-          margin-right: 50%
-
-
-    label
+      .box-mail
         display: flex
-        align-items: flex-end
-        vertical-align: bottom
-        color: $gray
+        flex-direction: column
+        width: 487px
+        font-size: 18px
 
-        @include screen (560px)
-          margin-left: 40px
-        @include screen (480px)
-         font-size: 12px
-         margin-left: 20%
-        @include screen (290px)
-         font-size: 12px
+        @include screen(720px)
+          width: 370px
 
+        @include screen(560px)
+          width: 290px
 
-    input
-          width: 467px
-          height: 41px
-          padding: 1px 5px
-          border-radius: 12px
-          border-width: 1px
-          border-color: $gray
+        @include screen(390px)
+          width: 230px
 
+        @include screen(290px)
+          width: 230px
 
-          @include screen (480px)
-            max-width:60%
-            margin-left: 20%
-
-          @include screen (320px)
-            max-width:90%
-
-          @include screen (320px)
-            max-width:90%
-
-          @include screen (290px)
-            max-width: 135%
-
-
-
-  //------------------------------
   .continue
-    @include screen (480px)
-     max-width: 200%
-    @include screen (390px)
-     max-width: 200%
-    @include screen (320px)
-     max-width: 200%
-    @include screen (290px)
-     max-width: 200%
-
-    input
+    button
       @extend .general-button
       @extend .large-button
+      display: flex
+      justify-content: space-around
+      align-items: center
       background-color: $pink
-      @include screen (480px)
-       max-width: 50%
-       margin-left: 25%
-      @include screen (390px)
-       max-width: 50%
-       margin-left: 25%
-      @include screen (320px)
-       max-width: 50%
-       margin-left: 25%
-      @include screen (290px)
-       max-width: 60%
-       margin-left: 20%
-    strong
-      @include screen (290px)
-      font-size: 12px
+
+      @include screen(720px)
+        width: 370px
+
+      @include screen(560px)
+        width: 290px
+
+      @include screen(390px)
+        width: 230px
+
+      @include screen(290px)
+        width: 230px
 
 .box2
   background-color: $white
@@ -150,23 +129,30 @@
   align-items: center
   justify-content: center
 
-  @include screen (480px)
-    max-width:70%
+  @include screen(720px)
+    width: 470px
 
-  @include screen (320px)
-   max-width: 80%
-  //------------------------------
-.sign-in
+  @include screen(560px)
+    width: 370px
 
-  display: flex
-  flex-direction: row
-  font-size: 18px
-  gap: 10px
-  margin-top: 15px
+  @include screen(390px)
+    width: 270px
 
-  @include screen (480px)
-   font-size: 15px
-  @include screen (390px)
-     font-size: 13px
-  @include screen (320px)
-   font-size: 13px
+  @include screen(290px)
+    width: 270px
+
+  .sign-in
+    display: flex
+    flex-direction: row
+    font-size: 18px
+    gap: 10px
+    margin-top: 15px
+
+    @include screen(390px)
+      font-size: 15px
+      gap: 5px
+
+    @include screen(290px)
+      font-size: 15px
+      gap: 5px
+

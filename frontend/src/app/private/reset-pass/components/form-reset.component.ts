@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl , Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
+import { UserService } from '../../../shared/services/user/user.service';
+import { HttpHeaders } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
+import { CookieStorage } from 'cookie-storage';
 
 @Component({
   selector: 'app-form-reset',
@@ -8,25 +13,79 @@ import { FormGroup, FormControl , Validators } from '@angular/forms';
   styleUrls: ['./form-reset.component.sass']
 })
 export class FormResetComponent implements OnInit {
-reset = FormGroup
-
-Reset = new FormGroup({
-  password: new FormControl ('' , [Validators.required , Validators.pattern('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$') ,
-  Validators.minLength(8)]),
-  repeatpassword: new FormControl ( '' , [Validators.required , Validators.pattern('^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$') ,
-  Validators.minLength(8)]),
-})
-  constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   hide = true;
   hide2 = true;
-submit(){}
+
+  resetForm!: FormGroup;
+
+  cookieStorage = new CookieStorage();
+
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private validatorService:ValidationsService,
+    private userService:UserService,
+    private toastrService:ToastrService,
+    ) {
+
+    this.resetForm = this.formBuilder.group({
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i), this.validatorService.checkPasswords('password')]],
+    },
+    );
+
+
+  }
+
+  ngOnInit(): void {
+
+    const url = window.location.href;
+    const cookieUrl = url.split('/').pop();
+
+    const headers = new HttpHeaders({
+      'Authorization': `${cookieUrl}`
+    });
+
+    this.userService.authorizeHeaders(headers).subscribe( res => {
+      console.log(res);
+    }, (error) =>{
+      console.log(error);
+      this.toastrService.error('Vuelva a enviar el mail de recuperacion de contraseña', 'Token Expirado');
+      this.router.navigate(['/login/identify']);
+    });
+  }
 
   continueToCode(){
-    this.router.navigate(['recover/password'])
+    const tokenCookie = this.cookieStorage.getItem('token');
+    const userPasswords = this.resetForm.value;
+    const headers = new HttpHeaders({
+      'Authorization': `${tokenCookie}`
+    })
+    this.userService.resetPass(userPasswords, headers).subscribe( (res) => {
+      console.log(res);
+      this.toastrService.success('Inicie Sesion con su cuenta', 'Restablecimiento Exitoso');
+      this.router.navigate(['/login']);
+    }, (error) => {
+      console.log(error);
+      this.toastrService.error('No se pudo restablecer la contraseña, vuelva a intentarlo', 'Restore Failed');
+    })
+
   }
+
+  get formControls() {
+    return this.resetForm.controls;
+  }
+
+
+  getErrorMessage(field:string): string{
+    return this.validatorService.getErrorMessage(field, this.resetForm);
+  }
+
+  isValidField(field:string): boolean{
+    return this.validatorService.isValidField(field, this.resetForm);
+  }
+
+
 
 }

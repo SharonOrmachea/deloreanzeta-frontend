@@ -12,18 +12,16 @@
     [spaceBetween]="-10"
     [navigation]="true"
     [loop]="true"
+    [loopFillGroupWithBlank]="true"
+    [autoplay]="{
+      delay: 6000,
+      disableOnInteraction: false,
+      reverseDirection: true
+    }"
     [breakpoints]="{
-      '300': {
+      '200': {
         slidesPerView: 1,
         spaceBetween: 0
-      },
-      '540': {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-      '640': {
-        slidesPerView: 1,
-        spaceBetween: 20
       },
       '768': {
         slidesPerView: 2,
@@ -31,15 +29,15 @@
       },
       '1280': {
         slidesPerView: 3,
-        spaceBetween: 10
+        spaceBetween: 0
       },
       '1680': {
         slidesPerView: 4,
-        spaceBetween: 20
+        spaceBetween: 0
       },
       '1920': {
         slidesPerView: 5,
-        spaceBetween: 20
+        spaceBetween: 0
       },
       '2560': {
         slidesPerView: 6,
@@ -52,29 +50,32 @@
     }"
     class="mySwiper"
     >
-    <ng-template swiperSlide *ngFor="let noticia of news">
-      <div class="contenedor-news">
-        <a routerLink="/news/{{ noticia.id }}">
-          <div class="">
-            <img
-              [src]="noticia.imageUrl"
-              [alt]="noticia.name"
-              class="card-img-top"
-            >
-
-            <div class="contenedor">
-              <div class="date container">
-                <p><strong>{{ noticia.date }}</strong></p>
-              </div>
-              <div class="name">
-                <strong>{{ noticia.name }}</strong>
-              </div>
+    <ng-template swiperSlide>
+      <div
+        class="card-new"
+        *ngFor="let new of news"
+      >
+        <div class="image-new">
+          <img [src]="new.imageUrl">
+        </div>
+        <div class="body-card-new">
+          <div class="content">
+            <div class="title-date">
+              <h4>
+                <strong>{{ new.title | titlecase}}</strong>
+              </h4>
             </div>
-
+            <div class="date">
+              <p class="text-card-new date">{{ new.date | date: 'dd/MM/yyyy' }}</p>
+            </div>
           </div>
-        </a>
+          <div class="button-readMore">
+            <button routerLink="/news/{{ new.id }}"><strong>LEER MÁS</strong></button>
+          </div>
+        </div>
       </div>
     </ng-template>
+
     </swiper>
   </div>
 

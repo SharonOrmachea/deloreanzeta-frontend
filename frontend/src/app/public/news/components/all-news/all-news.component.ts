@@ -8,20 +8,27 @@ import { NewsService } from 'src/app/shared/services/news/news.service';
   templateUrl: './all-news.component.html',
   styleUrls: ['./all-news.component.sass']
 })
+
 export class AllNewsComponent implements OnInit {
 
   news:News[] = [];
 
-  new!:News[];
-
   p:any;
 
-  constructor( private _servicio:NewsService ) {
-    this.news = this._servicio.getAll();
+  constructor( private newsService:NewsService ) {
     this.p = 1;
   }
 
   ngOnInit(): void {
+    this.getAllNews();
+  }
+
+  getAllNews(){
+    this.newsService.getAllNews().subscribe(data => {
+      this.news = data;
+    }, error => {
+      console.log(error);
+    })
   }
 
 }

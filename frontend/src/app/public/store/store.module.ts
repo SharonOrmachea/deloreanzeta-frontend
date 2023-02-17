@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../shared/shared.module';
-import { PublicRoutingModule } from '../public-routing.module';
 import { SwiperModule } from 'swiper/angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -13,6 +12,8 @@ import { ProductsComponent } from './components/all products/products.component'
 import { IdProductComponent } from './components/id-product/id-product.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 
+
+import { AdminStoreModule } from 'src/app/Admin/admin-store/admin-store.module';
 
 
 
@@ -27,8 +28,9 @@ import { CategoriesComponent } from './components/categories/categories.componen
   ],
   imports: [
     CommonModule,
-    PublicRoutingModule,
     SharedModule,
+    AdminStoreModule,
+    SwiperModule,
     SwiperModule,
     NgxPaginationModule,
 

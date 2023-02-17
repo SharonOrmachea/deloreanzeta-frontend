@@ -10,16 +10,23 @@ import { NewsService } from 'src/app/shared/services/news/news.service';
 })
 export class IdNewsComponent implements OnInit {
 
-  new!:News;
+  new!: News;
 
-  constructor(private activatedRoute:ActivatedRoute,
-              private newService:NewsService) {
-    this.activatedRoute.params.subscribe((params) => {
-      if(params['id'])
-      this.new = this.newService.getNewById(params['id'])})
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private newService: NewsService
+  ) {
+
+    activatedRoute.params.subscribe((params) => {
+      if (params['id'])
+        this.newService.getNewsById(params['id']).subscribe(getNewsById => {
+          this.new = getNewsById;
+        }
+        );
+    });
+
   }
-
+  
   ngOnInit(): void {
   }
-
 }

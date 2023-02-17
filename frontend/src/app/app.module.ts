@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
-import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { PublicModule } from './public/public.module';
+import { PrivateModule } from './private/private.module';
+import { AdminModule } from './Admin/admin.module';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
+import { AdminInterceptor } from './shared/interceptors/admin-interceptors';
+import { LoadingInterceptor } from './shared/interceptors/loadingInterceptor';
 
 @NgModule({
   declarations: [
@@ -20,11 +28,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     CommonModule,
     BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule,
+    PublicModule,
+    PrivateModule,
+    AdminModule,
+    FormsModule,
+    MaterialModule,
+    ToastrModule.forRoot({
+      timeOut:10000,
+      positionClass:'toast-bottom-right',
+      newestOnTop:false,
+      maxOpened: 1,
+      progressBar: true,
+      progressAnimation: 'decreasing',
+      preventDuplicates: true,
+    })
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
 
   ],
   bootstrap: [AppComponent]

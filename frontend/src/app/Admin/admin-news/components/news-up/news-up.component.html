@@ -1,0 +1,88 @@
+<h1 mat-dialog-title class="title">{{ data.title }}</h1>
+<hr />
+<mat-dialog-content>
+  <div class="modal-form">
+    <form
+      class="form"
+      [formGroup]="newsForm"
+      (ngSubmit)="saveNews()"
+      class="form"
+      name="login"
+    >
+
+      <div class="inputs">
+        <div class="box-form box-image">
+          <div class="card" *ngIf="archivo !== ''">
+            <div class="face front">
+              <img [src]="archivo">
+            </div>
+          </div>
+          <input
+            alife-file-to-base64
+            type="file"
+            (onFileChanged)="captureFile($event)"
+            formControlName="imageUrl"
+            tabindex="0"
+          >
+          <mat-error
+            *ngIf="
+              newsForm.get('imageUrl')?.hasError('required') &&
+              newsForm.get('imageUrl')?.touched
+            "
+          >
+            <strong
+              >La imagen de la noticia es <strong>obligatoria</strong></strong
+            >
+          </mat-error>
+
+        </div>
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Titulo</mat-label>
+            <input
+              class="mat-input"
+              type="text"
+              matInput
+              formControlName="title"
+              tabindex="0"
+            />
+            <mat-error *ngIf="isValidField('title')">
+              <strong>{{ getErrorMessage("title") }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Contenido de la Noticia</mat-label>
+            <textarea
+              matInput
+              class="mat-input"
+              formControlName="content"
+              tabindex="0"
+            ></textarea>
+          </mat-form-field>
+
+          <!-- <mat-error *ngIf="isValidField('city')">
+              <strong>{{ getErrorMessage("city") }}</strong>
+            </mat-error> -->
+        </div>
+      </div>
+
+      <div class="submit">
+        <button mat-dialog-close class="btn btn-lg btn-secondary">
+          Cancelar
+        </button>
+        <button
+          [disabled]="newsForm.invalid"
+          class="btn btn-lg button-submit"
+          type="submit"
+          tabindex="0"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

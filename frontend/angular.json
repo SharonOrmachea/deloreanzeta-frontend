@@ -29,9 +29,11 @@
             ],
             "styles": [
               "src/custom-theme.scss",
+              "src/app/shared/lib-styles/colors-AngMat.scss",
               "src/styles.sass",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "node_modules/swiper/swiper-bundle.min.css"
+              "node_modules/swiper/swiper-bundle.min.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

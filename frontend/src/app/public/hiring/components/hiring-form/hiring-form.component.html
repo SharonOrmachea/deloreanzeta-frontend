@@ -6,43 +6,72 @@
       </div>
 
       <div class="div-form">
-        <form formGroup="register" id="Formulario" class="form"  >
+        <form [formGroup]="hiringForm" (ngSubmit)="sendHiring()" id="Formulario" class="form">
+
           <div class="inputs">
             <div class="box">
-              <label for="fname">Nombre</label>
-              <input class="input-area" formControllname ="name" type="text" id="name" name="name" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
-            </div>
-  
-            <div class="box">
-              <label for="lname">Apellido</label>
-              <input class="input-area" formControllname ="lastname" type="text" id="lname" name="lname" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
-            </div>
-  
-            <div class="box">
-              <label for="">Teléfono</label>
-              <input class="input-area" formControlTelephone="Telephone" type="text" id="celphone" name="celphone" tabindex=”0” required minlength="10" required pattern="[0-9]{2}[0-9]{4}[0-9]{4}" required>
-            </div>
-  
-            <div class="box">
-              <label for="">Email</label>
-              <input class="input-area" formControlEmail="email" type="email" id="email" name="email" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Nombre</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="name">
+                <mat-error *ngIf="isValidField('name')">
+                  <strong>{{ getErrorMessage('name') }}</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
 
             <div class="box">
-              <label for="">Asunto</label>
-              <input class="input-area" type="textarea" id="business" name="business" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Apellido</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="lastname" tabindex=”0”>
+                <mat-error *ngIf="isValidField('lastname')">
+                  <strong>{{ getErrorMessage('lastname') }}</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
 
             <div class="box">
-              <label for="">Mensaje</label>
-              <textarea name="textarea" id="" cols="30" rows="10" class="textarea"></textarea>
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label>Teléfono</mat-label>
+                <input type="tel" formControlName="telephone" matInput placeholder="555-555-1234" tabindex=”0”>
+                <mat-error *ngIf="isValidField('telephone')">
+                  <strong>{{ getErrorMessage('telephone') }}</strong>
+                </mat-error>
+              </mat-form-field>
             </div>
 
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Email</mat-label>
+                <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ex. delorean@gmail.com" tabindex=”0”>
+                <mat-error *ngIf="isValidField('email')">
+                  <strong>{{ getErrorMessage('email') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label for="">Asunto</mat-label>
+                <input class="mat-input" type="text" matInput formControlName="business">
+                <mat-error *ngIf="isValidField('business')">
+                  <strong>{{ getErrorMessage('business') }}</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <div class="box">
+              <mat-form-field class="example-full-width" color="accent">
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput formControlName="message" cols="30" rows="10" placeholder="Ex. fecha, lugar..."></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="submit">
+            <button [disabled]="hiringForm.invalid" type="submit" id="submit" name="submit" tabindex=”0” class="btn btn-lg">Enviar</button>
           </div>
         </form>
-        <div class="submit">
-          <input type="submit" id="submit" name="submit" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required class="input-submit" [routerLink]='["/hiring"]'>
-        </div>
+
       </div>
     </div>
   </section>

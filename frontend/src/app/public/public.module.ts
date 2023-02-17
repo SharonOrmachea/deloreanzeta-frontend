@@ -10,6 +10,7 @@ import { HiringModule } from './hiring/hiring.module';
 import { NewsModule } from './news/news.module';
 import { ToursModule } from './tours/tours.module';
 import { GalleryModule } from './gallery/gallery.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AboutUsModule } from './about-us/about-us.module';
 
 
@@ -21,6 +22,7 @@ import { AboutUsModule } from './about-us/about-us.module';
     CommonModule,
     PublicRoutingModule,
     PrivateRoutingModule,
+    HttpClientModule,
     HomeModule,
     LoginModule,
     SignInModule,
@@ -29,7 +31,7 @@ import { AboutUsModule } from './about-us/about-us.module';
     NewsModule,
     ToursModule,
     GalleryModule,
-    AboutUsModule
+    AboutUsModule,
   ],
   providers: [
 

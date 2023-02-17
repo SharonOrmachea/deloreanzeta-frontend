@@ -5,7 +5,8 @@ import { Product } from '../../../../shared/models/store/products/product';
 
 import { ProductService } from '../../../../shared/services/store/productos/product.service';
 import { CartService } from '../../../../shared/services/store/cart/cart.service';
-import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
+
+
 
 @Component({
   selector: 'app-id-product',
@@ -19,38 +20,23 @@ export class IdProductComponent implements OnInit {
 
   priceFinally:number = 0;
 
-
   productQuantity:number = 1;
 
-  categories?:ProductCategories[];
+  constructor(
+    activatedRoute:ActivatedRoute,
+    private router:Router,
+    private productService:ProductService,
+    private cartService:CartService) {
 
-  constructor(activatedRoute:ActivatedRoute,
-              private router:Router,
-              private productService:ProductService,
-              private cartService:CartService) {
-
-    this.categories = this.productService.getAllProductCategories();
 
     activatedRoute.params.subscribe((params) => {
       if(params['id'])
-      this.product = productService.getProductById(params['id']);
-
-
+        this.productService.getProductById(params['id']).subscribe(serverProductById => {
+          this.product = serverProductById;
+        }
+      );
     });
-
-    // this.priceFinally = this.product.map(i => {
-    //   i.previousPrice - (i.previousPrice * (i.discount / 100));
-    // })
-    
-
-    // let properties = Object.keys(this.product);
-    // for (let i = 0; i < properties.length; i++) {
-    //   let property = properties[i];
-    //   console.log(`${property}: ${this.product["name"]}`);
-    // }
-    console.log(this.product.price)
-    
-   }
+  }
 
   ngOnInit(): void {
   }

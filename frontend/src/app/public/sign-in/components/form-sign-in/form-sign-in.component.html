@@ -6,62 +6,102 @@
       <h2><strong>Crear una Cuenta</strong></h2>
     </div>
 
-    <form formGroup="register" id="Formulario" (ngSubmit)="Submit" class="form"  >
-     <div class="inputs">
-        <div class="box">
-          <label for="fname">Nombre</label>
-          <input formControllname ="name" type="text" id="name" name="name" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
+    <form class="form" [formGroup]="signInForm" (ngSubmit)="registerNewUser()" class="form"  name="login">
+
+      <div class="inputs">
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Nombre</mat-label>
+            <input class="mat-input" type="text" matInput formControlName="name" tabindex=”0”>
+            <mat-error *ngIf="isValidField('name')">
+              <strong>{{ getErrorMessage('name') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="box">
-          <label for="lname">Apellido</label>
-          <input formControllname ="lastname" type="text" id="lname" name="lname" tabindex=”0” required minLength="3" required pattern="[[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}[ ]{1}[a-zA-ZñÑáéíóúÁÉÍÓÚüÜ]{2,25}]" required>
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Apellido</mat-label>
+            <input class="mat-input" type="text" matInput formControlName="lastname" tabindex=”0”>
+            <mat-error *ngIf="isValidField('lastname')">
+              <strong>{{ getErrorMessage('lastname') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="box">
-          <label for="">Teléfono</label>
-          <input formControlTelephone="Telephone" type="text" id="celphone" name="celphone" tabindex=”0” required minlength="10" required pattern="[0-9]{2}[0-9]{4}[0-9]{4}" required>
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Teléfono</mat-label>
+            <input type="tel" formControlName="telephone" matInput placeholder="Ej. 5545281234" tabindex=”0”>
+            <mat-error *ngIf="isValidField('telephone')">
+              <strong>{{ getErrorMessage('telephone') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="box">
-          <label for="">Email</label>
-          <input formControlEmail="email" type="email" id="email" name="email" tabindex=”0”  required pattern="[[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$]" required>
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Email</mat-label>
+            <input class="mat-input" type="email" matInput formControlName="email" placeholder="Ej. delorean@gmail.com" tabindex=”0”>
+            <mat-error *ngIf="isValidField('email')">
+              <strong>{{ getErrorMessage('email') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="box-pass">
-          <div class="pass-hide">
-            <label for="">Contraseña</label>
-            <i [className]="hide ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide = !hide">{{hide ? ' Show' : ' Hide'}}</i>
-          </div>
-          <input type="password" [type]="hide ? 'password' : 'text'"  id="pass" name="pass" tabindex=”0”   required minlength="(8)" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe contener una mayúscula y al menos un número" required>
+        <div class="box-form">
+          <mat-form-field color="accent">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" [type]="hide ? 'password' : 'text'" formControlName="password" tabindex=”0”>
+            <i mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </i>
+            <mat-error *ngIf="isValidField('password')">
+              <strong>{{ getErrorMessage('password') }}</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="box-pass">
-          <div class="pass-hide">
-            <label for="">Repetir contraseña</label>
-            <i [className]="hide2 ? 'bi bi-eye' : 'bi bi-eye-slash-fill'" matSuffix (click)="hide2 = !hide2">{{hide2 ? ' Show' : ' Hide'}}</i>
-          </div>
-          <input type="password" [type]="hide2 ? 'password' : 'text'" id="pass2" name="pass2" tabindex=”0”  required minlength="(8)" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" title="La contraseña debe contener una mayúscula y al menos un número" required>
+        <div class="box-form">
+          <mat-form-field color="accent">
+            <mat-label>Repetir Contraseña</mat-label>
+            <input matInput type="password" [type]="hide2 ? 'password' : 'text'" formControlName="confirmPassword" tabindex=”0”>
+            <i mat-icon-button matSuffix (click)="hide2 = !hide2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide2">
+              <mat-icon>{{hide2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </i>
+            <mat-error *ngIf="isValidField('confirmPassword')">
+              <strong>{{ getErrorMessage('confirmPassword') }}</strong>
+            </mat-error>
+            <mat-error *ngIf="signInForm.get('confirmPassword')?.hasError('matchOther')">
+              <strong>Las contraseñas no coinciden</strong>
+            </mat-error>
+          </mat-form-field>
         </div>
 
       </div>
 
       <div class="validacion">
         <ul>
-          <li type="disc">Usa al menos 1 símbolo</li>
+          <li type="disc">Usa al menos 1 mayúscula</li>
+          <li type="disc">Usa al menos 1 minúscula</li>
           <li type="disc">Usa al menos 1 número</li>
           <li type="disc">Usa 8 o más caracteres</li>
-          <li type="disc">Usa mayúsculas y minúsculas</li>
         </ul>
         <div class="terminos">
-          <input type="checkbox" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" required>
-          <label for="politica-privacidad"><strong>Al crear una cuenta aceptas los Términos de Uso y la Política de Privacidad.</strong></label>
+          <input type="checkbox" formControlName="termsAndConditions" id="politica-privacidad" name="politica-privacidad" value="politica-privacidad" tabindex=”0”>
+          <label for="politica-privacidad">
+            <strong>Al crear una cuenta aceptas los </strong> <a routerLink='#'>Términos y Condiciones</a><strong> y la </strong><a routerLink='#'>Política de Privacidad</a>.
+          </label>
         </div>
+        <mat-error *ngIf="isValidField('termsAndConditions')">
+          <strong>Debe aceptar los terminos y condiciones para poder registrarse</strong>
+        </mat-error>
 
       </div>
 
       <div class="sign-in">
-        <input type="submit" tabindex=”0” value="Crear Cuenta">
+        <button [disabled]="signInForm.invalid" class="btn btn-lg" type="submit" tabindex=”0”>Crear Cuenta</button>
       </div>
 
     </form>

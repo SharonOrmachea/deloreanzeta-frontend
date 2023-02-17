@@ -1,16 +1,16 @@
 <app-not-found
-  [visible]="!product.id"
+  [visible]="!product"
   notFoundMessage="Producto no disponible"
   resetLinkText="Volver a la tienda"
   resetLinkRoute="/store"
 ></app-not-found>
 
-<main *ngIf="product.id">
+<main *ngIf="product">
   <section class="contenedor">
 
     <div class="product container">
 
-      <div class="imagenes container">
+      <!-- <div class="imagenes container">
 
         <div class="image-preview container" >
           <div class="imageSlide container" *ngFor="let image of product.imageUrl">
@@ -22,7 +22,7 @@
         <div class="imagenGrande">
           <img  [src]="product.imageUrl[0]" [alt]="product.name" id="preview">
         </div>
-      </div>
+      </div> -->
 
 
       <div class="header container">
@@ -31,8 +31,8 @@
             <strong>{{product.name}}</strong>
           </h3>
           <div class="category">
-            <a *ngFor="let category of product.category" routerLink="/store/category/{{category}}">
-              {{category}}
+            <a routerLink="/store/category/{{product.category}}">
+              {{product.category}}
             </a>
           </div>
         </div>
@@ -43,13 +43,17 @@
               <strong>{{ product.price | currency }}</strong>
             </span>
             <span class="before-price">
-              <s>{{ product.previousPrice| currency }}</s>
+              <s>{{ product.discount| currency }}</s>
             </span>
           </div>
 
           <span class="discount">
             <strong class="discount">{{ product.discount }}% de descuento</strong>
           </span>
+        </div>
+
+        <div class="description">
+          {{product.description}}
         </div>
 
         <div class="contenedor-cant-error">
@@ -95,9 +99,9 @@
     </div>
 
     <div class="information container">
-      <h3>Descripción del Producto</h3>
+      <h3>Información del Producto</h3>
       <hr>
-      <span>{{ product.description }}</span>
+      <span>{{ product.information }}</span>
     </div>
 
   </section>

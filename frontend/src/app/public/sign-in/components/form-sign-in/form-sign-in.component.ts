@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { UserService } from '../../../../shared/services/user/user.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 
 
 @Component({
@@ -10,31 +14,64 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class FormSignInComponent implements OnInit {
 
-
   hide = true;
   hide2 = true;
 
+  signInForm!:FormGroup;
 
-  register = new FormGroup({
-    name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('a-z')]),
-    lastname: new FormControl('', [Validators.required, Validators.minLength(3), Validators.pattern('a-z')]),
-    telephone: new FormControl('', [Validators.required, Validators.minLength(10), Validators.pattern('0-9')]),
-    email: new FormControl('', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]),
-    password: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'),
-    Validators.minLength(8)]),
-    repeatpassword: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z][A-Za-z0-9]*[0-9][A-Za-z0-9]*'),
-    Validators.minLength(8)]),
+  returnUrl = '';
 
-  });
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router,
+    private toastrService:ToastrService,
+    private validatorService:ValidationsService
+    ) {
 
-  constructor() { }
+    this.signInForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      lastname: ['', [Validators.required, Validators.minLength(3), Validators.pattern(/^[a-zA-Z\u00C0-\u017F\s]+$/)]],
+      telephone: ['', [Validators.required, Validators.minLength(10),Validators.maxLength(10), Validators.pattern(/^[0-9]+$/)]],
+      email: ['', [Validators.required, Validators.email, Validators.pattern('[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*@[a-zA-Z0-9_]+([.][a-zA-Z0-9_]+)*[.][a-zA-Z]{1,5}')]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i)]],
+      confirmPassword: ['', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\wáéíóúüñ!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+$/i), this.validatorService.checkPasswords('password')]],
+      termsAndConditions: [false, Validators.requiredTrue]
+      },
+    );
 
-  ngOnInit(): void { }
+  }
 
 
+  ngOnInit(): void {}
+
+  registerNewUser(){
+
+    if (this.signInForm.valid){
+      const userValue = this.signInForm.value;
+      this.userService.newUser(userValue).subscribe((res) => {
+        this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
+        this.router.navigate(['/login']);
+        this.signInForm.reset();
+      }, (error) => {
+        this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
+      }
+    );
+    }
+  }
+
+  get formControls() {
+    return this.signInForm.controls;
+  }
+
+  getErrorMessage(field:string): string{
+    return this.validatorService.getErrorMessage(field, this.signInForm);
+  }
+
+  isValidField(field:string): boolean{
+    return this.validatorService.isValidField(field, this.signInForm);
+  }
 
 
-
-  Submit() {}
 
 }

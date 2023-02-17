@@ -1,0 +1,102 @@
+<h1 mat-dialog-title class="title">{{ data.title }}</h1>
+<hr />
+<mat-dialog-content>
+  <div class="modal-form">
+    <form
+      class="form"
+      [formGroup]="aboutUsForm"
+      (ngSubmit)="saveMember()"
+      class="form"
+      name="login"
+    >
+      <div class="inputs">
+        <div class="box-form box-image">
+          <div class="card" *ngIf="this.archivo != ''">
+            <div class="face front">
+              <img [src]="archivo">
+            </div>
+          </div>
+          <input
+            alife-file-to-base64
+            type="file"
+            (onFileChanged)="captureFile($event)"
+            formControlName="imageUrl"
+            tabindex="0"
+          />
+          <mat-error
+            *ngIf="
+              aboutUsForm.get('imageUrl')?.hasError('required') &&
+              aboutUsForm.get('imageUrl')?.touched
+            "
+          >
+            <strong
+              >La imagen para el integrante es
+              <strong>obligatoria</strong></strong
+            >
+          </mat-error>
+        </div>
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Nombre</mat-label>
+            <input
+              class="mat-input"
+              type="text"
+              matInput
+              formControlName="name"
+              tabindex="0"
+            />
+            <mat-error *ngIf="isValidField('name')">
+              <strong>{{ getErrorMessage("name") }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Profesión</mat-label>
+            <input
+              class="mat-input"
+              type="text"
+              matInput
+              formControlName="profession"
+              tabindex="0"
+            />
+            <mat-error *ngIf="isValidField('profession')">
+              <strong>{{ getErrorMessage("profession") }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label>Descripcion del Integrante</mat-label>
+            <textarea
+              matInput
+              class="mat-input"
+              formControlName="description"
+              tabindex="0"
+            ></textarea>
+            <mat-error *ngIf="isValidField('description')">
+              <strong>{{ getErrorMessage("description") }}</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="submit">
+        <button mat-dialog-close class="btn btn-lg btn-secondary">
+          Cancelar
+        </button>
+        <button
+          [disabled]="aboutUsForm.invalid"
+          class="btn btn-lg button-submit"
+          type="submit"
+          tabindex="0"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
