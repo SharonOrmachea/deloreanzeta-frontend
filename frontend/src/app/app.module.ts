@@ -16,7 +16,8 @@ import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
 import { PrivateComponent } from './private/private.component';
 
-import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
+import { AdminInterceptor } from './shared/interceptors/admin-interceptors';
+import { LoadingInterceptor } from './shared/interceptors/loadingInterceptor';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { AdminInterceptor } from './Admin/interceptors/admin-interceptors';
     })
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
 
   ],
   bootstrap: [AppComponent]
