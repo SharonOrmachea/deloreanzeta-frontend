@@ -1,14 +1,14 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
-import { AuthService } from '../../shared/services/auth/auth.service';
+
 
 @Injectable()
 
-export class AdminInterceptor implements HttpInterceptor {
+export class LoadingInterceptor implements HttpInterceptor {
 
   constructor(
-    private authService:AuthService
+
   ){}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any>{
