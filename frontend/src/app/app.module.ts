@@ -10,7 +10,6 @@ import { PublicModule } from './public/public.module';
 import { PrivateModule } from './private/private.module';
 import { AdminModule } from './Admin/admin.module';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from './shared/material.module';
 
 import { AppComponent } from './app.component';
 import { PublicComponent } from './public/public.component';
@@ -36,7 +35,6 @@ import { LoadingInterceptor } from './shared/interceptors/loadingInterceptor';
     PrivateModule,
     AdminModule,
     FormsModule,
-    MaterialModule,
     ToastrModule.forRoot({
       timeOut:10000,
       positionClass:'toast-bottom-right',
@@ -50,7 +48,6 @@ import { LoadingInterceptor } from './shared/interceptors/loadingInterceptor';
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AdminInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
-
   ],
   bootstrap: [AppComponent]
 })

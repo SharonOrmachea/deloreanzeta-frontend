@@ -5,6 +5,7 @@ import { SwiperModule } from 'swiper/angular';
 import { PublicRoutingModule } from '../public/public-routing.module';
 import { PrivateRoutingModule } from '../private/private-routing.module';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -32,7 +33,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     SwiperModule,
     PublicRoutingModule,
     PrivateRoutingModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     RouterModule,
@@ -42,6 +44,9 @@ import { LoadingComponent } from './components/loading/loading.component';
     ProductsCarruselComponent,
     NewsCarruselComponent,
     TitleComponent,
+    LoadingComponent,
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   providers: []
 })
