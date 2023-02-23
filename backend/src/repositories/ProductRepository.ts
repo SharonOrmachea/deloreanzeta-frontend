@@ -9,6 +9,18 @@ const ProductRepository = conn.getRepository(Product).extend({
 			take: limit,
 		});
 	},
+	async findAll(): Promise<Product[]> {
+		const products = await this.createQueryBuilder('product')
+		.leftJoinAndSelect('product.imageUrl', 'image')
+		.leftJoinAndSelect('product.category', 'category')
+		.select(['product', 'image.data', 'category.name'])
+		.getMany();
+		
+		return products.map(product => ({
+			...product,
+			imageUrl: product.imageUrl.map(image => (image.data))
+		  }));
+	},
 	async findByName(name: string): Promise<Product> {
 		return await this.findOneBy({ name });
 	},
