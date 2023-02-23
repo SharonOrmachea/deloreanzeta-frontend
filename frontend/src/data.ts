@@ -268,7 +268,7 @@ export const sample_news: News[] = [
 export const sample_carousel: Carousel[] = [
   {
     id: 1,
-    imageUrl: './assets/store/carrusel/slider1.gif'
+    imageUrl: ['./assets/store/carrusel/slider1.gif']
   },
 ]
 

@@ -1,0 +1,54 @@
+<section>
+  <div class="newTour">
+    <div class="button-new">
+      <button class="btn btn-lg" (click)="openModalProduct()">Agregar Producto</button>
+    </div>
+    <div class="button-new">
+      <button class="btn btn-lg" (click)="openModalCategory()">Agregar Categoria</button>
+    </div>
+    <div class="button-new">
+      <button class="btn btn-lg" (click)="openModalBanner()">Agregar Banner</button>
+    </div>
+  </div>
+  <div class="container mt-5" >
+    <!-- *ngIf="listProducts.length > 0" -->
+    <div class="row">
+      <div class="col-lg-8-offset-lg-2">
+        <div class="card">
+          <div class="card-body text-center">
+            <span class="title"><strong>Listado de Productos</strong></span>
+            <div class="table-responsive">
+              <table class="table table-striped mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let product of listProducts" class="tour-info">
+                    <th scope="row">{{ product.id }}</th>
+                    <td>{{ product.name | titlecase }}</td>
+                    <td>{{ product.category | titlecase }}</td>
+                    <td class="buttons">
+                      <button
+                        (click)="openModalProduct(product)"
+                        class="bi bi-pencil-square text-primary"
+                      ></button>
+                      <button
+                        (click)="deleteProduct(product.id)"
+                        class="bi bi-trash3 text-danger"
+                      ></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
