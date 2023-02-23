@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
+import { Image } from '../entity/Image';
 import { Product } from '../entity/Product';
 import CategoryRepository from '../repositories/CategoryRepository';
+import ImageRepository from '../repositories/ImageRepository'
 import ProductRepository from '../repositories/ProductRepository';
+import { StatusCodes } from 'http-status-codes';
 
 export class ProductController {
 	static getAll = async (req: Request, res: Response) => {
@@ -45,40 +48,52 @@ export class ProductController {
 	};
 
 	static newProduct = async (req: Request, res: Response) => {
-		const { name, price, discount, images, description, information, category } = req.body;
+		const { name, price, discount, imageUrl, description, information, category } = req.body;
 		const categoryRepository = CategoryRepository;
+		const imageRepository = ImageRepository;
 		const productRepository = ProductRepository;
 		let product = new Product();
 		let categoryExist;
+
 		try {
-			console.log(category);
 			categoryExist = await categoryRepository.findByName(category);
-			console.log(categoryExist);
+			
+			product.name = name;
+			product.price = price;
+			product.discount = discount;
+			product.finalPrice = parseFloat((price - ((price*discount)/100)).toFixed(2));
+			product.description = description;
+			product.information = information;
+			product.category = categoryExist;
+			product.imageUrl = imageUrl;
+				
 		} catch (error) {
 			return res.status(409).json(error);
 		}
-
-		product.name = name;
-		product.price = price;
-		product.discount = discount;
-		product.description = description;
-		product.information = information;
-		product.images = images;
-		product.category = categoryExist.id;
-		
 		try {
-			await productRepository.save(product);
-			return res.send('Product created');
+			
+			await productRepository.saveProduct(product);
+			for(let i = 0; i < imageUrl.length; i++){
+				let imagen = new Image();	
+				try {
+					imagen.data = imageUrl[i];
+					imagen.product = product;
+					await imageRepository.saveImage(imagen);
+				}catch(error){
+					return res.status(409).json(error);
+				}
+			}
+			return res.status(StatusCodes.CREATED).send('Product created');
 		}catch(error){
 			return res.status(409).json(error);
 		}
-		
 	};
 	
 	static editProduct = async (req: Request, res: Response) => {
 		const { id } = req.params;
 		const idInt = parseInt(id as string);
-		const { name, price, discount, images, description, information, category } = req.body;
+		const { name, price, discount, imageUrl, description, information, category } = req.body;
+		const imageRepository = ImageRepository;
 		const productRepository = ProductRepository;
 		let product;
 		try {
@@ -86,14 +101,25 @@ export class ProductController {
 			product.name = name;
 			product.price = price;
 			product.discount = discount;
+			product.finalPrice = parseFloat((price - ((price*discount)/100)).toFixed(2));
 			product.description = description;
 			product.information = information;
-			product.images = images;
+			product.imageUrl = imageUrl;
 			product.category = category;
 		} catch(error){
 			return res.status(409).json(error);
 		}
 		try {
+			for(let i = 0; i < imageUrl.length; i++){
+				let imagen = new Image();	
+				try {
+					imagen.data = imageUrl[i];
+					imagen.product = product;
+					await imageRepository.saveImage(imagen);
+				}catch(error){
+					return res.status(409).json(error);
+				}
+			}
 			await productRepository.updateProduct(product);
 			return res.send(product);
 			//return res.status(StatusCodes.OK).json({ message: 'OK', product });

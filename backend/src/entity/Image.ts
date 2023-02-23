@@ -8,6 +8,7 @@ import {
 	ManyToOne,
 	JoinColumn,
 } from 'typeorm';
+import { Blob } from 'buffer';
 import { Product } from './Product';
 
 @Entity()
@@ -15,19 +16,10 @@ export class Image extends BaseEntity {
 	@PrimaryGeneratedColumn()
 	id: number;
 
-	@Column()
-	name: string;
+	@Column({type: 'longtext' })
+	data: Blob;
 
-	@Column()
-	url: string;
-
-	@Column({ type: 'blob' })
-	data: Buffer;
-
-	@Column()
-	productId: number;
-
-	@ManyToOne(() => Product, (product) => product.images)
-	@JoinColumn({ name: 'productId' })
+	@ManyToOne(() => Product, (product) => product.imageUrl)
 	product: Product;
+
 }
