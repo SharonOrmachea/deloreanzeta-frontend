@@ -1,4 +1,5 @@
 import conn from '../dbConnection';
+import { Category } from '../entity/Category';
 import { Product } from '../entity/Product';
 
 const ProductRepository = conn.getRepository(Product).extend({
@@ -9,6 +10,18 @@ const ProductRepository = conn.getRepository(Product).extend({
 			take: limit,
 		});
 	},
+	// async findAll(): Promise<Product[]> {
+	// 	const products = await this.createQueryBuilder('product')
+	// 	.leftJoinAndSelect('product.imageUrl', 'image')
+	// 	.leftJoinAndSelect('product.category', 'category')
+	// 	.select(['product', 'image.data', 'category.name'])
+	// 	.getMany();
+		
+	// 	return products.map(product => ({
+	// 		...product,
+	// 		imageUrl: product.imageUrl.map(image => (image.data))
+	// 	}));
+	// },
 	async findAll(): Promise<Product[]> {
 		const products = await this.createQueryBuilder('product')
 		.leftJoinAndSelect('product.imageUrl', 'image')
@@ -16,10 +29,13 @@ const ProductRepository = conn.getRepository(Product).extend({
 		.select(['product', 'image.data', 'category.name'])
 		.getMany();
 		
-		return products.map(product => ({
+		let mapeo = products.map(product => ({
 			...product,
-			imageUrl: product.imageUrl.map(image => (image.data))
+			imageUrl: product.imageUrl.map(image => (image.data)),
+			category: product.category.name
 		}));
+
+		return mapeo;
 	},
 	async findByName(name: string): Promise<Product> {
 		return await this.findOneBy({ name });
@@ -36,7 +52,8 @@ const ProductRepository = conn.getRepository(Product).extend({
 		.getMany(); 
 		return product.map(product => ({
 			...product,
-			imageUrl: product.imageUrl.map(image => (image.data))
+			imageUrl: product.imageUrl.map(image => (image.data)),
+			category: product.category.name
 		}));
 	},
 	/*async findByCategory(category: string): Promise<Product[]> {

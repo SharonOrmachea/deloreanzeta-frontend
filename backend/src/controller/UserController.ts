@@ -102,7 +102,7 @@ export class UserController {
 			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'User not found' });
 		}
 
-		return res.status(StatusCodes.CREATED).json({ message: 'User deleted' });
+		return res.status(StatusCodes.NO_CONTENT).json({ message: 'User deleted' });
 	};
 
 	static changeRole = async (req: Request, res: Response) => {

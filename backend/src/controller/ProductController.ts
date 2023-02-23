@@ -38,7 +38,6 @@ export class ProductController {
 
 	static getById = async (req: Request, res: Response) => {
 		const productRepository = ProductRepository;
-
 		try {
 			const product = await productRepository.findById(parseInt(req.params.id)); 
 			return res.send(product);
