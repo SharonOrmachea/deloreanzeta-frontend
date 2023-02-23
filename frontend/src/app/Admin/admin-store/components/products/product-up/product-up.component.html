@@ -59,7 +59,7 @@
           <mat-form-field class="example-full-width" color="accent">
             <mat-label for="">Precio</mat-label>
             <span matPrefix>$ &nbsp;</span>
-            <input matInput #price type="number" min="0" tabindex="0">
+            <input matInput #price formControlName="price" type="number" min="0" tabindex="0">
             <mat-error *ngIf="isValidField('price')">
               <strong>{{ getErrorMessage("price") }}</strong>
             </mat-error>
@@ -70,6 +70,7 @@
           <mat-form-field class="example-full-width" color="accent">
             <mat-label for="">Descuento</mat-label>
             <mat-select formControlName="discount" tabindex="0">
+              <mat-option value="0">0%</mat-option>
               <mat-option value="5">5%</mat-option>
               <mat-option value="10">10%</mat-option>
               <mat-option value="15">15%</mat-option>
@@ -87,9 +88,6 @@
               <mat-option value="75">75%</mat-option>
               <mat-option value="80">80%</mat-option>
             </mat-select>
-            <!-- <mat-error *ngIf="isValidField('discount')">
-              <strong>{{ getErrorMessage("discount") }}</strong>
-            </mat-error> -->
           </mat-form-field>
         </div>
 
@@ -149,8 +147,9 @@
         <button mat-dialog-close class="btn btn-lg btn-secondary">
           Cancelar
         </button>
+        <!-- [disabled]="productForm.invalid" -->
         <button
-          [disabled]="productForm.invalid"
+
           class="btn btn-lg button-submit"
           type="submit"
           tabindex="0"

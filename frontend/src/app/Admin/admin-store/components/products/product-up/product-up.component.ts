@@ -39,10 +39,9 @@ export class ProductUpComponent implements OnInit {
     ) {
 
     this.productForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
+      name: ['', ],
       price: ['', [Validators.required]],
       discount: [''],
-      finalPrice: [''],
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
       description: ['', [Validators.required]],
@@ -80,6 +79,8 @@ export class ProductUpComponent implements OnInit {
       description: this.productForm.get('description')?.value,
       information: this.productForm.get('information')?.value,
     };
+
+    console.log(valueProduct);
 
     if(this.actionToDo == Action.NEW){
       this.productService.newProduct(valueProduct).subscribe((res) => {

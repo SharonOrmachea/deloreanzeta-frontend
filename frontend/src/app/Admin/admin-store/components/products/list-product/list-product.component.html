@@ -31,7 +31,7 @@
                   <tr *ngFor="let product of listProducts" class="tour-info">
                     <th scope="row">{{ product.id }}</th>
                     <td>{{ product.name | titlecase }}</td>
-                    <td>{{ product.category | titlecase }}</td>
+                    <td>{{ product.category }}</td>
                     <td class="buttons">
                       <button
                         (click)="openModalProduct(product)"
