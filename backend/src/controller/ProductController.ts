@@ -127,7 +127,7 @@ export class ProductController {
 		}
 	}
 
-	static getProductCategory = async (req: Request, res: Response) => {
+	/*static getProductCategory = async (req: Request, res: Response) => {
 		const productRepository = ProductRepository;
 		
 		try {
@@ -136,6 +136,18 @@ export class ProductController {
 		} catch (e) {
 			return res.status(400).json({ message: 'Not result' });
 		}
+	};
+	*/
+	static getAllProductscategory = async (req: Request, res: Response) => {
+		const { category } = req.params;
+		const productRepository = ProductRepository;
+		try {
+			const products = await productRepository.findByCategory(category); 
+			return res.send(products);
+		} catch (error) {
+			return res.status(500).send({ message: 'Internal server error' });
+		}
+
 	};
 
 }

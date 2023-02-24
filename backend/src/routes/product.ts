@@ -12,4 +12,7 @@ router.patch("/:id", [/*checkJwt, checkRole(['admin'])*/], ProductController.edi
 
 //router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], ProductController.deleteProduct);
 
+router.get("/category/:category", [/*checkJwt, checkRole(['admin'])*/], ProductController.getAllProductscategory);
+
+
 export default router;
