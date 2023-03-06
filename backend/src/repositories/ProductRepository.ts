@@ -68,10 +68,16 @@ const ProductRepository = conn.getRepository(Product).extend({
 	async findByCategory(category: string): Promise<Product[]> {
 		// using query builder to get all products by category with name
 		const products = await this.createQueryBuilder('product')
+			.leftJoinAndSelect('product.imageUrl', 'image')
 			.leftJoinAndSelect('product.category', 'category')
+			.select(['product', 'image.data'])
 			.where('category.name = :category', { category })
 			.getMany();
-		return products;
+
+		return products.map(product => ({
+				...product,
+				imageUrl: product.imageUrl.map(image => (image.data))
+			}));
 	},
 
 
