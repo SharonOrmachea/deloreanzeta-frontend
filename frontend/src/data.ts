@@ -6,7 +6,7 @@ import { Sources } from "./app/shared/models/gallery/gallery";
 
 export const sample_products: Product[] = [
   {
-    id: '1',
+    id: 1,
     name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
     discount: 30,
@@ -21,7 +21,7 @@ export const sample_products: Product[] = [
     information: ''
   },
   {
-    id: '2',
+    id: 2,
     name: 'Soy un producto con un maximo de 45 caracteres',
     price: 1400,
     discount: 30,
@@ -36,7 +36,7 @@ export const sample_products: Product[] = [
     information: ''
   },
   {
-    id: '3',
+    id: 3,
     name: 'Soy un producto',
     price: 1400,
     discount: 30,
@@ -48,111 +48,6 @@ export const sample_products: Product[] = [
       './assets/store/products/delorean(12).png'
     ],
     description: 'Soy la descripcion del producto',
-    information: ''
-  },
-  {
-    id: '4',
-    name: 'Soy un producto',
-    price: 1500,
-    discount: 30,
-    category: 'Tazas',
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: 'Soy la descripcion del producto',
-    information: ''
-  },
-  {
-    id: '5',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Cuadros',
-    imageUrl: [
-      './assets/store/products/delorean(5).png',
-      './assets/store/products/delorean(6).png',
-      './assets/store/products/delorean(7).png',
-      './assets/store/products/delorean(8).png'
-    ],
-    description: '',
-    information: ''
-  },
-  {
-    id: '6',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Remeras',
-    imageUrl: [
-      './assets/store/products/delorean(9).png',
-      './assets/store/products/delorean(10).png',
-      './assets/store/products/delorean(11).png',
-      './assets/store/products/delorean(12).png'
-    ],
-    description: '',
-    information: ''
-  },
-  {
-    id: '7',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Tazas',
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: '',
-    information: ''
-  },
-  {
-    id: '8',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Cuadros',
-    imageUrl: [
-      './assets/store/products/delorean(5).png',
-      './assets/store/products/delorean(6).png',
-      './assets/store/products/delorean(7).png',
-      './assets/store/products/delorean(8).png'
-    ],
-    description: '',
-    information: ''
-  },
-  {
-    id: '9',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Remeras',
-    imageUrl: [
-      './assets/store/products/delorean(9).png',
-      './assets/store/products/delorean(10).png',
-      './assets/store/products/delorean(11).png',
-      './assets/store/products/delorean(12).png'
-    ],
-    description: '',
-    information: ''
-  },
-  {
-    id: '10',
-    name: 'Soy un producto',
-    price: 1400,
-    discount: 30,
-    category: 'Tazas',
-    imageUrl: [
-      './assets/store/products/delorean(1).png',
-      './assets/store/products/delorean(2).png',
-      './assets/store/products/delorean(3).png',
-      './assets/store/products/delorean(4).png'
-    ],
-    description: '',
     information: ''
   }
 ]

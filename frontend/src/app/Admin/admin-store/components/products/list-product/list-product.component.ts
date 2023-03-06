@@ -71,7 +71,7 @@ export class ListProductComponent implements OnInit {
       this.toastr.success('El producto fue eliminado con exito', 'Producto Eliminado');
       this.getAllProducts();
     }, error => {
-      this.toastr.success(error, 'Failed Delete');
+      this.toastr.error(error, 'Failed Delete');
     })
   }
 

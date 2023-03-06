@@ -10,19 +10,19 @@
 
     <div class="product container">
 
-      <!-- <div class="imagenes container">
+      <div class="imagenes container">
 
-        <div class="image-preview container" >
+        <!-- <div class="image-preview container" >
           <div class="imageSlide container" *ngFor="let image of product.imageUrl">
             <img [src]="image"  appIdProduct>
           </div>
 
-        </div>
+        </div> -->
 
         <div class="imagenGrande">
-          <img  [src]="product.imageUrl[0]" [alt]="product.name" id="preview">
+          <img [src]="product.imageUrl[0]" [alt]="product.name" id="preview">
         </div>
-      </div> -->
+      </div>
 
 
       <div class="header container">
@@ -39,11 +39,11 @@
 
         <div class="contenedor-price">
           <div class="price">
-            <span class="current-price">
-              <strong>{{ product.price | currency }}</strong>
-            </span>
+            <!-- <span class="current-price">
+              <strong>{{ product.price  }}</strong>
+            </span> -->
             <span class="before-price">
-              <s>{{ product.finalPrice| currency }}</s>
+              <strong>{{ product.finalPrice | currency: "ARS" }}</strong>
             </span>
           </div>
 

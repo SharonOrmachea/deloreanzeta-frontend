@@ -22,8 +22,8 @@ export class ProductService {
   }
 
   // Traer los productos por ID
-  getProductById(productId:string):Observable<Product>{
-    return this.http.get<Product>(PRODUCT_BY_ID_URL + productId);
+  getProductById(id:number): Observable<Product>{
+    return this.http.get<Product>(`${PRODUCT_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
   }
 
   // Traer productos por categoria
@@ -34,18 +34,18 @@ export class ProductService {
   }
 
   // Agrega un producto
-  newProduct(product:Product):Observable<Product>{
-    return this.http.post<Product>(PRODUCT_URL, product);
+  newProduct(product:Product): Observable<Product | any>{
+    return this.http.post(PRODUCT_URL, product, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
   }
 
   // Edita un producto
-  updateProduct(id: string, product: Product){
-    return this.http.put( PRODUCT_BY_ID_URL + id, product);
+  updateProduct(id:number, product:Product): Observable<any>{
+    return this.http.patch<Product>(`${PRODUCT_BY_ID_URL}/${id}`, product).pipe(catchError(this.handlerUserError));
   }
 
   // Elimina un producto
-  deleteProduct(id:string):Observable<any>{
-    return this.http.delete(PRODUCT_BY_ID_URL + id);
+  deleteProduct(id:number): Observable<{}>{
+    return this.http.delete<Product>(`${PRODUCT_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
   }
 
   handlerUserError(error: any): Observable<never> {

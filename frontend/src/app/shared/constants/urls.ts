@@ -8,7 +8,7 @@ const BASE_URL = 'http://localhost:3000/';
 export const PRODUCT_URL = BASE_URL + 'product';
 
 // Trae, edita y elimina un producto por ID - GET - PATCH - DELETE
-export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
+export const PRODUCT_BY_ID_URL = PRODUCT_URL + '/';
 
 // --CATEGORIA--
 
@@ -16,7 +16,7 @@ export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
 export const CATEGORIES_URL = BASE_URL + 'category';
 
 // Trae, edita y elimina una Categoría por ID - GET - PATCH - DELETE
-export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '';
+export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '/';
 
 // --BANNER--
 
