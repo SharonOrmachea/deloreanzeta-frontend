@@ -8,7 +8,7 @@ export class UserController {
 	static getAll = async (req: Request, res: Response) => {
 		try {
 			const users = await userRepository.findAll();
-			return  res.send(users);
+			return res.send(users);
 		} catch (e) {
             // check if is a typeorm error and thor error 500
             if (e.name === 'QueryFailedError') {
@@ -75,7 +75,7 @@ export class UserController {
 			user.telephone = telephone;
 			userRepository.updateUser(user);
 		} catch (e) {
-			// check if is a typeorm error and thor error 500
+			// check if is a typeorm error and thor error 500aa
 			if (e.name === 'QueryFailedError') {
 				return res
 					.status(StatusCodes.INTERNAL_SERVER_ERROR)
@@ -102,7 +102,7 @@ export class UserController {
 			return res.status(StatusCodes.BAD_REQUEST).json({ message: 'User not found' });
 		}
 
-		return res.status(StatusCodes.CREATED).json({ message: 'User deleted' });
+		return res.status(StatusCodes.NO_CONTENT).json({ message: 'User deleted' });
 	};
 
 	static changeRole = async (req: Request, res: Response) => {

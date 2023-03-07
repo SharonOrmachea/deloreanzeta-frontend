@@ -7,16 +7,22 @@ const BASE_URL = 'http://localhost:3000/';
 // Trae todos los productos - GET
 export const PRODUCT_URL = BASE_URL + 'product';
 
-// Trae un producto por ID - GET
-export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
+// Trae, edita y elimina un producto por ID - GET - PATCH - DELETE
+export const PRODUCT_BY_ID_URL = PRODUCT_URL + '/';
 
 // --CATEGORIA--
 
-// Trae todas las categorias - GET
-export const PRODUCT_CATEGORIES_URL = BASE_URL + 'category';
+// Trae y crea todas las categorias - GET - POST
+export const CATEGORIES_URL = BASE_URL + 'category';
 
-// Trae un producto por categoria - GET
-export const PRODUCT_BY_CATEGORIES_URL = PRODUCT_URL + '';
+// Trae, edita y elimina una Categoría por ID - GET - PATCH - DELETE
+export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '/';
+
+// --BANNER--
+
+// Trae y crea los Banners - GET - POST
+export const BANNER_URL = BASE_URL + '';
+
 
 
 // -----------------------USUARIOS------------------------------------------------

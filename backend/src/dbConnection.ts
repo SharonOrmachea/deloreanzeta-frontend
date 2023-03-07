@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { Banner } from './entity/Banner';
 import { Category } from './entity/Category';
 import { Image } from './entity/Image';
 import { Member } from './entity/Member';
@@ -23,7 +24,7 @@ const config: DataSourceOptions = {
 	username: DB_USER,
 	password: DB_PASSWORD,
 	database: DB_DATABASE,
-	entities: [Category, Image,Member, New, Product, Tour, User],
+	entities: [Banner, Category, Image,Member, New, Product, Tour, User],
 	synchronize: true,
 	logging: false,
 };
