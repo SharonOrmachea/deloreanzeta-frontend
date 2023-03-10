@@ -24,6 +24,14 @@
 			"get": {
 				"tags": ["Users"],
 				"summary": "Get a user by email",
+				"parameters": [
+					{
+					  "name": "email",
+					  "description": "lorem ipsum...",
+					  "required": true,
+					  "type": "string"
+					}
+				],
 				"responses": {
 					"200": {
 						"description": "OK",
@@ -31,6 +39,14 @@
 							"$ref": "#/definitions/User"
 						}
 					}
+				},
+				"example": {
+						"id": 0,
+						"email": "lopez.b.axel@gmail.com",
+						"password": "Unacontraseña000",
+						"name": "Axel",
+						"lastname": "Lopez",
+						"telephone": "1122334455"
 				}
 			}
 		},
