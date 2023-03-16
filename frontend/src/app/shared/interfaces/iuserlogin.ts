@@ -6,10 +6,14 @@ export interface UserLogin{
 }
 
 export interface UserResponse {
-  message: string;
-  token: string;
-  userId: number;
+  id: number;
+  email: string;
+  name: string;
+  lastname: string;
+  telephone: string;
   role: Role;
+  token: string;
+  message: string;
 }
 
 export interface UserSendEmail{
