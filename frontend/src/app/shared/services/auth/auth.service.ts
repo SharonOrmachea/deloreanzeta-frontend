@@ -38,7 +38,7 @@ export class AuthService {
   login(authData:UserLogin): Observable<UserResponse | void>{
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
       map((user:UserResponse) => {
-        this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
+        this.toastrService.success(`Bienvenido/a a Delorean Zeta ${user.role}`, 'Login Exitoso');
         this.saveLocalStorage(user);
         this.user.next(user);
         return user;

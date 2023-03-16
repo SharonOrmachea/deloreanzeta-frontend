@@ -48,7 +48,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next({});
     this.destroy$.complete();
-
   }
 
   paginaLogin(){
@@ -61,7 +60,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogout():void {
     this.authService.logout();
-    // this.isLogged = false;
+    this.isLogged = false;
   }
 
 }

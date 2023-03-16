@@ -43,7 +43,7 @@ export class AdminListNewsComponent implements OnInit {
 
   deleteTour(id:any){
     this.newsService.deleteNews(id).subscribe(data => {
-      this.toastr.success('La fecha fue eliminado con exito', 'Fecha Eliminada');
+      this.toastr.success('La noticia fue eliminada con exito', 'Noticia Eliminada');
       this.getAllNews();
     }, error => {
       this.toastr.success(error, 'Failed Delete');

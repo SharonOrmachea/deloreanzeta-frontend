@@ -17,6 +17,7 @@ import { LoadingComponent } from './components/loading/loading.component';
 
 
 
+
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -46,7 +47,7 @@ import { LoadingComponent } from './components/loading/loading.component';
     TitleComponent,
     LoadingComponent,
     MatMenuModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: []
 })
