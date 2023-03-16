@@ -8,7 +8,7 @@ export class Banner {
 
 	@Column()
 	@MinLength(3)
-	@MaxLength(33)
+	//@MaxLength(33)
 	@IsNotEmpty()
 	name: string;
 
