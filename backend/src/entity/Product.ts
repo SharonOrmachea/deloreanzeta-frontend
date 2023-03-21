@@ -7,7 +7,7 @@ import {
 	OneToMany,
 	Double,
 } from 'typeorm';
-import { MinLength, IsNotEmpty, IsOptional } from 'class-validator';
+import { MinLength, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 import { Category } from './Category';
 import { Image } from './Image';
 
@@ -37,6 +37,7 @@ export class Product {
 
 	@Column()
 	@MinLength(10)
+	@MaxLength(143)
 	@IsNotEmpty()
 	description: string;
 

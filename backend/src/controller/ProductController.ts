@@ -59,7 +59,7 @@ export class ProductController {
 			
 			product.name = name;
 			product.price = price;
-			product.discount = discount;
+			product.discount = parseInt(discount);
 			product.finalPrice = parseFloat((price - ((price*discount)/100)).toFixed(2));
 			product.description = description;
 			product.information = information;
@@ -99,7 +99,7 @@ export class ProductController {
 			product = await productRepository.findById(idInt);
 			product.name = name;
 			product.price = price;
-			product.discount = discount;
+			product.discount = parseInt(discount);
 			product.finalPrice = parseFloat((price - ((price*discount)/100)).toFixed(2));
 			product.description = description;
 			product.information = information;
@@ -138,7 +138,7 @@ export class ProductController {
 		}
 	};
 	*/
-	
+
 	static getAllProductscategory = async (req: Request, res: Response) => {
 		const { category } = req.params;
 		const productRepository = ProductRepository;

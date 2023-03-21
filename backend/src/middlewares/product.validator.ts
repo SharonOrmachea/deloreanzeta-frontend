@@ -36,8 +36,6 @@ export const validateProduct = [
 		}),
 	body('discount')
 		.optional()
-		.isNumeric()
-		.withMessage('El campo descuento debe ser numerico')
 		.custom((value, { req }) => {
 			if (value <= 0)
 				throw new Error(
@@ -46,16 +44,9 @@ export const validateProduct = [
 			return true;
 		}),
 	body('information')
-		.exists()
-		.withMessage("El campo informacion no fue ingresado")
-	    .notEmpty()
-		.withMessage('El campo informacion no puede estar vacio')
+		.optional()
 		.isString()
 		.withMessage('El campo informacion debe ser una cadena de caracteres')
-		.isLength({ min: 3 })
-		.withMessage(
-			'El campo informacion debe componerse de al menos 3 caracteres'
-		)
 		.custom((value, { req }) => {
 			if (value.trim() == 0)
 				throw new Error(
@@ -64,12 +55,20 @@ export const validateProduct = [
 			return true;
 		}),
 	body('description')
+		.exists()
+		.withMessage('El campo descripcion no fue ingresado')
+		.not()
+		.isEmpty()
+		.withMessage('El campo descripcion no puede estar vacio')
 		.isString()
 		.withMessage('El campo descripcion debe ser una cadena de caracteres')
-		.optional()
-		.isLength({ min: 3 })
+		.isLength({ min: 10 })
 		.withMessage(
 			'El campo descripcion debe componerse de al menos 3 caracteres'
+		)
+		.isLength({ max: 143 })
+		.withMessage(
+			'El campo descripcion debe componerse de a lo sumo 143 caracteres'
 		)
 		.custom((value, { req }) => {
 			if (value.trim() == 0)
