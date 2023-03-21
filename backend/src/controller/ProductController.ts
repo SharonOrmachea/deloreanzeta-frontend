@@ -138,6 +138,7 @@ export class ProductController {
 		}
 	};
 	*/
+	
 	static getAllProductscategory = async (req: Request, res: Response) => {
 		const { category } = req.params;
 		const productRepository = ProductRepository;

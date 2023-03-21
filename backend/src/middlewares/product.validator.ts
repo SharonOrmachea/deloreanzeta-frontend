@@ -27,17 +27,6 @@ export const validateProduct = [
 		.withMessage('El campo precio no puede estar vacio')
 		.isNumeric()
 		.withMessage('El campo precio debe ser numerico')
-		/*.isLength({ min: 3 })
-		.withMessage(
-			'El campo precio debe componerse de al menos 3 caracteres'
-		)*/
-		// .custom((value, { req }) => {
-		// 	if (value.trim() == 0)
-		// 		throw new Error(
-		// 			'El campo precio no puede componerse unicamente de espacios'
-		// 		);
-		// 	return true;
-		// })
 		.custom((value, { req }) => {
 			if (value < 0)
 				throw new Error(
@@ -46,16 +35,9 @@ export const validateProduct = [
 			return true;
 		}),
 	body('discount')
-		.exists()
-		.withMessage("El campo descuento no fue ingresado")
-	    .notEmpty()
-		.withMessage('El campo descuento no puede estar vacio')
+		.optional()
 		.isNumeric()
 		.withMessage('El campo descuento debe ser numerico')
-		/*.isLength({ min: 3 })
-		.withMessage(
-			'El campo descuento debe componerse de al menos 3 caracteres'
-		)*/
 		.custom((value, { req }) => {
 			if (value <= 0)
 				throw new Error(

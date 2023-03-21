@@ -28,6 +28,7 @@ export class Product {
 	
 	@Column()
 	@IsNotEmpty()
+	@IsOptional()
 	discount: Number;
 
 	@Column({type: "double"})
