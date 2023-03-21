@@ -6,10 +6,9 @@ export const validateTour = [
 		.exists()
 		.withMessage("El campo fecha no fue ingresado")
 	    .notEmpty()
-		.withMessage('El campo fecha no puede estar vacio')
-	    .isDate({ format: 'YYYY-MM-DD' })
-		.withMessage('La fecha debe tener el formato YYYY-MM-DD'),
-
+		.withMessage('El campo fecha no puede estar vacio'),
+	    //.isDate({ format: 'YYYY-MM-DD' })
+		//.withMessage('La fecha debe tener el formato YYYY-MM-DD'),
 	body('place')
 		.exists()
 		.withMessage('El nombre del lugar no fue ingresado')
