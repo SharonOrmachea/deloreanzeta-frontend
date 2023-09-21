@@ -1,5 +1,7 @@
 <section>
+  <app-admin-store *appShowForRoles="['admin']"></app-admin-store>
   <app-carrusel></app-carrusel>
+
 
   <section class="contenedor">
 
@@ -60,7 +62,7 @@
 
             <div class="price">
               <span>
-                <strong>{{ product.price | currency }}</strong>
+                <strong>{{ product.finalPrice | currency: "ARS" }}</strong>
               </span>
             </div>
           </div>

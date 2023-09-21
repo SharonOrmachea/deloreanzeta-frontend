@@ -1,0 +1,58 @@
+<h1 mat-dialog-title class="title">{{ data.title }}</h1>
+<hr />
+<mat-dialog-content>
+  <div class="modal-form">
+    <form
+      class="form"
+      [formGroup]="bannerForm"
+      (ngSubmit)="saveBanner()"
+      class="form"
+      name="product"
+    >
+      <div class="inputs">
+
+        <div class="box-form box-image">
+
+          <div class="card" *ngFor="let img of archivos">
+            <div class="face front" >
+              <img  [src]="img" />
+            </div>
+          </div>
+          <input
+            multiple
+            type="file"
+            (change)="captureFile($event)"
+            formControlName="imageUrl"
+            tabindex="0"
+          />
+          <mat-error
+            *ngIf="
+              bannerForm.get('imageUrl')?.hasError('required') &&
+              bannerForm.get('imageUrl')?.touched
+            "
+          >
+            <strong
+              >La imagen del producto es <strong>obligatoria</strong></strong
+            >
+          </mat-error>
+
+        </div>
+
+      </div>
+
+      <div class="submit">
+        <button mat-dialog-close class="btn btn-lg btn-secondary">
+          Cancelar
+        </button>
+        <button
+          [disabled]="bannerForm.invalid"
+          class="btn btn-lg button-submit"
+          type="submit"
+          tabindex="0"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

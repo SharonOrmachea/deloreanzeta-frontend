@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { NEWS_BY_ID_URL, NEWS_URL } from '../../constants/urls';
@@ -24,18 +24,18 @@ export class NewsService {
   }
 
   // AGREGA UNA NOTICIA
-  newNews(newsValue:News): Observable<News | any>{
-    return this.http.post(NEWS_URL, newsValue, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
+  newNews(newsValue:News, headers:HttpHeaders): Observable<News | any>{
+    return this.http.post(NEWS_URL, newsValue, {responseType: 'text' , headers} ).pipe(catchError(this.handlerUserError));
   }
 
   // EDITA UNA NOTICIA
-  updateNews(id:number, newsValue:News): Observable<any>{
-    return this.http.patch<News>(`${NEWS_BY_ID_URL}/${id}`, newsValue).pipe(catchError(this.handlerUserError));
+  updateNews(id:number, newsValue:News, headers:HttpHeaders): Observable<any>{
+    return this.http.patch<News>(`${NEWS_BY_ID_URL}/${id}`, newsValue, { headers }).pipe(catchError(this.handlerUserError));
   }
 
   //ELIMINA UNA NOTICIA
-  deleteNews(id:number): Observable<{}>{
-    return this.http.delete<News>(`${NEWS_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
+  deleteNews(id:number, headers:HttpHeaders): Observable<{}>{
+    return this.http.delete<News>(`${NEWS_BY_ID_URL}/${id}`, { headers }).pipe(catchError(this.handlerUserError));
   }
 
   handlerUserError(error: any): Observable<never> {
@@ -45,7 +45,6 @@ export class NewsService {
       console.log(errorMessage)
     }
     return throwError(() => (errorMessage));
-
   }
 
 }

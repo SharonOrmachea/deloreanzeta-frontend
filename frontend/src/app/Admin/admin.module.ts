@@ -4,13 +4,8 @@ import { AdminStoreModule } from './admin-store/admin-store.module';
 import { AdminNewsModule } from './admin-news/admin-news.module';
 
 
-
-
-
 @NgModule({
-  declarations: [
-
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     AdminStoreModule,

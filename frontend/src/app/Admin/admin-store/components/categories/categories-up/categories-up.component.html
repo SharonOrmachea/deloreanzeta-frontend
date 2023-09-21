@@ -1,0 +1,54 @@
+<h1 mat-dialog-title class="title">{{ data.title }}</h1>
+<hr />
+<mat-dialog-content>
+  <div class="modal-form">
+    <form
+      class="form"
+      [formGroup]="categoriesForm"
+      (ngSubmit)="saveCategory()"
+      class="form"
+      name="login"
+    >
+
+      <div class="inputs">
+
+        <div class="box-form">
+          <mat-form-field class="example-full-width" color="accent">
+            <mat-label for="">Nombre</mat-label>
+            <input
+              class="mat-input"
+              type="text"
+              matInput
+              formControlName="name"
+              tabindex="0"
+            />
+            <!-- <mat-error *ngIf="isValidField('title')">
+              <strong>{{ getErrorMessage("title") }}</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </div>
+
+        <div class="box-form">
+
+          <!-- <mat-error *ngIf="isValidField('city')">
+              <strong>{{ getErrorMessage("city") }}</strong>
+            </mat-error> -->
+        </div>
+      </div>
+
+      <div class="submit">
+        <button mat-dialog-close class="btn btn-lg btn-secondary">
+          Cancelar
+        </button>
+        <button
+          [disabled]="categoriesForm.invalid"
+          class="btn btn-lg button-submit"
+          type="submit"
+          tabindex="0"
+        >
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>

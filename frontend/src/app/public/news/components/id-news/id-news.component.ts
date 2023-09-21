@@ -15,18 +15,19 @@ export class IdNewsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private newService: NewsService
-  ) {
+    ) {
 
-    activatedRoute.params.subscribe((params) => {
+    this.activatedRoute.params.subscribe((params) => {
       if (params['id'])
         this.newService.getNewsById(params['id']).subscribe(getNewsById => {
           this.new = getNewsById;
+          console.log(this.new)
         }
         );
     });
 
   }
-  
+
   ngOnInit(): void {
   }
 }

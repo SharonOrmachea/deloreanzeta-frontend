@@ -18,7 +18,10 @@ export class CartProductsComponent implements OnInit {
 
   productQuantity:number = 1;
 
-  constructor(private cartService:CartService, private router:Router,) {
+  constructor(
+    private cartService:CartService,
+    private router:Router,
+  ) {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
     })

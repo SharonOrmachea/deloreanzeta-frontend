@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 import { Product } from 'src/app/shared/models/store/products/product';
 import { ProductService } from 'src/app/shared/services/store/productos/product.service';
+import { CategoryService } from '../../../shared/services/store/category/category.service';
 
 @Component({
   selector: 'app-store',
@@ -17,11 +18,15 @@ export class StoreComponent implements OnInit {
 
   categories?:ProductCategories[];
 
-  constructor(private productService:ProductService, activatedRoute:ActivatedRoute) {
+  constructor(
+    private productService:ProductService,
+    private categoryService:CategoryService,
+    activatedRoute:ActivatedRoute
+    ) {
 
     let productsObservable:Observable<Product[]>;
 
-    productService.getAllProductCategories().subscribe(serverProductCategories => {
+    categoryService.getAllProductCategories().subscribe(serverProductCategories => {
       this.categories = serverProductCategories;
     });
 

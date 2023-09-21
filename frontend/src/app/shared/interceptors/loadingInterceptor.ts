@@ -1,6 +1,7 @@
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http';
+import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+import { LoadingService } from '../services/loading/loading.service';
 
 
 @Injectable()
@@ -8,20 +9,15 @@ import { HttpInterceptor, HttpRequest, HttpHandler } from '@angular/common/http'
 export class LoadingInterceptor implements HttpInterceptor {
 
   constructor(
-
+    private loadingService: LoadingService
   ){}
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<any>{
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+    this.loadingService.show();
 
-    // if(req.url.includes('users')){
-    //   const userValue = this.authService.userValue;
-    //   const authReq = req.clone({
-    //     setHeaders: {
-    //       auth: userValue.token,
-    //     }
-    //   });
-    //   return next.handle(authReq);
-    // }
-    return next.handle(req);
+    return next.handle(req).pipe(
+      finalize( () => this.loadingService.hide())
+    );
+
   }
 }

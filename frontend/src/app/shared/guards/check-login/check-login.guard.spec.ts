@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CheckLoginGuard } from './check-login.guard';
+import { CheckLoginGuard } from '../check-login/check-login.guard';
 
 describe('CheckLoginGuard', () => {
   let guard: CheckLoginGuard;

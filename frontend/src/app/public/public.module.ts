@@ -20,9 +20,9 @@ import { AboutUsModule } from './about-us/about-us.module';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     PublicRoutingModule,
     PrivateRoutingModule,
-    HttpClientModule,
     HomeModule,
     LoginModule,
     SignInModule,

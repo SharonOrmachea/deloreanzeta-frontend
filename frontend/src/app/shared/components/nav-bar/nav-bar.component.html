@@ -20,10 +20,10 @@
       id="navbarOffcanvasLg"
       aria-labelledby="navbarOffcanvasLgLabel"
     >
-      <!-- ----------------------------------------------------------- -->
+      <!----------------------------------------------------------------->
       <div class="offcanvas-header">
         <a class="logo-header" routerLink="/home" tabindex="”0”">
-          <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo" />
+          <img src="../../../../assets/DLZ-LOGO-Siglas.png" alt="short-logo">
         </a>
         <button
           type="button"
@@ -47,7 +47,7 @@
               tabindex="”0”"
               ><strong>Inicio</strong></a
             >
-          </li>
+          </li><!--
           <li class="nav-item">
             <a
               class="nav-link"
@@ -67,7 +67,7 @@
               tabindex="”0”"
               ><strong>Tienda</strong></a
             >
-          </li>
+          </li>-->
           <li class="nav-item">
             <a
               class="nav-link"
@@ -112,23 +112,26 @@
 
         <div class="buttons">
 
-          <div class="buttons-logout">
-            <!-- *ngIf="isLogged; else viewLogout" en un div -->
-            <button class="sign-in" (click)="paginaSignIn()" tabindex="”0”">
-              <strong>Regístrate</strong>
-            </button>
-            <button class="login" (click)="paginaLogin()" tabindex="”0”">
-              <strong>Iniciar Sesión</strong>
-            </button>
-          </div>
+          <ng-template #viewLogout >
+            <!--  en un div -->
+            <div class="buttons-logout">
+              <button class="sign-in" (click)="paginaSignIn()" tabindex="”0”">
+                <strong>Regístrate</strong>
+              </button>
+              <button class="login" (click)="paginaLogin()" tabindex="”0”">
+                <strong>Iniciar Sesión</strong>
+              </button>
+            </div>
+          </ng-template>
 
-          <div class="buttons-login">
-            <!-- #viewLogout en un ng-template CARRITO-->
-            <div class="cart">
-              <a routerLink="/store/cart">
-                <i class="bi bi-cart3"></i>
-                <span class="notificacion" *ngIf="cartQuantity">
-                  <strong>{{ cartQuantity }}</strong>
+          <div *ngIf="isLogged; else viewLogout">
+            <div class="buttons-login">
+              <!--  en un ng-template CARRITO-->
+              <div class="cart">
+                <a routerLink="/store/cart">
+                  <i class="bi bi-cart3"></i>
+                  <span class="notificacion" *ngIf="cartQuantity">
+                    <strong>{{ cartQuantity }}</strong>
                 </span>
               </a>
             </div>
@@ -141,22 +144,22 @@
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Sharon
-                </a>
-                <ul class="dropdown-menu">
+                Sharon
+              </a>
+              <ul class="dropdown-menu">
                   <li>
-                    <a class="dropdown-item" routerLink="/profile" href="#">
+                    <a class="dropdown-item" routerLink="/profile" tabindex="”0”">
                       <strong>Perfil</strong>
                     </a>
                   </li>
                   <li>
-                    <a class="dropdown-item" routerLink="/orders" href="#">
+                    <a class="dropdown-item" routerLink="/orders" tabindex="”0”">
                       <strong>Pedidos</strong>
                     </a>
                   </li>
                   <li><hr class="dropdown-divider" /></li>
                   <li>
-                    <a class="dropdown-item" (click)="onLogout()" href="#">
+                    <a class="dropdown-item" (click)="onLogout()" tabindex="”0”">
                       <strong>Cerrar Sesión</strong>
                     </a>
                   </li>
@@ -164,6 +167,7 @@
               </li>
             </div>
           </div>
+        </div>
 
         </div>
       </div>

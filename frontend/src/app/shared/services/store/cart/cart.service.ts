@@ -25,21 +25,21 @@ export class CartService {
     this.setCartToLocalStorage();
   }
 
-  removeFromCart(productId: string):void{
-    this.cart.items = this.cart.items.filter(item => item.product.id != productId);
-    this.setCartToLocalStorage();
-  }
+  // removeFromCart(productId: string):void{
+  //   this.cart.items = this.cart.items.filter(item => item.product.id != productId);
+  //   this.setCartToLocalStorage();
+  // }
 
-  changeQuantity(productId:string, quantity:number){
-    let cartItem = this.cart.items.find(item => item.product.id === productId);
-    if(!cartItem){
-      return;
-    }
+  // changeQuantity(productId:string, quantity:number){
+  //   let cartItem = this.cart.items.find(item => item.product.id === productId);
+  //   if(!cartItem){
+  //     return;
+  //   }
 
-    cartItem.total = quantity;
-    cartItem.price = quantity * cartItem.product.price;
-    this.setCartToLocalStorage();
-  }
+  //   cartItem.total = quantity;
+  //   cartItem.price = quantity * cartItem.product.price;
+  //   this.setCartToLocalStorage();
+  // }
 
   clearCart(){
     this.cart = new Cart();

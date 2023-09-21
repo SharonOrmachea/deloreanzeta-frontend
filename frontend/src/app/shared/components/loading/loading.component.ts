@@ -1,13 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-loading',
   templateUrl: './loading.component.html',
   styleUrls: ['./loading.component.sass']
 })
+
 export class LoadingComponent implements OnInit {
 
-  constructor() { }
+  isLoading!:boolean;
+
+  constructor(
+    private loadingService: LoadingService
+  ) {
+    loadingService.isLoading.subscribe((isLoading) => {
+      this.isLoading = isLoading;
+    });
+
+  }
 
   ngOnInit(): void {
   }
