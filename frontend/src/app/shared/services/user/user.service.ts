@@ -67,7 +67,6 @@ export class UserService {
       errorMessage = `Error ${error.message}`;
     }
     return throwError(() => (errorMessage));
-
   }
 
 }

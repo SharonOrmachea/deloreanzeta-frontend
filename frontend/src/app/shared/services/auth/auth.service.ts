@@ -19,12 +19,15 @@ export class AuthService {
 
   private user = new BehaviorSubject<UserResponse>(null!);
 
+  isLogged:boolean = false;
+
   constructor(
     private http:HttpClient,
     private router:Router,
     private toastrService:ToastrService
   ) {
     this.checkToken();
+    console.log(this.isLogged);
   }
 
   get user$():Observable<UserResponse> {
@@ -45,7 +48,6 @@ export class AuthService {
       }),
       catchError( (error) => this.handlerError(error) )
     );
-
   }
 
   logout(): void{
@@ -62,8 +64,10 @@ export class AuthService {
 
       if (isExpired){
         this.logout();
+        this.isLogged = false;
       } else {
         this.user.next(user);
+        this.isLogged = true;
       }
     }
   }

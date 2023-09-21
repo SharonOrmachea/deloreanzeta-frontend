@@ -21,20 +21,19 @@ export class IdProductComponent implements OnInit {
   productQuantity:number = 1;
 
   constructor(
-    activatedRoute:ActivatedRoute,
+    private activatedRoute:ActivatedRoute,
     private router:Router,
     private productService:ProductService,
     private cartService:CartService) {
 
-
-    activatedRoute.params.subscribe((params) => {
-      if(params['id'])
-        this.productService.getProductById(params['id']).subscribe(serverProductById => {
-          this.product = serverProductById;
+    this.activatedRoute.params.subscribe((params) => {
+      if (params['id'])
+        this.productService.getProductById(params['id']).subscribe(getProductById => {
+          this.product = getProductById;
         }
-      );
+        );
     });
-    console.log(this.product)
+
   }
 
   ngOnInit(): void {

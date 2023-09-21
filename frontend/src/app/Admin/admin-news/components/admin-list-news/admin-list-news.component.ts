@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
@@ -10,9 +11,18 @@ import { NewsUpComponent } from '../news-up/news-up.component';
   templateUrl: './admin-list-news.component.html',
   styleUrls: ['./admin-list-news.component.sass']
 })
+
 export class AdminListNewsComponent implements OnInit {
 
   news:News[] = [];
+
+  datosLocalStorage = JSON.parse(localStorage.getItem("user")!);
+  tokenLocalStorage = this.datosLocalStorage.token;
+
+
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.tokenLocalStorage}`
+  });
 
   constructor(
     private newsService:NewsService,
@@ -37,12 +47,11 @@ export class AdminListNewsComponent implements OnInit {
       height: 'auto',
       width: '600px',
       data: { title: 'Agregar Noticia', news}
-
     });
   }
 
-  deleteTour(id:any){
-    this.newsService.deleteNews(id).subscribe(data => {
+  deleteNews(id:any){
+    this.newsService.deleteNews(id, this.headers).subscribe(data => {
       this.toastr.success('La noticia fue eliminada con exito', 'Noticia Eliminada');
       this.getAllNews();
     }, error => {

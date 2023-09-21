@@ -4,11 +4,11 @@ const BASE_URL = 'http://localhost:3000/';
 
 // --PRODUCTO--
 
-// Trae todos los productos - GET
+// Trae todos los productos - GET - POST
 export const PRODUCT_URL = BASE_URL + 'product';
 
 // Trae, edita y elimina un producto por ID - GET - PATCH - DELETE
-export const PRODUCT_BY_ID_URL = PRODUCT_URL + '/';
+export const PRODUCT_BY_ID_URL = PRODUCT_URL + '';
 
 // --CATEGORIA--
 
@@ -16,7 +16,7 @@ export const PRODUCT_BY_ID_URL = PRODUCT_URL + '/';
 export const CATEGORIES_URL = BASE_URL + 'category';
 
 // Trae, edita y elimina una Categoría por ID - GET - PATCH - DELETE
-export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '/';
+export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '';
 
 // --BANNER--
 
@@ -34,7 +34,7 @@ export const USER_LOGIN_URL = BASE_URL + 'auth/login';
 export const USER_URL = BASE_URL + 'users';
 
 // Trae, edita un usuario por email (para el admin)
-export const USER_BY_EMAIL_URL = USER_URL + '/';
+export const USER_BY_EMAIL_URL = USER_URL + '';
 
 // Se cambia la contraseña de un usuario logueado (pide la contraseña anterior y la nueva) - POST
 export const USER_CHANGE_PASS_URL = BASE_URL + 'auth/change-password';
@@ -58,7 +58,7 @@ export const SEND_HIRING_URL = BASE_URL + 'hirings/send-email';
 export const TOURS_URL = BASE_URL + 'tour';
 
 // Trae, edita y elimina un Tour por ID - GET - PATCH - DELETE
-export const TOUR_BY_ID_URL = TOURS_URL + '/';
+export const TOUR_BY_ID_URL = TOURS_URL + '';
 
 // -----------------------NEWS-(Noticias)------------------------------------------------
 
@@ -66,7 +66,7 @@ export const TOUR_BY_ID_URL = TOURS_URL + '/';
 export const NEWS_URL = BASE_URL + 'new';
 
 // Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
-export const NEWS_BY_ID_URL = NEWS_URL + '/';
+export const NEWS_BY_ID_URL = NEWS_URL + '';
 
 // -----------------------ABOUT-US-------------------------------------------------
 
@@ -74,7 +74,7 @@ export const NEWS_BY_ID_URL = NEWS_URL + '/';
 export const ABOUT_US_URL = BASE_URL + 'member';
 
 // Trae, edita y elimina una Noticia por ID - GET - PATCH - DELETE
-export const ABOUT_US_ID_URL = ABOUT_US_URL + '/';
+export const ABOUT_US_ID_URL = ABOUT_US_URL + '';
 
 // -----------------------GALLERY-------------------------------------------------
 

@@ -1,6 +1,3 @@
-
-
-
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 
@@ -11,10 +8,7 @@ import { ProductsComponent } from "../public/store/components/all products/produ
 import { StoreComponent } from "../public/store/page/store.component";
 import { UserComponent } from './user/page/user.component';
 
-import { CheckLoginGuard } from "../shared/guards/check-login.guard";
-
-
-
+import { CheckLoginGuard } from "../shared/guards/check-login/check-login.guard";
 
 
 const routes: Routes = [

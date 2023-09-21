@@ -39,13 +39,13 @@ export class ProductUpComponent implements OnInit {
     ) {
 
     this.productForm = this.formBuilder.group({
-      name: ['', ],
+      name: ['', [Validators.required]],
       price: ['', [Validators.required]],
       discount: [''],
       category: ['', [Validators.required]],
       imageUrl: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      information: ['', [Validators.required]],
+      information: ['', ],
     });
 
     this.categoriesService.getAllProductCategories().subscribe(serverProductCategories => {

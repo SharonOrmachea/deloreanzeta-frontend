@@ -18,7 +18,7 @@ import { ToursComponent } from "./tours/pages/tours.component";
 import { GalleryComponent } from "./gallery/pages/gallery/gallery.component";
 import { AboutUsComponent } from './about-us/pages/about-us.component';
 
-import { CheckLoginGuard } from '../shared/guards/check-login.guard';
+import { CheckLoginGuard } from '../shared/guards/check-login/check-login.guard';
 import { ListToursComponent } from "./tours/components/list-tours/list-tours.component";
 
 
@@ -41,7 +41,6 @@ const routes: Routes = [
             { path: 'category/:category', component: ProductsComponent },
           ]
         },
-
         { path: 'news', component: NewsComponent, children: [
             { path: '', component: AllNewsComponent },
             { path: ':id', component: IdNewsComponent },

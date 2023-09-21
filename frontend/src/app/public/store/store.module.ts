@@ -31,7 +31,6 @@ import { AdminStoreModule } from 'src/app/Admin/admin-store/admin-store.module';
     SharedModule,
     AdminStoreModule,
     SwiperModule,
-    SwiperModule,
     NgxPaginationModule,
 
   ],

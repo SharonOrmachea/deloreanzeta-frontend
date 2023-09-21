@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -24,6 +25,14 @@ export class NewsUpComponent implements OnInit {
 
   public archivo:any = '';
 
+  datosLocalStorage = JSON.parse(localStorage.getItem("user")!);
+  tokenLocalStorage = this.datosLocalStorage.token;
+
+
+  headers = new HttpHeaders({
+    'Authorization': `Bearer ${this.tokenLocalStorage}`
+  });
+
   constructor(
     private newsService: NewsService,
     private formBuilder:FormBuilder,
@@ -44,11 +53,10 @@ export class NewsUpComponent implements OnInit {
     if(this.data?.news.hasOwnProperty('id')){
       this.actionToDo = Action.EDIT;
       this.data.title = 'Editar Noticia';
-      this.newsForm.get('title')?.setValidators(null);
-      this.newsForm.get('content')?.setValidators(null);
+      // this.newsForm.get('title')?.setValidators(null);
+      // this.newsForm.get('content')?.setValidators(null);
       this.newsForm.get('imageUrl')?.setValidators(null);
       this.pathFormData();
-
     }
   }
 
@@ -60,7 +68,7 @@ export class NewsUpComponent implements OnInit {
     };
 
     if(this.actionToDo == Action.NEW){
-      this.newsService.newNews(valueNews).subscribe((res) => {
+      this.newsService.newNews(valueNews, this.headers).subscribe((res) => {
         this.toastr.success('Nueva noticia agregada', 'Noticia Agregada');
         this.newsForm.reset();
       }, (error) => {
@@ -69,7 +77,7 @@ export class NewsUpComponent implements OnInit {
       );
     } else if(this.actionToDo == Action.EDIT){
       const newsId = this.data?.news?.id;
-      this.newsService.updateNews(newsId, valueNews).subscribe((res) => {
+      this.newsService.updateNews(newsId, valueNews, this.headers).subscribe((res) => {
         this.toastr.success('La noticia fue editada con exito', 'Noticia Editada');
       }, error => {
         this.toastr.error(error, 'News Failed');
@@ -77,6 +85,10 @@ export class NewsUpComponent implements OnInit {
     }
 
   }
+
+  // npm i alife-file-to-base64 --save
+  // importar modulo: AlifeFileToBase64Module
+  // en el input se agrega un atributo llamado alife-file-to-base64 y si se quieren cargar multiples archivos le agregamos multiple al input
 
   captureFile(event:any){
     this.archivo = event[0].base64;
@@ -90,24 +102,6 @@ export class NewsUpComponent implements OnInit {
     this.archivo = this.data?.news?.imageUrl;
   }
 
-  // npm i alife-file-to-base64 --save
-  // importar modulo: AlifeFileToBase64Module
-  //en el input se agrega un atributo llamado alife-file-to-base64 y si se quieren cargar multiples archivos le agregamos multiple al input
-
-  // (onFileChanged)="captureFile($event)"
-
-
-  // captureFile(event:any){
-  //   const file = event.target.files[0];
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(file);
-  //   reader.onload = () => {
-  //     this.archivo = reader.result as string;
-  //   }
-  //   this.archivo =
-  //   console.log(reader);
-
-  // }
 
   get formControls() {
     return this.newsForm.controls;

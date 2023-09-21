@@ -19,11 +19,9 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   cartQuantity = 0;
 
-  isLogged:boolean = true;
-
-  isAdmin:Role = null!;
-
   private subscription: Subscription = new Subscription();
+
+  isLogged:boolean = false;
 
   private destroy$ = new Subject<any>();
 
@@ -36,13 +34,14 @@ export class NavBarComponent implements OnInit, OnDestroy {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
+    
+    this.isLogged = this.authService.isLogged;
+
+    console.log('este es del nav ' + this.isLogged)
   }
 
   ngOnInit(): void {
-    this.authService.user$.pipe(takeUntil(this.destroy$)).subscribe((user: UserResponse) => {
-      this.isLogged = true;
-      this.isAdmin = user?.role;
-    });
+
   }
 
   ngOnDestroy(): void {
@@ -60,7 +59,6 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   onLogout():void {
     this.authService.logout();
-    this.isLogged = false;
   }
 
 }

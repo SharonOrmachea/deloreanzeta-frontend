@@ -58,7 +58,6 @@ export class MembersUpComponent implements OnInit {
       profession: this.aboutUsForm.get('profession')?.value,
       description: this.aboutUsForm.get('description')?.value,
       imageUrl: this.archivo,
-
     };
 
     if(this.actionToDo == Action.NEW){
