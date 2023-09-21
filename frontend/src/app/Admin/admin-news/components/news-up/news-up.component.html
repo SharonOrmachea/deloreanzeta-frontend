@@ -18,9 +18,8 @@
             </div>
           </div>
           <input
-            alife-file-to-base64
             type="file"
-            (onFileChanged)="captureFile($event)"
+            (change)="captureFile($event)"
             formControlName="imageUrl"
             tabindex="0"
           >

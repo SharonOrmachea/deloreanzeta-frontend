@@ -144,7 +144,7 @@ export const validateRegister = [
 					value[i] != 9
 				) {
 					throw new Error(
-						'El precio debe componerse unicamente de numeros'
+						'El telefono debe componerse unicamente de numeros'
 					);
 				}
 			}
@@ -278,3 +278,89 @@ export const validatePassword = [
 		validateResult(req, res, next);
 	},
 ];
+
+export const validateRegisterUpdate = [
+	body('name')
+		.exists()
+		.withMessage('El nombre del usuario no fue ingresado')
+		.not()
+		.isEmpty()
+		.withMessage('El nombre del usuario no puede estar vacio')
+		.isString()
+		.withMessage('El nombre del usuario debe ser una cadena de caracteres')
+		.isLength({ min: 3 })
+		.withMessage(
+			'El nombre del usuario debe componerse de al menos 3 caracteres'
+		)
+		.custom((value, { req }) => {
+			if (value.trim() == 0)
+				throw new Error(
+					'El nombre no puede componerse unicamente de espacios'
+				);
+			return true;
+		}),
+	body('lastname')
+		.exists()
+		.withMessage('El apellido del usuario no fue ingresado')
+		.not()
+		.isEmpty()
+		.withMessage('El apellido del usuario no puede estar vacio')
+		.isString()
+		.withMessage(
+			'El apellido del usuario debe ser una cadena de caracteres'
+		)
+		.isLength({ min: 3 })
+		.withMessage(
+			'El apellido del usuario debe componerse de al menos 3 caracteres'
+		)
+		.custom((value, { req }) => {
+			if (value.trim() == 0)
+				throw new Error(
+					'El apellido no puede componerse unicamente de espacios'
+				);
+			return true;
+		}),
+	body('telephone')
+		.exists()
+		.withMessage('El telefono del usuario no fue ingresado')
+		.not()
+		.isEmpty()
+		.withMessage('El telefono del usuario no puede estar vacio')
+		.isString()
+		.withMessage(
+			'El telefono del usuario debe ser una cadena de caracteres'
+		)
+		.isLength({ min: 10, max: 10})
+		.withMessage(
+			'El telefono del usuario debe componerse de 10 caracteres'
+		)
+		.custom((value, { req }) => {
+			if (value.trim() == 0)
+				throw new Error('El telefono no puede componerse por espacios');
+			return true;
+		})
+		.custom((value, { req }) => {
+			for (let i = 0; i < value.length; i++) {
+				if (
+					value[i] != 0 &&
+					value[i] != 1 &&
+					value[i] != 2 &&
+					value[i] != 3 &&
+					value[i] != 4 &&
+					value[i] != 5 &&
+					value[i] != 6 &&
+					value[i] != 7 &&
+					value[i] != 8 &&
+					value[i] != 9
+				) {
+					throw new Error(
+						'El telefono debe componerse unicamente de numeros'
+					);
+				}
+			}
+			return true;
+		}),
+	(req, res, next) => {
+		validateResult(req, res, next);
+	},
+]

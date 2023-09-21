@@ -19,12 +19,15 @@ export class AuthService {
 
   private user = new BehaviorSubject<UserResponse>(null!);
 
+  isLogged:boolean = false;
+
   constructor(
     private http:HttpClient,
     private router:Router,
     private toastrService:ToastrService
   ) {
     this.checkToken();
+    console.log(this.isLogged);
   }
 
   get user$():Observable<UserResponse> {
@@ -38,14 +41,13 @@ export class AuthService {
   login(authData:UserLogin): Observable<UserResponse | void>{
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
       map((user:UserResponse) => {
-        this.toastrService.success('Bienvenido a Delorean Zeta Usuario Promedio', 'Login Exitoso');
+        this.toastrService.success(`Bienvenido/a a Delorean Zeta ${user.name} ${user.lastname}`, 'Login Exitoso');
         this.saveLocalStorage(user);
         this.user.next(user);
         return user;
       }),
       catchError( (error) => this.handlerError(error) )
     );
-
   }
 
   logout(): void{
@@ -62,14 +64,16 @@ export class AuthService {
 
       if (isExpired){
         this.logout();
+        this.isLogged = false;
       } else {
         this.user.next(user);
+        this.isLogged = true;
       }
     }
   }
 
   private saveLocalStorage(user:UserResponse):void{
-    const { userId, message, ...rest } = user;
+    const { id, message, ...rest } = user;
     localStorage.setItem('user', JSON.stringify(rest));
   }
 

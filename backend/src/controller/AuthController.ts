@@ -21,6 +21,14 @@ class AuthController {
 				email,
 				password
 			);
+			
+			let userResponse = new User();
+			userResponse.id = user.id;
+			userResponse.email = user.email;
+			userResponse.name = user.name;
+			userResponse.lastname = user.lastname;
+			userResponse.telephone = user.telephone;
+			userResponse.role = user.role;
 
             const token = jwt.sign(
                 { userId: user.id, username: user.email },
@@ -28,7 +36,15 @@ class AuthController {
                 { expiresIn: '1d' }
             );
 
-            res.status(StatusCodes.OK).json({ message: 'OK', token });
+            res.status(StatusCodes.OK).json({ 
+				"id": user.id,
+				"email": user.email,
+				"name": user.name,
+				"lastname": user.lastname,
+				"telephone": user.telephone,
+				"role": user.role,
+				"token": token
+			});
 		} catch (e) {
 			return res.status(400).json({ message: e.message });
 		}

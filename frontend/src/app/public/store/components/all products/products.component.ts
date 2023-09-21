@@ -26,6 +26,8 @@ export class ProductsComponent implements OnInit {
 
     this.p =1;
 
+    console.log(this.products)
+
     // let productsObservable:Observable<Product[]>;
 
     // productsObservable = this.productService.getAllProducts();

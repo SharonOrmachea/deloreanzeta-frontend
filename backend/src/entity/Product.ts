@@ -7,10 +7,9 @@ import {
 	OneToMany,
 	Double,
 } from 'typeorm';
-import { MinLength, IsNotEmpty, IsOptional } from 'class-validator';
+import { MinLength, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
 import { Category } from './Category';
 import { Image } from './Image';
-import { Blob } from 'buffer';
 
 @Entity()
 @Unique(['name'])
@@ -24,17 +23,21 @@ export class Product {
 	name: string;
 
 	@Column({type: "double"})
-	@MinLength(3)
 	@IsNotEmpty()
 	price: Double;
 	
 	@Column()
-	@MinLength(3)
 	@IsNotEmpty()
+	@IsOptional()
 	discount: Number;
+
+	@Column({type: "double"})
+	@IsNotEmpty()
+	finalPrice: Double;
 
 	@Column()
 	@MinLength(10)
+	@MaxLength(143)
 	@IsNotEmpty()
 	description: string;
 
@@ -43,8 +46,8 @@ export class Product {
 	@IsOptional()
 	information: string;
 
-	@OneToMany(() => Image, (image) => image.product)
-	images: Blob[];
+	@OneToMany(() => Image, (image) => image.product, {cascade: true})
+	imageUrl: Image[];
 
 	@ManyToOne(() => Category, (category) => category.products)
 	category: Category;

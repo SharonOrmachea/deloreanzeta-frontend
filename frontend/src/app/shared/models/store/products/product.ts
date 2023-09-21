@@ -1,9 +1,9 @@
 export class Product{
-  id?:string;
+  id?:number;
   name!:string;
   price!:number;
   discount?:number;
-  priceDiscounted?:number;
+  finalPrice?:number;
   category!:string;
   imageUrl!:string[];
   description?:string;

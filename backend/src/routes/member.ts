@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { MemberController } from "../controller/MemberController";
-//import { validateMember } from "../middlewares/member.validator";
+import { validateMember } from "../middlewares/member.validator";
 import { checkRole } from "../middlewares/role";
 import { checkJwt } from "../middlewares/jwt";
 
@@ -10,9 +10,9 @@ router.get("/", MemberController.getAll);
 
 router.get("/:id", MemberController.getById);
 
-router.post("/", /*validateCategory,*/ [/*checkJwt, checkRole(['admin'])*/], MemberController.createMember);
+router.post("/", validateMember, [/*checkJwt, checkRole(['admin'])*/], MemberController.createMember);
 
-router.patch("/:id", /*validateCategory,*/ [/*checkJwt, checkRole(['admin'])*/], MemberController.updateMember);
+router.patch("/:id", validateMember, [/*checkJwt, checkRole(['admin'])*/], MemberController.updateMember);
 
 router.delete("/:id", [/*checkJwt, checkRole(['admin'])*/], MemberController.deleteMember);
 

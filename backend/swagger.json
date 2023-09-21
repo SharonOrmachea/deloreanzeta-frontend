@@ -20,6 +20,36 @@
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"paths": {
+		"/users/email": {
+			"get": {
+				"tags": ["Users"],
+				"summary": "Get a user by email",
+				"parameters": [
+					{
+					  "name": "email",
+					  "description": "lorem ipsum...",
+					  "required": true,
+					  "type": "string"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": "OK",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				},
+				"example": {
+						"id": 0,
+						"email": "lopez.b.axel@gmail.com",
+						"password": "Unacontraseña000",
+						"name": "Axel",
+						"lastname": "Lopez",
+						"telephone": "1122334455"
+				}
+			}
+		},
 		"/users": {
 			"get": {
 				"tags": ["Users"],
@@ -32,42 +62,101 @@
 						}
 					}
 				}
+			},
+			"post": {
+				"tags": ["Users"],
+				"summary": "Add a user",
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/definitions/User"
+						}
+					}
+				}
+			}
+		},
+		"/users/id": {
+			"patch": {
+				"tags": ["Users"],
+				"summary": "Edit a user by id",
+				"responses": {
+					"201": {
+						"description": "CREATED",
+						"schema": {
+							"$ref": "#/definitions/UserPatch"
+						}
+					}
+				}
+			},
+			"delete": {
+				"tags": ["Users"],
+				"summary": "Delete a user by id",
+				"responses": {
+					"204": {
+						"description": "NO_CONTENT"
+					}
+				}
 			}
 		}
 	},
 	"definitions": {
 		"User": {
-			"required": ["name", "_id", "companies"],
+			"required": ["id", "email", "password", "name", "lastname", "telephone"],
 			"properties": {
-				"_id": {
-					"type": "integer",
+				"id": {
+					"type": "number"
+				},
+				"email": {
+					"type": "string",
 					"uniqueItems": true
 				},
-				"isPublic": {
-					"type": "boolean"
+				"password": {
+					"type": "string"
 				},
 				"name": {
 					"type": "string"
 				},
-				"books": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"name": {
-								"type": "string"
-							},
-							"amount": {
-								"type": "number"
-							}
-						}
-					}
+				"lastname": {
+					"type": "string"
 				},
-				"companies": {
-					"type": "array",
-					"items": {
-						"type": "string"
-					}
+				"telephone": {
+					"type": "string"
+				}
+			}
+		},
+		"UserPost": {
+			"required": ["email", "password", "name", "lastname", "telephone"],
+			"properties": {
+				"email": {
+					"type": "string",
+					"uniqueItems": true
+				},
+				"password": {
+					"type": "string"
+				},
+				"name": {
+					"type": "string"
+				},
+				"lastname": {
+					"type": "string"
+				},
+				"telephone": {
+					"type": "string"
+				}
+			}
+		},
+		"UserPatch": {
+			"required": ["name", "lastname", "telephone"],
+			"properties": {
+				"name": {
+					"type": "string"
+				},
+				"lastname": {
+					"type": "string"
+				},
+				"telephone": {
+					"type": "string"
 				}
 			}
 		}
