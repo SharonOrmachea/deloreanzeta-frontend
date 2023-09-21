@@ -22,7 +22,8 @@ export class MembersUpComponent implements OnInit {
 
   actionToDo = Action.NEW;
 
-  public archivo:any = '';
+  selectedFile: File | null = null;
+  archivo:string = '';
 
   constructor(
     private aboutUsService:AboutUsService,
@@ -79,8 +80,20 @@ export class MembersUpComponent implements OnInit {
 
   }
 
-  captureFile(event:any){
-    this.archivo = event[0].base64;
+  captureFile(event:any): void{
+    //this.archivo = event[0].base64;
+    this.selectedFile = event.target.files[0];
+    console.log(this.aboutUsForm.get('imageUrl')?.value)
+    console.log('selectedFile antes del if: ', this.selectedFile)
+    if(this.selectedFile){
+      const reader = new FileReader();
+      console.log('reader en el if: ', reader)
+      reader.onload = (e:any) => {
+        this.archivo = e.target.result;
+        console.log('this.archivo en el if: ', this.archivo)
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
   private pathFormData():void {

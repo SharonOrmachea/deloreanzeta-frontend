@@ -19,6 +19,7 @@ export class BannerUpComponent implements OnInit {
 
   bannerForm!:FormGroup;
 
+  selectedFile: File | null = null;
   public archivos:string[]= [];
 
   actionToDo = Action.NEW;
@@ -66,10 +67,15 @@ export class BannerUpComponent implements OnInit {
 
   }
 
-  captureFile(event: any) {
-    for (let i = 0; i < event.length; i++) {
-      const reader = event[i].base64;
-      this.archivos.push(reader);
+  captureFile(event:any): void{
+    //this.archivo = event[0].base64;
+    this.selectedFile = event.target.files[0];
+    if(this.selectedFile){
+      const reader = new FileReader();
+      reader.onload = (e:any) => {
+        this.archivos = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 

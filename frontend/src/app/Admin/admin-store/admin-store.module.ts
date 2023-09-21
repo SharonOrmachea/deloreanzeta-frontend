@@ -10,8 +10,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-import { AlifeFileToBase64Module } from 'alife-file-to-base64';
-
 import { BannerUpComponent } from './components/banner/banner-up/banner-up.component';
 import { CategoriesUpComponent } from './components/categories/categories-up/categories-up.component';
 import { ProductUpComponent } from './components/products/product-up/product-up.component';
@@ -38,7 +36,6 @@ import { AdminStoreComponent } from './page/admin-store.component';
     MatTabsModule,
     MatButtonToggleModule,
     MatDialogModule,
-    AlifeFileToBase64Module,
     ToastrModule.forRoot(),
 
   ],

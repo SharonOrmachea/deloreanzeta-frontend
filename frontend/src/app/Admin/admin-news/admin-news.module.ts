@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AlifeFileToBase64Module } from 'alife-file-to-base64';
 
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
@@ -28,7 +27,6 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
     MatInputModule,
     MatMomentDateModule,
     MatDialogModule,
-    AlifeFileToBase64Module,
   ],
   exports: [
     NewsUpComponent,

@@ -27,6 +27,7 @@ export class ProductUpComponent implements OnInit {
 
   actionToDo = Action.NEW;
 
+  selectedFile: File | null = null;
   public archivos:string[]= [];
 
   constructor(
@@ -101,10 +102,15 @@ export class ProductUpComponent implements OnInit {
 
   }
 
-  captureFile(event: any) {
-    for (let i = 0; i < event.length; i++) {
-      const reader = event[i].base64;
-      this.archivos.push(reader);
+  captureFile(event:any): void{
+    //this.archivo = event[0].base64;
+    this.selectedFile = event.target.files[0];
+    if(this.selectedFile){
+      const reader = new FileReader();
+      reader.onload = (e:any) => {
+        this.archivos = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 

@@ -23,7 +23,8 @@ export class NewsUpComponent implements OnInit {
 
   actionToDo = Action.NEW;
 
-  public archivo:any = '';
+  selectedFile: File | null = null;
+  archivo:string = '';
 
   datosLocalStorage = JSON.parse(localStorage.getItem("user")!);
   tokenLocalStorage = this.datosLocalStorage.token;
@@ -90,8 +91,16 @@ export class NewsUpComponent implements OnInit {
   // importar modulo: AlifeFileToBase64Module
   // en el input se agrega un atributo llamado alife-file-to-base64 y si se quieren cargar multiples archivos le agregamos multiple al input
 
-  captureFile(event:any){
-    this.archivo = event[0].base64;
+  captureFile(event:any): void{
+    //this.archivo = event[0].base64;
+    this.selectedFile = event.target.files[0];
+    if(this.selectedFile){
+      const reader = new FileReader();
+      reader.onload = (e:any) => {
+        this.archivo = e.target.result;
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
   private pathFormData():void {
