@@ -1,9 +1,8 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserResponse, Role } from '../../interfaces/iuserlogin';
 import { CartService } from '../../services/store/cart/cart.service';
 import { AuthService } from '../../services/auth/auth.service';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 
 @Component({
@@ -34,10 +33,10 @@ export class NavBarComponent implements OnInit, OnDestroy {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
-    
+
     this.isLogged = this.authService.isLogged;
 
-    console.log('este es del nav ' + this.isLogged)
+    //console.log('este es del nav ' + this.isLogged)
   }
 
   ngOnInit(): void {

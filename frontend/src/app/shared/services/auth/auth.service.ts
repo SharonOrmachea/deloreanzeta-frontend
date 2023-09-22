@@ -42,6 +42,7 @@ export class AuthService {
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
       map((user:UserResponse) => {
         this.toastrService.success(`Bienvenido/a a Delorean Zeta ${user.name} ${user.lastname}`, 'Login Exitoso');
+        console.log('user: ', user);
         this.saveLocalStorage(user);
         this.user.next(user);
         return user;
