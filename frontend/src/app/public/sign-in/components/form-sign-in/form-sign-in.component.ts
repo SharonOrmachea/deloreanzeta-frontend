@@ -48,12 +48,20 @@ export class FormSignInComponent implements OnInit {
   registerNewUser(){
 
     if (this.signInForm.valid){
-      const userValue = this.signInForm.value;
+      const userValue = {
+        name: this.signInForm.get('name')?.value,
+        lastname: this.signInForm.get('lastname')?.value,
+        telephone: this.signInForm.get('telephone')?.value,
+        email: this.signInForm.get('email')?.value,
+        password: this.signInForm.get('password')?.value
+      };
+      
       this.userService.newUser(userValue).subscribe((res) => {
         this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
         this.router.navigate(['/login']);
         this.signInForm.reset();
       }, (error) => {
+        console.error(error);
         this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
       }
     );

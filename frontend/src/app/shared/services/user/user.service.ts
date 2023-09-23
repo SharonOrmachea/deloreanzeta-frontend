@@ -6,7 +6,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 import { USER_URL, USER_BY_EMAIL_URL, USER_IDENTIFY_EMAIL_URL, RESET_PASS_URL, AUTHORIZE_RESET_PASS_URL } from '../../constants/urls';
 
-import { IUserRegister } from '../../interfaces/iUserRegister';
+import { IUserRegister, IUserResponse } from '../../interfaces/iUserRegister';
 import { UserLogin, UserResetPass, UserSendEmail } from '../../interfaces/iuserlogin';
 
 import { AuthorizeHeaders } from '../../models/users/authorizeHeaders';
@@ -22,8 +22,10 @@ export class UserService {
   constructor( private http: HttpClient ) {}
 
   // CREAR USUARIO
-  newUser(user: IUserRegister): Observable<IUserRegister | void> {
-    return this.http.post<IUserRegister>(USER_URL, user).pipe(catchError(this.handlerUserError));
+  newUser(userValue: IUserRegister): Observable<IUserResponse | void> {
+    console.log('userValue desde newUser: ', userValue)
+    console.log('user_url desde newUser: ', USER_URL)
+    return this.http.post<IUserResponse>(USER_URL, userValue).pipe(catchError(this.handlerUserError));
   }
 
   // TRAE TODOS LOS USUARIOS
@@ -64,7 +66,7 @@ export class UserService {
   handlerUserError(error: any): Observable<never> {
     let errorMessage = 'Error';
     if (error) {
-      errorMessage = `Error ${error.message}`;
+      errorMessage = `Error desde el service: ${error.message}`;
     }
     return throwError(() => (errorMessage));
   }
