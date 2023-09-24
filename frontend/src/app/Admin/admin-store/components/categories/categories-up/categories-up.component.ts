@@ -59,7 +59,8 @@ export class CategoriesUpComponent implements OnInit {
       this.categoriesService.updateCategory(categoryId, valueCategory).subscribe((res) => {
         this.toastr.success('La categoría fue editada con exito', 'Categoría Editada');
       }, error => {
-        console.log(error);
+        this.toastr.error(error, 'Se produjo un error');
+        //console.log(error);
       })
     }
 

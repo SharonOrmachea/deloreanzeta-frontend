@@ -5,12 +5,13 @@ import { ResetPassModule } from './reset-pass/reset-pass.module';
 import { PublicRoutingModule } from '../public/public-routing.module';
 import { CartModule } from './cart/cart.module';
 import { UserModule } from './user/user.module';
+import { PrivateComponent } from './private.component';
 
 
 
 @NgModule({
   declarations: [
-
+    PrivateComponent
   ],
   imports: [
     CommonModule,

@@ -38,12 +38,12 @@ export class HiringFormComponent implements OnInit {
     if (this.hiringForm.valid){
       const hiringFormValue = this.hiringForm.value;
       this.hiringService.sendHiring(hiringFormValue).subscribe((res)=>{
-        console.log(res);
+        //console.log(res);
         this.toastrService.success('Verifique su casilla de correo electronico para más informacion acerca de los tiempos de espera de respuesta', 'Formulario enviado');
         this.hiringForm.reset();
       }, (error) => {
         this.toastrService.error('No se pudo enviar su solicitud, hubo un error en el servidor, intentelo de nuevo más tarde', 'Error');
-        console.log(error);
+        //console.log(error);
       })
     }
 

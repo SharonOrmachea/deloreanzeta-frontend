@@ -83,14 +83,14 @@ export class MembersUpComponent implements OnInit {
   captureFile(event:any): void{
     //this.archivo = event[0].base64;
     this.selectedFile = event.target.files[0];
-    console.log(this.aboutUsForm.get('imageUrl')?.value)
-    console.log('selectedFile antes del if: ', this.selectedFile)
+    //console.log(this.aboutUsForm.get('imageUrl')?.value)
+    //console.log('selectedFile antes del if: ', this.selectedFile)
     if(this.selectedFile){
       const reader = new FileReader();
-      console.log('reader en el if: ', reader)
+      //console.log('reader en el if: ', reader)
       reader.onload = (e:any) => {
         this.archivo = e.target.result;
-        console.log('this.archivo en el if: ', this.archivo)
+        //console.log('this.archivo en el if: ', this.archivo)
       };
       reader.readAsDataURL(this.selectedFile);
     }

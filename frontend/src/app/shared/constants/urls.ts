@@ -23,8 +23,6 @@ export const CATEGORY_BY_ID_URL = CATEGORIES_URL + '';
 // Trae y crea los Banners - GET - POST
 export const BANNER_URL = BASE_URL + '';
 
-
-
 // -----------------------USUARIOS------------------------------------------------
 
 // Login de usuarios

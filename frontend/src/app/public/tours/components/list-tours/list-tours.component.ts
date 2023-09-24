@@ -5,6 +5,7 @@ import { ToursService } from 'src/app/shared/services/tours/tours.service';
 import { Tours } from 'src/app/shared/models/tours/tours';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class ListToursComponent implements OnInit {
 
   constructor(
     private tourService:ToursService,
+    private toastr: ToastrService
     ) {
 
 
@@ -32,7 +34,8 @@ export class ListToursComponent implements OnInit {
       this.tours = data;
       console.log(data)
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 

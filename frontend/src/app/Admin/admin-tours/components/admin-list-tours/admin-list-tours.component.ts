@@ -33,7 +33,8 @@ export class AdminListToursComponent implements OnInit {
     this.tourService.getAllTours().subscribe(data => {
       this.tours = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 
@@ -51,7 +52,8 @@ export class AdminListToursComponent implements OnInit {
       this.toastr.success('La fecha fue eliminado con exito', 'Fecha Eliminada');
       this.getAllTours();
     }, error => {
-      console.log(error);
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error);
     })
   }
 

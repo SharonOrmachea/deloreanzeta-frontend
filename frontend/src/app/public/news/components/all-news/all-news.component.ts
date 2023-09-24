@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -15,7 +16,7 @@ export class AllNewsComponent implements OnInit {
 
   p:any;
 
-  constructor( private newsService:NewsService ) {
+  constructor( private newsService:NewsService, private toastr: ToastrService ) {
     this.p = 1;
   }
 
@@ -27,7 +28,8 @@ export class AllNewsComponent implements OnInit {
     this.newsService.getAllNews().subscribe(data => {
       this.news = data;
     }, error => {
-      console.log(error);
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error);
     })
   }
 

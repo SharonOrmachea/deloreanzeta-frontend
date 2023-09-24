@@ -1,15 +1,11 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
-import { Role } from '../../interfaces/iuserlogin';
 import { AuthService } from '../../services/auth/auth.service';
-import { Subscription, distinctUntilChanged, map, tap } from 'rxjs';
 
 @Directive({
   selector: '[appShowForRoles]'
 })
-export class ShowForRolesDirective {
 
-  @Input('appShowForRoles') allowedRoles?: Role[];
-  private sub?: Subscription;
+export class ShowForRolesDirective {
 
   constructor(
     private authService: AuthService,
@@ -17,12 +13,15 @@ export class ShowForRolesDirective {
     private templateRef: TemplateRef<any>
   ) { }
 
-  ngOnInit():void{
-    
-  }
+  @Input() set appShowForRoles(role: string){
+    const userValue = this.authService.userValue();
+    const userRole = userValue.role;
 
-  ngOnDestroy():void{
-    this.sub?.unsubscribe();
+    if(userRole === role) {
+      this.viewContainerRef.createEmbeddedView(this.templateRef);
+    } else {
+      this.viewContainerRef.clear();
+    }
   }
 
 }

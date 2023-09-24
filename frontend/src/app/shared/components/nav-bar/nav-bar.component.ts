@@ -22,25 +22,30 @@ export class NavBarComponent implements OnInit, OnDestroy {
 
   isLogged:boolean = false;
 
-  private destroy$ = new Subject<any>();
+  userName:string = 'user';
 
+  private destroy$ = new Subject<any>();
 
   constructor(
     private router: Router,
-    cartService:CartService,
+    private cartService:CartService,
     private authService:AuthService) {
 
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
 
-    this.isLogged = this.authService.isLogged;
-
-    //console.log('este es del nav ' + this.isLogged)
+    console.log('isLogged: ' + this.isLogged);
   }
 
   ngOnInit(): void {
+    this.isLogged = this.authService.isLogged;
 
+    if(this.isLogged === true){
+      this.userName = this.authService.userValue().name;
+    } else{
+      this.userName = '';
+    }
   }
 
   ngOnDestroy(): void {

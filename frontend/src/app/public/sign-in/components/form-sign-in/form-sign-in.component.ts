@@ -46,6 +46,7 @@ export class FormSignInComponent implements OnInit {
   ngOnInit(): void {}
 
   registerNewUser(){
+    //console.log('form is valid?: ', this.signInForm.valid)
 
     if (this.signInForm.valid){
       const userValue = {
@@ -55,14 +56,15 @@ export class FormSignInComponent implements OnInit {
         email: this.signInForm.get('email')?.value,
         password: this.signInForm.get('password')?.value
       };
-      
+
       this.userService.newUser(userValue).subscribe((res) => {
         this.toastrService.success('Inicie Sesion con su cuenta', 'Registro Exitoso');
         this.router.navigate(['/login']);
         this.signInForm.reset();
       }, (error) => {
-        console.error(error);
-        this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados', 'Sign-In Failed');
+        this.toastrService.error('No se pudo registrar su usuario, compruebe los datos ingresados y/o intentelo de nuevo más tarde', 'Sign In Failed');
+        this.toastrService.error(error, 'Sign In Failed');
+        //console.error(error)
       }
     );
     }

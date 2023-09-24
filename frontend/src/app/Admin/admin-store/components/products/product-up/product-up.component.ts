@@ -81,7 +81,7 @@ export class ProductUpComponent implements OnInit {
       information: this.productForm.get('information')?.value,
     };
 
-    console.log(valueProduct);
+    //console.log(valueProduct);
 
     if(this.actionToDo == Action.NEW){
       this.productService.newProduct(valueProduct).subscribe((res) => {
