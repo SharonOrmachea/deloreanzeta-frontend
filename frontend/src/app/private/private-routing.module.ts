@@ -14,7 +14,7 @@ import { CheckLoginGuard } from "../shared/guards/check-login/check-login.guard"
 const routes: Routes = [
   { path: '', component: PrivateComponent, children:
     [
-      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      //{ path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'recover/password/:cookie', component: ResetPassComponent, canActivate: [CheckLoginGuard] },
       { path: 'store', component: StoreComponent, children: [
         { path: '', component: ProductsComponent },

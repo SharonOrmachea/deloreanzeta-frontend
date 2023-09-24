@@ -27,24 +27,26 @@ export class AuthService {
     private toastrService:ToastrService
   ) {
     this.checkToken();
-    console.log(this.isLogged);
+    //console.log(this.isLogged);
   }
 
   get user$():Observable<UserResponse> {
     return this.user.asObservable();
   }
 
-  get userValue():UserResponse {
-    return this.user.getValue();
+  userValue():UserResponse {
+    const user = JSON.parse(localStorage.getItem('user')!) || null;
+    return user;
   }
 
   login(authData:UserLogin): Observable<UserResponse | void>{
     return this.http.post<UserResponse>(USER_LOGIN_URL, authData).pipe(
       map((user:UserResponse) => {
         this.toastrService.success(`Bienvenido/a a Delorean Zeta ${user.name} ${user.lastname}`, 'Login Exitoso');
-        console.log('user: ', user);
+        //console.log('user: ', user);
         this.saveLocalStorage(user);
         this.user.next(user);
+        this.isLogged = true;
         return user;
       }),
       catchError( (error) => this.handlerError(error) )
@@ -54,6 +56,7 @@ export class AuthService {
   logout(): void{
     localStorage.removeItem('user');
     this.user.next(null!);
+    this.isLogged = false;
     this.router.navigate(['/login']);
   }
 
@@ -65,7 +68,6 @@ export class AuthService {
 
       if (isExpired){
         this.logout();
-        this.isLogged = false;
       } else {
         this.user.next(user);
         this.isLogged = true;

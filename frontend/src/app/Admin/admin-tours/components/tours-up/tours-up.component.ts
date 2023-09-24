@@ -82,7 +82,8 @@ export class ToursUpComponent implements OnInit {
       this.toursService.updateTour(tourId, valueTour).subscribe((res) => {
         this.toastr.success('La fecha fue editado con exito', 'Fecha Editada');
       }, error => {
-        console.log(error);
+        this.toastr.error(error, 'Se produjo un error');
+        //console.log(error);
       })
     }
 

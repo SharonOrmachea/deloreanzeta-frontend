@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -17,7 +18,7 @@ export class NewsCarruselComponent implements OnInit {
 
   news:News[] = [];
 
-  constructor(private newsService:NewsService) {
+  constructor(private newsService:NewsService, private toastr: ToastrService) {
 
   }
 
@@ -30,7 +31,8 @@ export class NewsCarruselComponent implements OnInit {
     this.newsService.getAllNews().subscribe(data => {
       this.news = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 

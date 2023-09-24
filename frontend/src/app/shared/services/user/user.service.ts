@@ -23,8 +23,6 @@ export class UserService {
 
   // CREAR USUARIO
   newUser(userValue: IUserRegister): Observable<IUserResponse | void> {
-    console.log('userValue desde newUser: ', userValue)
-    console.log('user_url desde newUser: ', USER_URL)
     return this.http.post<IUserResponse>(USER_URL, userValue).pipe(catchError(this.handlerUserError));
   }
 

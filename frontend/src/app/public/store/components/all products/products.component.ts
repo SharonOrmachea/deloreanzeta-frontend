@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 // import { ActivatedRoute } from '@angular/router';
 // import { Observable } from 'rxjs';
 
@@ -22,11 +23,12 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productService:ProductService,
+    private toastr: ToastrService
     ) {
 
     this.p =1;
 
-    console.log(this.products)
+    //console.log(this.products)
 
     // let productsObservable:Observable<Product[]>;
 
@@ -54,7 +56,8 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe(data => {
       this.products = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 

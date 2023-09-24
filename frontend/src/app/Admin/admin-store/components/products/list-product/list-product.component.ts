@@ -62,7 +62,8 @@ export class ListProductComponent implements OnInit {
     this.productService.getAllProducts().subscribe(data => {
       this.listProducts = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 

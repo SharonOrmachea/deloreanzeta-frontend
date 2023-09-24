@@ -48,9 +48,10 @@ export class FormResetComponent implements OnInit {
     });
 
     this.userService.authorizeHeaders(headers).subscribe( res => {
-      console.log(res);
+      this.toastrService.success('El mail se ha enviado correctamente', 'Email enviado');
+      //console.log(res);
     }, (error) =>{
-      console.log(error);
+      //console.log(error);
       this.toastrService.error('Vuelva a enviar el mail de recuperacion de contraseña', 'Token Expirado');
       this.router.navigate(['/login/identify']);
     });
@@ -63,11 +64,11 @@ export class FormResetComponent implements OnInit {
       'Authorization': `${tokenCookie}`
     })
     this.userService.resetPass(userPasswords, headers).subscribe( (res) => {
-      console.log(res);
+      //console.log(res);
       this.toastrService.success('Inicie Sesion con su cuenta', 'Restablecimiento Exitoso');
       this.router.navigate(['/login']);
     }, (error) => {
-      console.log(error);
+      //console.log(error);
       this.toastrService.error('No se pudo restablecer la contraseña, vuelva a intentarlo', 'Restore Failed');
     })
 

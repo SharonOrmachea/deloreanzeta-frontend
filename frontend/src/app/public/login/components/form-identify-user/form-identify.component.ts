@@ -40,7 +40,7 @@ export class FormIdentifyComponent implements OnInit {
       const userValue = this.identifyForm.value;
       this.userService.sendEmail(userValue).subscribe( response => {
         if(response){
-          console.log(response);
+          //console.log(response);
           this.toastrService.success('Verifique su casilla de correo electronico', 'Email Enviado');
           this.router.navigate(['/login']);
           this.identifyForm.reset();

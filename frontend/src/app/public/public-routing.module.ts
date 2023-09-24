@@ -22,8 +22,6 @@ import { CheckLoginGuard } from '../shared/guards/check-login/check-login.guard'
 import { ListToursComponent } from "./tours/components/list-tours/list-tours.component";
 
 
-
-
 const routes: Routes = [
   {
     path: '', component: PublicComponent, children:

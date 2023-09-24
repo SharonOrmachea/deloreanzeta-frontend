@@ -28,7 +28,8 @@ export class AdminListMembersComponent implements OnInit {
     this.aboutUsService.getAllMembers().subscribe(data => {
       this.members = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 

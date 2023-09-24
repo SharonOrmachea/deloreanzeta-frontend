@@ -38,7 +38,8 @@ export class AdminListNewsComponent implements OnInit {
     this.newsService.getAllNews().subscribe(data => {
       this.news = data;
     }, error => {
-      console.log(error)
+      this.toastr.error(error, 'Se produjo un error');
+      //console.log(error)
     })
   }
 
@@ -55,7 +56,7 @@ export class AdminListNewsComponent implements OnInit {
       this.toastr.success('La noticia fue eliminada con exito', 'Noticia Eliminada');
       this.getAllNews();
     }, error => {
-      this.toastr.success(error, 'Failed Delete');
+      this.toastr.error(error, 'Failed Delete');
     })
   }
 

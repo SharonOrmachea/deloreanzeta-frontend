@@ -12,11 +12,13 @@ import { ToursModule } from './tours/tours.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AboutUsModule } from './about-us/about-us.module';
+import { PublicComponent } from './public.component';
 
 
 
 @NgModule({
   declarations: [
+    PublicComponent
   ],
   imports: [
     CommonModule,
