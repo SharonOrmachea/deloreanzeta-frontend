@@ -3,7 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, SwiperOptions } from 'swiper';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
@@ -18,9 +18,36 @@ export class NewsCarruselComponent implements OnInit {
 
   news:News[] = [];
 
-  constructor(private newsService:NewsService, private toastr: ToastrService) {
-
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    loop: true,
+    navigation: true,
+    pagination:false,
+    autoplay: {
+      delay: 1000,
+      disableOnInteraction: false,
+      reverseDirection: true
+    },
+    breakpoints: {
+      200: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1280: {
+        slidesPerView: 3,
+      },
+      1680: {
+        slidesPerView: 4,
+      },
+      1920: {
+        slidesPerView: 4,
+      }
+    }
   }
+
+  constructor(private newsService:NewsService, private toastr: ToastrService) {}
 
 
   ngOnInit(): void {

@@ -15,7 +15,7 @@ export class IdNewsComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private newService: NewsService
-    ) {
+  ) {
 
     this.activatedRoute.params.subscribe((params) => {
       if (params['id'])

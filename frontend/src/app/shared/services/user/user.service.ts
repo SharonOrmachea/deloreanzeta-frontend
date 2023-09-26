@@ -4,7 +4,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { USER_URL, USER_BY_EMAIL_URL, USER_IDENTIFY_EMAIL_URL, RESET_PASS_URL, AUTHORIZE_RESET_PASS_URL } from '../../constants/urls';
+import { USER_URL, USER_BY_EMAIL_URL, USER_IDENTIFY_EMAIL_URL, RESET_PASS_URL, AUTHORIZE_RESET_PASS_URL } from '../../routes/routes';
 
 import { IUserRegister, IUserResponse } from '../../interfaces/iUserRegister';
 import { UserLogin, UserResetPass, UserSendEmail } from '../../interfaces/iuserlogin';

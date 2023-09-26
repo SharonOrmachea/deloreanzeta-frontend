@@ -6,7 +6,7 @@ import { BehaviorSubject, catchError, map, Observable, throwError } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { ToastrService } from 'ngx-toastr';
 
-import { USER_LOGIN_URL } from '../../constants/urls';
+import { USER_LOGIN_URL } from '../../routes/routes';
 import { UserLogin, UserResponse } from '../../interfaces/iuserlogin';
 
 const helper = new JwtHelperService();

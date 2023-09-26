@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { Tours } from 'src/app/shared/models/tours/tours';
@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ToursService } from 'src/app/shared/services/tours/tours.service';
 
 import { ToursUpComponent } from '../tours-up/tours-up.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-list-tours',
@@ -17,16 +18,27 @@ export class AdminListToursComponent implements OnInit {
 
   tours:Tours[] = [];
 
+  suscription!: Subscription;
+
   constructor(
     private tourService:ToursService,
     private toastr:ToastrService,
     private dialog: MatDialog
-    ) {
-
-  }
+  ) {}
 
   ngOnInit(): void {
     this.getAllTours();
+
+    this.suscription = this.tourService.refreshTour$.subscribe((res) =>{
+      this.getAllTours();
+    }, error => {
+      this.toastr.error(error, 'Se produjo un error');
+    });
+  }
+
+  ngOnDestroy(): void{
+    this.suscription.unsubscribe();
+    //console.log('tour destruido');
   }
 
   getAllTours(){
@@ -34,7 +46,7 @@ export class AdminListToursComponent implements OnInit {
       this.tours = data;
     }, error => {
       this.toastr.error(error, 'Se produjo un error');
-      //console.log(error)
+      console.log(error)
     })
   }
 
@@ -53,7 +65,7 @@ export class AdminListToursComponent implements OnInit {
       this.getAllTours();
     }, error => {
       this.toastr.error(error, 'Se produjo un error');
-      //console.log(error);
+      console.log(error);
     })
   }
 

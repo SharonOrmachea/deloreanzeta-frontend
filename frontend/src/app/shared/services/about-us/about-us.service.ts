@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
-import { ABOUT_US_ID_URL, ABOUT_US_URL } from '../../constants/urls';
+import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
+import { ABOUT_US_ID_URL, ABOUT_US_URL } from '../../routes/routes';
 import { Members } from '../../models/about-us/about-us';
 
 @Injectable({
@@ -9,7 +9,13 @@ import { Members } from '../../models/about-us/about-us';
 })
 export class AboutUsService {
 
+  private refresh$ = new Subject<void>();
+
   constructor(private http: HttpClient) { }
+
+  get refreshAboutUs$(){
+    return this.refresh$;
+  }
 
   // TRAE TODOS LOS INTEGRANTES
   getAllMembers():Observable<Members[]>{
@@ -23,17 +29,23 @@ export class AboutUsService {
 
   // AGREGA UN INTEGRANTE
   newMember(memberValue:Members): Observable<Members | any>{
-    return this.http.post(ABOUT_US_URL, memberValue, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
+    return this.http.post(ABOUT_US_URL, memberValue, {responseType: 'text'} ).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   // EDITA UN INTEGRANTE
   updateMember(id:number, memberValue:Members): Observable<any>{
-    return this.http.patch<Members>(`${ABOUT_US_ID_URL}/${id}`, memberValue).pipe(catchError(this.handlerUserError));
+    return this.http.patch<Members>(`${ABOUT_US_ID_URL}/${id}`, memberValue).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   //ELIMINA UN INTEGRANTE
   deleteMember(id:number): Observable<{}>{
-    return this.http.delete<Members>(`${ABOUT_US_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
+    return this.http.delete<Members>(`${ABOUT_US_ID_URL}/${id}`).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
 

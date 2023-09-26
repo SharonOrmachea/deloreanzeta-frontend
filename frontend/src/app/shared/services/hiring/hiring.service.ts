@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
-import { SEND_HIRING_URL } from '../../constants/urls';
+import { SEND_HIRING_URL } from '../../routes/routes';
 import { Hiring } from '../../models/hiring/hiring';
 
 @Injectable({

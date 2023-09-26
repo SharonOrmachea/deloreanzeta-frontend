@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 import { NewsUpComponent } from '../news-up/news-up.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-list-news',
@@ -24,6 +25,8 @@ export class AdminListNewsComponent implements OnInit {
     'Authorization': `Bearer ${this.tokenLocalStorage}`
   });
 
+  suscription!: Subscription;
+
   constructor(
     private newsService:NewsService,
     private toastr:ToastrService,
@@ -32,6 +35,17 @@ export class AdminListNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNews();
+
+    this.suscription = this.newsService.refreshNews$.subscribe((res) =>{
+      this.getAllNews();
+    }, error => {
+      this.toastr.error(error, 'Se produjo un error');
+    });
+  }
+
+  ngOnDestroy(): void{
+    this.suscription.unsubscribe();
+    //console.log('tour destruido');
   }
 
   getAllNews(){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { News } from 'src/app/shared/models/news/news';
 import { NewsService } from 'src/app/shared/services/news/news.service';
 
@@ -14,6 +15,8 @@ export class AllNewsComponent implements OnInit {
 
   news:News[] = [];
 
+  suscription!: Subscription;
+
   p:any;
 
   constructor( private newsService:NewsService, private toastr: ToastrService ) {
@@ -22,6 +25,17 @@ export class AllNewsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllNews();
+
+    this.suscription = this.newsService.refreshNews$.subscribe((res) =>{
+      this.getAllNews();
+    }, error => {
+      this.toastr.error(error, 'Se produjo un error');
+    });
+  }
+
+  ngOnDestroy(): void{
+    this.suscription.unsubscribe();
+    //console.log('tour destruido');
   }
 
   getAllNews(){

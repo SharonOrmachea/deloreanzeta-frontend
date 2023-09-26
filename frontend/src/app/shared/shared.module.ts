@@ -17,8 +17,6 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { ShowForRolesDirective } from './directives/showForRoles/show-for-roles.directive';
 
 
-
-
 @NgModule({
   declarations: [
     NavBarComponent,
@@ -28,7 +26,7 @@ import { ShowForRolesDirective } from './directives/showForRoles/show-for-roles.
     NewsCarruselComponent,
     TitleComponent,
     LoadingComponent,
-    ShowForRolesDirective,
+    ShowForRolesDirective
   ],
   imports: [
     CommonModule,
