@@ -35,7 +35,7 @@ export class NavBarComponent implements OnInit, OnDestroy {
       this.cartQuantity = newCart.totalCount;
     });
 
-    console.log('isLogged: ' + this.isLogged);
+    //console.log('isLogged: ' + this.isLogged);
   }
 
   ngOnInit(): void {

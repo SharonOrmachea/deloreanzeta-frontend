@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
-import { CATEGORIES_URL, CATEGORY_BY_ID_URL } from 'src/app/shared/constants/urls';
+import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
+import { CATEGORIES_URL, CATEGORY_BY_ID_URL } from 'src/app/shared/routes/routes';
 import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 
 @Injectable({
@@ -9,7 +9,13 @@ import { ProductCategories } from 'src/app/shared/models/store/category/product-
 })
 export class CategoryService {
 
+  private refresh$ = new Subject<void>();
+
   constructor(private http: HttpClient) { }
+
+  get refreshCategories$(){
+    return this.refresh$;
+  }
 
   // METODOS PARA CATEGORIAS
 
@@ -20,17 +26,23 @@ export class CategoryService {
 
   // Agrega una categoria
   newCategory(category:ProductCategories): Observable<ProductCategories | any>{
-    return this.http.post(CATEGORIES_URL, category, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
+    return this.http.post(CATEGORIES_URL, category, {responseType: 'text'} ).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   // Edita una categoria
   updateCategory(id:number, category:ProductCategories): Observable<any>{
-    return this.http.patch<ProductCategories>(`${CATEGORY_BY_ID_URL}/${id}`, category).pipe(catchError(this.handlerUserError));
+    return this.http.patch<ProductCategories>(`${CATEGORY_BY_ID_URL}/${id}`, category).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   // Elimina una categoria
   deleteCategory(id:number): Observable<{}>{
-    return this.http.delete<ProductCategories>(`${CATEGORY_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
+    return this.http.delete<ProductCategories>(`${CATEGORY_BY_ID_URL}/${id}`).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   handlerUserError(error: any): Observable<never> {

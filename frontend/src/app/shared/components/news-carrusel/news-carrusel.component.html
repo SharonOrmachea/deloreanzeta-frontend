@@ -8,52 +8,12 @@
 
   <div class="contenedorCarrusel">
     <swiper
-    [slidesPerView]="4"
-    [spaceBetween]="-10"
-    [navigation]="true"
-    [loop]="true"
-    [loopFillGroupWithBlank]="true"
-    [autoplay]="{
-      delay: 6000,
-      disableOnInteraction: false,
-      reverseDirection: true
-    }"
-    [breakpoints]="{
-      '200': {
-        slidesPerView: 1,
-        spaceBetween: 0
-      },
-      '768': {
-        slidesPerView: 2,
-        spaceBetween: 0
-      },
-      '1280': {
-        slidesPerView: 3,
-        spaceBetween: 0
-      },
-      '1680': {
-        slidesPerView: 4,
-        spaceBetween: 0
-      },
-      '1920': {
-        slidesPerView: 5,
-        spaceBetween: 0
-      },
-      '2560': {
-        slidesPerView: 6,
-        spaceBetween: 0
-      },
-      '3400': {
-        slidesPerView: 8,
-        spaceBetween: 0
-      }
-    }"
+    [config]="config"
     class="mySwiper"
     >
-    <ng-template swiperSlide>
+    <ng-template swiperSlide *ngFor="let new of news">
       <div
         class="card-new"
-        *ngFor="let new of news"
       >
         <div class="image-new">
           <img [src]="new.imageUrl">

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, Observable, Subject, tap, throwError } from 'rxjs';
 
-import { PRODUCT_URL, PRODUCT_BY_ID_URL } from '../../../constants/urls';
+import { PRODUCT_URL, PRODUCT_BY_ID_URL } from '../../../routes/routes';
 
 import { Product } from 'src/app/shared/models/store/products/product';
 
@@ -12,7 +12,13 @@ import { Product } from 'src/app/shared/models/store/products/product';
 
 export class ProductService {
 
+  private refresh$ = new Subject<void>();
+
   constructor(private http:HttpClient) { }
+
+  get refreshProduct$(){
+    return this.refresh$;
+  }
 
   // METODOS PARA PRODUCTOS
 
@@ -35,17 +41,23 @@ export class ProductService {
 
   // Agrega un producto
   newProduct(product:Product): Observable<Product | any>{
-    return this.http.post(PRODUCT_URL, product, {responseType: 'text'} ).pipe(catchError(this.handlerUserError));
+    return this.http.post(PRODUCT_URL, product, {responseType: 'text'} ).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   // Edita un producto
   updateProduct(id:number, product:Product): Observable<any>{
-    return this.http.patch<Product>(`${PRODUCT_BY_ID_URL}/${id}`, product).pipe(catchError(this.handlerUserError));
+    return this.http.patch<Product>(`${PRODUCT_BY_ID_URL}/${id}`, product).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   // Elimina un producto
   deleteProduct(id:number): Observable<{}>{
-    return this.http.delete<Product>(`${PRODUCT_BY_ID_URL}/${id}`).pipe(catchError(this.handlerUserError));
+    return this.http.delete<Product>(`${PRODUCT_BY_ID_URL}/${id}`).pipe(tap(() => {
+      this.refresh$.next();
+    }),catchError(this.handlerUserError));
   }
 
   handlerUserError(error: any): Observable<never> {

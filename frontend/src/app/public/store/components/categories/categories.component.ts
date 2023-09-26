@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 // import { ProductCategories } from 'src/app/shared/models/store/category/product-tag';
 import { Product } from 'src/app/shared/models/store/products/product';
 
@@ -14,6 +15,8 @@ export class CategoriesComponent implements OnInit {
   // categories:ProductCategories[];
 
   products:Product[] = [];
+
+  suscription!: Subscription;
 
 
   constructor(productService:ProductService) {

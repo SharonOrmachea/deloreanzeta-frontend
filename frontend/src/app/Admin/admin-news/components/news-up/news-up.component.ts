@@ -1,7 +1,7 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 import { NewsService } from '../../../../shared/services/news/news.service';
@@ -39,6 +39,7 @@ export class NewsUpComponent implements OnInit {
     private formBuilder:FormBuilder,
     private validatorService:ValidationsService,
     private toastr:ToastrService,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
 
   ) {
@@ -84,6 +85,8 @@ export class NewsUpComponent implements OnInit {
         this.toastr.error(error, 'News Failed');
       })
     }
+
+    this.dialog.closeAll();
 
   }
 

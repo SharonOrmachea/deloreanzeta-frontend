@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { ValidationsService } from 'src/app/shared/services/validations/validations.service';
 import { ToursService } from '../../../../shared/services/tours/tours.service';
 
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 
 
 enum Action {
@@ -32,6 +32,7 @@ export class ToursUpComponent implements OnInit {
     private validatorService:ValidationsService,
     private toursService: ToursService,
     private toastr:ToastrService,
+    private dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
     ) {
 
@@ -86,6 +87,8 @@ export class ToursUpComponent implements OnInit {
         //console.log(error);
       })
     }
+
+    this.dialog.closeAll();
 
   }
 

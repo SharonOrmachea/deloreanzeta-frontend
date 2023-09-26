@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Members } from '../../../../shared/models/about-us/about-us';
 import { AboutUsService } from '../../../../shared/services/about-us/about-us.service';
 import { MembersUpComponent } from '../members-up/members-up.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-list-members',
@@ -14,6 +15,8 @@ export class AdminListMembersComponent implements OnInit {
 
   members:Members[] = [];
 
+  suscription!: Subscription;
+
   constructor(
     private aboutUsService:AboutUsService,
     private toastr:ToastrService,
@@ -22,6 +25,17 @@ export class AdminListMembersComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllMembers();
+
+    this.suscription = this.aboutUsService.refreshAboutUs$.subscribe((res) =>{
+      this.getAllMembers();
+    }, error => {
+      this.toastr.error(error, 'Se produjo un error');
+    });
+  }
+
+  ngOnDestroy(): void{
+    this.suscription.unsubscribe();
+    //console.log('tour destruido');
   }
 
   getAllMembers(){
