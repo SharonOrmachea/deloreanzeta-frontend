@@ -1,4 +1,4 @@
-import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, ElementRef, Input } from '@angular/core';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Directive({
@@ -7,20 +7,19 @@ import { AuthService } from '../../services/auth/auth.service';
 
 export class ShowForRolesDirective {
 
+  @Input('showForRoles') roles:string[] = [];
+
   constructor(
     private authService: AuthService,
-    private viewContainerRef: ViewContainerRef,
-    private templateRef: TemplateRef<any>
+    private el: ElementRef
   ) { }
 
   @Input() set appShowForRoles(role: string){
-    const userValue = this.authService.userValue();
-    const userRole = userValue.role;
+    const userRole = this.authService.userValue().email;
+    const userHaveAccess = this.roles.some(roles => userRole.includes(roles));
 
-    if(userRole === role) {
-      this.viewContainerRef.createEmbeddedView(this.templateRef);
-    } else {
-      this.viewContainerRef.clear();
+    if(!userHaveAccess) {
+      this.el.nativeElement.style.display = 'none';
     }
   }
 

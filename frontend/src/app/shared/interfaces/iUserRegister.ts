@@ -4,7 +4,6 @@ export interface IUserRegister{
   telephone: number;
   email: string;
   password: string;
-  //confirmPassword: string;
 }
 
 export interface IUserResponse{
