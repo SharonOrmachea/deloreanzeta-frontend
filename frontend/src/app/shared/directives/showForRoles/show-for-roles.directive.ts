@@ -15,10 +15,16 @@ export class ShowForRolesDirective {
   ) { }
 
   @Input() set appShowForRoles(role: string){
-    const userRole = this.authService.userValue().email;
-    const userHaveAccess = this.roles.some(roles => userRole.includes(roles));
+    console.log('user: ', this.authService.userValue())
+    const user = this.authService.userValue();
 
-    if(!userHaveAccess) {
+    if(user && user.role){
+      const userRole = this.authService.userValue().role;
+      const userHaveAccess = this.roles.some(roles => userRole.includes(roles));
+      if(!userHaveAccess) {
+        this.el.nativeElement.style.display = 'flex';
+      }
+    } else {
       this.el.nativeElement.style.display = 'none';
     }
   }
