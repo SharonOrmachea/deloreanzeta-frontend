@@ -9,8 +9,7 @@
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#navbarOffcanvasLg"
-      aria-controls="navbarOffcanvasLg"
-    >
+      aria-controls="navbarOffcanvasLg">
       <i class="bi bi-list"></i>
     </button>
 
@@ -18,8 +17,7 @@
       class="offcanvas offcanvas-end"
       tabindex="-1"
       id="navbarOffcanvasLg"
-      aria-labelledby="navbarOffcanvasLgLabel"
-    >
+      aria-labelledby="navbarOffcanvasLgLabel">
       <!----------------------------------------------------------------->
       <div class="offcanvas-header">
         <a class="logo-header" routerLink="/home" tabindex="”0”">
@@ -29,13 +27,12 @@
           type="button"
           class="btn"
           data-bs-dismiss="offcanvas"
-          aria-label="Close"
-        >
+          aria-label="Close">
           <i class="bi bi-x-lg"></i>
         </button>
       </div>
 
-      <div class="offcanvas-body" >
+      <div class="offcanvas-body">
         <ul class="navbar-nav" *ngIf="visibleNav">
           <li class="nav-item">
             <a
@@ -44,19 +41,15 @@
               routerLink="/home"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Inicio</strong></a
-            >
+              tabindex="”0”"><strong>Inicio</strong></a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a
               class="nav-link"
               routerLink="/gallery"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Galería</strong></a
-            >
+              tabindex="”0”"><strong>Galería</strong></a>
           </li>
           <li class="nav-item">
             <a
@@ -64,19 +57,15 @@
               routerLink="/store"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Tienda</strong></a
-            >
-          </li>
+              tabindex="”0”"><strong>Tienda</strong></a>
+          </li> -->
           <li class="nav-item">
             <a
               class="nav-link"
               routerLink="/news"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Noticias</strong></a
-            >
+              tabindex="”0”"><strong>Noticias</strong></a>
           </li>
           <li class="nav-item">
             <a
@@ -84,9 +73,7 @@
               routerLink="/tours"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Tours</strong></a
-            >
+              tabindex="”0”"><strong>Tours</strong></a>
           </li>
           <li class="nav-item">
             <a
@@ -94,9 +81,7 @@
               routerLink="/about-us"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>La Banda</strong></a
-            >
+              tabindex="”0”"><strong>La Banda</strong></a>
           </li>
           <li class="nav-item">
             <a
@@ -104,15 +89,13 @@
               routerLink="/hiring"
               routerLinkActive="active"
               ariaCurrentWhenActive="page"
-              tabindex="”0”"
-              ><strong>Contrataciones</strong></a
-            >
+              tabindex="”0”"><strong>Contrataciones</strong></a>
           </li>
         </ul>
 
         <div class="buttons">
 
-          <ng-template #viewLogout >
+          <ng-template #viewLogout>
             <!--  en un div -->
             <div class="buttons-logout">
               <button class="sign-in" (click)="paginaSignIn()" tabindex="”0”">
@@ -127,47 +110,49 @@
           <div *ngIf="isLogged; else viewLogout">
             <div class="buttons-login">
               <!--  en un ng-template CARRITO-->
-              <div class="cart">
+              <!-- <div class="cart">
                 <a routerLink="/store/cart">
                   <i class="bi bi-cart3"></i>
                   <span class="notificacion" *ngIf="cartQuantity">
                     <strong>{{ cartQuantity }}</strong>
-                </span>
-              </a>
-            </div>
+                  </span>
+                </a>
+              </div> -->
 
-            <div class="user">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                {{ userName | titlecase }}
-              </a>
-              <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" routerLink="/home" tabindex="”0”">
-                      <strong>Perfil</strong>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" routerLink="/home" tabindex="”0”">
-                      <strong>Pedidos</strong>
-                    </a>
-                  </li>
-                  <li><hr class="dropdown-divider" /></li>
-                  <li>
-                    <a class="dropdown-item" (click)="onLogout()" tabindex="”0”">
-                      <strong>Cerrar Sesión</strong>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <div class="user">
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    {{ userName | titlecase }}
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <a class="dropdown-item" routerLink="/home"
+                        tabindex="”0”">
+                        <strong>Perfil</strong>
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" routerLink="/home"
+                        tabindex="”0”">
+                        <strong>Pedidos</strong>
+                      </a>
+                    </li>
+                    <li><hr class="dropdown-divider" /></li>
+                    <li>
+                      <a class="dropdown-item" (click)="onLogout()"
+                        tabindex="”0”">
+                        <strong>Cerrar Sesión</strong>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </div>
             </div>
           </div>
-        </div>
 
         </div>
       </div>

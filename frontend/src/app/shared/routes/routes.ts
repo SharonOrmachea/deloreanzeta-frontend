@@ -1,4 +1,4 @@
-// const BASE_URL = 'https://deloreanzeta-backend-production.up.railway.app/';
+// const BASE_URL = 'https://app-1d4771af-8f5a-47d2-bea0-9aa076f5632c.cleverapps.io/';
 const BASE_URL = 'http://localhost:3000/'
 
 // -----------------------TIENDA------------------------------------------------
