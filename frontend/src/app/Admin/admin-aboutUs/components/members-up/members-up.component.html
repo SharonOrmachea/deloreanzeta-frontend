@@ -36,7 +36,7 @@
         </div>
 
         <div class="box-form">
-          <mat-form-field class="example-full-width" color="accent">
+          <mat-form-field color="accent">
             <mat-label for="">Nombre</mat-label>
             <input
               class="mat-input"
@@ -52,7 +52,7 @@
         </div>
 
         <div class="box-form">
-          <mat-form-field class="example-full-width" color="accent">
+          <mat-form-field color="accent">
             <mat-label for="">Profesión</mat-label>
             <input
               class="mat-input"
@@ -68,14 +68,17 @@
         </div>
 
         <div class="box-form">
-          <mat-form-field class="example-full-width" color="accent">
-            <mat-label>Descripcion del Integrante</mat-label>
+          <mat-form-field class="full_width" color="accent">
+            <mat-label>Descripción del Integrante</mat-label>
             <textarea
               matInput
               class="mat-input"
               formControlName="description"
+              maxlength="238"
+              #description
               tabindex="0"
             ></textarea>
+            <mat-hint align="end">{{description.value.length}} / 238</mat-hint>
             <mat-error *ngIf="isValidField('description')">
               <strong>{{ getErrorMessage("description") }}</strong>
             </mat-error>

@@ -1,6 +1,6 @@
 <section>
-  <div class="admin-list" *appShowForRoles="'admin'">
-    <app-admin-list-tours></app-admin-list-tours>
+  <div class="admin_list">
+    <app-admin-list-tours appShowForRoles [showForRoles]="['admin']"></app-admin-list-tours>
   </div>
   <div class="title">
     <h1><strong>TOURS</strong></h1>

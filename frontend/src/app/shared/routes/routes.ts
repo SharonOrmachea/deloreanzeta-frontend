@@ -1,4 +1,5 @@
-const BASE_URL = 'https://deloreanzeta-backend-production.up.railway.app/';
+// const BASE_URL = 'https://deloreanzeta-backend-production.up.railway.app/';
+const BASE_URL = 'http://localhost:3000/'
 
 // -----------------------TIENDA------------------------------------------------
 

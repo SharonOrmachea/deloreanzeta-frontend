@@ -64,7 +64,7 @@ export class MembersUpComponent implements OnInit {
 
     if(this.actionToDo == Action.NEW){
       this.aboutUsService.newMember(valueMembers).subscribe((res) => {
-        this.toastr.success('Descripción agregada', 'About Us Agregado');
+        this.toastr.success('Integrante agregado', 'Integrante Agregado');
         this.aboutUsForm.reset();
       }, (error) => {
         this.toastr.error(error, 'About Us Failed');
@@ -73,7 +73,7 @@ export class MembersUpComponent implements OnInit {
     } else if(this.actionToDo == Action.EDIT){
       const membersId = this.data?.members?.id;
       this.aboutUsService.updateMember(membersId, valueMembers).subscribe((res) => {
-        this.toastr.success('La descripción fue editada con exito', 'About Us Editada');
+        this.toastr.success('Los datos del integrante fueron editados con exito', 'Integrante Editado');
       }, error => {
         this.toastr.error(error, 'About Us Failed');
       })

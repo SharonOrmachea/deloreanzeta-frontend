@@ -1,6 +1,6 @@
 <div class="main">
   <div class="admin-list">
-    <app-admin-list-news *appShowForRoles="'admin'"></app-admin-list-news>
+    <app-admin-list-news appShowForRoles [showForRoles]="['admin']"></app-admin-list-news>
   </div>
   <div class="div-title">
     <h2 class="title"><strong>Noticias</strong></h2>
@@ -23,7 +23,7 @@
             <p class="text-card-new date">{{ new.date | date: 'dd/MM/yyyy' }}</p>
           </div>
           <div class="description">
-            <p class="text-card-new">{{ new.description | titlecase}}</p>
+            <p class="text-card-new">{{ new.description | titlecase }}</p>
           </div>
         </div>
         <div class="button-readMore">

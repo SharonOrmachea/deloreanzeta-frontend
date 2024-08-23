@@ -18,7 +18,7 @@ export class AdminListNewsComponent implements OnInit {
   news:News[] = [];
 
   datosLocalStorage = JSON.parse(localStorage.getItem("user")!);
-  tokenLocalStorage = this.datosLocalStorage.token;
+  tokenLocalStorage = this.datosLocalStorage?.token;
 
 
   headers = new HttpHeaders({
@@ -45,7 +45,7 @@ export class AdminListNewsComponent implements OnInit {
 
   ngOnDestroy(): void{
     this.suscription.unsubscribe();
-    //console.log('tour destruido');
+    console.log('tour destruido');
   }
 
   getAllNews(){
