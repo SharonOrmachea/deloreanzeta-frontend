@@ -15,10 +15,9 @@ export class ShowForRolesDirective {
   ) { }
 
   @Input() set appShowForRoles(role: string){
-    console.log('user: ', this.authService.userValue())
     const user = this.authService.userValue();
 
-    if(user && user.role){
+    if(user && user.role === 'admin'){
       const userRole = this.authService.userValue().role;
       const userHaveAccess = this.roles.some(roles => userRole.includes(roles));
       if(!userHaveAccess) {
